@@ -1,0 +1,221 @@
+.section-logo-list .section-wrapper {
+  overflow: hidden;
+}
+
+.logo-list--main.card-background {
+  background: var(--body_alternate_background);
+  padding: 40px;
+  overflow: hidden;
+  border-radius: var(--card_radius);
+}
+
+.section-logo-list .no-container .logo-list--main {
+  border-radius: 0;
+}
+
+.logo-list--header {
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: 40px;
+  gap: 20px;
+}
+
+.logo-list--header .section--header {
+  flex: 1;
+  padding: 0;
+}
+
+.logo-list--right-icon {
+  flex: 0 0 33.333%;
+  max-width: 33.333%;
+  text-align: center;
+}
+
+.logo-list--right-icon-outer:after {
+  content: '';
+  background: var(--body_background);
+  position: absolute;
+  width: calc(100% + 40px);
+  height: calc(100% + 60px);
+  top: -40px;
+  left: -20px;
+  border-radius: 0 0 200px 200px;
+}
+
+.logo-list--right-icon-outer {
+  position: relative;
+  width: 180px;
+  margin: 0 auto;
+}
+
+.logo-list--right-icon-inner {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--body_alternate_background);
+  border-radius: 100%;
+  position: relative;
+  z-index: 1;
+  animation: spin_rotate 20s linear infinite;
+}
+
+@keyframes spin_rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.logo-list--right-icon-inner svg {
+  width: 50px;
+  height: auto;
+}
+
+.logo-list--right-icon-inner .text--char {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%) rotate(var(--char_rotate));
+  padding: 10px 0;
+}
+
+.logo-list--wrapper {
+  gap: var(--column_gap);
+}
+
+.logo-list--wrapper + .logo-list--wrapper {
+  padding-top: 20px;
+}
+
+.logo-list--wrapper.stacked {
+  display: grid;
+  grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
+}
+
+.logo-list--wrapper.marquee {
+  display: flex;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-list--wrapper.marquee .logo-list--wrapper-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: var(--column_gap);
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-name: logo-marquee;
+  animation-duration: var(--animation_speed);
+}
+
+.logo-list--wrapper.marquee.ltr-direction .logo-list--wrapper-inner {
+  animation-direction: reverse;
+}
+
+.logo--item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-list--wrapper.marquee .logo--item {
+  width: 150px;
+}
+
+.logo-item--inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.logo-item--inner.bg-enable {
+  background: var(--card_background);
+  border-radius: var(--card_radius);
+  padding: 10px;
+}
+
+.logo-list--wrapper.images-equal-height .logo-item--inner {
+  height: 100%;
+}
+
+.logo-item--inner img {
+  width: 100%;
+  max-width: var(--logo_width);
+  height: auto;
+}
+
+@keyframes logo-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@media (max-width: 991px) {
+  .logo-list--right-icon-outer {
+    width: 150px;
+  }
+  .logo-list--right-icon-inner {
+    width: 150px;
+    height: 150px;
+  }
+  .logo-list--right-icon-inner svg {
+    width: 40px;
+  }
+  .logo-list--main.card-background {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .logo-list--wrapper.mobile-swipe {
+    justify-content: flex-start;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(55%, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(55%, 1fr));
+    overflow-x: auto;
+    padding-bottom: 15px;
+    scroll-snap-type: x mandatory;
+  }
+  .logo-list--wrapper.marquee .logo--item {
+    width: 100px;
+  }
+  .logo-list--main.card-background {
+    padding: 30px 20px;
+  }
+  .logo-list--right-icon-outer {
+    width: 100px;
+  }
+  .logo-list--right-icon-inner {
+    width: 100px;
+    height: 100px;
+  }
+  .logo-list--right-icon-inner svg {
+    width: 20px;
+  }
+  .logo-list--right-icon-outer:after {
+    width: calc(100% + 20px);
+    height: calc(100% + 40px);
+    top: -30px;
+    left: -10px;
+  }
+  .logo-list--right-icon-inner .text--char {
+    padding: 3px 0;
+  }
+}

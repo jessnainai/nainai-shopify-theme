@@ -1,0 +1,31 @@
+.breadcrumb--list {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumbs--item {
+    position: relative;
+    padding-right: 15px;
+    margin-right: 10px;
+}
+
+.breadcrumb--link {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.breadcrumbs--item:after {
+    content: "";
+    background: var(--text_color);
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+
+.breadcrumbs--item:last-child:after {
+    display: none;
+}

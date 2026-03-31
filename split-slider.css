@@ -1,0 +1,131 @@
+.splitslider--item {
+  background: var(--body_background);
+  position: relative;
+  display: flex;
+}
+
+.splitslider--item-inner {
+  height: var(--media_height);
+}
+
+.splitslider--item-inner.left-item,
+.splitslider--item-inner.right-item {
+  flex: 0 0 50%;
+}
+
+.splitslider--item-inner.left-item {
+  flex-grow: 1;
+}
+
+.splitslider--content {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  max-height: 100%;
+  max-width: 80%;
+}
+
+.splitslider--content.prod-position {
+  height: 100%;
+  left: 0;
+  top: 0;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.splitslider--content .product--card-detail-content {
+  gap: 10px;
+}
+
+.product--card-view-details-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: opacity 0.36s ease;
+}
+
+.product--card-view-button {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.splitslider-product-card:hover .product--card-view-details-button {
+  opacity: 1;
+}
+
+.splitslider--content.prod-position .splitslider-product-card {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.splitslider--content .product--title {
+  color: var(--heading_color);
+}
+
+.splitslider--heading {
+  margin-bottom: 20px;
+}
+
+.splitslider--desc {
+  margin-bottom: 30px;
+}
+
+.splitslider-product-card .product--card-detail-inner {
+  grid-template-columns: 1fr;
+}
+
+.splitslider-product-card .product--pricing {
+  justify-content: center;
+}
+
+.splitslider--outer .swiper-pagination.swiper-pagination-bullets {
+  left: auto;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  flex-direction: column;
+}
+
+.splitslider--outer .swiper-pagination.swiper-pagination-bullets .swiper-pagination-bullet {
+  margin: 5px 0;
+}
+
+@media (min-width: 768px) {
+  .splitslider--content {
+    padding: 0 100px;
+  }
+}
+
+@media (max-width: 767px) {
+  .splitslider--wrapper.swiper-wrapper {
+    padding-bottom: 0px;
+  }
+
+  .splitslider--item {
+    flex-wrap: wrap;
+  }
+
+  .splitslider--item-inner.left-item,
+  .splitslider--item-inner.right-item {
+    flex: 0 0 100%;
+  }
+
+  .splitslider--content {
+    max-width: 90%;
+  }
+
+  .splitslider--content.prod-position .splitslider-product-card {
+    max-width: 270px;
+  }
+}

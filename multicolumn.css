@@ -1,0 +1,52 @@
+.multicolumn--wrapper {
+    display: grid;
+    grid-template-columns: repeat(var(--column_count, 4), minmax(0, 1fr));
+    gap: 30px 20px;
+    align-items: flex-start;
+}
+
+.multicolumn--wrapper.column-background-enabled .multicolumn--item {
+    background: var(--card_background);
+    border-radius: var(--card_radius);
+    overflow: hidden;
+}
+
+.multicolumn--img {
+    border-radius: var(--card_radius);
+}
+
+.multicolumn--img.rounded {
+    border-radius: 100%!important;
+}
+
+.multicolumn--wrapper.column-background-enabled .multicolumn--img {
+    border-radius: 0;
+}
+
+.multicolumn--content {
+    display: grid;
+    gap: 15px;
+}
+
+.multicolumn--img+.multicolumn--content {
+    padding-top: 20px;
+}
+
+.multicolumn--wrapper.column-background-enabled .multicolumn--content {
+    padding: 25px 20px;
+}
+
+@media (max-width:767px) {
+    .multicolumn--wrapper {
+        gap: 20px 10px;
+    }
+    .multicolumn--wrapper.mobile-swipe {
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(85%, 1fr);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        grid-template-columns: unset;
+        padding-bottom: 10px;
+        gap: 10px;
+    }
+}
