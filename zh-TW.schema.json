@@ -1,0 +1,4994 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+	"settings_schema": {
+	  "global": {
+		"settings": {
+		  "header__border": {
+			"content": "Hyeɛ so"
+		  },
+		  "header__shadow": {
+			"content": "Sunsum"
+		  },
+		  "slides": {
+			"content": "Slides a wɔde kyerɛw nsɛm"
+		  },
+		  "image_heading": {
+			"label": "Asɛmti"
+		  },
+		  "image_text": {
+			"label": "Asɛmti ketewaa bi"
+		  },
+		  "page": {
+			"label": "Kratafa"
+		  },
+		  "desktop": {
+			"label": "Desktop so na ɛyɛ adwuma"
+		  },
+		  "mobile": {
+			"label": "Moobaa"
+		  },
+		  "title": {
+			"label": "Atiti asɛm"
+		  },
+		  "text": {
+			"label": "Atwerɛ",
+			"info": "Gyae label no kwan na fa bɔtn no sie."
+		  },
+		  "layout": {
+			"label": "Twa kwan"
+		  },
+		  "color": {
+			"label": "Ahosuo"
+		  },
+		  "heading": {
+			"label": "Asɛmti",
+			"info": "Fa wo nkyerɛwee no kyekyere [ ] ntam na fa markers font no ka ho."
+		  },
+		  "product": {
+			"label": "Adwadeɛ"
+		  },
+		  "description": {
+			"label": "Nkyerɛmu",
+			"info": "Ma nkyerɛwee no nyɛ den na fa kɔla a wɔasi so dua kyerɛ."
+		  },
+		  "content_alignment": {
+			"label": "Nsɛm a ɛwɔ mu no a ɛne ne ho hyia"
+		  },
+		  "background": {
+			"label": "Akyi asɛm"
+		  },
+		  "speed": {
+			"label": "Ɔhare"
+		  },
+		  "link": {
+			"label": "Link",
+			"info": "Sɛ link text no yɛ blank a, ɛnde wɔde link no bedi dwuma wɔ mfonini no nyinaa so."
+		  },
+		  "blur": {
+			"label": "Blur"
+		  },
+		  "content": {
+			"label": "Emu nsɛm"
+		  },
+		  "image": {
+			"label": "Mfoni",
+			"info": "Saa mfonini yi bɛkata afiri mfonini ahorow no so, a ɛrepue wɔ overlay ase."
+		  },
+		  "corner_radius": {
+			"label": "Ntwea so radius"
+		  },
+		  "horizontal_offset": {
+			"label": "Horizontal offset a ɛwɔ soro"
+		  },
+		  "vertical_offset": {
+			"label": "Offset a ɛda hɔ gyina hɔ"
+		  },
+		  "desktop_settings": {
+			"content": "Desktop nhyehyɛe ahorow"
+		  },
+		  "thickness": {
+			"label": "Nneɛma a ɛyɛ den"
+		  },
+		  "opacity": {
+			"label": "Opacity a ɛnyɛ nea ɛda adi"
+		  },
+		  "image_overlay_opacity": {
+			"label": "Mfonini a wɔde kata so opacity",
+			"info": "Sɛ wopɛ sɛ wosakra kɔla a wɔde kata so a, sesa nhyehyɛe \"Mfonini a wɔde kata akyi\" kɔla no"
+		  },
+		  "overlay_opacity": {
+			"label": "Overlay opacity a wɔde kata so"
+		  },
+		  "image_padding": {
+			"label": "Mfonini a wɔde ahyɛ mu"
+		  },
+		  "text_alignment": {
+			"options__1": {
+			  "label": "Benkum"
+			},
+			"options__2": {
+			  "label": "Mfimfini"
+			},
+			"options__3": {
+			  "label": "Nifa"
+			},
+			"label": "Nsɛm a wɔahyehyɛ no pɛpɛɛpɛ"
+		  }
+		}
+	  },
+	  "logo": {
+		"name": "Ahyɛnsode",
+		"settings": {
+		  "logo_image": {
+			"label": "Ahyɛnsode"
+		  },
+		  "favicon": {
+			"label": "Mfoni",
+			"info": "Wɔbɛtew so akɔ 32 x 32px"
+		  }
+		}
+	  },
+	  "color": {
+		"name": "Kɔla ahorow",
+		"settings": {
+		  "default_color_scheme": {
+			"label": "Default nhyehyɛe"
+		  },
+		  "color_schemes": {
+			"background": {
+			  "label": "Akyi asɛm"
+			},
+			"body_background_gradient": {
+			  "label": "Akyi nsɛm a ɛkɔ soro",
+			  "info": "Background gradient si akyigyina ananmu wɔ baabi a ɛbɛyɛ yiye."
+			},
+			"body_alternate_background": {
+			  "label": "Akyigyina a ɛsesa"
+			},
+			"border": {
+			  "label": "Hyeɛ so"
+			},
+			"heading_color": {
+			  "label": "Asɛmti"
+			},
+			"text": {
+			  "label": "Atwerɛ"
+			},
+			"link_color": {
+			  "label": "Link"
+			},
+			"highlight_color": {
+			  "label": "Twe adwene si nsɛm a wɔakyerɛw so"
+			},
+			"highlight_background": {
+			  "label": "Twe adwene si akyi"
+			},
+			"headers": {
+			  "primary_button": "Mfitiaseɛ Button",
+			  "secondary_button": "Button a Ɛto so Abien",
+			  "image": "Mfoni",
+			  "cards": "Kaad a Wɔde Di Dwuma",
+			  "content": "Emu nsɛm",
+			  "slider": "Slider agyan/nsɛntitiriw",
+			  "form": "Nkrataa ahorow"
+			},
+			"background_hover": {
+			  "label": "Akyi hover hover"
+			},
+			"text_hover": {
+			  "label": "Nsɛm a wɔakyerɛw no hover"
+			},
+			"border_hover": {
+			  "label": "Ɔhye so hover"
+			},
+			"overlay_background": {
+			  "label": "Overlay akyi"
+			},
+			"overlay_heading": {
+			  "label": "Overlay asɛmti no"
+			},
+			"overlay_text": {
+			  "label": "Nsɛm a wɔde kata so"
+			},
+			"card_background": {
+			  "label": "Kaad akyi"
+			},
+			"edge_background": {
+			  "label": "Edge akyi akyi"
+			},
+			"product_card_background": {
+			  "label": "Product card akyi mfonini"
+			},
+			"color": {
+			  "label": "Ahosuo"
+			}
+		  },
+		  "headers": {
+			"badges": "Badge ahorow",
+			"success_message": "Odi nkonim/Mfomso nkrasɛm",
+			"content": "Nipadua",
+			"product_card": "Product card a wɔde yɛ nneɛma",
+			"form_input": "Nkrataa/nsɛm a wɔde hyɛ mu"
+		  },
+		  "sale_text_color": {
+			"label": "Adetɔn badge nkyerɛwee"
+		  },
+		  "sale_bg_color": {
+			"label": "Sale akyi nsɛm"
+		  },
+		  "preorder_text_color": {
+			"label": "Preorder bagde nsɛm a wɔakyerɛw"
+		  },
+		  "preorder_bg_color": {
+			"label": "Preorder akyi nsɛm"
+		  },
+		  "sold_out_text_color": {
+			"label": "Nsɛm a wɔatɔn awie"
+		  },
+		  "sold_out_bg_color": {
+			"label": "Wɔtɔn wiei akyi"
+		  },
+		  "custom_text_color": {
+			"label": "Custom badge nkyerɛwee"
+		  },
+		  "custom_bg_color": {
+			"label": "Amanneɛ badge akyi"
+		  },
+		  "discount_text": {
+			"label": "Discount text"
+		  },
+		  "discount_background": {
+			"label": "Discount akyi asɛm"
+		  },
+		  "color_success_text": {
+			"label": "Odi nkonim nkyerɛwee"
+		  },
+		  "color_error_text": {
+			"label": "Mfomso nkyerɛwee"
+		  },
+		  "color_warning_text": {
+			"label": "Kɔkɔbɔ nsɛm"
+		  }
+		}
+	  },
+	  "header_and_footer": {
+		"name": "Ti ne ase kɔla ahorow",
+		"settings": {
+		  "headers": {
+			"content": "Nsɛmti a Wɔde Di Dwuma",
+			"footer": "Ase hɔ asɛm"
+		  },
+		  "paragraph": {
+			"label": "Menu ahorow a wɔde kɔ hɔ ntɛmntɛm",
+			"submenu": "Submenu / telefon a wokura kyin menu",
+			"forms": "Nkrataa ahorow",
+			"button": "Bɔtom",
+			"image": "Mfoni",
+			"desktop_submenu": "Desktop so menu ketewaa bi",
+			"mobile_menu": "Mobile submenu / mobile menu a ɛwɔ telefon so"
+		  },
+		  "background": {
+			"label": "Akyi asɛm"
+		  },
+		  "text": {
+			"label": "Atwerɛ"
+		  },
+		  "text_hover": {
+			"label": "Fa nsɛm a wɔakyerɛw no hyɛ wo nsa"
+		  },
+		  "border": {
+			"label": "Hyeɛ so"
+		  },
+		  "icon_color": {
+			"label": "Ahyɛnsode kɔla"
+		  },
+		  "link": {
+			"label": "Link"
+		  },
+		  "link_hover": {
+			"lable": "Link hover hover"
+		  },
+		  "hover": {
+			"label": "Fa wo nsa hyɛ wo nsa"
+		  },
+		  "bg_hover": {
+			"label": "Akyi hover hover"
+		  },
+		  "heading": {
+			"label": "Asɛmti"
+		  },
+		  "header_image_overlay_background": {
+			"label": "Overlay akyi"
+		  },
+		  "header_image_overlay_heading": {
+			"label": "Overlay asɛmti no"
+		  },
+		  "submenu_border_color": {
+			"label": "Border/hover akyi"
+		  },
+		  "mb_menu_color_scheme": {
+			"label": "Kɔla ahorow a wɔahyehyɛ"
+		  },
+		  "bg_edge_color": {
+			"label": "Nsonsonoe"
+		  }
+		}
+	  },
+	  "typography": {
+		"name": "Nkyerɛwee a wɔde kyerɛw nsɛm",
+		"settings": {
+		  "headers": {
+			"content": "Nsɛmti a Wɔde Di Dwuma",
+			"body": "Nipadua",
+			"accents": "Nsɛm a wɔka kyerɛ"
+		  },
+		  "type_heading_font": {
+			"label": "Font a wɔde kyerɛw nsɛm",
+			"info": "Sɛ wopaw font foforo a, ebetumi aka sɛnea wo sotɔɔ no tu mmirika ntɛmntɛm. "
+		  },
+		  "type_heading_line_height": {
+			"label": "Line no sorokɔ"
+		  },
+		  "type_heading_scale": {
+			"label": "Font kɛse nsenia"
+		  },
+		  "type_heading_letter_spacing": {
+			"label": "Nkrataa ntam kwan a ɛda ntam"
+		  }
+		}
+	  },
+	  "layout": {
+		"name": "Twa kwan",
+		"settings": {
+		  "container_width": {
+			"label": "Nneɛma a wɔde gu mu",
+			"container-sm": {
+			  "label": "Ketewa"
+			},
+			"container": {
+			  "label": "Daa daa"
+			},
+			"container-md": {
+			  "label": "Kwan"
+			},
+			"container-fluid": {
+			  "label": "Kakraa"
+			},
+			"container-fullwidth": {
+			  "label": "Edges gap na ɛwɔ hɔ"
+			}
+		  },
+		  "headers": {
+			"content": "Nneɛma a wɔde yɛ nneɛma"
+		  },
+		  "card_radius": {
+			"label": "Kaad no radius"
+		  },
+		  "form_inputs_height": {
+			"label": "Tenten"
+		  },
+		  "form_radius": {
+			"label": "Form radius a ɛwɔ hɔ"
+		  },
+		  "header_animations": {
+			"content": "Mfonini ahorow a ɛyɛ anigye"
+		  },
+		  "is_layout_animation": {
+			"label": "Ma heading animations nyɛ adwuma"
+		  },
+		  "is_card_animation": {
+			"label": "Ma card animations nyɛ adwuma"
+		  }
+		}
+	  },
+	  "swatches": {
+		"name": "Swatches a wɔde yɛ nneɛma",
+		"settings": {
+		  "variants_style": {
+			"label": "Ɔkwan a ɛsonosonoe",
+			"varaint_image": {
+			  "label": "Mfonini a ɛsono emu biara"
+			},
+			"color_swatch": {
+			  "label": "Kɔla swatch"
+			}
+		  },
+		  "color_name": {
+			"label": "Kɔla ahorow a wɔpaw no kanyan",
+			"info": "Option din a ɛkura kɔla ahorow no. "
+		  },
+		  "custom_colors": {
+			"label": "Kɔla ahorow a wɔahyɛ da ayɛ",
+			"info": "Di ɔkwan a wɔfa so yɛ no akyi: <Color>: 1 . <HEX Color>. "
+		  },
+		  "color_style": {
+			"label": "Kɔla swatch type",
+			"square": {
+			  "label": "Ahinianan"
+			},
+			"circle": {
+			  "label": "Kanko"
+			}
+		  },
+		  "size_name": {
+			"label": "Size options na ɛkanyan",
+			"info": "Option din a ɛkura kɛseɛ no. "
+		  },
+		  "hide_unavailable": {
+			"label": "Fa variants a enni hɔ no sie"
+		  }
+		}
+	  },
+	  "product_cards": {
+		"name": "Nneɛma a wɔde yɛ nneɛma ho nkrataa",
+		"settings": {
+		  "is_card_layout": {
+			"label": "Kaad kwan so",
+			"none": {
+			  "label": "Ɛnyɛ ebiara"
+			},
+			"only-border": {
+			  "label": "Ɔhye so nkutoo"
+			},
+			"only-background": {
+			  "label": "Akyi akyi nkutoo"
+			},
+			"border-with-background": {
+			  "label": "Ɔhye a ɛwɔ akyi"
+			}
+		  },
+		  "saving_price": {
+			"label": "Nneɛma bo a wɔpaw a wɔkora so",
+			"none": {
+			  "label": "Ɛnyɛ ebiara"
+			},
+			"amount-off": {
+			  "label": "Sika dodow a wɔde fi hɔ"
+			},
+			"percentage-off": {
+			  "label": "Ɔha biara mu nkyem 100"
+			}
+		  },
+		  "on_hover": {
+			"label": "Grid hover kwan so",
+			"product-options": {
+			  "label": "Nneɛma a wɔpaw"
+			},
+			"second-image": {
+			  "label": "Mfonini a ɛto so abien"
+			},
+			"size-options": {
+			  "label": "Size options nkutoo"
+			}
+		  },
+		  "quick_view": {
+			"label": "Ntɛm ara hwɛbea a wotumi hu",
+			"always": {
+			  "label": "Berɛ biara"
+			},
+			"on-hover": {
+			  "label": "Wɔ hover so"
+			},
+			"none": {
+			  "label": "Ɛnyɛ ebiara"
+			}
+		  },
+		  "show_vendor": {
+			"label": "Kyerɛ adetɔnfo"
+		  },
+		  "show_price": {
+			"label": "Kyerɛ bo"
+		  },
+		  "show_saving_price": {
+			"label": "Kyerɛ bo a wɔakora so"
+		  },
+		  "enable_swatches": {
+			"label": "Kyerɛw nneɛma a wubetumi apaw wɔ hover so"
+		  },
+		  "enable_quickview": {
+			"label": "Kyerɛ ntɛm view wɔ hover so"
+		  },
+		  "product_card_radius": {
+			"label": "Kaad no radius"
+		  }
+		}
+	  },
+	  "product": {
+		"name": "Adwadeɛ",
+		"settings": {
+		  "enable_preorder": {
+			"label": "Ma preorder nyɛ adwuma"
+		  },
+		  "disbale_soldout": {
+			"label": "Hide fa toto bo ho"
+		  }
+		}
+	  },
+	  "product_badges": {
+		"name": "Nneɛma a wɔde yɛ nneɛma ho badge",
+		"settings": {
+		  "headers": {
+			"content": "Badge a wɔahyɛ da ayɛ"
+		  },
+		  "paragraph": {
+			"content": "Fa ahyɛnsode ahorow a wɔde koma atew mu ka ho na ama wɔada badge soronko adi wɔ nneɛma no grids no mu."
+		  },
+		  "sale_badge": {
+			"label": "Kyerɛ ‘Sale’ badge no"
+		  },
+		  "soldout_badge": {
+			"label": "Kyerɛ ‘Sold out’ badge no kyerɛ"
+		  },
+		  "preorder_badge": {
+			"label": "Kyerɛ ‘Preorder’ badge no",
+			"info": "Preorder bɛyɛ adwuma bere a,‘Kɔ so tɔn bere a stock awie’ option no ayɛ adwuma.[Sɛnea ɛyɛ adwuma.](https://shinedezign.gitbook.io/king/overview/theme-settings#steps-to-enable-preorder)"
+		  },
+		  "custom_tag": {
+			"label": "Nneɛma a wɔde yɛ nneɛma ho nkyerɛwde"
+		  },
+		  "custom_badges_text": {
+			"label": "Custom badge nkyerɛwee"
+		  }
+		}
+	  },
+	  "search": {
+		"name": "Hwehwɛ",
+		"settings": {
+		  "headers": {
+			"content": "Nyansahyɛ ahorow",
+			"results": "Nhwehwɛmu a wɔyɛe"
+		  },
+		  "paragraph": {
+			"content": "Nneɛma a agye din",
+			"collection": "Nneɛma a wɔaboaboa ano a agye din"
+		  },
+		  "search_behaviour": {
+			"label": "Yɔbea",
+			"drawer": {
+			  "label": "Korabea"
+			},
+			"page": {
+			  "label": "Kratafa"
+			}
+		  },
+		  "enable_popular_categories": {
+			"label": "Kyerɛ akuw ahorow a agye din"
+		  },
+		  "heading": {
+			"label": "Asɛmti"
+		  },
+		  "search_drawer_product_image_ratio": {
+			"label": "Products/Articles mfonini nsusuwii",
+			"auto": {
+			  "label": "Auto"
+			},
+			"landscape": {
+			  "label": "Asase bɔbea"
+			},
+			"square": {
+			  "label": "Ahinianan"
+			},
+			"portrait": {
+			  "label": "Mfonini a Wɔayɛ"
+			}
+		  },
+		  "popular_categories": {
+			"label": "Akuw ahorow a agye din",
+			"info": "Fa ',' di dwuma ma akuw pii"
+		  },
+		  "suggestions_visibility": {
+			"label": "Kyerɛ akuw ahorow a agye din",
+			"before": {
+			  "label": "Ansa na wobɛhwehwɛ mu"
+			},
+			"after": {
+			  "label": "Bere a wɔhwehwɛɛ akyi no, nea efii mu bae biara nni hɔ"
+			},
+			"both": {
+			  "label": "Baanu"
+			},
+			"none": {
+			  "label": "Ɛnyɛ ebiara"
+			}
+		  },
+		  "product_list": {
+			"label": "Paw nneɛma a wɔyɛ"
+		  },
+		  "visibility": {
+			"label": "Nneɛma a wotumi hu",
+			"before": {
+			  "label": "Ansa na wobɛhwehwɛ mu"
+			},
+			"after": {
+			  "label": "Bere a wɔhwehwɛɛ akyi no, nea efii mu bae biara nni hɔ"
+			},
+			"both": {
+			  "label": "Baanu"
+			},
+			"none": {
+			  "label": "Ɛnyɛ ebiara"
+			}
+		  },
+		  "collection_list": {
+			"label": "Paw nneɛma a wɔaboaboa ano"
+		  },
+		  "search_results": {
+			"label": "Hwehwɛ suban",
+			"products": {
+			  "label": "Nneɛma a wɔyɛ nkutoo"
+			},
+			"products_pages": {
+			  "label": "Nneɛma a wɔyɛ ne nkratafa"
+			},
+			"products_articles": {
+			  "label": "Nneɛma a wɔyɛ ne nsɛm a wɔde yɛ adwuma"
+			},
+			"products_articles_pages": {
+			  "label": "Nneɛma, nsɛm ne nkratafa"
+			},
+			"all": {
+			  "label": "Nsɛm a ɛwɔ mu nyinaa"
+			}
+		  },
+		  "image_ratio": {
+			"label": "Products mfonini ratio",
+			"auto": {
+			  "label": "Dane"
+			},
+			"landscape": {
+			  "label": "Asase bɔbea"
+			},
+			"square": {
+			  "label": "Ahinianan"
+			},
+			"portrait": {
+			  "label": "mfonini a wɔayɛ"
+			}
+		  },
+		  "collection_image_ratio": {
+			"label": "Nneɛma a wɔaboaboa ano mfonini ratio",
+			"auto": {
+			  "label": "Dane"
+			},
+			"landscape": {
+			  "label": "Asase bɔbea"
+			},
+			"square": {
+			  "label": "Ahinianan"
+			},
+			"portrait": {
+			  "label": "mfonini a wɔayɛ"
+			}
+		  },
+		  "color_scheme": {
+			"label": "Kɔla ahorow a wɔahyehyɛ"
+		  }
+		}
+	  },
+	  "buttons": {
+		"name": "Bɔtɔn ahorow",
+		"settings": {
+		  "button_style": {
+			"label": "Button kwan a wɔfa so yɛ",
+			"default": {
+			  "label": "Daa daa"
+			},
+			"animated": {
+			  "label": "Wɔayɛ no anigyede"
+			}
+		  },
+		  "button_font_type": {
+			"label": "Font a wɔde kyerɛw nsɛm",
+			"heading-font": {
+			  "label": "Asɛmti"
+			},
+			"body-font": {
+			  "label": "Nipadua"
+			},
+			"accent-font": {
+			  "label": "Ɛnne"
+			}
+		  },
+		  "button_radius": {
+			"label": "Radius a ɛwɔ hɔ"
+		  },
+		  "carousel_buttons": {
+			"headers": "Carousel buttons a wɔde hyɛ mu"
+		  },
+		  "slilder_button_style": {
+			"label": "Yɔbea",
+			"square": {
+			  "label": "Ahinianan"
+			},
+			"circle": {
+			  "label": "Kanko"
+			}
+		  }
+		}
+	  },
+	  "cursor": {
+		"name": "Cursor a ɛkyerɛ biribi",
+		"settings": {
+		  "cursor_style": {
+			"label": "Cursor kwan a wɔfa so yɛ no",
+			"default": {
+			  "label": "Daa daa"
+			},
+			"animated": {
+			  "label": "Wɔayɛ no anigyede"
+			}
+		  }
+		}
+	  },
+	  "popup_drawers": {
+		"name": "Popup/drawer ahorow a wɔde hyɛ mu",
+		"settings": {
+		  "page_overlay_background": {
+			"label": "Overlay akyi"
+		  },
+		  "popup_color_scheme": {
+			"label": "Kɔla ahorow a wɔahyehyɛ"
+		  },
+		  "page_overlay_opacity": {
+			"label": "Overlay opacity a wɔde kata so"
+		  }
+		}
+	  },
+	  "account": {
+		"name": "Akawnso",
+		"settings": {
+		  "account_behaviour": {
+			"label": "Akontaabu suban",
+			"drawer": {
+			  "label": "Korabea"
+			},
+			"page": {
+			  "label": "Kratafa"
+			}
+		  }
+		}
+	  },
+	  "cart": {
+		"name": "Teaseɛnam",
+		"settings": {
+		  "cart_behaviour": {
+			"label": "Yɔbea",
+			"drawer": {
+			  "label": "Korabea"
+			},
+			"page": {
+			  "label": "Kratafa"
+			}
+		  },
+		  "headers": {
+			"gift_wrap": "Akyɛde a wɔde kyekyere",
+			"shipping_bar": {
+			  "content": "Nneɛma a wɔde fa po so hyɛn bar",
+			  "info": "Saa ade yi yɛ adwuma wɔ ɔkwan a wɔfa so de nneɛma mena nkutoo so."
+			},
+			"cart_drawer": "Teaseɛnam a wɔde gu mu",
+			"empty_cart": "Teaseɛnam a hwee nni mu ho nyansahyɛ ahorow",
+			"colors": "Kɔla ahorow",
+			"cart_recommendations": {
+			  "content": "Teaseɛnam ho nyansahyɛ ahorow",
+			  "info": "Nyansahyɛ ahorow a ɛyɛ nnam gyina nneɛma a ɛwɔ wo teaseɛnam no mu so. "
+			}
+		  },
+		  "enable_gift_wrap": {
+			"label": "Ma akyɛde a wɔde kyekyere nneɛma ho nyɛ adwuma"
+		  },
+		  "gift_wrap_product": {
+			"label": "Adwadeɛ"
+		  },
+		  "gift_wrap_text": {
+			"label": "Atwerɛ"
+		  },
+		  "enable_shipping": {
+			"label": "Ma nneɛma a wɔde mena bar no nyɛ adwuma"
+		  },
+		  "shipping_rate": {
+			"label": "Nneɛma a wɔde mena ho rate",
+			"info": "Kyerɛw nɔma(20000), nkyerɛwde anaa nkyerɛwde soronko biara nni mu."
+		  },
+		  "free_shipping_text": {
+			"label": "Odi nkonim ho nkrasɛm"
+		  },
+		  "shipping_message": {
+			"label": "Nkratoɔ",
+			"info": "Fa [amount] kyerɛ sika dodow a ɛwɔ nkrasɛm no mu."
+		  },
+		  "enable_cart_note": {
+			"label": "Kyerɛ teaseɛnam no mu nsɛm"
+		  },
+		  "enable_shipping_in_drawer": {
+			"label": "Kyerɛ akontaabu a ɛfa nneɛma a wɔde mena ho"
+		  },
+		  "enable_payment_icons": {
+			"label": "Ma sikatua ho nsɛnkyerɛnnede ahorow nyɛ adwuma"
+		  },
+		  "enable_view_cart_button": {
+			"label": "Kyerɛw hwɛ teaseɛnam button"
+		  },
+		  "enable_line_properties": {
+			"label": "Kyerɛ line item no su ahorow"
+		  },
+		  "recommendations_product_list": {
+			"label": "Nneɛma a wɔyɛ"
+		  },
+		  "cart_recommendations": {
+			"label": "Kyerɛ wɔ",
+			"inside-cart": {
+			  "label": "Korabea"
+			},
+			"outside-cart": {
+			  "label": "Abɔnten so drawer"
+			},
+			"none": {
+			  "label": "Ɛnyɛ ebiara"
+			}
+		  },
+		  "heading": {
+			"label": "Asɛmti"
+		  },
+		  "max_product": {
+			"label": "Maximum product a wɔbɛkyerɛ"
+		  },
+		  "product_list": {
+			"label": "Paw Nneɛma a Wɔyɛ",
+			"info": "Fa nneɛma foforo ho nyansahyɛ ma w’atɔfo."
+		  },
+		  "collection_list": {
+			"label": "Nneɛma a wɔaboaboa ano din"
+		  },
+		  "color_scheme": {
+			"label": "Nhyehyɛe a wɔyɛ"
+		  }
+		}
+	  },
+	  "internationalization": {
+		"name": "Amanaman ntam nkitahodi",
+		"settings": {
+		  "modal_heading": {
+			"label": "Atwerɛ"
+		  },
+		  "is_country_selector": {
+			"label": "Ma ɔman/ɔmantam paw no nyɛ adwuma",
+			"info": "Sɛ wopɛ sɛ wode ɔman/ɔmantam bi ka ho a, kɔ wo [payment settings.](/admin/settings/markets)"
+		  },
+		  "is_language_selector": {
+			"label": "Ma kasa paw no nyɛ adwuma",
+			"info": "Sɛ wopɛ sɛ wode kasa bi ka ho a, kɔ wo [kasa nhyehyɛe.](/admin/settings/languages)"
+		  }
+		}
+	  },
+	  "social-media": {
+		"name": "Social media sohyial media",
+		"settings": {
+		  "header": {
+			"content": "Asetra mu akontaabu ahorow",
+			"sharing_options": "Nneɛma a wobetumi apaw a wɔbɛkyɛ"
+		  },
+		  "share_facebook": {
+			"label": "Kyɛ wɔ Facebook so"
+		  },
+		  "tweet_twitter": {
+			"label": "Tweet wɔ X (kan no na wɔfrɛ no Twitter) so"
+		  },
+		  "pin_pinterest": {
+			"label": "Pin wɔ Pinterest so"
+		  },
+		  "share_telegram": {
+			"label": "Kyɛ wɔ Telegram so"
+		  },
+		  "share_whatsapp": {
+			"label": "Kyɛ wɔ WhatsApp so"
+		  },
+		  "share_email": {
+			"label": "Kyɛ wɔ Email so"
+		  },
+		  "social_twitter_link": {
+			"label": "X (kan no na wɔfrɛ no Twitter) .",
+			"info": "https://twitter.com/adetɔbea a ɛwɔ hɔ"
+		  },
+		  "social_facebook_link": {
+			"label": "Facebook so",
+			"info": "https://facebook.com/adetɔnbea a ɛwɔ hɔ"
+		  },
+		  "social_pinterest_link": {
+			"label": "Pinterest",
+			"info": "https://pinterest.com/adetɔbea a ɛwɔ hɔ"
+		  },
+		  "social_instagram_link": {
+			"label": "Instagram",
+			"info": "http://instagram.com/adetɔnbea a ɛwɔ hɔ"
+		  },
+		  "social_tiktok_link": {
+			"label": "TikTok a wɔde di dwuma",
+			"info": "https://tiktok.com/@shopify na ɛwɔ hɔ"
+		  },
+		  "social_tumblr_link": {
+			"label": "Tumblr na ɔkyerɛwee",
+			"info": "https://shopify.tumblr.com so na ɛwɔ hɔ"
+		  },
+		  "social_snapchat_link": {
+			"label": "Snapchat a wɔde di dwuma",
+			"info": "https://www.snapchat.com/fa ka ho/adetɔ ho"
+		  },
+		  "social_youtube_link": {
+			"label": "YouTube so",
+			"info": "https://www.youtube.com/adetɔbea a ɛwɔ hɔ"
+		  },
+		  "social_vimeo_link": {
+			"label": "Vimeo a wɔde yɛ adwuma",
+			"info": "https://vimeo.com/adetɔnbea a ɛwɔ hɔ"
+		  }
+		}
+	  },
+	  "scroll_to_top": {
+		"name": "Twe kɔ soro",
+		"settings": {
+		  "headers": {
+			"colors": "Kɔla ahorow"
+		  },
+		  "enable_scroll": {
+			"label": "Ma kwan"
+		  },
+		  "scroll_bg_color": {
+			"label": "Kyerɛ akyi kɔla"
+		  },
+		  "scroll_svg": {
+			"label": "SVG koodu"
+		  },
+		  "position": {
+			"label": "Gyinabea a ɛda fam",
+			"left": {
+			  "label": "Benkum"
+			},
+			"center": {
+			  "label": "Mfimfini"
+			},
+			"right": {
+			  "label": "Nifa"
+			}
+		  },
+		  "background": {
+			"label": "Akyi asɛm"
+		  },
+		  "icon": {
+			"label": "Ahyɛnsode"
+		  },
+		  "border": {
+			"label": "Hyeɛ so"
+		  },
+		  "bottom_position": {
+			"label": "Gyinabea a ɛda hɔ gyina hɔ"
+		  }
+		}
+	  },
+	  "currency_format": {
+		"name": "Sika nhyehyɛe",
+		"settings": {
+		  "content": "Sika ho mmara ahorow",
+		  "paragraph": "Teaseɛnam ne sika a wɔde tɔ nneɛma bo kyerɛ sika mmara bere nyinaa. ",
+		  "currency_code_enabled": {
+			"label": "Kyerɛ sika ho mmara ahorow"
+		  }
+		}
+	  },
+	  "google_map": {
+		"name": "Google map so",
+		"settings": {
+		  "googlemapapi": {
+			"label": "Api",
+			"info": "Ɛho behia sɛ wokyerɛw Google Maps API Key din na ama woatumi akyerɛ asase mfonini no."
+		  },
+		  "googlemapid": {
+			"label": "Id",
+			"info": "Ɛho behia sɛ wokyerɛw Google Maps ID din na ama woatumi akyerɛ asase mfonini no."
+		  }
+		}
+	  }
+	},
+	"sections": {
+	  "all": {
+		"animation": {
+		  "content": "Mfonini ahorow a ɛyɛ anigye",
+		  "image_behavior": {
+			"options__1": {
+			  "label": "Ɛnyɛ ebiara"
+			},
+			"options__2": {
+			  "label": "Ambient a ɛkɔ baabiara"
+			},
+			"options__3": {
+			  "label": "Fixed akyi gyinabea"
+			},
+			"options__4": {
+			  "label": "Zoom in wɔ scroll no so"
+			},
+			"label": "Mfonini suban"
+		  }
+		},
+		"menu": {
+		  "label": "Menu a Wɔde Di Dwuma",
+		  "info": "Hyɛ no nsow: First level menus nkutoo na wobehu na ɛfa non sticky header nkutoo ho."
+		},
+		"menu_label": {
+		  "label": "Menu no so nkyerɛwde",
+		  "info": "Hyehyɛ menu ade bi mu na fa mega menu di dwuma.[Sua pii](https://shinedezign.gitbook.io/king/overview/header#horizontal-mega-menu)"
+		},
+		"horizontal_menu_label": {
+		  "info": "Hyehyɛ menu ade bi mu na fa mega menu di dwuma.[Sua pii](https://shinedezign.gitbook.io/king/overview/header#vertical-mega-menu)"
+		},
+		"collection_menu_label": {
+		  "info": "Hyehyɛ menu ade bi mu na fa mega menu di dwuma.[Sua pii](https://shinedezign.gitbook.io/king/overview/header#collections-mega-menu)"
+		},
+		"content_alignment": {
+		  "label": "Gyinabea a ɛda fam",
+		  "flex-start": {
+			"label": "Benkum"
+		  },
+		  "center": {
+			"label": "Mfimfini"
+		  },
+		  "flex-end": {
+			"label": "Nifa"
+		  }
+		},
+		"button_text": {
+		  "label": "Button nkyerɛwee"
+		},
+		"button_link": {
+		  "label": "Bɔton link no"
+		},
+		"overlay_opacity": {
+		  "label": "Kaad a wɔde kata so no opacity"
+		},
+		"mobile_swipe": {
+		  "label": "Ma swipe mode nyɛ adwuma wɔ mobile so"
+		},
+		"carousel_interval": {
+		  "label": "Sesa slides biara"
+		},
+		"carousel_autoplay": {
+		  "label": "Fa slide ahorow no di akɔneaba wɔ wo ho"
+		},
+		"enable_border": {
+		  "label": "Ma border nyɛ adwuma"
+		},
+		"enable_shadow": {
+		  "label": "Ma sunsuma nyɛ adwuma"
+		},
+		"enable_logo": {
+		  "label": "Fa logo sie wɔ scroll (desktop) so .",
+		  "info": "Ɛyɛ adwuma ne fã trɛw menu nkutoo."
+		},
+		"overlay_content_alignment": {
+		  "label": "Overlay nsɛm a ɛwɔ mu a ɛne ne ho hyia"
+		},
+		"enable_banner_image": {
+		  "label": "Kyerɛ mfonini no"
+		},
+		"show_search": {
+		  "label": "Ma hwehwɛ no nyɛ adwuma"
+		},
+		"show_cart_icon": {
+		  "label": "Ma teaseɛnam no nyɛ adwuma"
+		},
+		"show_account_icon": {
+		  "label": "Ma akontaabu nyɛ adwuma"
+		},
+		"social_media_icons": {
+		  "label": "Social media ho nsɛnkyerɛnnede ahorow"
+		},
+		"marquee_text": {
+		  "label": "Marquee nkyerɛwee"
+		},
+		"marquee_speed": {
+		  "label": "Marquee ahoɔhare"
+		},
+		"scrolling_speed": {
+		  "label": "Ahoɔhare a wɔde twetwe nsɛm"
+		},
+		"custom_icon": {
+		  "label": "Amanneɛbɔ ahyɛnsode",
+		  "info": "Eyi wɔ ade titiriw a ɛkorɔn."
+		},
+		"background_info": {
+		  "paragraph": "Kɔla biako pɛ na wɔde bedi dwuma, sɛ́ ɛyɛ den anaasɛ nea ɛkɔ soro."
+		},
+		"content_positions": {
+		  "label": "Nsɛm a ɛwɔ mu no gyinabea",
+		  "overlay": {
+			"label": "Wɔ mfonini so"
+		  },
+		  "below": {
+			"label": "Mfonini a ɛwɔ ase hɔ no"
+		  }
+		},
+		"content_width": {
+		  "label": "Ntrɛmu"
+		},
+		"background_image": {
+		  "label": "Mfonini a ɛwɔ akyi"
+		},
+		"social-media-icons": {
+		  "content": "Social media ho nsɛnkyerɛnnede ahorow",
+		  "info": "Sɛ wopɛ sɛ woda wo social media account ahorow adi a, fa bata ho wɔ wo theme nhyehyɛe mu."
+		},
+		"payment-methods": {
+		  "content": "Akwan a wɔfa so tua ka",
+		  "info": "Sɛ wopɛ sɛ wode akwan a wɔfa so tua ka bi ka ho a, kɔ wo [tuatua nhyehyɛe.](/admin/settings/payments)"
+		},
+		"policy-links": {
+		  "content": "Nhyehyɛe ho nkitahodi ahorow",
+		  "info": "Sɛ wopɛ sɛ wode store nhyehyɛe ka ho a, kɔ wo [mmara nhyehyɛe.](/admin/settings/legal)"
+		},
+		"color_content": {
+		  "content": "Kɔla biako pɛ na ɛbɛyɛ adwuma afi solid ne gradient so."
+		},
+		"btn_text": {
+		  "label": "Ahyɛnsoɔ",
+		  "info": "Gyae label no kwan na fa bɔtn no sie."
+		},
+		"video": {
+		  "label": "Shopify hosted video no"
+		},
+		"video_label": {
+		  "label": "Video"
+		},
+		"marquee_direction": {
+		  "label": "Kwan a ɛrefa",
+		  "rtl": {
+			"label": "Nifa so kɔ benkum so"
+		  },
+		  "ltr": {
+			"label": "Benkum so kɔ nifa so"
+		  }
+		},
+		"gradient": {
+		  "label": "Gradient a ɛkɔ soro",
+		  "info": "Eyi bɛyɛ adwuma bere a nkyerɛwee kwan no yɛ gradient nkutoo."
+		},
+		"background_gradient": {
+		  "label": "Akyi nsɛm a ɛkɔ soro",
+		  "info": "Eyi bɛma akyi kɔla a ɛyɛ den no agu."
+		},
+		"alignment": {
+		  "label": "Nsiesiei a ɛne ne ho hyia"
+		},
+		"headers": {
+		  "expand_button": "Trɛw ɔfã no mu bɔtn (desktop) .",
+		  "products": "Nneɛma a wɔyɛ",
+		  "background": "Akyi asɛm",
+		  "item_settings": "Nneɛma nhyehyɛe",
+		  "logo": "Ahyɛnsode",
+		  "animation": "Animation a wɔde yɛ nneɛma",
+		  "colors": "Kɔla ahorow",
+		  "cart": "Teaseɛnam",
+		  "card": "Kaad no",
+		  "column": "Nkyekyɛmu",
+		  "image": "Mfoni",
+		  "button": "Bɔtom",
+		  "feedback": "Adwenkyerɛ",
+		  "buttons": "Bɔtɔn ahorow",
+		  "icon_size": "Icon kɛse",
+		  "left_side": "Benkum so fã",
+		  "right_side": "Ɔfã nifa so",
+		  "sorting_filters": "Nneɛma a wɔhyehyɛ ne nea wɔde yiyi mu",
+		  "banner": "Banner a wɔde yɛ adwuma",
+		  "footer_bottom": "Footer ase",
+		  "animated_media": "Nsɛm ho amanneɛbɔ a wɔde mfonini ayɛ",
+		  "primary": "Mfiaseɛ",
+		  "secondary": "Nea ɛto so abien",
+		  "slides_height": "Slides no sorokɔ",
+		  "hotspot_colors": "Hotspot kɔla ahorow",
+		  "simple_media": "Nsɛm ho amanneɛbɔ a ɛnyɛ den",
+		  "hotspot_position_desktop": "Hotspot gyinabea (desktop) .",
+		  "hotspot_position_mobile": "Hotspot gyinabea (mobile) .",
+		  "background_color": "Akyi kɔla",
+		  "blog_posts": "Blog so nsɛm a wɔakyerɛw",
+		  "collection": "Nneɛma",
+		  "column_count": "Desktop nkyerɛwde a ɛtoatoa so",
+		  "font_size": "Font no kɛse",
+		  "general": "Daa daa",
+		  "desktop": "Desktop so na ɛyɛ adwuma",
+		  "marquee": "Marquee na ɔyɛ",
+		  "hover_colors": "Hover kɔla ahorow",
+		  "featured_image": "Mfonini a Wɔada no Adi",
+		  "marquee_style": "Marquee kwan a wɔfa so yɛ ade",
+		  "media": "Nsɛm ho amanneɛbɔfo",
+		  "stacked_style": "Stacked style",
+		  "map": "Asase mfonini",
+		  "map_content": "Asase mfonini mu nsɛm",
+		  "password-popup": "Password a ɛbɛpue",
+		  "product_card": "Product card a wɔde yɛ nneɛma",
+		  "timer": "Bere a Wɔde Di Dwuma",
+		  "info": "Info",
+		  "copyright-content": "Copyright content",
+		  "currency-language": "Sika ne kasa",
+		  "navigation": "Navigation a wɔde fa kwan so",
+		  "transparent_header": "Ti a ɛda adi pefee",
+		  "submenu": "Submenu a ɛwɔ hɔ",
+		  "header_submenu": "Desktop so menu ketewaa bi",
+		  "icons": "Nsɛnkyerɛnnede ahorow",
+		  "media-card": "Media kaad a wɔde kyerɛw nsɛm",
+		  "quick_access_button": "Quick access button",
+		  "content_1": "Nsɛm a ɛwɔ mu 1",
+		  "content_2": "Nsɛm a ɛwɔ mu 2",
+		  "content_3": "Nsɛm a ɛwɔ mu 3",
+		  "content_4": "Nsɛm a ɛwɔ mu 4",
+		  "column_setting": "Column nhyehyɛe ahorow",
+		  "social-media-icons": {
+			"content": "Social media ho nsɛnkyerɛnnede ahorow",
+			"options": "Nneɛma a wubetumi apaw",
+			"info": "Sɛ wopɛ sɛ woda wo social media account ahorow adi a, fa bata ho wɔ wo theme nhyehyɛe mu."
+		  },
+		  "payment-methods": {
+			"content": "Akwan a wɔfa so tua ka",
+			"info": "Sɛ wopɛ sɛ wode akwan a wɔfa so tua ka bi ka ho a, kɔ wo [tuatua nhyehyɛe.](/admin/settings/payments)"
+		  },
+		  "policy-links": {
+			"content": "Nhyehyɛe ho nkitahodi ahorow",
+			"info": "Sɛ wopɛ sɛ wode store nhyehyɛe ka ho a, kɔ wo [mmara nhyehyɛe.](/admin/settings/legal)"
+		  },
+		  "follow-on-shop": {
+			"content": "Di akyi wɔ sotɔɔ mu",
+			"info": "Sɛnea ɛbɛyɛ a adetɔfo betumi adi wo sotɔɔ no akyi wɔ Shop app no ​​so afi wo sotɔɔ anim no, ɛsɛ sɛ woma Shop Pay no yɛ adwuma.[Sua pii](https://help.shopify.com/en/manual/online-store/themes/customizing-themes/ "
+		  }
+		},
+		"border_settings": {
+		  "border-enabled": {
+			"label": "Ɔhye so nkutoo"
+		  },
+		  "border-enabled-with-shadow": {
+			"label": "Border ne sunsuma"
+		  },
+		  "background-enabled": {
+			"label": "Akyisɛm nkutoo"
+		  },
+		  "animate-background": {
+			"label": "Animated akyi mfonini"
+		  },
+		  "background-enabled-with-border": {
+			"label": "Akyi a ɛwɔ ɔhye so"
+		  },
+		  "background-enabled-with-shadow": {
+			"label": "Akyi a sunsuma wɔ so"
+		  },
+		  "all_styles_applied": {
+			"label": "Nea yɛaka wɔ atifi hɔ no nyinaa"
+		  },
+		  "none": {
+			"label": "Ɛnyɛ ebiara"
+		  }
+		},
+		"show_excerpt": {
+		  "label": "Fa asɛm bi a wɔatwe afi mu kyerɛ"
+		},
+		"show_date": {
+		  "label": "Kyerɛ date"
+		},
+		"show_author": {
+		  "label": "Kyerɛ ɔkyerɛwfo"
+		},
+		"show_tags": {
+		  "label": "Kyerɛ tag ahorow"
+		},
+		"enable_swipe_mobile": {
+		  "label": "Ma swipe nyɛ adwuma wɔ mobile so"
+		},
+		"desktop_slide_image": {
+		  "label": "Desktop mfonini a ɛwɔ so"
+		},
+		"mobile_slide_image": {
+		  "label": "Mobile mfonini"
+		},
+		"desktop_font_size": {
+		  "label": "Desktop font kɛse"
+		},
+		"mobile_font_size": {
+		  "label": "Mobile font kɛse"
+		},
+		"marquee_speed_desktop": {
+		  "label": "Desktop ahoɔhare"
+		},
+		"marquee_speed_mobile": {
+		  "label": "Mobile ahoɔhare"
+		},
+		"column_gap": {
+		  "label": "Column no mu nsonsonoe"
+		},
+		"rotation": {
+		  "label": "Nkyinkyin a wɔkyinkyini"
+		},
+		"radius_selector": {
+		  "label": "Radius a wɔpaw no",
+		  "border-radius-none": {
+			"label": "Ɛnyɛ ebiara"
+		  },
+		  "border-radius-top-left-right": {
+			"label": "Soro"
+		  },
+		  "border-radius-bottom-left-right": {
+			"label": "Aseɛ"
+		  },
+		  "border-radius-all": {
+			"label": "Afanu nyinaa"
+		  }
+		},
+		"desktop_radius_selector": {
+		  "label": "Desktop so na ɛyɛ adwuma",
+		  "d-border-radius-none": {
+			"label": "Ɛnyɛ ebiara"
+		  },
+		  "d-border-radius-top": {
+			"label": "Soro"
+		  },
+		  "d-border-radius-bottom": {
+			"label": "Aseɛ"
+		  },
+		  "d-border-radius-all": {
+			"label": "Afanu nyinaa"
+		  }
+		},
+		"mobile_radius_selector": {
+		  "label": "Moobaa",
+		  "m-border-radius-none": {
+			"label": "Ɛnyɛ ebiara"
+		  },
+		  "m-border-radius-top": {
+			"label": "Soro"
+		  },
+		  "m-border-radius-bottom": {
+			"label": "Aseɛ"
+		  },
+		  "m-border-radius-all": {
+			"label": "Afanu nyinaa"
+		  }
+		},
+		"icons": {
+		  "label": "Ahyɛnsode",
+		  "icon_background_color": {
+			"label": "Icon akyi"
+		  },
+		  "svg_code": {
+			"label": "SVG koodu",
+			"info": "Eyi bɛma ahyɛnsode no agu"
+		  },
+		  "alert": {
+			"label": "Nkaebɔ"
+		  },
+		  "bell": {
+			"label": "Bell"
+		  },
+		  "calendar": {
+			"label": "Kalenda a wɔde yɛ adwuma"
+		  },
+		  "cart": {
+			"label": "Teaseɛnam"
+		  },
+		  "clock": {
+			"label": "Wɔɔkye"
+		  },
+		  "delete": {
+			"label": "Pepa"
+		  },
+		  "file": {
+			"label": "Faale"
+		  },
+		  "folder": {
+			"label": "Folda no"
+		  },
+		  "shipping": {
+			"label": "Suhyɛn so dwumadie"
+		  },
+		  "gift": {
+			"label": "Akyɛdeɛ"
+		  },
+		  "heart": {
+			"label": "Akoma"
+		  },
+		  "play": {
+			"label": "Bɔ"
+		  },
+		  "power": {
+			"label": "Tumi"
+		  },
+		  "return": {
+			"label": "San"
+		  },
+		  "search": {
+			"label": "Hwehwɛ"
+		  },
+		  "send": {
+			"label": "Mane"
+		  },
+		  "settings": {
+			"label": "Nsiesiei a Wɔde Yɛ Adwuma"
+		  },
+		  "shield": {
+			"label": "Bɔ ban"
+		  },
+		  "support": {
+			"label": "Mmoa"
+		  },
+		  "thumbs-up": {
+			"label": "Nsateaa a ɛkɔ soro"
+		  },
+		  "upload": {
+			"label": "Fa gu so"
+		  },
+		  "user": {
+			"label": "Ɔdefo"
+		  },
+		  "chat": {
+			"label": "Di nkɔmmɔ"
+		  },
+		  "flower": {
+			"label": "Nhwiren"
+		  }
+		},
+		"horizontal": {
+		  "label": "Ne tɛtrɛtɛ mu"
+		},
+		"vertical": {
+		  "label": "Tenten mu"
+		},
+		"image_opacity": {
+		  "label": "Mfonini no opacity"
+		},
+		"heading_alignment": {
+		  "label": "Nsɛm a ɛwɔ mu no a ɛne ne ho hyia"
+		},
+		"enable_heading": {
+		  "label": "Kyerɛ asɛmti no"
+		},
+		"enable_title": {
+		  "label": "Kyerɛ asɛmti no"
+		},
+		"collection_style": {
+		  "label": "Yɔbea",
+		  "stacked": {
+			"label": "Wɔaboaboa ano"
+		  },
+		  "carousel": {
+			"label": "Carousel a wɔde yɛ adwuma"
+		  },
+		  "marquee": {
+			"label": "Marquee na ɔyɛ"
+		  }
+		},
+		"columns_gap": {
+		  "label": "Adum ahorow mu nsonsonoe"
+		},
+		"button_as_link": {
+		  "label": "Kyerɛ sɛ link"
+		},
+		"button_style": {
+		  "label": "Yɔbea",
+		  "solid": {
+			"label": "Mua"
+		  },
+		  "outline": {
+			"label": "Nhyehyɛeɛ"
+		  },
+		  "link": {
+			"label": "Link"
+		  },
+		  "button-link": {
+			"label": "Bɔtɔn Link no"
+		  }
+		},
+		"button_size": {
+		  "label": "Kɛseɛ",
+		  "normal-button": {
+			"label": "Daa daa"
+		  },
+		  "small-button": {
+			"label": "Ketewa"
+		  },
+		  "medium-button": {
+			"label": "Kwan"
+		  },
+		  "large-button": {
+			"label": "Kakraa"
+		  }
+		},
+		"desktop_image_size": {
+		  "label": "Desktop mfonini kɛse",
+		  "small": {
+			"label": "Ketewa"
+		  },
+		  "medium": {
+			"label": "Kwan"
+		  },
+		  "large": {
+			"label": "Kakraa"
+		  }
+		},
+		"cat_heading_size": {
+		  "label": "Desktop kɛse",
+		  "h3": {
+			"label": "Kakraa"
+		  },
+		  "h4": {
+			"label": "Kwan"
+		  },
+		  "h5": {
+			"label": "Ketewa"
+		  },
+		  "h6": {
+			"label": "X-Ketekete"
+		  }
+		},
+		"markers_text": {
+		  "label": "Markers nkyerɛwee kwan so",
+		  "default": "no-markers",
+		  "no-markers": {
+			"label": "Ɛnyɛ ebiara"
+		  },
+		  "highlight-color": {
+			"label": "Text kɔla"
+		  },
+		  "outline--text": {
+			"label": "Kyerɛw nsɛm a wɔakyerɛw no mu"
+		  },
+		  "outline--filled": {
+			"label": "Hyɛ nsɛm a wɔahyehyɛ no ma"
+		  },
+		  "text-background-cover": {
+			"label": "Text akyi kɔla"
+		  },
+		  "fancy-underline": {
+			"label": "Fancy twe adwene si ase"
+		  },
+		  "regular-underline": {
+			"label": "Twe adwene si so daa"
+		  }
+		},
+		"slide_heights": {
+		  "label": "Tenten",
+		  "auto": {
+			"label": "Fa wo ho to slide a edi kan no so"
+		  },
+		  "100vh": {
+			"label": "Screen no nyinaa"
+		  },
+		  "custom": {
+			"label": "Amanneɛ kwan so sorokɔ"
+		  }
+		},
+		"custom_height": {
+		  "label": "Amanneɛ kwan so sorokɔ"
+		},
+		"heading_size": {
+		  "label": "Asɛmti no kɛse",
+		  "default": "h2",
+		  "h1": {
+			"label": "XX-Akɛseɛ"
+		  },
+		  "h2": {
+			"label": "X-Akɛseɛ"
+		  },
+		  "h3": {
+			"label": "Kakraa"
+		  },
+		  "h4": {
+			"label": "Kwan"
+		  },
+		  "h5": {
+			"label": "Ketewa"
+		  },
+		  "h6": {
+			"label": "X-Ketekete"
+		  }
+		},
+		"seo_heading": {
+		  "label": "Asɛmti tag",
+		  "default": "h2",
+		  "info": "Kyerɛ heading code ahorow ma SEO ne search engine ahorow ma crawling atirimpɔw ahorow."
+		},
+		"markers_font": {
+		  "label": "Markers nkyerɛwde",
+		  "info": "Wobetumi asesa saa nkyerɛwde yi wɔ asɛmti nhyehyɛe>typography mu.",
+		  "default": "accent-font a wɔde di dwuma",
+		  "accent-font": {
+			"label": "Ɛnne"
+		  },
+		  "body-font": {
+			"label": "Nipadua"
+		  },
+		  "heading-font": {
+			"label": "Asɛmti"
+		  }
+		},
+		"description_size": {
+		  "label": "Nkyerɛkyerɛmu nkyerɛwee kɛse",
+		  "default": "nsɛm a wɔde kyerɛw nsɛm",
+		  "text-xsmall": {
+			"label": "X-Ketekete"
+		  },
+		  "text-small": {
+			"label": "Ketewa"
+		  },
+		  "text": {
+			"label": "Daa daa"
+		  },
+		  "text-medium": {
+			"label": "Kwan"
+		  },
+		  "text-large": {
+			"label": "Kakraa"
+		  },
+		  "text-xlarge": {
+			"label": "X-Akɛseɛ"
+		  }
+		},
+		"section_visibility": {
+		  "label": "Ɔfã a wotumi hu",
+		  "always": {
+			"label": "Berɛ biara"
+		  },
+		  "small": {
+			"label": "Mfiri nketewa a wɔde yɛ adwuma"
+		  },
+		  "large": {
+			"label": "Mfiri akɛse a wɔde yɛ nneɛma"
+		  }
+		},
+		"section_container_width": {
+		  "label": "Nneɛma a wɔde gu mu no trɛw",
+		  "global": {
+			"label": "Amansan"
+		  },
+		  "container-sm": {
+			"label": "Ketewa"
+		  },
+		  "container": {
+			"label": "Daa daa"
+		  },
+		  "container-md": {
+			"label": "Kwan"
+		  },
+		  "container-fullwidth": {
+			"label": "Edges gap na ɛwɔ hɔ"
+		  },
+		  "no-container": {
+			"label": "Ntrɛwmu a edi mũ"
+		  }
+		},
+		"section_background": {
+		  "label": "Ɔfã no akyi nsɛm",
+		  "default": "mua",
+		  "solid": {
+			"label": "Mua"
+		  },
+		  "gradient": {
+			"label": "Gradient a ɛkɔ soro"
+		  }
+		},
+		"video_height": {
+		  "label": "Desktop no sorokɔ",
+		  "100vh": {
+			"label": "Fullscreen no nyinaa"
+		  },
+		  "adapt": {
+			"label": "Auto"
+		  },
+		  "adapt_to_first": {
+			"label": "Fa wo ho to mfonini a edi kan no so"
+		  }
+		},
+		"mobile_video_height": {
+		  "label": "Mobile sorokɔ",
+		  "100vh": {
+			"label": "Fullscreen no nyinaa"
+		  },
+		  "adapt": {
+			"label": "Auto"
+		  },
+		  "adapt_to_first": {
+			"label": "Fa wo ho to mfonini a edi kan no so"
+		  }
+		},
+		"object_fit": {
+		  "label": "Media fit",
+		  "default": "Kata so",
+		  "cover": {
+			"label": "Kata so"
+		  },
+		  "contain": {
+			"label": "Ɛwɔ"
+		  }
+		},
+		"desktop_logo_width": {
+		  "label": "Desktop logo no trɛw"
+		},
+		"mobile_logo_width": {
+		  "label": "Mobile logo no trɛw"
+		},
+		"desktop_content_position": {
+		  "label": "Nsɛm a ɛwɔ mu no gyinabea",
+		  "d-top-left": {
+			"label": "Benkum"
+		  },
+		  "d-top-center": {
+			"label": "Mfimfini"
+		  },
+		  "d-top-right": {
+			"label": "Nifa"
+		  },
+		  "d-center-left": {
+			"label": "Benkum"
+		  },
+		  "d-center": {
+			"label": "Mfimfini"
+		  },
+		  "d-center-right": {
+			"label": "Nifa"
+		  },
+		  "d-bottom-left": {
+			"label": "Benkum"
+		  },
+		  "d-bottom-center": {
+			"label": "Mfimfini"
+		  },
+		  "d-bottom-right": {
+			"label": "Nifa"
+		  }
+		},
+		"mobile_content_position": {
+		  "label": "Nsɛm a ɛwɔ mu no gyinabea",
+		  "m-top-left": {
+			"label": "Benkum"
+		  },
+		  "m-top-center": {
+			"label": "Mfimfini"
+		  },
+		  "m-top-right": {
+			"label": "Nifa"
+		  },
+		  "m-center-left": {
+			"label": "Benkum"
+		  },
+		  "m-center": {
+			"label": "Mfimfini"
+		  },
+		  "m-center-right": {
+			"label": "Nifa"
+		  },
+		  "m-bottom-left": {
+			"label": "Benkum"
+		  },
+		  "m-bottom-center": {
+			"label": "Mfimfini"
+		  },
+		  "m-bottom-right": {
+			"label": "Nifa"
+		  }
+		},
+		"content_position": {
+		  "label": "Gyinabea",
+		  "start": {
+			"label": "Soro"
+		  },
+		  "center": {
+			"label": "Mfinimfini"
+		  },
+		  "end": {
+			"label": "Aseɛ"
+		  },
+		  "middle": {
+			"label": "Mfimfini"
+		  }
+		},
+		"image_ratio": {
+		  "label": "Product mfonini ratio ratio",
+		  "auto": {
+			"label": "Dane"
+		  },
+		  "landscape": {
+			"label": "Asase bɔbea"
+		  },
+		  "square": {
+			"label": "Ahinianan"
+		  },
+		  "portrait": {
+			"label": "Mfonini a Wɔayɛ"
+		  },
+		  "auto_ratio": {
+			"label": "Auto"
+		  },
+		  "adapt-to-content": {
+			"label": "Yɛ nsakrae ma ɛne emu nsɛm hyia"
+		  },
+		  "adpat_to_first_image": {
+			"label": "Fa wo ho to mfonini a edi kan no so"
+		  }
+		},
+		"placeholder": {
+		  "label": "Email beae a wɔde hyɛ mu"
+		},
+		"spacing": {
+		  "section_spacing_heading": "Ɔfã ahorow no ntam kwan ware",
+		  "top_space_desktop": "Desktop so baabi a ɛwɔ soro",
+		  "bottom_space_desktop": "Desktop ase ahunmu",
+		  "top_space_mobile": "Mobile soro ahunmu",
+		  "bottom_space_mobile": "Mobile ase ahunmu"
+		},
+		"outline_thickness": {
+		  "label": "Kyerɛw sɛnea ɛyɛ den"
+		},
+		"colors": {
+		  "label": "Kɔla ahorow a wɔahyehyɛ",
+		  "content": "Kɔla a ɛda adi pefee",
+		  "transparent_color": {
+			"label": "Nsɛm/ahyɛnsode kɔla"
+		  },
+		  "transparent_border_color": {
+			"label": "Border kɔla"
+		  },
+		  "overlay_background": {
+			"label": "Overlay akyi"
+		  }
+		},
+		"image_shape": {
+		  "options__1": {
+			"label": "Mfiaseɛ"
+		  },
+		  "options__2": {
+			"label": "Arch"
+		  },
+		  "options__3": {
+			"label": "Blob"
+		  },
+		  "options__4": {
+			"label": "Chevron fii hɔ kɔe"
+		  },
+		  "options__5": {
+			"label": "Chevron nifa so"
+		  },
+		  "options__6": {
+			"label": "Diamond a wɔde yɛ nneɛma"
+		  },
+		  "options__7": {
+			"label": "Parallelogram (a ɛne ne ho di nsɛ)."
+		  },
+		  "options__8": {
+			"label": "Kurukuruwa"
+		  },
+		  "label": "Mfonini no nsusuwii",
+		  "info": "Standard-styled cards nni borders bere a mfonini bi nsusuwii reyɛ adwuma no."
+		}
+	  },
+	  "announcement-bar": {
+		"name": "Nkaebɔ",
+		"settings": {
+		  "color_scheme": {
+			"label": "Kɔla ahorow a wɔahyehyɛ",
+			"default": "mfiaseɛ"
+		  },
+		  "show_announcement_bar_home_page": {
+			"label": "Kyerɛ bar wɔ home page nkutoo so."
+		  },
+		  "auto_rotate": {
+			"label": "Auto rotate na ɛyɛ adwuma"
+		  },
+		  "change_slides_speed": {
+			"label": "Sesa slides biara"
+		  },
+		  "enable_social_icons": {
+			"label": "Kyerɛw sohyial media ho nsɛnkyerɛnnede ahorow",
+			"info": "Sɛ wopɛ sɛ woda wo social media profile ahorow adi a, yɛsrɛ wo fa bata so wɔ social media nhyehyɛe no mu wɔ asɛmti nhyehyɛe no ase."
+		  },
+		  "show_info": {
+			"label": "Kyerɛw nkitahodi ho nsɛm"
+		  },
+		  "contact_text": {
+			"label": "Nkitahodi ho nsɛm",
+			"default": "Wohia mmoa"
+		  },
+		  "show_store_locator": {
+			"label": "Kyerɛ sotɔɔ a wɔhwehwɛ"
+		  },
+		  "locator_text": {
+			"label": "Locator asɛmti no",
+			"default": "Adetɔnbea ahorow"
+		  },
+		  "show_location_and_language": {
+			"label": "Kyerɛ beae ne kasa"
+		  }
+		},
+		"blocks": {
+		  "announcement": {
+			"name": "Dawurubɔ bar",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "Nkaebɔ"
+		}
+	  },
+	  "age-verification": {
+		"name": "Mfe a obi adi ho adansedi",
+		"settings": {
+		  "age_verification_display_mode": {
+			"label": "Ɔkwan a wɔfa so kyerɛ ade",
+			"info": "Wɔ sɔhwɛ mode mu no popup no bɛda adi bere nyinaa ɛmfa ho nhyehyɛe a ɛfata anaasɛ wɔpow sɛnea ɛbɛyɛ a wubetumi ahwɛ mu bere nyinaa. ",
+			"enable": {
+			  "label": "Ma kwan"
+			},
+			"test_mode": {
+			  "label": "Sɔhwɛ kwan"
+			}
+		  },
+		  "color_scheme": {
+			"label": "Kɔla ahorow a wɔahyehyɛ",
+			"default": "mfiaseɛ"
+		  },
+		  "heading": {
+			"label": "Asɛmti",
+			"default": "Mfe a Mfe a Wɔadi Ho Nhwehwɛmu",
+			"info": "Fa wo nkyerɛwee no kyekyere [ ] ntam na fa markers font no ka ho."
+		  },
+		  "description": {
+			"label": "Nkyerɛmu",
+			"default": "So woanyin a wubetumi anom nsa wɔ wo man mu?"
+		  },
+		  "sub_description": {
+			"label": "Asɛm"
+		  },
+		  "approve_btn_text": {
+			"label": "Approve button nsɛm a wɔakyerɛw"
+		  },
+		  "decline_btn_text": {
+			"label": "Pow button nsɛm a wɔakyerɛw"
+		  },
+		  "decline_heading": {
+			"label": "Mfe a wonnii mfe ho asɛmti",
+			"info": "Fa wo nkyerɛwee no kyekyere [ ] ntam na fa markers font no ka ho."
+		  },
+		  "decline_description": {
+			"label": "Mfe a wɔadi ho nkyerɛkyerɛmu"
+		  },
+		  "age_decline_btn_text": {
+			"label": "Pow button nsɛm a wɔakyerɛw"
+		  },
+		  "age_verify_popup_cookie": {
+			"label": "Mpɛn dodoɔ",
+			"info": "Nna dodow ansa na popup a wɔayi afi hɔ no asan apue"
+		  }
+		}
+	  },
+	  "before-after": {
+		"name": "Ansa na/akyi",
+		"settings": {
+		  "percentage_value": {
+			"name": "Twe gyinabea"
+		  }
+		},
+		"blocks": {
+		  "image": {
+			"name": "Mfoni",
+			"settings": {
+			  "image_effect": {
+				"label": "Mfonini no nkɛntɛnso",
+				"none": {
+				  "label": "Ɛnyɛ ebiara"
+				},
+				"blur": {
+				  "label": "Blur"
+				},
+				"brightness": {
+				  "label": "Hann a ɛhyerɛn"
+				},
+				"contrast": {
+				  "label": "Abirabɔ"
+				},
+				"grayscale": {
+				  "label": "Grayscale a wɔde yɛ nneɛma"
+				},
+				"invert": {
+				  "label": "Dane wo ho"
+				},
+				"saturate": {
+				  "label": "Saturate a ɛyɛ fɛ"
+				},
+				"sepia": {
+				  "label": "Sepia na ɔkyerɛwee"
+				}
+			  },
+			  "filter_amount": {
+				"label": "Filter dodow a ɛwɔ mu"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Ansa na/akyi"
+		}
+	  },
+	  "best-selling-products": {
+		"name": "Nneɛma a wɔtɔn sen biara",
+		"settings": {
+		  "heading": {
+			"label": "Asɛmti",
+			"info": "Fa wo nkyerɛwee no kyekyere [ ] ntam na fa markers font no ka ho."
+		  },
+		  "description": {
+			"label": "Nkyerɛmu"
+		  },
+		  "left_portion_image": {
+			"label": "Benkum so mfonini"
+		  },
+		  "right_portion_image": {
+			"label": "Mfonini a ɛwɔ nifa so"
+		  },
+		  "product_on_image": {
+			"label": "Kyerɛ nneɛma a ɛwɔ benkum so mfonini no so"
+		  },
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  }
+		},
+		"presets": {
+		  "name": "Nneɛma a wɔtɔn sen biara"
+		}
+	  },
+	  "breadcrumb": {
+		"name": "Abodoo a wɔayam",
+		"settings": {},
+		"presets": {
+		  "name": "Abodoo a wɔayam"
+		}
+	  },
+	  "categories": {
+		"name": "Nkyekyɛm ahorow",
+		"settings": {
+		  "cat_m_heading_size": {
+			"label": "Mobile kɛse"
+		  },
+		  "category_img_height": {
+			"label": "Mfonini no sorokɔ",
+			"auto": {
+			  "label": "Auto"
+			},
+			"adapt": {
+			  "label": "Yɛ nsakrae ma ɛne emu nsɛm hyia"
+			}
+		  },
+		  "enable_animation": {
+			"label": "Ma animation nyɛ adwuma"
+		  },
+		  "category_bg": {
+			"label": "Category akyigyina"
+		  },
+		  "category_text": {
+			"label": "Category nsɛm a wɔakyerɛw"
+		  },
+		  "category_bg_hover": {
+			"label": "Category akyi hover"
+		  },
+		  "category_hover_text": {
+			"label": "Category hover nsɛm a wɔakyerɛw"
+		  }
+		},
+		"blocks": {
+		  "image": {
+			"name": "Mfonini no ade",
+			"settings": {
+			  "category_img_size": {
+				"label": "Mfonini no trɛw",
+				"small": {
+				  "label": "Ketewa"
+				},
+				"medium": {
+				  "label": "Kwan"
+				},
+				"large": {
+				  "label": "Kakraa"
+				}
+			  }
+			}
+		  },
+		  "category": {
+			"name": "Category ade a ɛwɔ hɔ",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "Nkyekyɛm ahorow"
+		}
+	  },
+	  "collapsible-content": {
+		"name": "Nsɛm a wotumi bobɔw",
+		"settings": {
+		  "heading": {
+			"label": "Asɛmti",
+			"info": "Fa wo nkyerɛwee no kyekyere [ ] ntam na fa markers font no ka ho."
+		  },
+		  "description": {
+			"label": "Nkyerɛmu"
+		  }
+		},
+		"blocks": {
+		  "collapse_grid": {
+			"name": "Collapse nsɛm a ɛwɔ mu",
+			"settings": {
+			  "collapsible_content_heading": {
+				"label": "Collapse Asɛmti no"
+			  },
+			  "collapsible_content_description": {
+				"label": "Collapse Nkyerɛkyerɛmu"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Nsɛm a wotumi bobɔw"
+		}
+	  },
+	  "collections-list": {
+		"name": "Nneɛma a wɔaboaboa ano a wɔahyehyɛ",
+		"settings": {
+		  "heading": {
+			"label": "Asɛmti",
+			"info": "Fa wo nkyerɛwee no kyekyere [ ] ntam na fa markers font no ka ho."
+		  },
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  }
+		},
+		"blocks": {
+		  "collection": {
+			"name": "Nneɛma",
+			"settings": {
+			  "title": {
+				"label": "Amanneɛbɔ asɛmti",
+				"info": "Ɛbɛsi mfitiaseɛ nhoma a wɔaboaboa ano no asɛmti ananmu."
+			  },
+			  "image": {
+				"label": "Mfonini a wɔayɛ no sɛnea wɔpɛ",
+				"info": "Ɛbɛsi mfitiaseɛ nneɛma a wɔaboaboa ano no mfonini ananmu."
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Nneɛma a wɔaboaboa ano a wɔahyehyɛ"
+		}
+	  },
+	  "collection-tab": {
+		"name": "Nneɛma a wɔaboaboa ano tabs",
+		"settings": {
+		  "image": {
+			"label": "Mfonini a ɛwɔ akyi"
+		  },
+		  "headers": {
+			"content": "Tabs a ɛwɔ hɔ"
+		  },
+		  "style": {
+			"label": "Yɔbea",
+			"horizontal": {
+			  "label": "Ne tɛtrɛtɛ mu"
+			},
+			"vertical": {
+			  "label": "Tenten mu"
+			}
+		  },
+		  "tabs_animation": {
+			"label": "Animation nkɛntɛnso",
+			"none": {
+			  "label": "Ɛnyɛ ebiara"
+			},
+			"fade": {
+			  "label": "Pepaeɛ"
+			},
+			"bounce": {
+			  "label": "Huri"
+			}
+		  },
+		  "product_card_column_gap": {
+			"label": "Product card mu nsonsonoe"
+		  }
+		},
+		"blocks": {
+		  "collection": {
+			"name": "Nneɛma",
+			"settings": {
+			  "collection": {
+				"label": "Nneɛma"
+			  },
+			  "products": {
+				"label": "Nneɛma a wɔyɛ"
+			  },
+			  "text": {
+				"label": "Atiti asɛm"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Nneɛma a wɔaboaboa ano tabs"
+		}
+	  },
+	  "collection-menu": {
+		"name": "Nneɛma a wɔaboaboa ano menu",
+		"settings": {
+		  "speed": {
+			"label": "Ɔhare"
+		  },
+		  "sapce_between_text": {
+			"label": "Ɔkwan a ɛda nsɛm ntam"
+		  }
+		},
+		"blocks": {
+		  "collection": {
+			"name": "Nneɛma",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "Nneɛma a wɔaboaboa ano menu"
+		}
+	  },
+	  "collection-showcase": {
+		"name": "Nneɛma a wɔaboaboa ano a wɔde kyerɛ",
+		"settings": {
+		  "image": {
+			"label": "Mfonini a ɛwɔ akyi"
+		  },
+		  "content_style": {
+			"label": "Yɔbea",
+			"vertical": {
+			  "label": "Tenten mu"
+			},
+			"horizontal": {
+			  "label": "Ne tɛtrɛtɛ mu"
+			}
+		  },
+		  "heading_position": {
+			"label": "Horizontal heading gyinabea",
+			"behind-image": {
+			  "label": "Mfonini akyi"
+			},
+			"above-image": {
+			  "label": "Mfonini a ɛwɔ atifi hɔ"
+			}
+		  },
+		  "content_position": {
+			"label": "Kaad nkyerɛwee gyinabea",
+			"top": {
+			  "label": "Soro"
+			},
+			"center": {
+			  "label": "Mfimfini"
+			},
+			"bottom": {
+			  "label": "Aseɛ"
+			}
+		  }
+		},
+		"blocks": {
+		  "collection": {
+			"name": "Nneɛma",
+			"settings": {
+			  "collection": {
+				"label": "Nneɛma"
+			  },
+			  "collection_heading": {
+				"label": "Asɛmti"
+			  },
+			  "collection_desc": {
+				"label": "Nkyerɛmu"
+			  },
+			  "custom_image": {
+				"label": "Mfonini a wɔayɛ no sɛnea wɔpɛ"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Nneɛma a wɔaboaboa ano a wɔde kyerɛ"
+		}
+	  },
+	  "contact-with-map": {
+		"name": "Di nkitaho ne asase mfonini",
+		"settings": {
+		  "section_layout": {
+			"label": "Yɔbea",
+			"map": {
+			  "label": "Asase mfonini nkutoo"
+			},
+			"contact-form": {
+			  "label": "Nkitahodi kratasin nkutoo"
+			},
+			"both": {
+			  "label": "Nkitahodi kratasin a asase mfonini ka ho"
+			}
+		  },
+		  "map_address": {
+			"label": "Adrɛse",
+			"info": "Hwɛ sɛ wode Google Map ho nsɛm bɛka ho wɔ asɛmti nhyehyɛe no ase."
+		  },
+		  "map_style": {
+			"label": "Yɔbea",
+			"standard": {
+			  "label": "Susudua"
+			},
+			"silver": {
+			  "label": "Sereba"
+			},
+			"retro": {
+			  "label": "Retro"
+			},
+			"dark": {
+			  "label": "Sum"
+			},
+			"night": {
+			  "label": "Anadwo"
+			},
+			"aubergine": {
+			  "label": "Aubergine a wɔfrɛ no Aubergine"
+			}
+		  },
+		  "image": {
+			"label": "Mfoni",
+			"info": "Sɛ wɔanhyɛ asase mfonini no mu a, wɔbɛda no adi"
+		  },
+		  "image_position": {
+			"label": "Gyinabea",
+			"info": "Position bɛyɛ adwuma ne contact form ne map",
+			"left": {
+			  "label": "Benkum"
+			},
+			"right": {
+			  "label": "Nifa"
+			}
+		  },
+		  "heading_alignment": {
+			"label": "Nsɛm a ɛwɔ mu no a ɛne ne ho hyia"
+		  }
+		},
+		"presets": {
+		  "name": "Di nkitaho ne asase mfonini"
+		}
+	  },
+	  "countdown-banner": {
+		"name": "Banner a wɔde kan kɔ akyi",
+		"settings": {
+		  "counter_style": {
+			"label": "Yɔbea",
+			"style1": {
+			  "label": "Kaad no"
+			},
+			"style2": {
+			  "label": "Flip kaad no"
+			}
+		  },
+		  "year": {
+			"label": "Afe"
+		  },
+		  "months": {
+			"10": {
+			  "label": "Ahinime"
+			},
+			"11": {
+			  "label": "Obubuo"
+			},
+			"12": {
+			  "label": "Ɔpɛnimma"
+			},
+			"label": "Bosome",
+			"01": {
+			  "label": "Ɔpɛpɔn"
+			},
+			"02": {
+			  "label": "Ɔgyefoɔ"
+			},
+			"03": {
+			  "label": "Ɔbɛnem"
+			},
+			"04": {
+			  "label": "Oforisuo"
+			},
+			"05": {
+			  "label": "Bɛtumi"
+			},
+			"06": {
+			  "label": "Ayɛwohomumɔ"
+			},
+			"07": {
+			  "label": "Kutawonsa"
+			},
+			"08": {
+			  "label": "Ɔsanaa"
+			},
+			"09": {
+			  "label": "Ɔbɔ"
+			}
+		  },
+		  "day": {
+			"label": "Da"
+		  },
+		  "hours": {
+			"label": "Dɔnhwere"
+		  },
+		  "minutes": {
+			"label": "Sima"
+		  },
+		  "btn_txt": {
+			"label": "Ahyɛnsoɔ",
+			"info": "Gyae label no kwan na fa bɔtn no sie."
+		  },
+		  "blur_effect": {
+			"label": "Blur nkɛntɛnso"
+		  },
+		  "timer_expire": {
+			"label": "Adeyɛ a wɔde kan kɔ akyi a ne bere atwam",
+			"hide": {
+			  "label": "Fa akontaabu a ɛkɔ akyiri nkutoo sie"
+			},
+			"show": {
+			  "label": "Kyerɛ nkrasɛm"
+			}
+		  },
+		  "hide_message": {
+			"label": "Nkratoɔ"
+		  },
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  }
+		},
+		"blocks": {
+		  "product": {
+			"name": "Nneɛma a wɔyɛ no din",
+			"settings": {
+			  "product_slider_direction": {
+				"label": "Scrolling akwankyerɛ",
+				"rtl": {
+				  "label": "Ase kosi soro"
+				},
+				"ltr": {
+				  "label": "Efi soro kosi ase"
+				}
+			  }
+			}
+		  },
+		  "collection": {
+			"name": "Nneɛma",
+			"settings": {
+			  "collection_slider_direction": {
+				"label": "Scrolling akwankyerɛ",
+				"rtl": {
+				  "label": "Ase kosi soro"
+				},
+				"ltr": {
+				  "label": "Efi soro kosi ase"
+				}
+			  },
+			  "products_limit": {
+				"label": "Nneɛma a wɔyɛ no bu akontaa"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Banner a wɔde kan kɔ akyi"
+		}
+	  },
+	  "custom-liquid": {
+		"name": "Nsu a wɔahyɛ da ayɛ",
+		"settings": {
+		  "custom_liquid": {
+			"label": "Nsu a wɔahyɛ da ayɛ"
+		  }
+		},
+		"presets": {
+		  "name": "Nsu a wɔahyɛ da ayɛ"
+		}
+	  },
+	  "featured-blogs": {
+		"name": "Blog ahorow a wɔada no adi",
+		"settings": {
+		  "blog_style": {
+			"label": "Yɔbea",
+			"stacked": {
+			  "label": "Wɔaboaboa ano"
+			},
+			"grid": {
+			  "label": "Nhyehyɛeɛ"
+			},
+			"collage": {
+			  "label": "Collage a wɔde yɛ adwuma"
+			}
+		  },
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  },
+		  "article-settings": {
+			"content": "Asɛmti nhyehyɛe ahorow"
+		  }
+		},
+		"blocks": {
+		  "article": {
+			"name": "Atwerɛ",
+			"settings": {
+			  "article": {
+				"label": "Fa to"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Blog ahorow a wɔada no adi"
+		}
+	  },
+	  "featured-products": {
+		"name": "Nneɛma a wɔde kyerɛ",
+		"blocks": {
+		  "name": "Adwadeɛ",
+		  "settings": {
+			"products": {
+			  "label": "Adwadeɛ"
+			},
+			"marquee": {
+			  "header": {
+				"content": "Marquee na ɔyɛ"
+			  }
+			},
+			"marquee_text": {
+			  "label": "Atwerɛ",
+			  "info": "Ɛsesa afiri no asɛmti marquee nkyerɛwee no."
+			},
+			"color": {
+			  "header": {
+				"content": "Kɔla ahorow"
+			  }
+			},
+			"text_color": {
+			  "label": "Atwerɛ"
+			},
+			"marquee_text_color": {
+			  "label": "Marquee nkyerɛwee"
+			},
+			"background_color": {
+			  "label": "Akyi asɛm"
+			},
+			"marquee_text_gradient": {
+			  "label": "Marquee nkyerɛwee a ɛkɔ soro"
+			},
+			"background_gradient": {
+			  "label": "Akyi nsɛm a ɛkɔ soro"
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Nneɛma a wɔde kyerɛ"
+		}
+	  },
+	  "featured-collection": {
+		"name": "Nneɛma a wɔaboaboa ano a wɔada no adi",
+		"settings": {
+		  "products_to_show": {
+			"label": "Nneɛma a wɔde bɛkyerɛ"
+		  },
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  }
+		},
+		"presets": {
+		  "name": "Nneɛma a wɔaboaboa ano a wɔada no adi"
+		}
+	  },
+	  "featured-collections-list": {
+		"name": "Nneɛma a wɔaboaboa ano a wɔakyerɛ",
+		"settings": {
+		  "direction": {
+			"label": "Marquee akwankyerɛ",
+			"rtl": {
+			  "label": "Ase kosi soro"
+			},
+			"ltr": {
+			  "label": "Efi soro kosi ase"
+			}
+		  },
+		  "marquee_speed": {
+			"label": "Marquee ahoɔhare"
+		  }
+		},
+		"blocks": {
+		  "collection-image": {
+			"name": "Mfoni",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "Nneɛma a wɔaboaboa ano a wɔakyerɛ"
+		}
+	  },
+	  "featured-product": {
+		"name": "Ade a wɔde kyerɛ",
+		"settings": {
+		  "image_ratio": {
+			"label": "Nsɛm ho amanneɛbɔfo nsusuwii",
+			"adpat_to_first_image": {
+			  "label": "Fa wo ho to mfonini a edi kan no so"
+			}
+		  },
+		  "product": {
+			"label": "Adwadeɛ"
+		  }
+		},
+		"blocks": {
+		  "title": {
+			"name": "Atiti asɛm",
+			"settings": {
+			  "title_size": {
+				"label": "Asɛmti no kɛse"
+			  }
+			}
+		  },
+		  "price": {
+			"name": "Boɔ",
+			"settings": {
+			  "hide_unit_price": {
+				"label": "Fa unit bo sie"
+			  },
+			  "hide_shipping_content": {
+				"label": "Fa tow ne nneɛma a wɔde mena ho nsɛm sie"
+			  }
+			}
+		  },
+		  "sku": {
+			"name": "SKU"
+		  },
+		  "custom_text": {
+			"name": "Atwerɛ"
+		  },
+		  "variant_picker": {
+			"name": "Variant a wɔpaw nneɛma",
+			"settings": {
+			  "label": "Variant type a ɛyɛ soronko",
+			  "dropdown": {
+				"label": "Dropdown a ɛwɔ hɔ"
+			  },
+			  "button": {
+				"label": "Bɔtom"
+			  }
+			}
+		  },
+		  "quantity_picker": {
+			"name": "Dodow a wɔpaw"
+		  },
+		  "social_sharing": {
+			"name": "Asetra mu kyɛfa a wonya"
+		  },
+		  "pickup_availability": {
+			"name": "Pickup a ɛwɔ hɔ"
+		  },
+		  "inventory_status": {
+			"name": "Nneɛma a Wɔakora So Gyinabea",
+			"settings": {
+			  "minimun_inventory": {
+				"label": "Nneɛma a Wɔakora So a Ɛsua koraa"
+			  },
+			  "inventory_available_status": {
+				"label": "Nkrasɛm a ɛwɔ hɔ"
+			  },
+			  "inventory_less_status": {
+				"label": "Nkrasɛm a ɛfa nneɛma a wɔakora so a ɛba fam ho",
+				"info": "Fa [inventory ] kyerɛ inventory dodow wɔ nkrasɛm mu"
+			  },
+			  "inventory_unavailable_status": {
+				"label": "Nkrasɛm a wɔatɔn awie"
+			  }
+			}
+		  },
+		  "buy_button": {
+			"name": "Kɔtɔ bɔton ahorow",
+			"settings": {
+			  "show_dynamic_checkout": {
+				"label": "Kyerɛw dynamic checkout buttons"
+			  },
+			  "show_gift_card_recipient": {
+				"label": "Fa akyɛde nkrataa ho nsɛm kratasin a ɛkyerɛ nea ogye no kyerɛ"
+			  }
+			}
+		  },
+		  "icon-with-text": {
+			"name": "Ahyɛnsode a wɔakyerɛw so",
+			"settings": {
+			  "icon-1": {
+				"label": "Ahyɛnsode 1"
+			  },
+			  "icon-2": {
+				"label": "Ahyɛnsode 2"
+			  },
+			  "icon-3": {
+				"label": "Ahyɛnsode 3"
+			  }
+			}
+		  },
+		  "query_form": {
+			"name": "Bisa asɛm bi",
+			"settings": {
+			  "title": {
+				"label": "Mmoa label"
+			  },
+			  "help_with_share_icons": {
+				"label": "Kyerɛ ‘Mmoa pon’ kratasin wɔ kyɛfa ahyɛnsode ahorow anim"
+			  }
+			}
+		  },
+		  "complementary_products": {
+			"name": "Nneɛma a wɔde boa",
+			"settings": {
+			  "products_count": {
+				"label": "Maximum nneɛma a wɔde bɛkyerɛ"
+			  }
+			}
+		  },
+		  "custom_liquid": {
+			"name": "Nsu a wɔahyɛ da ayɛ",
+			"settings": {
+			  "custom_liquid": {
+				"label": "Nsu a wɔahyɛ da ayɛ"
+			  }
+			}
+		  },
+		  "payment_icons": {
+			"name": "Katua ho nsɛnkyerɛnnede ahorow",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "Ade a wɔde kyerɛ"
+		}
+	  },
+	  "footer": {
+		"name": "Ase hɔ asɛm",
+		"settings": {
+		  "enable_top_border_rounded": {
+			"label": "Ma top border rounded nyɛ adwuma"
+		  },
+		  "image": {
+			"label": "Ahyɛnsode",
+			"info": "235 x 74px a wɔkamfo kyerɛ."
+		  },
+		  "description": {
+			"label": "Store ho nkyerɛkyerɛmu"
+		  },
+		  "image_width": {
+			"label": "Logo no trɛw"
+		  },
+		  "enable_menu": {
+			"label": "Ma menu no nyɛ adwuma"
+		  },
+		  "enable_social_icons": {
+			"label": "Kyerɛw sohyial media ho nsɛnkyerɛnnede ahorow"
+		  },
+		  "mobile_accordions": {
+			"label": "Kyerɛ block ahorow a ɛwɔ accordions mu wɔ mobile so"
+		  },
+		  "enable_payment_icons": {
+			"label": "Kyerɛw sikatua ho nsɛnkyerɛnnede ahorow",
+			"info": "Icons kyerɛ a egyina wo Shopify sikatua akwan so."
+		  },
+		  "enable_policy_links": {
+			"label": "Kyerɛ nhyehyɛe ho nkitahodi ahorow"
+		  },
+		  "enable_follow_on_shop": {
+			"label": "Kyerɛw akyi wɔ sotɔɔ so"
+		  },
+		  "enable_copyright": {
+			"label": "Kyerɛ nsɛm a wɔakyerɛw wɔ copyright ho"
+		  },
+		  "copyright_text": {
+			"label": "Copyright nkyerɛwee"
+		  },
+		  "show_location_and_language": {
+			"label": "Kyerɛ beae ne kasa"
+		  }
+		},
+		"blocks": {
+		  "menus": {
+			"name": "Menu ahorow a wɔde ma"
+		  },
+		  "newsletter": {
+			"name": "Nsɛm ho amanneɛbɔ krataa",
+			"settings": {
+			  "enable_newsletter": {
+				"label": "Ma nsɛmma nhoma no nyɛ adwuma"
+			  },
+			  "placeholder_text": {
+				"label": "Placeholder nsɛm a wɔakyerɛw"
+			  },
+			  "header": {
+				"content": "Mfoni"
+			  }
+			}
+		  },
+		  "contact_information": {
+			"name": "Nsɛm a ɛfa nkitahodi ho",
+			"settings": {
+			  "address": {
+				"label": "Adrɛse"
+			  },
+			  "email": {
+				"label": "Email a wɔde mena"
+			  },
+			  "phone": {
+				"label": "Fon"
+			  },
+			  "hours": {
+				"label": "Nnɔnhwerew a wɔde yɛ adwuma"
+			  }
+			}
+		  }
+		}
+	  },
+	  "header": {
+		"name": "Titiriw",
+		"settings": {
+		  "header_style": {
+			"label": "Desktop kwan a wɔfa so yɛ adwuma",
+			"logo-left-menu-center": {
+			  "label": "Logo benkum so menu mfinimfini"
+			},
+			"logo-left-menu-right": {
+			  "label": "Logo benkum menu nifa so"
+			},
+			"logo-left-menu-left": {
+			  "label": "Logo benkum menu no benkum so"
+			},
+			"logo-center-menu-left": {
+			  "label": "Logo mfinimfini menu benkum so"
+			},
+			"half-width-menu": {
+			  "label": "Menu a ne trɛw yɛ fã"
+			},
+			"hamburger-menu-logo-left": {
+			  "label": "Hamburger menu ahyɛnsode a ɛwɔ hɔ"
+			},
+			"hamburger-menu-logo-center": {
+			  "label": "Hamburger menu logo mfinimfini"
+			}
+		  },
+		  "sticky_header_type": {
+			"label": "Ti a ɛyɛ nnam",
+			"sticky-none": {
+			  "label": "Ɛnyɛ ebiara"
+			},
+			"sticky-scroll-up": {
+			  "label": "On scroll kɔ soro"
+			},
+			"sticky-always": {
+			  "label": "Berɛ biara"
+			}
+		  },
+		  "transparent_home_page": {
+			"label": "Enable wɔ home page no so"
+		  },
+		  "is_transparent_blur": {
+			"label": "Ma blur effect nyɛ adwuma"
+		  },
+		  "transparent_other_page": {
+			"label": "Enable wɔ template foforo so",
+			"placeholder": "asɛm, blog, teaseɛnam, nneɛma a wɔaboaboa ano, list-nneɛma a wɔaboaboa ano, ade, krataafa, hwehwɛ ne nea ɛkeka ho.",
+			"info": "Fa koma a wɔatew mu list a ɛwɔ template din mu di dwuma na ama ayɛ adwuma wɔ nkratafa pii template so. "
+		  },
+		  "transparent_header": {
+			"label": "Nneɛma a wotumi hu a ɛda adi pefee",
+			"desktop-transparent": {
+			  "label": "Desktop so na ɛyɛ adwuma"
+			},
+			"mobile-transparent": {
+			  "label": "Moobaa"
+			},
+			"both-transparent": {
+			  "label": "Baanu"
+			}
+		  },
+		  "transparent_color": {
+			"label": "Nsɛm/ahyɛnsode"
+		  },
+		  "alternate_logo": {
+			"label": "Ahyɛnsode foforo"
+		  },
+		  "menu_type": {
+			"label": "Menu no su",
+			"dropdown": {
+			  "label": "Dropdown a ɛwɔ hɔ"
+			},
+			"mega_menu": {
+			  "label": "Mega menu a ɛyɛ fɛ"
+			}
+		  },
+		  "menu_navigations": {
+			"label": "Bue menu nneɛma wɔ so",
+			"click": {
+			  "label": "Klik so"
+			},
+			"hover": {
+			  "label": "Fa wo nsa hyɛ wo nsa"
+			}
+		  },
+		  "font_type": {
+			"label": "Desktop font abusua no"
+		  },
+		  "menu_font_style": {
+			"label": "Desktop font kwan so",
+			"normal": {
+			  "label": "Daa daa"
+			},
+			"bold": {
+			  "label": "Akokoɔduro"
+			}
+		  },
+		  "main_menu_font_size": {
+			"label": "Desktop font kɛse",
+			"small": {
+			  "label": "Ketewa"
+			},
+			"regular": {
+			  "label": "Daa daa"
+			},
+			"medium": {
+			  "label": "Kwan"
+			},
+			"large": {
+			  "label": "Kakraa"
+			}
+		  },
+		  "submenu_font_type": {
+			"label": "Font abusua no"
+		  },
+		  "submenu_font_style": {
+			"label": "Font kwan a wɔfa so yɛ no",
+			"normal": {
+			  "label": "Daa daa"
+			},
+			"bold": {
+			  "label": "Akokoɔduro"
+			}
+		  },
+		  "paragraph": {
+			"content": "Wɔkamfo kyerɛ sɛ wɔmfa nyɛ menu ntiantiaa nkutoo."
+		  },
+		  "paragraph_note": {
+			"content": "Hyɛ no nsow: First level menus nkutoo na wobehu na ɛfa non sticky header nkutoo ho."
+		  },
+		  "account_behaviour": {
+			"label": "Akontaabu suban",
+			"drawer": {
+			  "label": "Korabea"
+			},
+			"page": {
+			  "label": "Kratafa"
+			}
+		  },
+		  "is_quick_menu": {
+			"label": "Ma menu a ɛyɛ ntɛm no nyɛ adwuma"
+		  },
+		  "quick_menu_heading": {
+			"label": "Menu ahorow no asɛmti"
+		  },
+		  "hamburger_color_scheme": {
+			"label": "Hamburger kɔla nhyehyɛe"
+		  },
+		  "hamburger_top_bar": {
+			"content": "Hamburger menu - a ɛwɔ soro"
+		  },
+		  "hamburger_middle_card": {
+			"content": "Hamburger menu - mfinimfini kaad"
+		  },
+		  "hamburger_bottom_bar": {
+			"content": "Hamburger menu - Ase hɔ bar"
+		  },
+		  "hamburger_menu_btn_text": {
+			"label": "Button label a wɔde kyerɛw nsɛm"
+		  },
+		  "hamburger_menu_btn_link": {
+			"label": "Bɔton link no"
+		  },
+		  "hamburger_menu_social_media": {
+			"label": "Kyerɛw sohyial media ho nsɛnkyerɛnnede ahorow"
+		  }
+		},
+		"blocks": {
+		  "style-1": {
+			"name": "Ɔkwan a ɛda fam (mega menu) .",
+			"settings": {
+			  "horizontal_overlay_opacity": {
+				"label": "Mfonini ahorow kata opacity so"
+			  }
+			}
+		  },
+		  "style-2": {
+			"name": "Ɛgyina hɔ (mega menu) .",
+			"settings": {
+			  "paragraph": {
+				"content": "Wɔhyɛ nyansa sɛ wode saa mega menu yi bedi dwuma ama menu ahorow a ɛwɔ submenus."
+			  },
+			  "vertical_overlay_opacity": {
+				"label": "Mfonini ahorow kata opacity so"
+			  }
+			}
+		  },
+		  "style-3": {
+			"name": "Nneɛma a wɔaboaboa ano (mega menu) .",
+			"settings": {
+			  "paragraph": {
+				"content": "Wɔhyɛ nyansa sɛ wode saa mega menu yi bedi dwuma ama menu ahorow a ɛwɔ submenus."
+			  },
+			  "collection_list": {
+				"label": "Nneɛma a wɔaboaboa ano"
+			  }
+			}
+		  }
+		}
+	  },
+	  "hero-banner": {
+		"name": "Ɔkokodurufo frankaa",
+		"blocks": {
+		  "slide": {
+			"name": "Slide mfonini no",
+			"settings": {
+			  "image": {
+				"label": "Mfoni"
+			  },
+			  "text": {
+				"label": "Nsɛm a wɔde kyerɛw nsɛm a wɔde kyerɛw nsɛm",
+				"info": "11 nkyerɛwde max. "
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Ɔkokodurufo frankaa"
+		}
+	  },
+	  "highlighted-products": {
+		"name": "Nneɛma a wɔasi so dua",
+		"settings": {
+		  "heading": {
+			"label": "Asɛmti",
+			"info": "Ma font no nyɛ bold na ama woatumi akyerɛ wɔ kɔla ahorow mu"
+		  },
+		  "card_image_size": {
+			"label": "Product mfonini kɛse"
+		  }
+		},
+		"presets": {
+		  "name": "Nneɛma a wɔasi so dua"
+		}
+	  },
+	  "image-with-text": {
+		"name": "Mfonini a wɔakyerɛw so",
+		"settings": {
+		  "desktop_image_postition": {
+			"label": "Desktop mfonini gyinabea",
+			"left": {
+			  "label": "Benkum"
+			},
+			"right": {
+			  "label": "Nifa"
+			}
+		  },
+		  "desktop_image_size": {
+			"label": "Desktop mfonini no trɛw"
+		  },
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  },
+		  "is_background_enabled": {
+			"label": "Ma akyi no nyɛ adwuma"
+		  },
+		  "alignment": {
+			"label": "Nsiesiei a ɛne ne ho hyia"
+		  },
+		  "content_height": {
+			"label": "Sesa emu nsɛm no sorokɔ ma ɛne mfonini no hyia"
+		  }
+		},
+		"blocks": {
+		  "heading": {
+			"name": "Asɛmti",
+			"settings": {}
+		  },
+		  "text": {
+			"name": "Atwerɛ",
+			"settings": {
+			  "description_size": {
+				"label": "Nsɛm a wɔakyerɛw no kɛse"
+			  }
+			}
+		  },
+		  "button": {
+			"name": "Bɔtom",
+			"settings": {
+			  "show_as_arrow": {
+				"label": "Kyerɛ button sɛ agyan wɔ ntwea so"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Mfonini a wɔakyerɛw so"
+		}
+	  },
+	  "immages-carousel": {
+		"name": "Mfonini ahorow carousel",
+		"settings": {
+		  "heading": {
+			"label": "Asɛmti",
+			"info": "Ma font no nyɛ bold na ama woatumi akyerɛ wɔ kɔla ahorow mu"
+		  },
+		  "card_image_size": {
+			"label": "Product mfonini kɛse"
+		  },
+		  "carousel-settings": {
+			"content": "Carousel nhyehyɛe ahorow"
+		  },
+		  "enable_swiper_buttons": {
+			"label": "Kyerɛ sɛnea wobɛfa so akɔ baabiara"
+		  },
+		  "enable_swiper_progress": {
+			"label": "Kyerɛ nkɔso bar"
+		  },
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  }
+		},
+		"blocks": {
+		  "image_carousel": {
+			"name": "Mfoni",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "Mfonini ahorow carousel"
+		}
+	  },
+	  "image-text-accordions": {
+		"name": "Mfonini nkyerɛwee accordions",
+		"settings": {
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  }
+		},
+		"blocks": {
+		  "image": {
+			"name": "Mfoni",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "Mfonini nkyerɛwee accordions"
+		}
+	  },
+	  "images-with-text-carousel": {
+		"name": "Mfonini ahorow a wɔde nkyerɛwee carousel ayɛ",
+		"settings": {
+		  "sapce_between": {
+			"label": "Text space"
+		  }
+		},
+		"blocks": {
+		  "image_carousel": {
+			"name": "Mfoni",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "Mfonini ahorow a wɔde nkyerɛwee carousel ayɛ"
+		}
+	  },
+	  "logo-list": {
+		"name": "Logo ahorow a wɔahyehyɛ",
+		"settings": {
+		  "bg_layout": {
+			"label": "Akyi nhyehyɛe",
+			"card": {
+			  "label": "Kaad no"
+			},
+			"none": {
+			  "label": "Ɛnyɛ ebiara"
+			}
+		  },
+		  "column_count_desktop": {
+			"label": "Kɔla a ɛwɔ toatoa so (desktop) ."
+		  },
+		  "column_count_mobile": {
+			"label": "Kɔla a ɛtoatoa so (mobile) ."
+		  },
+		  "duplicate_marque": {
+			"label": "Ma twin marquees nyɛ adwuma"
+		  },
+		  "card_bg": {
+			"label": "Kyerɛ akyigyina"
+		  },
+		  "card_height": {
+			"label": "Ma akyi sorokɔ yɛ pɛ"
+		  },
+		  "svg_text": {
+			"label": "Nsɛm a wɔde twitwiw nneɛma",
+			"info": "16 nkyerɛwde max."
+		  }
+		},
+		"blocks": {
+		  "logo": {
+			"name": "Ahyɛnsode",
+			"settings": {
+			  "image_width": {
+				"label": "Mfonini no trɛw"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Logo ahorow a wɔahyehyɛ"
+		}
+	  },
+	  "main-account": {
+		"name": "Akontaabu titiriw",
+		"settings": {
+		  "bg_layout": {
+			"label": "Akyi nhyehyɛe"
+		  }
+		}
+	  },
+	  "main-activate-account": {
+		"name": "Main activate akontaabu",
+		"settings": {}
+	  },
+	  "main-address": {
+		"name": "Address titiriw",
+		"settings": {}
+	  },
+	  "main-article-banner": {
+		"name": "Asɛm titiriw frankaa",
+		"settings": {
+		  "content_overlay": {
+			"label": "Kyerɛ nsɛm a ɛwɔ mu a wɔde akata so"
+		  }
+		},
+		"presets": {
+		  "name": "Asɛm titiriw frankaa"
+		}
+	  },
+	  "main-article": {
+		"name": "Atwerɛ",
+		"settings": {
+		  "show_tags": {
+			"label": "Kyerɛ asɛm no agyiraehyɛde ahorow"
+		  },
+		  "show_social_share": {
+			"label": "Kyerɛ social sharing icons"
+		  }
+		},
+		"blocks": {
+		  "content": {
+			"name": "Emu nsɛm"
+		  },
+		  "comments": {
+			"name": "Nsɛm a wɔka"
+		  },
+		  "related_post": {
+			"name": "Nsɛm a ɛfa ho",
+			"settings": {
+			  "blog_limit": {
+				"label": "Blog nsɛm dodow a ɛsɛ sɛ wɔkyerɛ"
+			  },
+			  "image_ratio": {
+				"label": "Mfonini ahorow no nsusuwii"
+			  }
+			}
+		  }
+		}
+	  },
+	  "main-blog": {
+		"name": "Blog a wɔde kyerɛw nsɛm",
+		"settings": {
+		  "artical_per_page": {
+			"label": "Nsɛm a ɛwɔ kratafa biara mu"
+		  },
+		  "show_date": {
+			"label": "Kyerɛ da a wotintim asɛm no"
+		  },
+		  "show_author": {
+			"label": "Kyerɛ asɛm no kyerɛwfo"
+		  },
+		  "show_tags": {
+			"label": "Kyerɛ asɛm no agyiraehyɛde ahorow"
+		  },
+		  "show_excerpt": {
+			"label": "Fa asɛm no mu nsɛm a wɔatwe afi mu kyerɛ"
+		  },
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  }
+		}
+	  },
+	  "main-cart": {
+		"name": "Teaseɛnam titiriw",
+		"settings": {
+		  "show_cart_heading": {
+			"label": "Kyerɛ teaseɛnam no asɛmti"
+		  },
+		  "show_cart_description": {
+			"label": "Kyerɛ teaseɛnam ho nkyerɛkyerɛmu"
+		  },
+		  "show_cart_note": {
+			"label": "Kyerɛw teaseɛnam no mu nsɛm"
+		  },
+		  "payment_enable": {
+			"label": "Ma Payment icons no nyɛ adwuma"
+		  },
+		  "shipping_estimates": {
+			"label": "Kyerɛ akontaabu a ɛfa nneɛma a wɔde mena ho"
+		  },
+		  "layout_p": {
+			"label": "Kyerɛ afiri no mfonini ne nneɛma a ɛwom",
+			"info": "Fa product pɔtee meta field a custom.features key ne multitext type ka ho de kyerɛ features a ɛwɔ mfonini no so."
+		  },
+		  "image_heading": {
+			"label": "Mfonini no Nkyerɛwee"
+		  }
+		}
+	  },
+	  "collection-banner": {
+		"name": "Nneɛma a wɔaboaboa ano frankaa",
+		"settings": {
+		  "enable_heading": {
+			"label": "Kyerɛ nsɛm a wɔaboaboa ano no asɛmti"
+		  },
+		  "enable_description": {
+			"label": "Kyerɛ nkyerɛkyerɛmu a ɛfa nneɛma a wɔaboaboa ano ho"
+		  },
+		  "description": {
+			"label": "Nkyerɛmu",
+			"info": "Ma saa afuo yi nyɛ kwa na kyerɛ krataafa a ɛwɔ hɔ mprempren no nkyerɛkyerɛmu a wɔahyɛ da ayɛ."
+		  },
+		  "show_banner_image": {
+			"label": "Kyerɛ banner mfonini"
+		  },
+		  "banner_image": {
+			"label": "Banner mfonini",
+			"info": "Saa mfonini yi bɛbɔ mfonini a wɔaboaboa ano no default so."
+		  },
+		  "banner_height_desktop": {
+			"label": "Banner sorokɔ desktop"
+		  },
+		  "banner_height_mobile": {
+			"label": "Banner sorokɔ mobile"
+		  }
+		}
+	  },
+	  "main-collection": {
+		"name": "Nneɛma a Wɔaboaboa Ano Titiriw",
+		"settings": {
+		  "sorting": {
+			"label": "Ma nhyehyɛe a wɔde hyehyɛ nneɛma no nyɛ adwuma"
+		  },
+		  "filters": {
+			"label": "Ma filters nyɛ adwuma"
+		  },
+		  "show_filters_always": {
+			"label": "Bue filters no denam default so",
+			"info": "Eyi fa vertical filters nhyehyɛe nkutoo ho."
+		  },
+		  "filter_layout": {
+			"label": "Filter nhyehyɛe",
+			"horizontal": {
+			  "label": "Ne tɛtrɛtɛ mu"
+			},
+			"horizontal-bottom": {
+			  "label": "Ase a ɛkɔ soro"
+			},
+			"vertical": {
+			  "label": "Tenten mu"
+			}
+		  },
+		  "horizontal_top_filter_sticky": {
+			"label": "Ma horizontal filter no nyɛ sticky"
+		  },
+		  "is_subcollections": {
+			"label": "Kyerɛ nneɛma a wɔaboaboa ano"
+		  },
+		  "collections": {
+			"label": "Nneɛma a wɔaboaboa ano"
+		  },
+		  "sort_style": {
+			"label": "Hyehyɛ no sɛnea ɔkwan a wɔfa so yɛ no te",
+			"list": {
+			  "label": "Ahodoɔ"
+			},
+			"dropdown": {
+			  "label": "Dropdown a ɛwɔ hɔ"
+			}
+		  },
+		  "show_category_menus": {
+			"label": "Kyerɛ category menu ahorow",
+			"info": "Saa menu nneɛma yi da adi wɔ filters mu"
+		  },
+		  "category_title": {
+			"label": "Asɛmti"
+		  },
+		  "headers": {
+			"horizontal": {
+			  "content": "Ne tɛtrɛtɛ mu"
+			},
+			"vertical": {
+			  "content": "Nneɛma a wɔde yiyi nneɛma mu a ɛda hɔ gyina hɔ"
+			}
+		  }
+		},
+		"blocks": {
+		  "products_grid": {
+			"name": "Nneɛma a Wɔyɛ Grid",
+			"settings": {
+			  "products_limit": {
+				"label": "Nneɛma a wɔyɛ wɔ kratafa biara mu"
+			  },
+			  "card_image_size": {
+				"label": "Mfonini ahorow no nsusuwii"
+			  },
+			  "pagination_type": {
+				"label": "Nkratafa a wɔde kyerɛw nsɛm",
+				"page_number": {
+				  "label": "Kratafa nɔma"
+				},
+				"load_more": {
+				  "label": "Load pii button"
+				},
+				"infinite": {
+				  "label": "Nhoma mmobɔwee a enni ano"
+				}
+			  }
+			}
+		  }
+		}
+	  },
+	  "main-collection-list": {
+		"name": "Nneɛma a Wɔaboaboa Ano Titiriw",
+		"settings": {
+		  "sort": {
+			"label": "Yiyi mu",
+			"alphabetical": {
+			  "label": "Sɛnea nkyerɛwde no te no, A-Z"
+			},
+			"alphabetical_reversed": {
+			  "label": "Sɛnea nkyerɛwde no te no, Z-A"
+			},
+			"date_reversed": {
+			  "label": "Date, dedaw kosi foforo"
+			},
+			"date": {
+			  "label": "Date, foforo kosi dedaw so"
+			},
+			"products_high": {
+			  "label": "Nneɛma a wɔyɛ no dodow, ɛkɔ soro kosi nea ɛba fam"
+			},
+			"products_low": {
+			  "label": "Nneɛma a wɔyɛ no dodow, ɛba fam kosi nea ɛkɔ soro"
+			}
+		  },
+		  "collections_per_page": {
+			"label": "Nneɛma a wɔaboaboa ano wɔ kratafa biara mu"
+		  },
+		  "column_count": {
+			"label": "Desktop kɔla a ɛtoatoa so"
+		  },
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  }
+		}
+	  },
+	  "main-login": {
+		"name": "Main login a wɔde kɔ mu",
+		"settings": {}
+	  },
+	  "main-order": {
+		"name": "Ade titiriw a wɔkra",
+		"settings": {}
+	  },
+	  "main-page": {
+		"name": "Kratafa titiriw",
+		"settings": {}
+	  },
+	  "main-password": {
+		"name": "Paswɛde",
+		"settings": {},
+		"blocks": {
+		  "text": {
+			"name": "Atwerɛ",
+			"settings": {
+			  "text_size": {
+				"label": "Nsɛm a wɔakyerɛw no kɛse"
+			  }
+			}
+		  },
+		  "heading": {
+			"name": "Asɛmti",
+			"settings": {}
+		  },
+		  "social_icons": {
+			"name": "Asetra mu agyiraehyɛde ahorow",
+			"settings": {}
+		  },
+		  "password_message": {
+			"name": "Password nkrasɛm",
+			"settings": {
+			  "pass_msg": {
+				"content": "Sɛ wopɛ sɛ woyɛ emu nsɛm no foforo a, kɔ (Online Store>Preferences) ."
+			  },
+			  "text_size": {
+				"label": "Password nkrasɛm nkyerɛwee kɛse"
+			  }
+			}
+		  },
+		  "newsletter_form": {
+			"name": "Fɔɔm",
+			"settings": {
+			  "placeholder_text": {
+				"label": "Placeholder nsɛm a wɔakyerɛw"
+			  }
+			}
+		  }
+		}
+	  },
+	  "main-product": {
+		"name": "Nneɛma a wɔyɛ ho nsɛm",
+		"settings": {
+		  "layout_style": {
+			"label": "Desktop nhyehyɛe",
+			"layout_1": {
+			  "label": "Kaad a ɛka bom"
+			},
+			"layout_2": {
+			  "label": "Carousel a wɔde yɛ adwuma"
+			},
+			"layout_3": {
+			  "label": "Carousel a ɛwɔ nneɛma a ɛyɛ nnam a wɔpaw"
+			}
+		  },
+		  "first_layout_height": {
+			"label": "Kaad a ɛkata so no sorokɔ",
+			"screen_wise": {
+			  "label": "Screen nyansa mu"
+			},
+			"section_wise": {
+			  "label": "Ɔfã nyansam"
+			}
+		  },
+		  "image_ratio": {
+			"label": "Nsɛm ho amanneɛbɔfo nsusuwii"
+		  },
+		  "is_sticky_addtocart": {
+			"label": "Kyerɛ sticky add to teaseɛnam"
+		  },
+		  "card_headers": {
+			"content": "t:afã horow.afiri-titiriw.nhyehyɛe.kaad_ti.nneɛma"
+		  },
+		  "autoplay": {
+			"label": "Ma autoplay nyɛ adwuma"
+		  },
+		  "images_views": {
+			"label": "Mfonini ahorow a wɔde hwɛ",
+			"two_images": {
+			  "label": "2 mfonini ahorow"
+			},
+			"three_images": {
+			  "label": "3 mfonini ahorow"
+			}
+		  },
+		  "slider_images_views": {
+			"label": "Aguade mfonini biako hwɛbea",
+			"duplicates": {
+			  "label": "Nneɛma a wɔayɛ no abien"
+			},
+			"single": {
+			  "label": "Ankonam"
+			}
+		  },
+		  "sticky_option_radius": {
+			"label": "Nneɛma a wɔpaw no radius"
+		  },
+		  "carousel_border_radius": {
+			"label": "Ɔhye so radius",
+			"square": {
+			  "label": "Ahinianan"
+			},
+			"rounded": {
+			  "label": "Wɔayɛ no kurukuruwa"
+			}
+		  }
+		},
+		"blocks": {
+		  "title": {
+			"name": "Atiti asɛm",
+			"settings": {
+			  "title_size": {
+				"label": "Asɛmti no kɛse"
+			  }
+			}
+		  },
+		  "price": {
+			"name": "Boɔ",
+			"settings": {
+			  "hide_unit_price": {
+				"label": "Fa unit bo sie"
+			  },
+			  "hide_shipping_content": {
+				"label": "Fa tow ne nneɛma a wɔde mena ho nsɛm sie"
+			  }
+			}
+		  },
+		  "sku": {
+			"name": "SKU",
+			"settings": {}
+		  },
+		  "custom_text": {
+			"name": "Atwerɛ",
+			"settings": {}
+		  },
+		  "custom_content": {
+			"name": "Nsɛm a wɔahyɛ da ayɛ",
+			"settings": {}
+		  },
+		  "custom_liquid": {
+			"name": "Nsu a wɔahyɛ da ayɛ",
+			"settings": {
+			  "custom_liquid": {
+				"label": "Nsu a wɔahyɛ da ayɛ"
+			  }
+			}
+		  },
+		  "description": {
+			"name": "Nkyerɛmu",
+			"settings": {
+			  "description_style": {
+				"label": "Yɔbea",
+				"accordion": {
+				  "label": "Accordion a wɔde yɛ nneɛma"
+				},
+				"fullwidth": {
+				  "label": "Ntrɛwmu a edi mũ"
+				}
+			  }
+			}
+		  },
+		  "collapsible_content": {
+			"name": "Nsɛm a wotumi bobɔw",
+			"settings": {}
+		  },
+		  "variant_picker": {
+			"name": "Variant a wɔpaw nneɛma",
+			"settings": {
+			  "label": "Variant type a ɛyɛ soronko",
+			  "dropdown": {
+				"label": "Dropdown a ɛwɔ hɔ"
+			  },
+			  "button": {
+				"label": "Bɔtom"
+			  }
+			}
+		  },
+		  "size_chart": {
+			"name": "Size chart ho nhyehyɛe",
+			"settings": {
+			  "size_chart_style": {
+				"label": "Yɔbea",
+				"accordion": {
+				  "label": "Accordion a wɔde yɛ nneɛma"
+				},
+				"fullwidth": {
+				  "label": "Ntrɛwmu a edi mũ"
+				},
+				"popup": {
+				  "label": "Popup a ɛwɔ hɔ"
+				}
+			  }
+			}
+		  },
+		  "quantity_picker": {
+			"name": "Dodow a wɔpaw"
+		  },
+		  "social_sharing": {
+			"name": "Asetra mu kyɛfa a wonya"
+		  },
+		  "payment_icons": {
+			"name": "Katua ho nsɛnkyerɛnnede ahorow"
+		  },
+		  "pickup_availability": {
+			"name": "Pickup a ɛwɔ hɔ"
+		  },
+		  "buy_button": {
+			"name": "Kɔtɔ bɔton ahorow",
+			"settings": {
+			  "show_dynamic_checkout": {
+				"label": "Kyerɛw dynamic checkout buttons"
+			  },
+			  "show_gift_card_recipient": {
+				"label": "Fa akyɛde nkrataa kyerɛ nea wogye no ho nsɛm kratasin"
+			  }
+			}
+		  },
+		  "icon-with-text": {
+			"name": "Ahyɛnsode a wɔakyerɛw so",
+			"settings": {
+			  "icon-1": {
+				"label": "Ahyɛnsode 1"
+			  },
+			  "icon-2": {
+				"label": "Ahyɛnsode 2"
+			  },
+			  "icon-3": {
+				"label": "Ahyɛnsode 3"
+			  }
+			}
+		  },
+		  "inventory_status": {
+			"name": "Nneɛma a Wɔakora So Gyinabea",
+			"settings": {
+			  "minimun_inventory": {
+				"label": "Nneɛma a Wɔakora So a Ɛsua koraa"
+			  },
+			  "inventory_available_status": {
+				"label": "Nkrasɛm a ɛwɔ hɔ"
+			  },
+			  "inventory_less_status": {
+				"label": "Nkrasɛm a ɛfa nneɛma a wɔakora so a ɛba fam ho",
+				"info": "Fa [inventory ] kyerɛ inventory dodow wɔ nkrasɛm mu"
+			  },
+			  "inventory_unavailable_status": {
+				"label": "Nkrasɛm a wɔatɔn awie"
+			  }
+			}
+		  },
+		  "query_form": {
+			"name": "Bisa asɛm bi",
+			"settings": {
+			  "help_with_share_icons": {
+				"label": "Kyerɛ label wɔ share icons anim"
+			  }
+			}
+		  },
+		  "complementary_products": {
+			"name": "Nneɛma a wɔde boa",
+			"settings": {
+			  "products_count": {
+				"label": "Maximum nneɛma a wɔde bɛkyerɛ"
+			  }
+			}
+		  }
+		}
+	  },
+	  "main-register": {
+		"name": "Nkyerɛwde Titiriw",
+		"settings": {
+		  "heading_size": {
+			"label": "Kratafa asɛmti kɛse"
+		  }
+		}
+	  },
+	  "main-reset-password": {
+		"name": "Main Reset asɛmfua a wɔde hyɛ mu",
+		"settings": {}
+	  },
+	  "main-search": {
+		"name": "Hwehwɛ",
+		"settings": {
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  },
+		  "filter_header": {
+			"content": "Nneɛma a wɔde yiyi nneɛma mu"
+		  },
+		  "show_filters_always": {
+			"label": "Ma filters nyɛ adwuma"
+		  }
+		}
+	  },
+	  "marquee-old": {
+		"name": "Marquee dedaw",
+		"settings": {
+		  "sapce_between_text": {
+			"label": "Marque kwan a ɛda ntam"
+		  },
+		  "inner_spacing": {
+			"content": "Mfinimfini kwan a ɛda ntam"
+		  }
+		},
+		"blocks": {
+		  "text": {
+			"name": "Atwerɛ",
+			"settings": {
+			  "marquee_text_style": {
+				"label": "Text style",
+				"normal": {
+				  "label": "Daa daa"
+				},
+				"outline-font": {
+				  "label": "Nhyehyɛeɛ"
+				},
+				"gradient": {
+				  "label": "Gradient a ɛkɔ soro"
+				}
+			  }
+			}
+		  },
+		  "icon": {
+			"name": "Ahyɛnsode",
+			"settings": {}
+		  },
+		  "image": {
+			"name": "Mfoni",
+			"settings": {
+			  "image_size": {
+				"label": "Mfonini no kɛse"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Marquee dedaw"
+		}
+	  },
+	  "marquee-text-with-image": {
+		"name": "Marquee nkyerɛwee a mfonini wom",
+		"settings": {
+		  "rotation_type": {
+			"label": "Scrolling type a wɔde kyerɛw nsɛm",
+			"onscroll": {
+			  "label": "Wɔ nhoma mmobɔwee so"
+			},
+			"auto_rotate": {
+			  "label": "Auto rotate na ɛyɛ adwuma"
+			},
+			"both": {
+			  "label": "Baanu"
+			}
+		  },
+		  "marquee_style": {
+			"label": "Yɔbea",
+			"row": {
+			  "label": "Row nyansa mu"
+			},
+			"column": {
+			  "label": "Column nyansa mu"
+			}
+		  }
+		},
+		"blocks": {
+		  "marque": {
+			"name": "Nsɛm a wɔakyerɛw a mfonini wom",
+			"settings": {
+			  "desktop_image_width": {
+				"label": "Mfonini no trɛw (desktop) ."
+			  },
+			  "mobile_image_width": {
+				"label": "Mfonini no trɛw (mobile) ."
+			  },
+			  "sapce_between_text_desktop": {
+				"label": "Text|Icon|Mfonini atenae (desktop) ."
+			  },
+			  "sapce_between_text_mobile": {
+				"label": "Text|Icon|Mfonini atenae (mobile) ."
+			  },
+			  "sapce_between_items_desktop": {
+				"label": "Ahunmu a ɛda fam (desktop) ."
+			  },
+			  "sapce_between_items_mobile": {
+				"label": "Ahunmu a ɛkɔ soro (mobile) ."
+			  },
+			  "spacing": {
+				"label": "Ntam a ɛda ntam"
+			  },
+			  "marquee_icon_color": {
+				"label": "Ahyɛnsode"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Marquee nkyerɛwee a mfonini wom"
+		}
+	  },
+	  "media-gallery": {
+		"name": "Nsɛm ho amanneɛbɔfo gallery",
+		"settings": {
+		  "media_style": {
+			"label": "Desktop kwan a wɔfa so yɛ adwuma",
+			"default": {
+			  "label": "Daa daa"
+			},
+			"tilt": {
+			  "label": "Tilt"
+			},
+			"scroll-tilt": {
+			  "label": "Scroll Tilt no mu"
+			}
+		  },
+		  "hover_style": {
+			"label": "Hover kwan so",
+			"none": {
+			  "label": "Ɛnyɛ ebiara"
+			},
+			"animated_border": {
+			  "label": "Ɔhye a wɔde anigye ayɛ"
+			}
+		  },
+		  "is_media_text_on_hover": {
+			"label": "Kyerɛ media text wɔ hover so"
+		  },
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  },
+		  "visibility": {
+			"label": "Media mu nsɛm a wotumi hu",
+			"on-hover": {
+			  "label": "Wɔ hover so"
+			},
+			"time-delay": {
+			  "label": "Bere a ɛkyɛ"
+			},
+			"delay-and-disappear": {
+			  "label": "Twentwɛn wo nan ase na yera"
+			}
+		  },
+		  "delay-duration": {
+			"label": "Bere tenten a wɔde kyɛ"
+		  },
+		  "disappear-duration": {
+			"label": "Disappear bere tenten"
+		  },
+		  "media_columns_gap": {
+			"label": "Adum ahorow mu nsonsonoe"
+		  },
+		  "header": {
+			"content": "Media nhyehyɛe ahorow"
+		  }
+		},
+		"blocks": {
+		  "image_grid": {
+			"name": "Nsɛm ho amanneɛbɔfo"
+		  },
+		  "product": {
+			"label": "Adwadeɛ"
+		  },
+		  "text_size": {
+			"label": "Nsɛm a wɔakyerɛw no kɛse",
+			"small": {
+			  "label": "Ketewa"
+			},
+			"medium": {
+			  "label": "Kwan"
+			},
+			"large": {
+			  "label": "Kakraa"
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Nsɛm ho amanneɛbɔfo gallery"
+		}
+	  },
+	  "media-grid": {
+		"name": "Nsɛm ho amanneɛbɔ grid",
+		"settings": {
+		  "desktop_row_height": {
+			"label": "Desktop row no sorokɔ"
+		  },
+		  "mobile_row_height": {
+			"label": "Mobile row no sorokɔ"
+		  },
+		  "desktop_grid_gap": {
+			"label": "Desktop kɔla mu nsonsonoe"
+		  },
+		  "mobile_grid_gap": {
+			"label": "Mobile adum mu nsonsonoe"
+		  }
+		},
+		"blocks": {
+		  "grid": {
+			"name": "Nsɛm ho amanneɛbɔfo",
+			"settings": {
+			  "column": {
+				"label": "Desktop so kɔla"
+			  },
+			  "row": {
+				"label": "Desktop so row a wɔde kyerɛw nsɛm"
+			  },
+			  "column_mobile": {
+				"label": "Mobile so kɔla"
+			  },
+			  "row_mobile": {
+				"label": "Mobile row a wɔde di dwuma"
+			  },
+			  "content_width": {
+				"label": "Nsɛm a ɛwɔ mu no trɛw"
+			  },
+			  "background_opacity": {
+				"label": "Akyi mfonini a ɛyɛ opacity"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Nsɛm ho amanneɛbɔ grid"
+		}
+	  },
+	  "multiboxes": {
+		"name": "Nnaka pii a wɔde ahyɛ mu",
+		"settings": {
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  },
+		  "show_count": {
+			"label": "Kyerɛw nkyerɛwde dodow"
+		  },
+		  "column_background": {
+			"label": "Kyerɛ akyigyina"
+		  }
+		},
+		"blocks": {
+		  "media_card": {
+			"name": "Media kaad a wɔde kyerɛw nsɛm",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "Nnaka pii a wɔde ahyɛ mu"
+		}
+	  },
+	  "multicolumn": {
+		"name": "Multicolumn a ɛwɔ nkyerɛwde ahorow mu",
+		"settings": {
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  },
+		  "multicolumn_image_size": {
+			"label": "Grid mfonini ratio"
+		  },
+		  "rounded": {
+			"label": "Yɛ ohoni kurukuruwa"
+		  },
+		  "desktop_column_count": {
+			"label": "Desktop kɔla dodow a wɔkan"
+		  },
+		  "mobile_column_count": {
+			"label": "Mobile so kɔla dodow"
+		  }
+		},
+		"blocks": {
+		  "column": {
+			"name": "Nkyekyɛmu",
+			"settings": {
+			  "link_label": {
+				"label": "Link nsɛm a wɔakyerɛw"
+			  },
+			  "column_background": {
+				"label": "Kyerɛ akyigyina"
+			  },
+			  "column_background_color": {
+				"label": "Column no akyi"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Multicolumn a ɛwɔ nkyerɛwde ahorow mu"
+		}
+	  },
+	  "newsletter-popup": {
+		"name": "Nsɛm ho amanneɛbɔ krataa a ɛbɛba",
+		"settings": {
+		  "newsletter_display_mode": {
+			"label": "Ɔkwan a wɔfa so kyerɛ ade",
+			"info": "Wɔ sɔhwɛ mode mu no popup no bɛda adi bere nyinaa ɛmfa ho nhyehyɛe a ɛfata anaasɛ wɔpow sɛnea ɛbɛyɛ a wubetumi ahwɛ mu bere nyinaa. ",
+			"enable": {
+			  "label": "Ma kwan"
+			},
+			"test_mode": {
+			  "label": "Sɔhwɛ kwan"
+			}
+		  },
+		  "image_position": {
+			"label": "Gyinabea",
+			"left": {
+			  "label": "Benkum"
+			},
+			"right": {
+			  "label": "Nifa"
+			},
+			"top": {
+			  "label": "Soro"
+			}
+		  },
+		  "pop_position": {
+			"label": "gyinabea",
+			"center-left": {
+			  "label": "Benkum"
+			},
+			"center": {
+			  "label": "Mfimfini"
+			},
+			"center-right": {
+			  "label": "Nifa"
+			},
+			"bottom-left": {
+			  "label": "Benkum"
+			},
+			"bottom-center": {
+			  "label": "Mfimfini"
+			},
+			"bottom-right": {
+			  "label": "Nifa"
+			}
+		  },
+		  "newsletter_popup_delay": {
+			"label": "Twentwɛn so kosi sɛ popup no bɛda adi"
+		  },
+		  "show_on_home_page": {
+			"label": "Kyerɛ no wɔ home page nkutoo so"
+		  },
+		  "disable_for_account_holders": {
+			"label": "Disable ma wɔn a wɔwɔ akontaabu"
+		  },
+		  "show_once_to_visitors": {
+			"label": "Kyerɛ pɛnkoro kyerɛ ahɔho"
+		  },
+		  "newsletter_popup_cookie": {
+			"label": "Set cookie ma nsɛmma nhoma popup(nna) ."
+		  }
+		}
+	  },
+	  "newsletter": {
+		"name": "Nsɛm ho amanneɛbɔ krataa",
+		"settings": {
+		  "content_position": {
+			"label": "Gyinabea a ɛda hɔ gyina hɔ",
+			"flex-start": {
+			  "label": "Soro"
+			},
+			"center": {
+			  "label": "Mfimfini"
+			},
+			"flex-end": {
+			  "label": "Aseɛ"
+			}
+		  },
+		  "content_alignment": {
+			"label": "Nneɛma a wɔde si hɔ a ɛkɔ soro",
+			"flex-start": {
+			  "label": "Benkum"
+			},
+			"center": {
+			  "label": "Mfimfini"
+			},
+			"flex-end": {
+			  "label": "Nifa"
+			}
+		  },
+		  "background_style": {
+			"label": "Akyi kwan a wɔfa so yɛ ade",
+			"none": {
+			  "label": "Ɛnyɛ ebiara"
+			},
+			"solid": {
+			  "label": "Mua"
+			},
+			"glass": {
+			  "label": "Abobɔdeɛ"
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Nsɛm ho amanneɛbɔ krataa"
+		}
+	  },
+	  "page-banner": {
+		"name": "Frankaa titiriw",
+		"settings": {
+		  "heading": {
+			"label": "Atiti asɛm",
+			"info": "Ma saa afuo yi nyɛ kwa na ama woakyerɛ kratafa a ɛwɔ hɔ mprempren no asɛmti a wɔahyɛ da ayɛ."
+		  },
+		  "enable_description": {
+			"label": "Kyerɛ nkyerɛkyerɛmu"
+		  },
+		  "description": {
+			"label": "Nkyerɛmu",
+			"info": "Ma saa afuo yi nyɛ kwa na kyerɛ krataafa a ɛwɔ hɔ mprempren no nkyerɛkyerɛmu a wɔahyɛ da ayɛ."
+		  },
+		  "content_overlay": {
+			"label": "Nsɛm a ɛwɔ mu a wɔde kata so",
+			"info": "Ɛbɛyɛ soronko wɔ banner mfonini no so",
+			"heading_overlay": {
+			  "label": "Asɛmti"
+			},
+			"both_overlay": {
+			  "label": "Asɛmti ne nkyerɛkyerɛmu"
+			},
+			"no_overlay": {
+			  "label": "No overlay biara nni hɔ"
+			}
+		  },
+		  "banner_image": {
+			"label": "Banner mfonini",
+			"info": "Ma mfonini yi nyɛ kwa na ama woakyerɛ mfonini a ɛwɔ kratafa a ɛwɔ hɔ mprempren no."
+		  }
+		},
+		"presets": {
+		  "name": "Frankaa titiriw"
+		}
+	  },
+	  "parallax-images": {
+		"name": "Mfonini ahorow a wɔde parallax ayɛ",
+		"settings": {},
+		"blocks": {
+		  "image": {
+			"name": "Mfoni",
+			"settings": {
+			  "hide_background": {
+				"label": "Fa akyi kɔla sie"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Mfonini ahorow a wɔde parallax ayɛ"
+		}
+	  },
+	  "promotional-bar": {
+		"name": "Nsɛm a wɔde hyɛ nkurɔfo nkuran bar",
+		"settings": {
+		  "collection_list": {
+			"label": "Nneɛma a wɔaboaboa ano din"
+		  },
+		  "link_text": {
+			"label": "Link nsɛm a wɔakyerɛw"
+		  },
+		  "enable_video": {
+			"label": "Fa video no kyerɛ"
+		  },
+		  "video_size": {
+			"label": "Video popup kɛse"
+		  },
+		  "cover_image": {
+			"label": "Video anim mfonini"
+		  },
+		  "right_short_description": {
+			"label": "Nkyerɛkyerɛmu tiawa"
+		  },
+		  "radius_selector": {
+			"label": "Desktop so na ɛyɛ adwuma",
+			"d-border-radius-none": {
+			  "label": "Ɛnyɛ ebiara"
+			},
+			"d-border-radius-top": {
+			  "label": "Soro"
+			},
+			"m-border-radius-bottom": {
+			  "label": "Aseɛ"
+			},
+			"m-border-radius-all": {
+			  "label": "Afanu nyinaa"
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Nsɛm a wɔde hyɛ nkurɔfo nkuran bar"
+		}
+	  },
+	  "products-collapse": {
+		"name": "Nneɛma a wɔyɛ no hwe ase",
+		"settings": {
+		  "products": {
+			"label": "Nneɛma a wɔyɛ"
+		  },
+		  "description_alignment": {
+			"label": "Nsɛm a wɔahyehyɛ(mobile) ."
+		  }
+		},
+		"presets": {
+		  "name": "Nneɛma a wɔyɛ no hwe ase"
+		}
+	  },
+	  "products-grid": {
+		"name": "Nneɛma a wɔyɛ no grid",
+		"settings": {
+		  "products": {
+			"label": "Nneɛma a wɔyɛ",
+			"info": "Ɛsesa nneɛma a wɔaboaboa ano bere a wɔapaw no"
+		  },
+		  "collection": {
+			"label": "Nneɛma"
+		  }
+		},
+		"presets": {
+		  "name": "Nneɛma a wɔyɛ no grid"
+		}
+	  },
+	  "product-quick-view": {
+		"name": "Product ntɛm view",
+		"settings": {
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  }
+		},
+		"blocks": {
+		  "title": {
+			"name": "Atiti asɛm",
+			"settings": {
+			  "title_size": {
+				"label": "Asɛmti no kɛse"
+			  }
+			}
+		  },
+		  "price": {
+			"name": "Boɔ",
+			"settings": {
+			  "hide_unit_price": {
+				"label": "Fa unit bo sie"
+			  },
+			  "hide_shipping_content": {
+				"label": "Fa tow ne nneɛma a wɔde mena ho nsɛm sie"
+			  }
+			}
+		  },
+		  "sku": {
+			"name": "SKU",
+			"settings": {}
+		  },
+		  "custom_text": {
+			"name": "Atwerɛ",
+			"settings": {}
+		  },
+		  "custom_content": {
+			"name": "Nsɛm a wɔahyɛ da ayɛ",
+			"settings": {
+			  "show_in_fullwidth": {
+				"label": "Kyerɛ no wɔ ne trɛw nyinaa mu"
+			  }
+			}
+		  },
+		  "variant_picker": {
+			"name": "Variant a wɔpaw nneɛma",
+			"settings": {
+			  "label": "Variant type a ɛyɛ soronko",
+			  "dropdown": {
+				"label": "Dropdown a ɛwɔ hɔ"
+			  },
+			  "button": {
+				"label": "Bɔtom"
+			  }
+			}
+		  },
+		  "quantity_picker": {
+			"name": "Dodow a wɔpaw",
+			"settings": {}
+		  },
+		  "inventory_status": {
+			"name": "Inventory tebea",
+			"settings": {
+			  "minimun_inventory": {
+				"label": "Nneɛma a wɔakora so a ɛba fam koraa"
+			  },
+			  "inventory_available_status": {
+				"label": "Nkrasɛm a ɛwɔ hɔ"
+			  },
+			  "inventory_less_status": {
+				"label": "Nkrasɛm a ɛfa nneɛma a wɔakora so a ɛba fam ho",
+				"info": "Fa [inventory ] kyerɛ inventory dodow wɔ nkrasɛm mu"
+			  },
+			  "inventory_unavailable_status": {
+				"label": "Nkrasɛm a wɔatɔn awie"
+			  }
+			}
+		  },
+		  "payment_icons": {
+			"name": "Katua ho nsɛnkyerɛnnede ahorow",
+			"settings": {}
+		  },
+		  "buy_button": {
+			"name": "Kɔtɔ bɔton ahorow",
+			"settings": {
+			  "show_dynamic_checkout": {
+				"label": "Kyerɛw dynamic checkout buttons"
+			  },
+			  "show_gift_card_recipient": {
+				"label": "Fa akyɛde nkrataa kyerɛ nea wogye no ho nsɛm kratasin"
+			  }
+			}
+		  },
+		  "custom-liquid": {
+			"name": "Nsu a wɔahyɛ da ayɛ",
+			"settings": {
+			  "custom_liquid": {
+				"label": "Nsu a wɔahyɛ da ayɛ"
+			  }
+			}
+		  },
+		  "social_sharing": {
+			"name": "Asetra mu kyɛfa a wonya"
+		  },
+		  "pickup_availability": {
+			"name": "Pickup a ɛwɔ hɔ"
+		  }
+		}
+	  },
+	  "recently-viewed-products": {
+		"name": "Nneɛma a wɔahwɛ nnansa yi",
+		"settings": {
+		  "header": {
+			"content": "Emu nsɛm"
+		  },
+		  "paragraph": {
+			"content": "Wɔde ɔfã no asie sɛ wɔankɔsra nneɛma biara a."
+		  },
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  },
+		  "desktop_column_count": {
+			"label": "Desktop kɔla a ɛtoatoa so"
+		  }
+		},
+		"presets": {
+		  "name": "Nneɛma a wɔahwɛ nnansa yi"
+		}
+	  },
+	  "related-products": {
+		"name": "Nneɛma a ɛfa ho",
+		"settings": {
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  },
+		  "products_to_show": {
+			"label": "Nneɛma dodow a wɔde bɛkyerɛ"
+		  },
+		  "desktop_to_show": {
+			"label": "Desktop kɔla a ɛtoatoa so"
+		  }
+		},
+		"presets": {
+		  "name": "Nneɛma a ɛfa ho"
+		}
+	  },
+	  "revealing-text": {
+		"name": "Nsɛm a wɔda no adi",
+		"settings": {
+		  "revealing_style": {
+			"label": "Ɔkwan a wɔfa so da no adi",
+			"style-1": {
+			  "label": "Gu mu"
+			},
+			"style-2": {
+			  "label": "Pepaeɛ"
+			}
+		  },
+		  "is_parallax": {
+			"label": "Ma parallax nyɛ adwuma"
+		  },
+		  "revealing_height": {
+			"label": "Tenten",
+			"height-auto": {
+			  "label": "Auto"
+			},
+			"height-100vh": {
+			  "label": "Fit to screen so"
+			}
+		  },
+		  "font_type": {
+			"label": "Font a wɔde kyerɛw nsɛm"
+		  },
+		  "heading_size": {
+			"label": "Kɛseɛ"
+		  },
+		  "seo_heading": {
+			"label": "Ahyɛnsoɔ"
+		  }
+		},
+		"presets": {
+		  "name": "Nsɛm a wɔda no adi"
+		}
+	  },
+	  "rich-text": {
+		"name": "Nkyerɛwee a ɛyɛ fɛ",
+		"settings": {},
+		"blocks": {
+		  "heading": {
+			"name": "Asɛmti",
+			"info": "Fa wo nkyerɛwee no kyekyere [ ] ntam na fa markers font no ka ho.",
+			"settings": {}
+		  },
+		  "description": {
+			"name": "Atwerɛ",
+			"settings": {}
+		  },
+		  "image": {
+			"name": "Mfoni",
+			"settings": {
+			  "image": {
+				"label": "Rich text mfonini"
+			  },
+			  "image_ratio": {
+				"label": "Mfonini ahorow no nsusuwii"
+			  }
+			}
+		  },
+		  "button": {
+			"name": "Bɔtom",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "Nkyerɛwee a ɛyɛ fɛ"
+		}
+	  },
+	  "scrollable-media-content": {
+		"name": "Media mu nsɛm a wotumi scroll",
+		"settings": {
+		  "scrollable_content": {
+			"label": "Nsɛm a wotumi twetwe mu"
+		  }
+		},
+		"blocks": {
+		  "text": {
+			"name": "Fa Block ka ho",
+			"settings": {
+			  "scrollable_media_description": {
+				"label": "Wo nkyerɛkyerɛmu no"
+			  },
+			  "scrollable_media_image": {
+				"label": "Paw wo Mfonini no"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Media mu nsɛm a wotumi scroll"
+		}
+	  },
+	  "shop-the-look": {
+		"name": "Shop hwɛbea no",
+		"settings": {
+		  "image": {
+			"label": "Desktop mfonini a ɛwɔ so"
+		  },
+		  "mb_image": {
+			"label": "Mobile mfonini"
+		  },
+		  "border_color": {
+			"label": "Dot"
+		  },
+		  "active_color": {
+			"label": "Dot a ɛyɛ nnam"
+		  }
+		},
+		"blocks": {
+		  "hot-spot": {
+			"name": "Nneɛma a wɔde yɛ nneɛma a wɔahyehyɛ",
+			"settings": {
+			  "product_list": {
+				"label": "Nneɛma a wɔyɛ no din"
+			  }
+			}
+		  },
+		  "image-with-text": {
+			"name": "Mfonini a wɔakyerɛw so",
+			"settings": {}
+		  },
+		  "collection_list": {
+			"name": "Nneɛma a wɔaboaboa ano a nsɛm wom",
+			"settings": {
+			  "collection_list": {
+				"label": "Nneɛma"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Shop hwɛbea no"
+		}
+	  },
+	  "slideshow": {
+		"name": "Slideshow a wɔde kyerɛ",
+		"settings": {
+		  "animation_style": {
+			"label": "Animation kwan a wɔfa so yɛ",
+			"coverflow": {
+			  "label": "Nsu a wɔde kata so"
+			},
+			"creative": {
+			  "label": "Bɔsrɛmuka"
+			},
+			"cube": {
+			  "label": "Kube a wɔde yɛ adwuma"
+			},
+			"fade": {
+			  "label": "Pepaeɛ"
+			},
+			"flip": {
+			  "label": "Dane"
+			},
+			"slide": {
+			  "label": "Pia fa so"
+			}
+		  },
+		  "carousel_navigation": {
+			"label": "Desktop so nkratafa a wɔde kyerɛw",
+			"arrows": {
+			  "label": "Agyan a wɔde di dwuma"
+			},
+			"dots": {
+			  "label": "Dots a ɛyɛ nsensanee"
+			},
+			"both": {
+			  "label": "Agyan a nsensanee wɔ so"
+			},
+			"none": {
+			  "label": "Ɛnyɛ ebiara"
+			}
+		  },
+		  "desktop_custom_height": {
+			"label": "Amanneɛ kwan so sorokɔ"
+		  },
+		  "enable_animation": {
+			"label": "Ma animations nyɛ adwuma wɔ emu nsɛm so"
+		  }
+		},
+		"blocks": {
+		  "slide_grid": {
+			"name": "Pia fa so",
+			"settings": {
+			  "show_description": {
+				"label": "Kyerɛ nkyerɛkyerɛmu",
+				"above-heading": {
+				  "label": "Atifi asɛmti no"
+				},
+				"below-heading": {
+				  "label": "Ase hɔ asɛmti no"
+				}
+			  },
+			  "overlay_opacity": {
+				"label": "Mfonini a wɔde kata so opacity",
+				"info": "Sɛ wopɛ sɛ wosakra kɔla a wɔde kata so a, sesa ‘Image overlay background’ kɔla no wɔ kɔla nhyehyɛe no mu wɔ asɛmti nhyehyɛe ase."
+			  },
+			  "content_width": {
+				"label": "Nsɛm a ɛwɔ mu no trɛw"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Slideshow a wɔde kyerɛ"
+		}
+	  },
+	  "split-slider": {
+		"name": "Split slideshow no mu",
+		"settings": {
+		  "desktop_image_h": {
+			"label": "Desktop Mfonini no Kɔ soro"
+		  },
+		  "mobile_image_h": {
+			"label": "Mobile Mfonini a Ɛkɔ soro"
+		  },
+		  "carousel_navigation": {
+			"label": "Desktop so nkratafa a wɔde kyerɛw",
+			"arrows": {
+			  "label": "Agyan a wɔde di dwuma"
+			},
+			"dots": {
+			  "label": "Dots a ɛyɛ nsensanee"
+			},
+			"both": {
+			  "label": "Agyan a nsensanee wɔ so"
+			},
+			"none": {
+			  "label": "Ɛnyɛ ebiara"
+			}
+		  }
+		},
+		"blocks": {
+		  "slide": {
+			"name": "Pia fa so",
+			"settings": {}
+		  },
+		  "image-with-text-column": {
+			"name": "Mfonini a ɛwɔ nkyerɛwee adum",
+			"settings": {
+			  "media_position": {
+				"label": "Nsɛm ho amanneɛbɔfo gyinabea a ɛyɛ anigye"
+			  },
+			  "overlay_opacity": {
+				"label": "Mfonini a wɔde kata so opacity",
+				"info": "Sɛ wopɛ sɛ wosakra kɔla a wɔde kata so a, sesa ‘Image overlay background’ kɔla no wɔ kɔla nhyehyɛe no mu wɔ asɛmti nhyehyɛe ase."
+			  },
+			  "content_desktop_bg_image": {
+				"label": "Desktop akyi mfonini"
+			  },
+			  "content_mobile_bg_image": {
+				"label": "Mobile akyi mfonini"
+			  },
+			  "content_overlay_opacity": {
+				"label": "Akyi a wɔde kata so opacity",
+				"info": "Sɛ wopɛ sɛ wosakra kɔla a wɔde kata so a, sesa nhyehyɛe ‘Mfonini a wɔde kata akyi’ kɔla wɔ kɔla nhyehyɛe no mu wɔ asɛmti nhyehyɛe ase."
+			  }
+			}
+		  },
+		  "product_with_media": {
+			"name": "Product ne nsɛm ho amanneɛbɔ",
+			"settings": {
+			  "media_position": {
+				"label": "Nsɛm ho amanneɛbɔfo gyinabea a ɛyɛ anigye"
+			  },
+			  "overlay_opacity": {
+				"label": "Mfonini a wɔde kata so opacity",
+				"info": "Sɛ wopɛ sɛ wosakra kɔla a wɔde kata so a, sesa nhyehyɛe ‘Mfonini a wɔde kata akyi’ kɔla wɔ kɔla nhyehyɛe no mu wɔ asɛmti nhyehyɛe ase."
+			  },
+			  "content_desktop_bg_image": {
+				"label": "Desktop akyi mfonini"
+			  },
+			  "content_mobile_bg_image": {
+				"label": "Mobile akyi mfonini"
+			  },
+			  "content_overlay_opacity": {
+				"label": "Akyi a wɔde kata so opacity",
+				"info": "Sɛ wopɛ sɛ wosakra kɔla a wɔde kata so a, sesa nhyehyɛe ‘Mfonini a wɔde kata akyi’ kɔla wɔ kɔla nhyehyɛe no mu wɔ asɛmti nhyehyɛe ase."
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Split slideshow no mu"
+		}
+	  },
+	  "store-locator": {
+		"name": "Store a wɔhwehwɛ nneɛma mu",
+		"settings": {},
+		"blocks": {
+		  "address": {
+			"name": "Adrɛse",
+			"settings": {
+			  "address_content": {
+				"label": "Adrɛse"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Store a wɔhwehwɛ nneɛma mu"
+		}
+	  },
+	  "testimonials": {
+		"name": "Adansedi ahorow",
+		"settings": {
+		  "testimonial_style": {
+			"label": "Adansedi kwan a wɔfa so yɛ adwuma"
+		  }
+		},
+		"blocks": {
+		  "testimonial_grid": {
+			"name": "Adansedi a wɔde ma",
+			"settings": {
+			  "testimonial_heading": {
+				"label": "Asɛmti ho nsɛm a wɔka"
+			  },
+			  "stars_rating": {
+				"label": "Rating a wɔde ma"
+			  },
+			  "stars_rating_color": {
+				"label": "Rating kɔla"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Adansedi ahorow"
+		}
+	  },
+	  "text-with-icons": {
+		"name": "Nsɛm a wɔakyerɛw a ahyɛnsode ahorow wom",
+		"settings": {
+		  "description_style": {
+			"label": "Nkyerɛkyerɛmu kwan a wɔfa so kyerɛkyerɛ mu",
+			"fixed": {
+			  "label": "Nni nsesaemu"
+			},
+			"on_hover": {
+			  "label": "Wɔ hover so"
+			}
+		  },
+		  "desktop_column_count": {
+			"label": "Desktop kɔla dodow a wɔkan"
+		  },
+		  "mobile_column_count": {
+			"label": "Mobile so kɔla dodow"
+		  },
+		  "column_style": {
+			"label": "Ɔkwan a wɔfa so yɛ adum"
+		  },
+		  "icon_style": {
+			"label": "Icon style"
+		  },
+		  "icon_size": {
+			"label": "Icon kɛse"
+		  },
+		  "icon_position": {
+			"label": "Icon gyinabea",
+			"info": "Benkum gyinabea no nyɛ adwuma wɔ on hover nkyerɛkyerɛmu kwan so.",
+			"left": {
+			  "label": "Benkum"
+			},
+			"top": {
+			  "label": "Soro"
+			}
+		  },
+		  "icon_gap": {
+			"label": "Ntrɛwmu a ɛda ahyɛnsode ne nsɛm ntam"
+		  },
+		  "content_alignment": {
+			"label": "Column no mu nsɛm a wɔahyehyɛ no pɛpɛɛpɛ"
+		  }
+		},
+		"blocks": {
+		  "column": {
+			"name": "Nkyekyɛmu",
+			"settings": {
+			  "icon": {
+				"content": "Ahyɛnsode"
+			  },
+			  "column_background_color": {
+				"label": "Column no akyi"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Nsɛm a wɔakyerɛw a wɔde ahyɛnsode ahorow ahyɛ mu"
+		}
+	  },
+	  "timeline": {
+		"name": "Bere nhyehyɛe",
+		"settings": {
+		  "heading_alignment": {
+			"label": "Atiri a wɔde hyɛ mu"
+		  }
+		},
+		"blocks": {
+		  "timeline-block": {
+			"name": "Bere nhyehyɛe a wɔde siw ano",
+			"settings": {
+			  "tab_heading": {
+				"label": "Tab asɛmti no"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Bere nhyehyɛe"
+		}
+	  },
+	  "trending-products": {
+		"name": "Nneɛma a Ɛrekɔ So",
+		"settings": {
+		  "image_ratio": {
+			"label": "Mfonini ahorow no nsusuwii"
+		  }
+		},
+		"blocks": {
+		  "trending-products": {
+			"name": "Adwadeɛ",
+			"settings": {
+			  "bg_heading": {
+				"label": "Akyi asɛmti",
+				"info": "11 nkyerɛwde max."
+			  },
+			  "layout": {
+				"label": "Animation kwan a wɔfa so yɛ",
+				"updwards": {
+				  "label": "Kɔ soro"
+				},
+				"downwards": {
+				  "label": "Ɛkɔ fam"
+				}
+			  },
+			  "product": {
+				"label": "Adwadeɛ"
+			  },
+			  "description": {
+				"label": "Nkyerɛkyerɛmu tiawa"
+			  },
+			  "spinning_button": {
+				"content": "Bɔton a wɔde twitwiw nneɛma"
+			  },
+			  "hover": {
+				"content": "Fa wo nsa hyɛ wo nsa"
+			  },
+			  "image_overlay_bg": {
+				"label": "Mfonini a wɔde kata so"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Nneɛma a ɛrekɔ so"
+		}
+	  },
+	  "video_banner": {
+		"name": "Video so frankaa",
+		"settings": {
+		  "video_url": {
+			"label": "URL no"
+		  },
+		  "cover_image": {
+			"label": "Mfonini a ɛwɔ anim no",
+			"info": "1920 x 720px a wɔkamfo kyerɛ. "
+		  },
+		  "autoplay": {
+			"label": "Video so nneyɛe",
+			"info": "Sɛ autoplay yɛ enabled a ɛnde video bɛyɛ muted.",
+			"true": {
+			  "label": "Autoplay a wɔde di dwuma"
+			},
+			"false": {
+			  "label": "Di agoru wɔ klik so"
+			}
+		  },
+		  "button_play": {
+			"content": "Play button no"
+		  },
+		  "play_button": {
+			"label": "Yɔbea",
+			"info": "Sɛ autoplay yɛ enabled a ɛnde play button no rennyɛ adwuma.",
+			"fixed": {
+			  "label": "Nni nsesaemu"
+			},
+			"floated": {
+			  "label": "Float wɔ hover so"
+			}
+		  },
+		  "content_position": {
+			"label": "Gyinabea a ɛda hɔ gyina hɔ",
+			"flex-start": {
+			  "label": "Soro"
+			},
+			"center": {
+			  "label": "Mfimfini"
+			},
+			"flex-end": {
+			  "label": "Aseɛ"
+			}
+		  },
+		  "content_width": {
+			"label": "Nsɛm a ɛwɔ mu no trɛw"
+		  },
+		  "content_visibility": {
+			"label": "Nsɛm a ɛwɔ mu a wotumi hu",
+			"always": {
+			  "label": "Berɛ biara"
+			},
+			"hidden": {
+			  "label": "Fa sie bere a video rebɔ no"
+			}
+		  }
+		},
+		"presets": {
+		  "name": "Video so frankaa"
+		}
+	  }
+	}
+  }

@@ -1,0 +1,4994 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+	"settings_schema": {
+	  "global": {
+		"settings": {
+		  "header__border": {
+			"content": "边界"
+		  },
+		  "header__shadow": {
+			"content": "阴影"
+		  },
+		  "slides": {
+			"content": "幻灯片"
+		  },
+		  "image_heading": {
+			"label": "标题"
+		  },
+		  "image_text": {
+			"label": "副标题"
+		  },
+		  "page": {
+			"label": "页"
+		  },
+		  "desktop": {
+			"label": "桌面"
+		  },
+		  "mobile": {
+			"label": "移动的"
+		  },
+		  "title": {
+			"label": "标题"
+		  },
+		  "text": {
+			"label": "文本",
+			"info": "将标签留空以隐藏按钮。"
+		  },
+		  "layout": {
+			"label": "布局"
+		  },
+		  "color": {
+			"label": "颜色"
+		  },
+		  "heading": {
+			"label": "标题",
+			"info": "将文本括在 [ ] 之间以添加标记字体。"
+		  },
+		  "product": {
+			"label": "产品"
+		  },
+		  "description": {
+			"label": "描述",
+			"info": "将文本加粗，以突出显示的颜色显示。"
+		  },
+		  "content_alignment": {
+			"label": "内容对齐"
+		  },
+		  "background": {
+			"label": "背景"
+		  },
+		  "speed": {
+			"label": "速度"
+		  },
+		  "link": {
+			"label": "关联",
+			"info": "如果链接文本为空，则链接将应用于整个图像。"
+		  },
+		  "blur": {
+			"label": "模糊"
+		  },
+		  "content": {
+			"label": "内容"
+		  },
+		  "image": {
+			"label": "图像",
+			"info": "该图像将覆盖显示在叠加层下方的产品图像。"
+		  },
+		  "corner_radius": {
+			"label": "圆角半径"
+		  },
+		  "horizontal_offset": {
+			"label": "水平偏移"
+		  },
+		  "vertical_offset": {
+			"label": "垂直偏移"
+		  },
+		  "desktop_settings": {
+			"content": "桌面设置"
+		  },
+		  "thickness": {
+			"label": "厚度"
+		  },
+		  "opacity": {
+			"label": "不透明度"
+		  },
+		  "image_overlay_opacity": {
+			"label": "图像叠加不透明度",
+			"info": "要更改叠加颜色，请编辑方案“图像叠加背景”颜色"
+		  },
+		  "overlay_opacity": {
+			"label": "叠加不透明度"
+		  },
+		  "image_padding": {
+			"label": "图像填充"
+		  },
+		  "text_alignment": {
+			"options__1": {
+			  "label": "左边"
+			},
+			"options__2": {
+			  "label": "中心"
+			},
+			"options__3": {
+			  "label": "正确的"
+			},
+			"label": "文本对齐"
+		  }
+		}
+	  },
+	  "logo": {
+		"name": "标识",
+		"settings": {
+		  "logo_image": {
+			"label": "标识"
+		  },
+		  "favicon": {
+			"label": "图像",
+			"info": "将缩小至 32 x 32px"
+		  }
+		}
+	  },
+	  "color": {
+		"name": "颜色",
+		"settings": {
+		  "default_color_scheme": {
+			"label": "默认方案"
+		  },
+		  "color_schemes": {
+			"background": {
+			  "label": "背景"
+			},
+			"body_background_gradient": {
+			  "label": "背景渐变",
+			  "info": "背景渐变尽可能替换背景。"
+			},
+			"body_alternate_background": {
+			  "label": "替代背景"
+			},
+			"border": {
+			  "label": "边界"
+			},
+			"heading_color": {
+			  "label": "标题"
+			},
+			"text": {
+			  "label": "文本"
+			},
+			"link_color": {
+			  "label": "关联"
+			},
+			"highlight_color": {
+			  "label": "突出显示文本"
+			},
+			"highlight_background": {
+			  "label": "突出显示背景"
+			},
+			"headers": {
+			  "primary_button": "主按钮",
+			  "secondary_button": "辅助按钮",
+			  "image": "图像",
+			  "cards": "牌",
+			  "content": "内容",
+			  "slider": "滑块箭头/点",
+			  "form": "表格"
+			},
+			"background_hover": {
+			  "label": "背景悬停"
+			},
+			"text_hover": {
+			  "label": "文本悬停"
+			},
+			"border_hover": {
+			  "label": "边框悬停"
+			},
+			"overlay_background": {
+			  "label": "叠加背景"
+			},
+			"overlay_heading": {
+			  "label": "叠加标题"
+			},
+			"overlay_text": {
+			  "label": "叠加文字"
+			},
+			"card_background": {
+			  "label": "卡背景"
+			},
+			"edge_background": {
+			  "label": "边缘背景"
+			},
+			"product_card_background": {
+			  "label": "产品卡片背景"
+			},
+			"color": {
+			  "label": "颜色"
+			}
+		  },
+		  "headers": {
+			"badges": "徽章",
+			"success_message": "成功/错误消息",
+			"content": "身体",
+			"product_card": "产品卡",
+			"form_input": "表格/输入"
+		  },
+		  "sale_text_color": {
+			"label": "销售徽章文本"
+		  },
+		  "sale_bg_color": {
+			"label": "销售背景"
+		  },
+		  "preorder_text_color": {
+			"label": "预购 bagde 文本"
+		  },
+		  "preorder_bg_color": {
+			"label": "预购背景"
+		  },
+		  "sold_out_text_color": {
+			"label": "售完文字"
+		  },
+		  "sold_out_bg_color": {
+			"label": "已售完背景"
+		  },
+		  "custom_text_color": {
+			"label": "自定义徽章文本"
+		  },
+		  "custom_bg_color": {
+			"label": "自定义徽章背景"
+		  },
+		  "discount_text": {
+			"label": "折扣文字"
+		  },
+		  "discount_background": {
+			"label": "折扣背景"
+		  },
+		  "color_success_text": {
+			"label": "成功文本"
+		  },
+		  "color_error_text": {
+			"label": "错误文本"
+		  },
+		  "color_warning_text": {
+			"label": "警告文字"
+		  }
+		}
+	  },
+	  "header_and_footer": {
+		"name": "页眉和页脚颜色",
+		"settings": {
+		  "headers": {
+			"content": "标头",
+			"footer": "页脚"
+		  },
+		  "paragraph": {
+			"label": "快速访问菜单",
+			"submenu": "子菜单/移动菜单",
+			"forms": "表格",
+			"button": "按钮",
+			"image": "图像",
+			"desktop_submenu": "桌面子菜单",
+			"mobile_menu": "移动子菜单/移动菜单"
+		  },
+		  "background": {
+			"label": "背景"
+		  },
+		  "text": {
+			"label": "文本"
+		  },
+		  "text_hover": {
+			"label": "悬停文本"
+		  },
+		  "border": {
+			"label": "边界"
+		  },
+		  "icon_color": {
+			"label": "图标颜色"
+		  },
+		  "link": {
+			"label": "关联"
+		  },
+		  "link_hover": {
+			"lable": "链接悬停"
+		  },
+		  "hover": {
+			"label": "徘徊"
+		  },
+		  "bg_hover": {
+			"label": "背景悬停"
+		  },
+		  "heading": {
+			"label": "标题"
+		  },
+		  "header_image_overlay_background": {
+			"label": "叠加背景"
+		  },
+		  "header_image_overlay_heading": {
+			"label": "叠加标题"
+		  },
+		  "submenu_border_color": {
+			"label": "边框/悬停背景"
+		  },
+		  "mb_menu_color_scheme": {
+			"label": "配色方案"
+		  },
+		  "bg_edge_color": {
+			"label": "边缘"
+		  }
+		}
+	  },
+	  "typography": {
+		"name": "版式",
+		"settings": {
+		  "headers": {
+			"content": "标题",
+			"body": "身体",
+			"accents": "口音"
+		  },
+		  "type_heading_font": {
+			"label": "字体",
+			"info": "选择不同的字体会影响商店的速度。 "
+		  },
+		  "type_heading_line_height": {
+			"label": "线高"
+		  },
+		  "type_heading_scale": {
+			"label": "字体大小比例"
+		  },
+		  "type_heading_letter_spacing": {
+			"label": "字母间距"
+		  }
+		}
+	  },
+	  "layout": {
+		"name": "布局",
+		"settings": {
+		  "container_width": {
+			"label": "容器",
+			"container-sm": {
+			  "label": "小的"
+			},
+			"container": {
+			  "label": "常规的"
+			},
+			"container-md": {
+			  "label": "中等的"
+			},
+			"container-fluid": {
+			  "label": "大的"
+			},
+			"container-fullwidth": {
+			  "label": "边缘间隙"
+			}
+		  },
+		  "headers": {
+			"content": "造型"
+		  },
+		  "card_radius": {
+			"label": "卡半径"
+		  },
+		  "form_inputs_height": {
+			"label": "高度"
+		  },
+		  "form_radius": {
+			"label": "形状半径"
+		  },
+		  "header_animations": {
+			"content": "动画"
+		  },
+		  "is_layout_animation": {
+			"label": "启用标题动画"
+		  },
+		  "is_card_animation": {
+			"label": "启用卡片动画"
+		  }
+		}
+	  },
+	  "swatches": {
+		"name": "样本",
+		"settings": {
+		  "variants_style": {
+			"label": "变体风格",
+			"varaint_image": {
+			  "label": "变体图像"
+			},
+			"color_swatch": {
+			  "label": "色样"
+			}
+		  },
+		  "color_name": {
+			"label": "颜色选项触发器",
+			"info": "保存颜色的选项名称。"
+		  },
+		  "custom_colors": {
+			"label": "定制颜色",
+			"info": "请遵循以下格式： <Color>: <HEX Color>。"
+		  },
+		  "color_style": {
+			"label": "色样类型",
+			"square": {
+			  "label": "正方形"
+			},
+			"circle": {
+			  "label": "圆圈"
+			}
+		  },
+		  "size_name": {
+			"label": "尺寸选项触发器",
+			"info": "保存大小的选项名称。"
+		  },
+		  "hide_unavailable": {
+			"label": "隐藏不可用的变体"
+		  }
+		}
+	  },
+	  "product_cards": {
+		"name": "产品卡",
+		"settings": {
+		  "is_card_layout": {
+			"label": "卡片样式",
+			"none": {
+			  "label": "没有任何"
+			},
+			"only-border": {
+			  "label": "仅边框"
+			},
+			"only-background": {
+			  "label": "仅背景"
+			},
+			"border-with-background": {
+			  "label": "边框与背景"
+			}
+		  },
+		  "saving_price": {
+			"label": "节省价格选项",
+			"none": {
+			  "label": "没有任何"
+			},
+			"amount-off": {
+			  "label": "优惠金额"
+			},
+			"percentage-off": {
+			  "label": "折扣百分比"
+			}
+		  },
+		  "on_hover": {
+			"label": "网格悬停样式",
+			"product-options": {
+			  "label": "产品选择"
+			},
+			"second-image": {
+			  "label": "第二张图片"
+			},
+			"size-options": {
+			  "label": "仅尺寸选项"
+			}
+		  },
+		  "quick_view": {
+			"label": "快速查看可见性",
+			"always": {
+			  "label": "总是"
+			},
+			"on-hover": {
+			  "label": "悬停时"
+			},
+			"none": {
+			  "label": "没有任何"
+			}
+		  },
+		  "show_vendor": {
+			"label": "显示供应商"
+		  },
+		  "show_price": {
+			"label": "显示价格"
+		  },
+		  "show_saving_price": {
+			"label": "显示节省价格"
+		  },
+		  "enable_swatches": {
+			"label": "悬停时显示产品选项"
+		  },
+		  "enable_quickview": {
+			"label": "悬停时显示快速视图"
+		  },
+		  "product_card_radius": {
+			"label": "卡半径"
+		  }
+		}
+	  },
+	  "product": {
+		"name": "产品",
+		"settings": {
+		  "enable_preorder": {
+			"label": "启用预购"
+		  },
+		  "disbale_soldout": {
+			"label": "隐藏比较价格"
+		  }
+		}
+	  },
+	  "product_badges": {
+		"name": "产品徽章",
+		"settings": {
+		  "headers": {
+			"content": "定制徽章"
+		  },
+		  "paragraph": {
+			"content": "添加以逗号分隔的产品标签以在产品网格中显示唯一的徽章。"
+		  },
+		  "sale_badge": {
+			"label": "显示“促销”徽章"
+		  },
+		  "soldout_badge": {
+			"label": "显示“已售完”徽章"
+		  },
+		  "preorder_badge": {
+			"label": "显示“预购”徽章",
+			"info": "当启用“缺货时继续销售”选项时，预购将起作用。[它是如何工作的。](https://shinedezign.gitbook.io/king/overview/theme-settings#steps-to-enable-preorder)"
+		  },
+		  "custom_tag": {
+			"label": "产品标签"
+		  },
+		  "custom_badges_text": {
+			"label": "自定义徽章文本"
+		  }
+		}
+	  },
+	  "search": {
+		"name": "搜索",
+		"settings": {
+		  "headers": {
+			"content": "建议",
+			"results": "搜索结果"
+		  },
+		  "paragraph": {
+			"content": "热门产品",
+			"collection": "热门收藏"
+		  },
+		  "search_behaviour": {
+			"label": "风格",
+			"drawer": {
+			  "label": "抽屉"
+			},
+			"page": {
+			  "label": "页"
+			}
+		  },
+		  "enable_popular_categories": {
+			"label": "显示热门类别"
+		  },
+		  "heading": {
+			"label": "标题"
+		  },
+		  "search_drawer_product_image_ratio": {
+			"label": "产品/文章图片比例",
+			"auto": {
+			  "label": "汽车"
+			},
+			"landscape": {
+			  "label": "景观"
+			},
+			"square": {
+			  "label": "正方形"
+			},
+			"portrait": {
+			  "label": "肖像"
+			}
+		  },
+		  "popular_categories": {
+			"label": "热门类别",
+			"info": "使用“,”表示多个类别"
+		  },
+		  "suggestions_visibility": {
+			"label": "显示热门类别",
+			"before": {
+			  "label": "搜索前"
+			},
+			"after": {
+			  "label": "搜索后没有结果"
+			},
+			"both": {
+			  "label": "两个都"
+			},
+			"none": {
+			  "label": "没有任何"
+			}
+		  },
+		  "product_list": {
+			"label": "选择产品"
+		  },
+		  "visibility": {
+			"label": "能见度",
+			"before": {
+			  "label": "搜索前"
+			},
+			"after": {
+			  "label": "搜索后没有结果"
+			},
+			"both": {
+			  "label": "两个都"
+			},
+			"none": {
+			  "label": "没有任何"
+			}
+		  },
+		  "collection_list": {
+			"label": "选择系列"
+		  },
+		  "search_results": {
+			"label": "搜索行为",
+			"products": {
+			  "label": "仅限产品"
+			},
+			"products_pages": {
+			  "label": "产品和页面"
+			},
+			"products_articles": {
+			  "label": "产品和文章"
+			},
+			"products_articles_pages": {
+			  "label": "产品、文章和页面"
+			},
+			"all": {
+			  "label": "所有内容"
+			}
+		  },
+		  "image_ratio": {
+			"label": "产品图片比例",
+			"auto": {
+			  "label": "适应"
+			},
+			"landscape": {
+			  "label": "景观"
+			},
+			"square": {
+			  "label": "正方形"
+			},
+			"portrait": {
+			  "label": "肖像"
+			}
+		  },
+		  "collection_image_ratio": {
+			"label": "收藏图像比例",
+			"auto": {
+			  "label": "适应"
+			},
+			"landscape": {
+			  "label": "景观"
+			},
+			"square": {
+			  "label": "正方形"
+			},
+			"portrait": {
+			  "label": "肖像"
+			}
+		  },
+		  "color_scheme": {
+			"label": "配色方案"
+		  }
+		}
+	  },
+	  "buttons": {
+		"name": "按钮",
+		"settings": {
+		  "button_style": {
+			"label": "纽扣款式",
+			"default": {
+			  "label": "普通的"
+			},
+			"animated": {
+			  "label": "动画"
+			}
+		  },
+		  "button_font_type": {
+			"label": "字体",
+			"heading-font": {
+			  "label": "标题"
+			},
+			"body-font": {
+			  "label": "身体"
+			},
+			"accent-font": {
+			  "label": "口音"
+			}
+		  },
+		  "button_radius": {
+			"label": "半径"
+		  },
+		  "carousel_buttons": {
+			"headers": "轮播按钮"
+		  },
+		  "slilder_button_style": {
+			"label": "风格",
+			"square": {
+			  "label": "正方形"
+			},
+			"circle": {
+			  "label": "圆圈"
+			}
+		  }
+		}
+	  },
+	  "cursor": {
+		"name": "光标",
+		"settings": {
+		  "cursor_style": {
+			"label": "光标样式",
+			"default": {
+			  "label": "普通的"
+			},
+			"animated": {
+			  "label": "动画"
+			}
+		  }
+		}
+	  },
+	  "popup_drawers": {
+		"name": "弹出式/抽屉式",
+		"settings": {
+		  "page_overlay_background": {
+			"label": "叠加背景"
+		  },
+		  "popup_color_scheme": {
+			"label": "配色方案"
+		  },
+		  "page_overlay_opacity": {
+			"label": "叠加不透明度"
+		  }
+		}
+	  },
+	  "account": {
+		"name": "帐户",
+		"settings": {
+		  "account_behaviour": {
+			"label": "账户行为",
+			"drawer": {
+			  "label": "抽屉"
+			},
+			"page": {
+			  "label": "页"
+			}
+		  }
+		}
+	  },
+	  "cart": {
+		"name": "大车",
+		"settings": {
+		  "cart_behaviour": {
+			"label": "风格",
+			"drawer": {
+			  "label": "抽屉"
+			},
+			"page": {
+			  "label": "页"
+			}
+		  },
+		  "headers": {
+			"gift_wrap": "礼品包装",
+			"shipping_bar": {
+			  "content": "发货栏",
+			  "info": "此功能仅适用于运输方式。"
+			},
+			"cart_drawer": "推车抽屉",
+			"empty_cart": "空购物车建议",
+			"colors": "颜色",
+			"cart_recommendations": {
+			  "content": "购物车推荐",
+			  "info": "动态推荐基于您购物车中的商品。"
+			}
+		  },
+		  "enable_gift_wrap": {
+			"label": "启用礼品包装"
+		  },
+		  "gift_wrap_product": {
+			"label": "产品"
+		  },
+		  "gift_wrap_text": {
+			"label": "文本"
+		  },
+		  "enable_shipping": {
+			"label": "启用发货栏"
+		  },
+		  "shipping_rate": {
+			"label": "运费",
+			"info": "写入一个数字（20000），不能包含字母或特殊字符。"
+		  },
+		  "free_shipping_text": {
+			"label": "成功消息"
+		  },
+		  "shipping_message": {
+			"label": "信息",
+			"info": "使用[金额]显示消息中的金额。"
+		  },
+		  "enable_cart_note": {
+			"label": "显示购物车备注"
+		  },
+		  "enable_shipping_in_drawer": {
+			"label": "显示运费预估"
+		  },
+		  "enable_payment_icons": {
+			"label": "启用付款图标"
+		  },
+		  "enable_view_cart_button": {
+			"label": "显示查看购物车按钮"
+		  },
+		  "enable_line_properties": {
+			"label": "显示订单项属性"
+		  },
+		  "recommendations_product_list": {
+			"label": "产品"
+		  },
+		  "cart_recommendations": {
+			"label": "显示于",
+			"inside-cart": {
+			  "label": "抽屉"
+			},
+			"outside-cart": {
+			  "label": "外抽屉"
+			},
+			"none": {
+			  "label": "没有任何"
+			}
+		  },
+		  "heading": {
+			"label": "标题"
+		  },
+		  "max_product": {
+			"label": "显示的最大产品数"
+		  },
+		  "product_list": {
+			"label": "选择产品",
+			"info": "向您的客户推荐其他产品。"
+		  },
+		  "collection_list": {
+			"label": "收藏清单"
+		  },
+		  "color_scheme": {
+			"label": "方案"
+		  }
+		}
+	  },
+	  "internationalization": {
+		"name": "国际化",
+		"settings": {
+		  "modal_heading": {
+			"label": "文本"
+		  },
+		  "is_country_selector": {
+			"label": "启用国家/地区选择器",
+			"info": "要添加国家/地区，请转到您的[付款设置](/admin/settings/markets)"
+		  },
+		  "is_language_selector": {
+			"label": "启用语言选择器",
+			"info": "要添加语言，请转到您的[语言设置](/admin/settings/linguals)"
+		  }
+		}
+	  },
+	  "social-media": {
+		"name": "社交媒体",
+		"settings": {
+		  "header": {
+			"content": "社交账号",
+			"sharing_options": "共享选项"
+		  },
+		  "share_facebook": {
+			"label": "在脸书上分享"
+		  },
+		  "tweet_twitter": {
+			"label": "在 X（以前称为 Twitter）上发推文"
+		  },
+		  "pin_pinterest": {
+			"label": "固定在 Pinterest 上"
+		  },
+		  "share_telegram": {
+			"label": "分享到电报"
+		  },
+		  "share_whatsapp": {
+			"label": "在 WhatsApp 上分享"
+		  },
+		  "share_email": {
+			"label": "通过电子邮件分享"
+		  },
+		  "social_twitter_link": {
+			"label": "X（以前的 Twitter）",
+			"info": "https://twitter.com/shopify"
+		  },
+		  "social_facebook_link": {
+			"label": "Facebook",
+			"info": "https://facebook.com/shopify"
+		  },
+		  "social_pinterest_link": {
+			"label": "兴趣",
+			"info": "https://pinterest.com/shopify"
+		  },
+		  "social_instagram_link": {
+			"label": "Instagram",
+			"info": "http://instagram.com/shopify"
+		  },
+		  "social_tiktok_link": {
+			"label": "抖音",
+			"info": "https://tiktok.com/@shopify"
+		  },
+		  "social_tumblr_link": {
+			"label": "豆瓣",
+			"info": "https://shopify.tumblr.com"
+		  },
+		  "social_snapchat_link": {
+			"label": "快照",
+			"info": "https://www.snapchat.com/add/shopify"
+		  },
+		  "social_youtube_link": {
+			"label": "YouTube",
+			"info": "https://www.youtube.com/shopify"
+		  },
+		  "social_vimeo_link": {
+			"label": "维梅奥",
+			"info": "https://vimeo.com/shopify"
+		  }
+		}
+	  },
+	  "scroll_to_top": {
+		"name": "滚动到顶部",
+		"settings": {
+		  "headers": {
+			"colors": "颜色"
+		  },
+		  "enable_scroll": {
+			"label": "使能够"
+		  },
+		  "scroll_bg_color": {
+			"label": "显示背景颜色"
+		  },
+		  "scroll_svg": {
+			"label": "SVG代码"
+		  },
+		  "position": {
+			"label": "水平位置",
+			"left": {
+			  "label": "左边"
+			},
+			"center": {
+			  "label": "中心"
+			},
+			"right": {
+			  "label": "正确的"
+			}
+		  },
+		  "background": {
+			"label": "背景"
+		  },
+		  "icon": {
+			"label": "图标"
+		  },
+		  "border": {
+			"label": "边界"
+		  },
+		  "bottom_position": {
+			"label": "垂直位置"
+		  }
+		}
+	  },
+	  "currency_format": {
+		"name": "货币格式",
+		"settings": {
+		  "content": "货币代码",
+		  "paragraph": "购物车和结帐价格始终显示货币代码。",
+		  "currency_code_enabled": {
+			"label": "显示货币代码"
+		  }
+		}
+	  },
+	  "google_map": {
+		"name": "谷歌地图",
+		"settings": {
+		  "googlemapapi": {
+			"label": "API",
+			"info": "您需要注册 Google 地图 API 密钥才能显示地图。"
+		  },
+		  "googlemapid": {
+			"label": "ID",
+			"info": "您需要注册 Google 地图 ID 才能显示地图。"
+		  }
+		}
+	  }
+	},
+	"sections": {
+	  "all": {
+		"animation": {
+		  "content": "动画",
+		  "image_behavior": {
+			"options__1": {
+			  "label": "没有任何"
+			},
+			"options__2": {
+			  "label": "环境运动"
+			},
+			"options__3": {
+			  "label": "固定背景位置"
+			},
+			"options__4": {
+			  "label": "滚动放大"
+			},
+			"label": "形象行为"
+		  }
+		},
+		"menu": {
+		  "label": "菜单",
+		  "info": "注意：仅第一级菜单可见，并且仅适用于非粘性标题。"
+		},
+		"menu_label": {
+		  "label": "菜单标签",
+		  "info": "输入菜单项以应用大型菜单。[了解更多](https://shinedezign.gitbook.io/king/overview/header#horizo​​ntal-mega-menu)"
+		},
+		"horizontal_menu_label": {
+		  "info": "输入菜单项以应用大型菜单。[了解更多](https://shinedezign.gitbook.io/king/overview/header#vertical-mega-menu)"
+		},
+		"collection_menu_label": {
+		  "info": "输入菜单项以应用大型菜单。[了解更多](https://shinedezign.gitbook.io/king/overview/header#collections-mega-menu)"
+		},
+		"content_alignment": {
+		  "label": "水平位置",
+		  "flex-start": {
+			"label": "左边"
+		  },
+		  "center": {
+			"label": "中心"
+		  },
+		  "flex-end": {
+			"label": "正确的"
+		  }
+		},
+		"button_text": {
+		  "label": "按钮文字"
+		},
+		"button_link": {
+		  "label": "按钮链接"
+		},
+		"overlay_opacity": {
+		  "label": "卡片覆盖不透明度"
+		},
+		"mobile_swipe": {
+		  "label": "在移动设备中启用滑动模式"
+		},
+		"carousel_interval": {
+		  "label": "每隔一段时间更换一次幻灯片"
+		},
+		"carousel_autoplay": {
+		  "label": "自动旋转幻灯片"
+		},
+		"enable_border": {
+		  "label": "启用边框"
+		},
+		"enable_shadow": {
+		  "label": "启用阴影"
+		},
+		"enable_logo": {
+		  "label": "隐藏滚动徽标（桌面）",
+		  "info": "它仅适用于半宽菜单。"
+		},
+		"overlay_content_alignment": {
+		  "label": "叠加内容对齐"
+		},
+		"enable_banner_image": {
+		  "label": "显示图片"
+		},
+		"show_search": {
+		  "label": "启用搜索"
+		},
+		"show_cart_icon": {
+		  "label": "启用购物车"
+		},
+		"show_account_icon": {
+		  "label": "启用帐户"
+		},
+		"social_media_icons": {
+		  "label": "社交媒体图标"
+		},
+		"marquee_text": {
+		  "label": "字幕文本"
+		},
+		"marquee_speed": {
+		  "label": "跑马灯速度"
+		},
+		"scrolling_speed": {
+		  "label": "滚动速度"
+		},
+		"custom_icon": {
+		  "label": "自定义图标",
+		  "info": "这具有更高的优先级。"
+		},
+		"background_info": {
+		  "paragraph": "将仅应用一种颜色选项，即纯色或渐变。"
+		},
+		"content_positions": {
+		  "label": "内容位置",
+		  "overlay": {
+			"label": "在图像上"
+		  },
+		  "below": {
+			"label": "下图"
+		  }
+		},
+		"content_width": {
+		  "label": "宽度"
+		},
+		"background_image": {
+		  "label": "背景图片"
+		},
+		"social-media-icons": {
+		  "content": "社交媒体图标",
+		  "info": "要显示您的社交媒体帐户，请在主题设置中链接它们。"
+		},
+		"payment-methods": {
+		  "content": "付款方式",
+		  "info": "要添加付款方式，请转到您的[付款设置](/admin/settings/ payment)"
+		},
+		"policy-links": {
+		  "content": "政策链接",
+		  "info": "要添加商店政策，请转到您的[政策设置](/admin/settings/legal)"
+		},
+		"color_content": {
+		  "content": "纯色和渐变只能使用一种颜色。"
+		},
+		"btn_text": {
+		  "label": "标签",
+		  "info": "将标签留空以隐藏按钮。"
+		},
+		"video": {
+		  "label": "Shopify 托管视频"
+		},
+		"video_label": {
+		  "label": "视频"
+		},
+		"marquee_direction": {
+		  "label": "方向",
+		  "rtl": {
+			"label": "从右到左"
+		  },
+		  "ltr": {
+			"label": "从左到右"
+		  }
+		},
+		"gradient": {
+		  "label": "坡度",
+		  "info": "仅当文本样式为渐变时，此功能才有效。"
+		},
+		"background_gradient": {
+		  "label": "背景渐变",
+		  "info": "这将覆盖纯色背景色。"
+		},
+		"alignment": {
+		  "label": "结盟"
+		},
+		"headers": {
+		  "expand_button": "展开部分按钮（桌面）",
+		  "products": "产品",
+		  "background": "背景",
+		  "item_settings": "项目设定",
+		  "logo": "标识",
+		  "animation": "动画片",
+		  "colors": "颜色",
+		  "cart": "大车",
+		  "card": "卡片",
+		  "column": "柱子",
+		  "image": "图像",
+		  "button": "按钮",
+		  "feedback": "反馈",
+		  "buttons": "按钮",
+		  "icon_size": "图标大小",
+		  "left_side": "左侧",
+		  "right_side": "右侧",
+		  "sorting_filters": "排序和过滤",
+		  "banner": "横幅",
+		  "footer_bottom": "页脚底部",
+		  "animated_media": "动画媒体",
+		  "primary": "基本的",
+		  "secondary": "中学",
+		  "slides_height": "幻灯片高度",
+		  "hotspot_colors": "热点颜色",
+		  "simple_media": "简单媒体",
+		  "hotspot_position_desktop": "热点位置（桌面）",
+		  "hotspot_position_mobile": "热点位置（移动）",
+		  "background_color": "背景颜色",
+		  "blog_posts": "博客文章",
+		  "collection": "收藏",
+		  "column_count": "桌面连续列",
+		  "font_size": "字体大小",
+		  "general": "一般的",
+		  "desktop": "桌面",
+		  "marquee": "跑马灯",
+		  "hover_colors": "悬停颜色",
+		  "featured_image": "特色图片",
+		  "marquee_style": "跑马灯风格",
+		  "media": "媒体",
+		  "stacked_style": "堆叠式",
+		  "map": "地图",
+		  "map_content": "地图内容",
+		  "password-popup": "密码弹出窗口",
+		  "product_card": "产品卡",
+		  "timer": "定时器",
+		  "info": "信息",
+		  "copyright-content": "版权内容",
+		  "currency-language": "货币和语言",
+		  "navigation": "导航",
+		  "transparent_header": "透明标头",
+		  "submenu": "子菜单",
+		  "header_submenu": "桌面子菜单",
+		  "icons": "图标",
+		  "media-card": "媒体卡",
+		  "quick_access_button": "快速访问按钮",
+		  "content_1": "内容1",
+		  "content_2": "内容2",
+		  "content_3": "内容3",
+		  "content_4": "内容4",
+		  "column_setting": "栏目设置",
+		  "social-media-icons": {
+			"content": "社交媒体图标",
+			"options": "选项",
+			"info": "要显示您的社交媒体帐户，请在主题设置中链接它们。"
+		  },
+		  "payment-methods": {
+			"content": "付款方式",
+			"info": "要添加付款方式，请转到您的[付款设置](/admin/settings/ payment)"
+		  },
+		  "policy-links": {
+			"content": "政策链接",
+			"info": "要添加商店政策，请转到您的[政策设置](/admin/settings/legal)"
+		  },
+		  "follow-on-shop": {
+			"content": "关注店铺",
+			"info": "要允许客户从您的店面在 Shop 应用上关注您的商店，必须启用 Shop Pay。[了解更多](https://help.shopify.com/en/manual/online-store/themes/customizing-themes/"
+		  }
+		},
+		"border_settings": {
+		  "border-enabled": {
+			"label": "仅边框"
+		  },
+		  "border-enabled-with-shadow": {
+			"label": "带阴影的边框"
+		  },
+		  "background-enabled": {
+			"label": "仅背景"
+		  },
+		  "animate-background": {
+			"label": "动画背景"
+		  },
+		  "background-enabled-with-border": {
+			"label": "带边框的背景"
+		  },
+		  "background-enabled-with-shadow": {
+			"label": "背景与阴影"
+		  },
+		  "all_styles_applied": {
+			"label": "上述所有的"
+		  },
+		  "none": {
+			"label": "没有任何"
+		  }
+		},
+		"show_excerpt": {
+		  "label": "显示摘录"
+		},
+		"show_date": {
+		  "label": "显示日期"
+		},
+		"show_author": {
+		  "label": "显示作者"
+		},
+		"show_tags": {
+		  "label": "显示标签"
+		},
+		"enable_swipe_mobile": {
+		  "label": "在移动设备上启用滑动功能"
+		},
+		"desktop_slide_image": {
+		  "label": "桌面图片"
+		},
+		"mobile_slide_image": {
+		  "label": "手机图片"
+		},
+		"desktop_font_size": {
+		  "label": "桌面字体大小"
+		},
+		"mobile_font_size": {
+		  "label": "手机字体大小"
+		},
+		"marquee_speed_desktop": {
+		  "label": "桌面速度"
+		},
+		"marquee_speed_mobile": {
+		  "label": "移动速度"
+		},
+		"column_gap": {
+		  "label": "柱间隙"
+		},
+		"rotation": {
+		  "label": "旋转"
+		},
+		"radius_selector": {
+		  "label": "半径选择器",
+		  "border-radius-none": {
+			"label": "没有任何"
+		  },
+		  "border-radius-top-left-right": {
+			"label": "顶部"
+		  },
+		  "border-radius-bottom-left-right": {
+			"label": "底部"
+		  },
+		  "border-radius-all": {
+			"label": "所有侧面"
+		  }
+		},
+		"desktop_radius_selector": {
+		  "label": "桌面",
+		  "d-border-radius-none": {
+			"label": "没有任何"
+		  },
+		  "d-border-radius-top": {
+			"label": "顶部"
+		  },
+		  "d-border-radius-bottom": {
+			"label": "底部"
+		  },
+		  "d-border-radius-all": {
+			"label": "所有侧面"
+		  }
+		},
+		"mobile_radius_selector": {
+		  "label": "移动的",
+		  "m-border-radius-none": {
+			"label": "没有任何"
+		  },
+		  "m-border-radius-top": {
+			"label": "顶部"
+		  },
+		  "m-border-radius-bottom": {
+			"label": "底部"
+		  },
+		  "m-border-radius-all": {
+			"label": "所有侧面"
+		  }
+		},
+		"icons": {
+		  "label": "图标",
+		  "icon_background_color": {
+			"label": "图标背景"
+		  },
+		  "svg_code": {
+			"label": "SVG代码",
+			"info": "这将覆盖图标"
+		  },
+		  "alert": {
+			"label": "警报"
+		  },
+		  "bell": {
+			"label": "钟"
+		  },
+		  "calendar": {
+			"label": "日历"
+		  },
+		  "cart": {
+			"label": "大车"
+		  },
+		  "clock": {
+			"label": "钟"
+		  },
+		  "delete": {
+			"label": "删除"
+		  },
+		  "file": {
+			"label": "文件"
+		  },
+		  "folder": {
+			"label": "文件夹"
+		  },
+		  "shipping": {
+			"label": "船运"
+		  },
+		  "gift": {
+			"label": "礼物"
+		  },
+		  "heart": {
+			"label": "心"
+		  },
+		  "play": {
+			"label": "玩"
+		  },
+		  "power": {
+			"label": "力量"
+		  },
+		  "return": {
+			"label": "返回"
+		  },
+		  "search": {
+			"label": "搜索"
+		  },
+		  "send": {
+			"label": "发送"
+		  },
+		  "settings": {
+			"label": "设置"
+		  },
+		  "shield": {
+			"label": "盾"
+		  },
+		  "support": {
+			"label": "支持"
+		  },
+		  "thumbs-up": {
+			"label": "竖起大拇指"
+		  },
+		  "upload": {
+			"label": "上传"
+		  },
+		  "user": {
+			"label": "用户"
+		  },
+		  "chat": {
+			"label": "聊天"
+		  },
+		  "flower": {
+			"label": "花"
+		  }
+		},
+		"horizontal": {
+		  "label": "水平的"
+		},
+		"vertical": {
+		  "label": "垂直的"
+		},
+		"image_opacity": {
+		  "label": "图像不透明度"
+		},
+		"heading_alignment": {
+		  "label": "内容对齐"
+		},
+		"enable_heading": {
+		  "label": "显示标题"
+		},
+		"enable_title": {
+		  "label": "显示标题"
+		},
+		"collection_style": {
+		  "label": "风格",
+		  "stacked": {
+			"label": "堆叠式"
+		  },
+		  "carousel": {
+			"label": "轮播"
+		  },
+		  "marquee": {
+			"label": "跑马灯"
+		  }
+		},
+		"columns_gap": {
+		  "label": "立柱间隙"
+		},
+		"button_as_link": {
+		  "label": "显示为链接"
+		},
+		"button_style": {
+		  "label": "风格",
+		  "solid": {
+			"label": "坚硬的"
+		  },
+		  "outline": {
+			"label": "大纲"
+		  },
+		  "link": {
+			"label": "关联"
+		  },
+		  "button-link": {
+			"label": "按钮链接"
+		  }
+		},
+		"button_size": {
+		  "label": "尺寸",
+		  "normal-button": {
+			"label": "普通的"
+		  },
+		  "small-button": {
+			"label": "小的"
+		  },
+		  "medium-button": {
+			"label": "中等的"
+		  },
+		  "large-button": {
+			"label": "大的"
+		  }
+		},
+		"desktop_image_size": {
+		  "label": "桌面图像尺寸",
+		  "small": {
+			"label": "小的"
+		  },
+		  "medium": {
+			"label": "中等的"
+		  },
+		  "large": {
+			"label": "大的"
+		  }
+		},
+		"cat_heading_size": {
+		  "label": "桌面尺寸",
+		  "h3": {
+			"label": "大的"
+		  },
+		  "h4": {
+			"label": "中等的"
+		  },
+		  "h5": {
+			"label": "小的"
+		  },
+		  "h6": {
+			"label": "X 小号"
+		  }
+		},
+		"markers_text": {
+		  "label": "标记文本样式",
+		  "default": "无标记",
+		  "no-markers": {
+			"label": "没有任何"
+		  },
+		  "highlight-color": {
+			"label": "文字颜色"
+		  },
+		  "outline--text": {
+			"label": "大纲文本"
+		  },
+		  "outline--filled": {
+			"label": "填充轮廓"
+		  },
+		  "text-background-cover": {
+			"label": "文字背景颜色"
+		  },
+		  "fancy-underline": {
+			"label": "花式下划线"
+		  },
+		  "regular-underline": {
+			"label": "常规下划线"
+		  }
+		},
+		"slide_heights": {
+		  "label": "高度",
+		  "auto": {
+			"label": "适应第一张幻灯片"
+		  },
+		  "100vh": {
+			"label": "全屏"
+		  },
+		  "custom": {
+			"label": "定制高度"
+		  }
+		},
+		"custom_height": {
+		  "label": "定制高度"
+		},
+		"heading_size": {
+		  "label": "标题大小",
+		  "default": "小时2",
+		  "h1": {
+			"label": "XX 大号"
+		  },
+		  "h2": {
+			"label": "XL 号"
+		  },
+		  "h3": {
+			"label": "大的"
+		  },
+		  "h4": {
+			"label": "中等的"
+		  },
+		  "h5": {
+			"label": "小的"
+		  },
+		  "h6": {
+			"label": "X 小号"
+		  }
+		},
+		"seo_heading": {
+		  "label": "标题标签",
+		  "default": "小时2",
+		  "info": "指定 SEO 和搜索引擎爬行目的的标题代码类型。"
+		},
+		"markers_font": {
+		  "label": "标记字体",
+		  "info": "这些字体可以在主题设置>排版中更改。",
+		  "default": "重音字体",
+		  "accent-font": {
+			"label": "口音"
+		  },
+		  "body-font": {
+			"label": "身体"
+		  },
+		  "heading-font": {
+			"label": "标题"
+		  }
+		},
+		"description_size": {
+		  "label": "描述文字大小",
+		  "default": "文本媒体",
+		  "text-xsmall": {
+			"label": "X 小号"
+		  },
+		  "text-small": {
+			"label": "小的"
+		  },
+		  "text": {
+			"label": "普通的"
+		  },
+		  "text-medium": {
+			"label": "中等的"
+		  },
+		  "text-large": {
+			"label": "大的"
+		  },
+		  "text-xlarge": {
+			"label": "XL 号"
+		  }
+		},
+		"section_visibility": {
+		  "label": "部分可见性",
+		  "always": {
+			"label": "总是"
+		  },
+		  "small": {
+			"label": "小型设备"
+		  },
+		  "large": {
+			"label": "大型设备"
+		  }
+		},
+		"section_container_width": {
+		  "label": "集装箱宽度",
+		  "global": {
+			"label": "全球的"
+		  },
+		  "container-sm": {
+			"label": "小的"
+		  },
+		  "container": {
+			"label": "常规的"
+		  },
+		  "container-md": {
+			"label": "中等的"
+		  },
+		  "container-fullwidth": {
+			"label": "边缘间隙"
+		  },
+		  "no-container": {
+			"label": "全角"
+		  }
+		},
+		"section_background": {
+		  "label": "章节背景",
+		  "default": "坚硬的",
+		  "solid": {
+			"label": "坚硬的"
+		  },
+		  "gradient": {
+			"label": "坡度"
+		  }
+		},
+		"video_height": {
+		  "label": "桌面高度",
+		  "100vh": {
+			"label": "全屏"
+		  },
+		  "adapt": {
+			"label": "汽车"
+		  },
+		  "adapt_to_first": {
+			"label": "适应第一张图片"
+		  }
+		},
+		"mobile_video_height": {
+		  "label": "移动高度",
+		  "100vh": {
+			"label": "全屏"
+		  },
+		  "adapt": {
+			"label": "汽车"
+		  },
+		  "adapt_to_first": {
+			"label": "适应第一张图片"
+		  }
+		},
+		"object_fit": {
+		  "label": "媒体契合度",
+		  "default": "覆盖",
+		  "cover": {
+			"label": "覆盖"
+		  },
+		  "contain": {
+			"label": "包含"
+		  }
+		},
+		"desktop_logo_width": {
+		  "label": "桌面标志宽度"
+		},
+		"mobile_logo_width": {
+		  "label": "手机标志宽度"
+		},
+		"desktop_content_position": {
+		  "label": "内容位置",
+		  "d-top-left": {
+			"label": "左边"
+		  },
+		  "d-top-center": {
+			"label": "中心"
+		  },
+		  "d-top-right": {
+			"label": "正确的"
+		  },
+		  "d-center-left": {
+			"label": "左边"
+		  },
+		  "d-center": {
+			"label": "中心"
+		  },
+		  "d-center-right": {
+			"label": "正确的"
+		  },
+		  "d-bottom-left": {
+			"label": "左边"
+		  },
+		  "d-bottom-center": {
+			"label": "中心"
+		  },
+		  "d-bottom-right": {
+			"label": "正确的"
+		  }
+		},
+		"mobile_content_position": {
+		  "label": "内容位置",
+		  "m-top-left": {
+			"label": "左边"
+		  },
+		  "m-top-center": {
+			"label": "中心"
+		  },
+		  "m-top-right": {
+			"label": "正确的"
+		  },
+		  "m-center-left": {
+			"label": "左边"
+		  },
+		  "m-center": {
+			"label": "中心"
+		  },
+		  "m-center-right": {
+			"label": "正确的"
+		  },
+		  "m-bottom-left": {
+			"label": "左边"
+		  },
+		  "m-bottom-center": {
+			"label": "中心"
+		  },
+		  "m-bottom-right": {
+			"label": "正确的"
+		  }
+		},
+		"content_position": {
+		  "label": "位置",
+		  "start": {
+			"label": "顶部"
+		  },
+		  "center": {
+			"label": "中"
+		  },
+		  "end": {
+			"label": "底部"
+		  },
+		  "middle": {
+			"label": "中心"
+		  }
+		},
+		"image_ratio": {
+		  "label": "产品图片比例",
+		  "auto": {
+			"label": "适应"
+		  },
+		  "landscape": {
+			"label": "景观"
+		  },
+		  "square": {
+			"label": "正方形"
+		  },
+		  "portrait": {
+			"label": "肖像"
+		  },
+		  "auto_ratio": {
+			"label": "汽车"
+		  },
+		  "adapt-to-content": {
+			"label": "适应内容"
+		  },
+		  "adpat_to_first_image": {
+			"label": "适应第一张图片"
+		  }
+		},
+		"placeholder": {
+		  "label": "电子邮件占位符"
+		},
+		"spacing": {
+		  "section_spacing_heading": "断面间距",
+		  "top_space_desktop": "桌面顶部空间",
+		  "bottom_space_desktop": "桌面底部空间",
+		  "top_space_mobile": "移动顶部空间",
+		  "bottom_space_mobile": "移动底部空间"
+		},
+		"outline_thickness": {
+		  "label": "轮廓厚度"
+		},
+		"colors": {
+		  "label": "配色方案",
+		  "content": "透明色",
+		  "transparent_color": {
+			"label": "文本/图标颜色"
+		  },
+		  "transparent_border_color": {
+			"label": "边框颜色"
+		  },
+		  "overlay_background": {
+			"label": "叠加背景"
+		  }
+		},
+		"image_shape": {
+		  "options__1": {
+			"label": "默认"
+		  },
+		  "options__2": {
+			"label": "拱"
+		  },
+		  "options__3": {
+			"label": "斑点"
+		  },
+		  "options__4": {
+			"label": "雪佛龙左"
+		  },
+		  "options__5": {
+			"label": "雪佛龙右"
+		  },
+		  "options__6": {
+			"label": "钻石"
+		  },
+		  "options__7": {
+			"label": "平行四边形"
+		  },
+		  "options__8": {
+			"label": "圆形的"
+		  },
+		  "label": "图像形状",
+		  "info": "当图像形状处于活动状态时，标准样式的卡片没有边框。"
+		}
+	  },
+	  "announcement-bar": {
+		"name": "公告",
+		"settings": {
+		  "color_scheme": {
+			"label": "配色方案",
+			"default": "基本的"
+		  },
+		  "show_announcement_bar_home_page": {
+			"label": "仅在主页上显示栏。"
+		  },
+		  "auto_rotate": {
+			"label": "自动旋转"
+		  },
+		  "change_slides_speed": {
+			"label": "每隔一段时间更换一次幻灯片"
+		  },
+		  "enable_social_icons": {
+			"label": "显示社交媒体图标",
+			"info": "要展示您的社交媒体资料，请在主题设置下的社交媒体设置中链接它们。"
+		  },
+		  "show_info": {
+			"label": "显示联系信息"
+		  },
+		  "contact_text": {
+			"label": "联系方式",
+			"default": "需要帮助"
+		  },
+		  "show_store_locator": {
+			"label": "显示商店定位器"
+		  },
+		  "locator_text": {
+			"label": "定位器标题",
+			"default": "商店"
+		  },
+		  "show_location_and_language": {
+			"label": "显示位置和语言"
+		  }
+		},
+		"blocks": {
+		  "announcement": {
+			"name": "公告栏",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "公告"
+		}
+	  },
+	  "age-verification": {
+		"name": "年龄验证",
+		"settings": {
+		  "age_verification_display_mode": {
+			"label": "显示方式",
+			"info": "在测试模式下，无论相关设置或关闭，弹出窗口始终显示，以便您可以随时查看。",
+			"enable": {
+			  "label": "使能够"
+			},
+			"test_mode": {
+			  "label": "测试模式"
+			}
+		  },
+		  "color_scheme": {
+			"label": "配色方案",
+			"default": "基本的"
+		  },
+		  "heading": {
+			"label": "标题",
+			"default": "年龄验证",
+			"info": "将文本括在 [ ] 之间以添加标记字体。"
+		  },
+		  "description": {
+			"label": "描述",
+			"default": "在您的国家，您的年龄达到可以饮酒的年龄吗？"
+		  },
+		  "sub_description": {
+			"label": "信息"
+		  },
+		  "approve_btn_text": {
+			"label": "批准按钮文本"
+		  },
+		  "decline_btn_text": {
+			"label": "拒绝按钮文本"
+		  },
+		  "decline_heading": {
+			"label": "在年龄标题下",
+			"info": "将文本括在 [ ] 之间以添加标记字体。"
+		  },
+		  "decline_description": {
+			"label": "未成年描述"
+		  },
+		  "age_decline_btn_text": {
+			"label": "拒绝按钮文本"
+		  },
+		  "age_verify_popup_cookie": {
+			"label": "频率",
+			"info": "已关闭的弹出窗口再次出现之前的天数"
+		  }
+		}
+	  },
+	  "before-after": {
+		"name": "之前/之后",
+		"settings": {
+		  "percentage_value": {
+			"name": "拖动位置"
+		  }
+		},
+		"blocks": {
+		  "image": {
+			"name": "图像",
+			"settings": {
+			  "image_effect": {
+				"label": "图像效果",
+				"none": {
+				  "label": "没有任何"
+				},
+				"blur": {
+				  "label": "模糊"
+				},
+				"brightness": {
+				  "label": "亮度"
+				},
+				"contrast": {
+				  "label": "对比"
+				},
+				"grayscale": {
+				  "label": "灰度"
+				},
+				"invert": {
+				  "label": "倒置"
+				},
+				"saturate": {
+				  "label": "饱和"
+				},
+				"sepia": {
+				  "label": "棕褐色"
+				}
+			  },
+			  "filter_amount": {
+				"label": "过滤量"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "之前/之后"
+		}
+	  },
+	  "best-selling-products": {
+		"name": "最畅销产品",
+		"settings": {
+		  "heading": {
+			"label": "标题",
+			"info": "将文本括在 [ ] 之间以添加标记字体。"
+		  },
+		  "description": {
+			"label": "描述"
+		  },
+		  "left_portion_image": {
+			"label": "左图"
+		  },
+		  "right_portion_image": {
+			"label": "右图"
+		  },
+		  "product_on_image": {
+			"label": "在左图上显示产品"
+		  },
+		  "image_ratio": {
+			"label": "图像比例"
+		  }
+		},
+		"presets": {
+		  "name": "最畅销产品"
+		}
+	  },
+	  "breadcrumb": {
+		"name": "面包屑",
+		"settings": {},
+		"presets": {
+		  "name": "面包屑"
+		}
+	  },
+	  "categories": {
+		"name": "类别",
+		"settings": {
+		  "cat_m_heading_size": {
+			"label": "手机尺寸"
+		  },
+		  "category_img_height": {
+			"label": "图像高度",
+			"auto": {
+			  "label": "汽车"
+			},
+			"adapt": {
+			  "label": "适应内容"
+			}
+		  },
+		  "enable_animation": {
+			"label": "启用动画"
+		  },
+		  "category_bg": {
+			"label": "类别背景"
+		  },
+		  "category_text": {
+			"label": "类别文字"
+		  },
+		  "category_bg_hover": {
+			"label": "类别背景悬停"
+		  },
+		  "category_hover_text": {
+			"label": "类别悬停文本"
+		  }
+		},
+		"blocks": {
+		  "image": {
+			"name": "图片项目",
+			"settings": {
+			  "category_img_size": {
+				"label": "图片宽度",
+				"small": {
+				  "label": "小的"
+				},
+				"medium": {
+				  "label": "中等的"
+				},
+				"large": {
+				  "label": "大的"
+				}
+			  }
+			}
+		  },
+		  "category": {
+			"name": "类别项目",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "类别"
+		}
+	  },
+	  "collapsible-content": {
+		"name": "可折叠内容",
+		"settings": {
+		  "heading": {
+			"label": "标题",
+			"info": "将文本括在 [ ] 之间以添加标记字体。"
+		  },
+		  "description": {
+			"label": "描述"
+		  }
+		},
+		"blocks": {
+		  "collapse_grid": {
+			"name": "折叠内容",
+			"settings": {
+			  "collapsible_content_heading": {
+				"label": "折叠标题"
+			  },
+			  "collapsible_content_description": {
+				"label": "折叠说明"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "可折叠内容"
+		}
+	  },
+	  "collections-list": {
+		"name": "收藏清单",
+		"settings": {
+		  "heading": {
+			"label": "标题",
+			"info": "将文本括在 [ ] 之间以添加标记字体。"
+		  },
+		  "image_ratio": {
+			"label": "图像比例"
+		  }
+		},
+		"blocks": {
+		  "collection": {
+			"name": "收藏",
+			"settings": {
+			  "title": {
+				"label": "自定义标题",
+				"info": "它将取代原始收藏的标题。"
+			  },
+			  "image": {
+				"label": "自定义图片",
+				"info": "它将取代原始集合的图像。"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "收藏清单"
+		}
+	  },
+	  "collection-tab": {
+		"name": "收藏选项卡",
+		"settings": {
+		  "image": {
+			"label": "背景图片"
+		  },
+		  "headers": {
+			"content": "选项卡"
+		  },
+		  "style": {
+			"label": "风格",
+			"horizontal": {
+			  "label": "水平的"
+			},
+			"vertical": {
+			  "label": "垂直的"
+			}
+		  },
+		  "tabs_animation": {
+			"label": "动画效果",
+			"none": {
+			  "label": "没有任何"
+			},
+			"fade": {
+			  "label": "褪色"
+			},
+			"bounce": {
+			  "label": "弹跳"
+			}
+		  },
+		  "product_card_column_gap": {
+			"label": "产品卡间隙"
+		  }
+		},
+		"blocks": {
+		  "collection": {
+			"name": "收藏",
+			"settings": {
+			  "collection": {
+				"label": "收藏"
+			  },
+			  "products": {
+				"label": "产品"
+			  },
+			  "text": {
+				"label": "标题"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "收藏选项卡"
+		}
+	  },
+	  "collection-menu": {
+		"name": "收藏菜单",
+		"settings": {
+		  "speed": {
+			"label": "速度"
+		  },
+		  "sapce_between_text": {
+			"label": "文本之间的间距"
+		  }
+		},
+		"blocks": {
+		  "collection": {
+			"name": "收藏",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "收藏菜单"
+		}
+	  },
+	  "collection-showcase": {
+		"name": "收藏展示",
+		"settings": {
+		  "image": {
+			"label": "背景图片"
+		  },
+		  "content_style": {
+			"label": "风格",
+			"vertical": {
+			  "label": "垂直的"
+			},
+			"horizontal": {
+			  "label": "水平的"
+			}
+		  },
+		  "heading_position": {
+			"label": "水平航向位置",
+			"behind-image": {
+			  "label": "图像背后"
+			},
+			"above-image": {
+			  "label": "上图"
+			}
+		  },
+		  "content_position": {
+			"label": "卡片文字位置",
+			"top": {
+			  "label": "顶部"
+			},
+			"center": {
+			  "label": "中心"
+			},
+			"bottom": {
+			  "label": "底部"
+			}
+		  }
+		},
+		"blocks": {
+		  "collection": {
+			"name": "收藏",
+			"settings": {
+			  "collection": {
+				"label": "收藏"
+			  },
+			  "collection_heading": {
+				"label": "标题"
+			  },
+			  "collection_desc": {
+				"label": "描述"
+			  },
+			  "custom_image": {
+				"label": "自定义图片"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "收藏展示"
+		}
+	  },
+	  "contact-with-map": {
+		"name": "联系地图",
+		"settings": {
+		  "section_layout": {
+			"label": "风格",
+			"map": {
+			  "label": "仅地图"
+			},
+			"contact-form": {
+			  "label": "仅联系表格"
+			},
+			"both": {
+			  "label": "带地图的联系表"
+			}
+		  },
+		  "map_address": {
+			"label": "地址",
+			"info": "确保在主题设置下添加 Google 地图详细信息。"
+		  },
+		  "map_style": {
+			"label": "风格",
+			"standard": {
+			  "label": "标准"
+			},
+			"silver": {
+			  "label": "银"
+			},
+			"retro": {
+			  "label": "复古的"
+			},
+			"dark": {
+			  "label": "黑暗的"
+			},
+			"night": {
+			  "label": "夜晚"
+			},
+			"aubergine": {
+			  "label": "茄子"
+			}
+		  },
+		  "image": {
+			"label": "图像",
+			"info": "地图未加载时显示"
+		  },
+		  "image_position": {
+			"label": "位置",
+			"info": "位置将与带有地图的联系表一起使用",
+			"left": {
+			  "label": "左边"
+			},
+			"right": {
+			  "label": "正确的"
+			}
+		  },
+		  "heading_alignment": {
+			"label": "内容对齐"
+		  }
+		},
+		"presets": {
+		  "name": "联系地图"
+		}
+	  },
+	  "countdown-banner": {
+		"name": "倒计时横幅",
+		"settings": {
+		  "counter_style": {
+			"label": "风格",
+			"style1": {
+			  "label": "卡片"
+			},
+			"style2": {
+			  "label": "翻页卡"
+			}
+		  },
+		  "year": {
+			"label": "年"
+		  },
+		  "months": {
+			"10": {
+			  "label": "十月"
+			},
+			"11": {
+			  "label": "十一月"
+			},
+			"12": {
+			  "label": "十二月"
+			},
+			"label": "月",
+			"01": {
+			  "label": "一月"
+			},
+			"02": {
+			  "label": "二月"
+			},
+			"03": {
+			  "label": "行进"
+			},
+			"04": {
+			  "label": "四月"
+			},
+			"05": {
+			  "label": "可能"
+			},
+			"06": {
+			  "label": "六月"
+			},
+			"07": {
+			  "label": "七月"
+			},
+			"08": {
+			  "label": "八月"
+			},
+			"09": {
+			  "label": "九月"
+			}
+		  },
+		  "day": {
+			"label": "天"
+		  },
+		  "hours": {
+			"label": "小时"
+		  },
+		  "minutes": {
+			"label": "分钟"
+		  },
+		  "btn_txt": {
+			"label": "标签",
+			"info": "将标签留空以隐藏按钮。"
+		  },
+		  "blur_effect": {
+			"label": "模糊效果"
+		  },
+		  "timer_expire": {
+			"label": "已过期倒计时行动",
+			"hide": {
+			  "label": "仅隐藏倒计时"
+			},
+			"show": {
+			  "label": "显示消息"
+			}
+		  },
+		  "hide_message": {
+			"label": "信息"
+		  },
+		  "image_ratio": {
+			"label": "图像比例"
+		  }
+		},
+		"blocks": {
+		  "product": {
+			"name": "产品列表",
+			"settings": {
+			  "product_slider_direction": {
+				"label": "滚动方向",
+				"rtl": {
+				  "label": "从下到上"
+				},
+				"ltr": {
+				  "label": "从上到下"
+				}
+			  }
+			}
+		  },
+		  "collection": {
+			"name": "收藏",
+			"settings": {
+			  "collection_slider_direction": {
+				"label": "滚动方向",
+				"rtl": {
+				  "label": "从下到上"
+				},
+				"ltr": {
+				  "label": "从上到下"
+				}
+			  },
+			  "products_limit": {
+				"label": "产品数量"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "倒计时横幅"
+		}
+	  },
+	  "custom-liquid": {
+		"name": "定制液体",
+		"settings": {
+		  "custom_liquid": {
+			"label": "定制液体"
+		  }
+		},
+		"presets": {
+		  "name": "定制液体"
+		}
+	  },
+	  "featured-blogs": {
+		"name": "特色博客",
+		"settings": {
+		  "blog_style": {
+			"label": "风格",
+			"stacked": {
+			  "label": "堆叠式"
+			},
+			"grid": {
+			  "label": "网格"
+			},
+			"collage": {
+			  "label": "拼贴画"
+			}
+		  },
+		  "image_ratio": {
+			"label": "图像比例"
+		  },
+		  "article-settings": {
+			"content": "文章设置"
+		  }
+		},
+		"blocks": {
+		  "article": {
+			"name": "文章",
+			"settings": {
+			  "article": {
+				"label": "邮政"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "特色博客"
+		}
+	  },
+	  "featured-products": {
+		"name": "特色产品",
+		"blocks": {
+		  "name": "产品",
+		  "settings": {
+			"products": {
+			  "label": "产品"
+			},
+			"marquee": {
+			  "header": {
+				"content": "跑马灯"
+			  }
+			},
+			"marquee_text": {
+			  "label": "文本",
+			  "info": "替换产品标题选取框文本。"
+			},
+			"color": {
+			  "header": {
+				"content": "颜色"
+			  }
+			},
+			"text_color": {
+			  "label": "文本"
+			},
+			"marquee_text_color": {
+			  "label": "字幕文本"
+			},
+			"background_color": {
+			  "label": "背景"
+			},
+			"marquee_text_gradient": {
+			  "label": "选框文字渐变"
+			},
+			"background_gradient": {
+			  "label": "背景渐变"
+			}
+		  }
+		},
+		"presets": {
+		  "name": "特色产品"
+		}
+	  },
+	  "featured-collection": {
+		"name": "精选合集",
+		"settings": {
+		  "products_to_show": {
+			"label": "展示产品"
+		  },
+		  "image_ratio": {
+			"label": "图像比例"
+		  }
+		},
+		"presets": {
+		  "name": "精选合集"
+		}
+	  },
+	  "featured-collections-list": {
+		"name": "精选藏品列表",
+		"settings": {
+		  "direction": {
+			"label": "跑马灯方向",
+			"rtl": {
+			  "label": "从下到上"
+			},
+			"ltr": {
+			  "label": "从上到下"
+			}
+		  },
+		  "marquee_speed": {
+			"label": "跑马灯速度"
+		  }
+		},
+		"blocks": {
+		  "collection-image": {
+			"name": "图像",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "精选藏品列表"
+		}
+	  },
+	  "featured-product": {
+		"name": "特色产品",
+		"settings": {
+		  "image_ratio": {
+			"label": "媒体比例",
+			"adpat_to_first_image": {
+			  "label": "适应第一张图片"
+			}
+		  },
+		  "product": {
+			"label": "产品"
+		  }
+		},
+		"blocks": {
+		  "title": {
+			"name": "标题",
+			"settings": {
+			  "title_size": {
+				"label": "标题大小"
+			  }
+			}
+		  },
+		  "price": {
+			"name": "价格",
+			"settings": {
+			  "hide_unit_price": {
+				"label": "隐藏单价"
+			  },
+			  "hide_shipping_content": {
+				"label": "隐藏税费和运费文本"
+			  }
+			}
+		  },
+		  "sku": {
+			"name": "存货单位"
+		  },
+		  "custom_text": {
+			"name": "文本"
+		  },
+		  "variant_picker": {
+			"name": "变体选择器",
+			"settings": {
+			  "label": "变体类型",
+			  "dropdown": {
+				"label": "下拉菜单"
+			  },
+			  "button": {
+				"label": "按钮"
+			  }
+			}
+		  },
+		  "quantity_picker": {
+			"name": "数量选择器"
+		  },
+		  "social_sharing": {
+			"name": "社交分享"
+		  },
+		  "pickup_availability": {
+			"name": "提供接送服务"
+		  },
+		  "inventory_status": {
+			"name": "库存状态",
+			"settings": {
+			  "minimun_inventory": {
+				"label": "最低库存"
+			  },
+			  "inventory_available_status": {
+				"label": "可用消息"
+			  },
+			  "inventory_less_status": {
+				"label": "库存不足消息",
+				"info": "使用 [inventory ] 显示消息中的库存数量"
+			  },
+			  "inventory_unavailable_status": {
+				"label": "已售完留言"
+			  }
+			}
+		  },
+		  "buy_button": {
+			"name": "购买按钮",
+			"settings": {
+			  "show_dynamic_checkout": {
+				"label": "显示动态结账按钮"
+			  },
+			  "show_gift_card_recipient": {
+				"label": "显示礼品卡的收件人信息表"
+			  }
+			}
+		  },
+		  "icon-with-text": {
+			"name": "带文字的图标",
+			"settings": {
+			  "icon-1": {
+				"label": "图标1"
+			  },
+			  "icon-2": {
+				"label": "图标2"
+			  },
+			  "icon-3": {
+				"label": "图标3"
+			  }
+			}
+		  },
+		  "query_form": {
+			"name": "问一个问题",
+			"settings": {
+			  "title": {
+				"label": "帮助标签"
+			  },
+			  "help_with_share_icons": {
+				"label": "在共享图标前面显示“帮助台”表单"
+			  }
+			}
+		  },
+		  "complementary_products": {
+			"name": "配套产品",
+			"settings": {
+			  "products_count": {
+				"label": "显示的最大产品数"
+			  }
+			}
+		  },
+		  "custom_liquid": {
+			"name": "定制液体",
+			"settings": {
+			  "custom_liquid": {
+				"label": "定制液体"
+			  }
+			}
+		  },
+		  "payment_icons": {
+			"name": "付款图标",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "特色产品"
+		}
+	  },
+	  "footer": {
+		"name": "页脚",
+		"settings": {
+		  "enable_top_border_rounded": {
+			"label": "启用顶部边框圆角"
+		  },
+		  "image": {
+			"label": "标识",
+			"info": "建议使用 235 x 74 像素。"
+		  },
+		  "description": {
+			"label": "店铺描述"
+		  },
+		  "image_width": {
+			"label": "标志宽度"
+		  },
+		  "enable_menu": {
+			"label": "启用菜单"
+		  },
+		  "enable_social_icons": {
+			"label": "显示社交媒体图标"
+		  },
+		  "mobile_accordions": {
+			"label": "在移动设备上显示手风琴中的块"
+		  },
+		  "enable_payment_icons": {
+			"label": "显示付款图标",
+			"info": "图标根据您的 Shopify 付款方式显示。"
+		  },
+		  "enable_policy_links": {
+			"label": "显示政策链接"
+		  },
+		  "enable_follow_on_shop": {
+			"label": "在商店中显示关注"
+		  },
+		  "enable_copyright": {
+			"label": "显示版权文本"
+		  },
+		  "copyright_text": {
+			"label": "版权文字"
+		  },
+		  "show_location_and_language": {
+			"label": "显示位置和语言"
+		  }
+		},
+		"blocks": {
+		  "menus": {
+			"name": "菜单"
+		  },
+		  "newsletter": {
+			"name": "通讯",
+			"settings": {
+			  "enable_newsletter": {
+				"label": "启用新闻通讯"
+			  },
+			  "placeholder_text": {
+				"label": "占位符文本"
+			  },
+			  "header": {
+				"content": "图像"
+			  }
+			}
+		  },
+		  "contact_information": {
+			"name": "联系信息",
+			"settings": {
+			  "address": {
+				"label": "地址"
+			  },
+			  "email": {
+				"label": "电子邮件"
+			  },
+			  "phone": {
+				"label": "电话"
+			  },
+			  "hours": {
+				"label": "工作时间"
+			  }
+			}
+		  }
+		}
+	  },
+	  "header": {
+		"name": "标头",
+		"settings": {
+		  "header_style": {
+			"label": "桌面风格",
+			"logo-left-menu-center": {
+			  "label": "徽标左侧菜单中心"
+			},
+			"logo-left-menu-right": {
+			  "label": "徽标左菜单右"
+			},
+			"logo-left-menu-left": {
+			  "label": "徽标左侧菜单左侧"
+			},
+			"logo-center-menu-left": {
+			  "label": "徽标中心菜单左侧"
+			},
+			"half-width-menu": {
+			  "label": "半宽菜单"
+			},
+			"hamburger-menu-logo-left": {
+			  "label": "汉堡菜单标志左"
+			},
+			"hamburger-menu-logo-center": {
+			  "label": "汉堡菜单标志中心"
+			}
+		  },
+		  "sticky_header_type": {
+			"label": "粘性标题",
+			"sticky-none": {
+			  "label": "没有任何"
+			},
+			"sticky-scroll-up": {
+			  "label": "向上滚动时"
+			},
+			"sticky-always": {
+			  "label": "总是"
+			}
+		  },
+		  "transparent_home_page": {
+			"label": "在主页上启用"
+		  },
+		  "is_transparent_blur": {
+			"label": "启用模糊效果"
+		  },
+		  "transparent_other_page": {
+			"label": "在附加模板上启用",
+			"placeholder": "文章、博客、购物车、集合、列表集合、产品、页面、搜索等。",
+			"info": "使用逗号分隔的模板名称列表可在多页模板上启用。"
+		  },
+		  "transparent_header": {
+			"label": "透明可视性",
+			"desktop-transparent": {
+			  "label": "桌面"
+			},
+			"mobile-transparent": {
+			  "label": "移动的"
+			},
+			"both-transparent": {
+			  "label": "两个都"
+			}
+		  },
+		  "transparent_color": {
+			"label": "文字/图标"
+		  },
+		  "alternate_logo": {
+			"label": "替代标志"
+		  },
+		  "menu_type": {
+			"label": "菜单类型",
+			"dropdown": {
+			  "label": "下拉菜单"
+			},
+			"mega_menu": {
+			  "label": "超级菜单"
+			}
+		  },
+		  "menu_navigations": {
+			"label": "打开菜单项",
+			"click": {
+			  "label": "点击"
+			},
+			"hover": {
+			  "label": "徘徊"
+			}
+		  },
+		  "font_type": {
+			"label": "桌面字体系列"
+		  },
+		  "menu_font_style": {
+			"label": "桌面字体样式",
+			"normal": {
+			  "label": "普通的"
+			},
+			"bold": {
+			  "label": "大胆的"
+			}
+		  },
+		  "main_menu_font_size": {
+			"label": "桌面字体大小",
+			"small": {
+			  "label": "小的"
+			},
+			"regular": {
+			  "label": "常规的"
+			},
+			"medium": {
+			  "label": "中等的"
+			},
+			"large": {
+			  "label": "大的"
+			}
+		  },
+		  "submenu_font_type": {
+			"label": "字体家族"
+		  },
+		  "submenu_font_style": {
+			"label": "字体样式",
+			"normal": {
+			  "label": "普通的"
+			},
+			"bold": {
+			  "label": "大胆的"
+			}
+		  },
+		  "paragraph": {
+			"content": "仅推荐用于简短菜单。"
+		  },
+		  "paragraph_note": {
+			"content": "注意：仅第一级菜单可见，并且仅适用于非粘性标题。"
+		  },
+		  "account_behaviour": {
+			"label": "账户行为",
+			"drawer": {
+			  "label": "抽屉"
+			},
+			"page": {
+			  "label": "页"
+			}
+		  },
+		  "is_quick_menu": {
+			"label": "启用快捷菜单"
+		  },
+		  "quick_menu_heading": {
+			"label": "菜单标题"
+		  },
+		  "hamburger_color_scheme": {
+			"label": "汉堡配色方案"
+		  },
+		  "hamburger_top_bar": {
+			"content": "汉堡菜单 - 顶部栏"
+		  },
+		  "hamburger_middle_card": {
+			"content": "汉堡菜单-中卡"
+		  },
+		  "hamburger_bottom_bar": {
+			"content": "汉堡菜单 - 底部栏"
+		  },
+		  "hamburger_menu_btn_text": {
+			"label": "按钮标签"
+		  },
+		  "hamburger_menu_btn_link": {
+			"label": "按钮链接"
+		  },
+		  "hamburger_menu_social_media": {
+			"label": "显示社交媒体图标"
+		  }
+		},
+		"blocks": {
+		  "style-1": {
+			"name": "水平（大型菜单）",
+			"settings": {
+			  "horizontal_overlay_opacity": {
+				"label": "图像叠加不透明度"
+			  }
+			}
+		  },
+		  "style-2": {
+			"name": "垂直（大型菜单）",
+			"settings": {
+			  "paragraph": {
+				"content": "对于有子菜单的菜单，建议使用此大型菜单。"
+			  },
+			  "vertical_overlay_opacity": {
+				"label": "图像叠加不透明度"
+			  }
+			}
+		  },
+		  "style-3": {
+			"name": "收藏（大型菜单）",
+			"settings": {
+			  "paragraph": {
+				"content": "对于有子菜单的菜单，建议使用此大型菜单。"
+			  },
+			  "collection_list": {
+				"label": "收藏"
+			  }
+			}
+		  }
+		}
+	  },
+	  "hero-banner": {
+		"name": "英雄旗帜",
+		"blocks": {
+		  "slide": {
+			"name": "幻灯片图像",
+			"settings": {
+			  "image": {
+				"label": "图像"
+			  },
+			  "text": {
+				"label": "打字机文本",
+				"info": "最多 11 个字符"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "英雄旗帜"
+		}
+	  },
+	  "highlighted-products": {
+		"name": "重点产品",
+		"settings": {
+		  "heading": {
+			"label": "标题",
+			"info": "将字体加粗以不同颜色显示"
+		  },
+		  "card_image_size": {
+			"label": "产品图片尺寸"
+		  }
+		},
+		"presets": {
+		  "name": "重点产品"
+		}
+	  },
+	  "image-with-text": {
+		"name": "带文字的图像",
+		"settings": {
+		  "desktop_image_postition": {
+			"label": "桌面图像位置",
+			"left": {
+			  "label": "左边"
+			},
+			"right": {
+			  "label": "正确的"
+			}
+		  },
+		  "desktop_image_size": {
+			"label": "桌面图像宽度"
+		  },
+		  "image_ratio": {
+			"label": "图像比例"
+		  },
+		  "is_background_enabled": {
+			"label": "启用后台"
+		  },
+		  "alignment": {
+			"label": "结盟"
+		  },
+		  "content_height": {
+			"label": "使内容高度适应图像"
+		  }
+		},
+		"blocks": {
+		  "heading": {
+			"name": "标题",
+			"settings": {}
+		  },
+		  "text": {
+			"name": "文本",
+			"settings": {
+			  "description_size": {
+				"label": "文字大小"
+			  }
+			}
+		  },
+		  "button": {
+			"name": "按钮",
+			"settings": {
+			  "show_as_arrow": {
+				"label": "将按钮显示为角落的箭头"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "带文字的图像"
+		}
+	  },
+	  "immages-carousel": {
+		"name": "图片轮播",
+		"settings": {
+		  "heading": {
+			"label": "标题",
+			"info": "将字体加粗以不同颜色显示"
+		  },
+		  "card_image_size": {
+			"label": "产品图片尺寸"
+		  },
+		  "carousel-settings": {
+			"content": "轮播设置"
+		  },
+		  "enable_swiper_buttons": {
+			"label": "显示导航"
+		  },
+		  "enable_swiper_progress": {
+			"label": "显示进度条"
+		  },
+		  "image_ratio": {
+			"label": "图像比例"
+		  }
+		},
+		"blocks": {
+		  "image_carousel": {
+			"name": "图像",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "图片轮播"
+		}
+	  },
+	  "image-text-accordions": {
+		"name": "图像文本手风琴",
+		"settings": {
+		  "image_ratio": {
+			"label": "图像比例"
+		  }
+		},
+		"blocks": {
+		  "image": {
+			"name": "图像",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "图像文本手风琴"
+		}
+	  },
+	  "images-with-text-carousel": {
+		"name": "带文字的图像轮播",
+		"settings": {
+		  "sapce_between": {
+			"label": "文字空间"
+		  }
+		},
+		"blocks": {
+		  "image_carousel": {
+			"name": "图像",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "带文字的图像轮播"
+		}
+	  },
+	  "logo-list": {
+		"name": "标志列表",
+		"settings": {
+		  "bg_layout": {
+			"label": "背景布局",
+			"card": {
+			  "label": "卡片"
+			},
+			"none": {
+			  "label": "没有任何"
+			}
+		  },
+		  "column_count_desktop": {
+			"label": "连续列（桌面）"
+		  },
+		  "column_count_mobile": {
+			"label": "连续列（移动）"
+		  },
+		  "duplicate_marque": {
+			"label": "启用双选取框"
+		  },
+		  "card_bg": {
+			"label": "显示背景"
+		  },
+		  "card_height": {
+			"label": "均衡背景高度"
+		  },
+		  "svg_text": {
+			"label": "旋转文字",
+			"info": "最多 16 个字符"
+		  }
+		},
+		"blocks": {
+		  "logo": {
+			"name": "标识",
+			"settings": {
+			  "image_width": {
+				"label": "图片宽度"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "标志列表"
+		}
+	  },
+	  "main-account": {
+		"name": "主账户",
+		"settings": {
+		  "bg_layout": {
+			"label": "背景布局"
+		  }
+		}
+	  },
+	  "main-activate-account": {
+		"name": "主要激活账户",
+		"settings": {}
+	  },
+	  "main-address": {
+		"name": "主要地址",
+		"settings": {}
+	  },
+	  "main-article-banner": {
+		"name": "主要文章横幅",
+		"settings": {
+		  "content_overlay": {
+			"label": "显示内容叠加"
+		  }
+		},
+		"presets": {
+		  "name": "主要文章横幅"
+		}
+	  },
+	  "main-article": {
+		"name": "文章",
+		"settings": {
+		  "show_tags": {
+			"label": "显示文章标签"
+		  },
+		  "show_social_share": {
+			"label": "显示社交共享图标"
+		  }
+		},
+		"blocks": {
+		  "content": {
+			"name": "内容"
+		  },
+		  "comments": {
+			"name": "评论"
+		  },
+		  "related_post": {
+			"name": "相关帖子",
+			"settings": {
+			  "blog_limit": {
+				"label": "要显示的博客文章数"
+			  },
+			  "image_ratio": {
+				"label": "图像比例"
+			  }
+			}
+		  }
+		}
+	  },
+	  "main-blog": {
+		"name": "博客",
+		"settings": {
+		  "artical_per_page": {
+			"label": "每页文章数"
+		  },
+		  "show_date": {
+			"label": "显示文章发表日期"
+		  },
+		  "show_author": {
+			"label": "显示文章作者"
+		  },
+		  "show_tags": {
+			"label": "显示文章标签"
+		  },
+		  "show_excerpt": {
+			"label": "显示文章摘录"
+		  },
+		  "image_ratio": {
+			"label": "图像比例"
+		  }
+		}
+	  },
+	  "main-cart": {
+		"name": "主推车",
+		"settings": {
+		  "show_cart_heading": {
+			"label": "显示购物车标题"
+		  },
+		  "show_cart_description": {
+			"label": "显示购物车描述"
+		  },
+		  "show_cart_note": {
+			"label": "显示购物车备注"
+		  },
+		  "payment_enable": {
+			"label": "启用付款图标"
+		  },
+		  "shipping_estimates": {
+			"label": "显示运费预估"
+		  },
+		  "layout_p": {
+			"label": "展示产品图片和功能",
+			"info": "使用 custom.features 键和多文本类型添加产品特定元字段，以在图像上显示功能。"
+		  },
+		  "image_heading": {
+			"label": "图片文字"
+		  }
+		}
+	  },
+	  "collection-banner": {
+		"name": "收藏横幅",
+		"settings": {
+		  "enable_heading": {
+			"label": "显示集合标题"
+		  },
+		  "enable_description": {
+			"label": "显示集合描述"
+		  },
+		  "description": {
+			"label": "描述",
+			"info": "将此字段保留为空以显示当前页面的默认描述。"
+		  },
+		  "show_banner_image": {
+			"label": "显示横幅图像"
+		  },
+		  "banner_image": {
+			"label": "横幅图片",
+			"info": "该图像将覆盖集合的默认图像。"
+		  },
+		  "banner_height_desktop": {
+			"label": "桌面横幅高度"
+		  },
+		  "banner_height_mobile": {
+			"label": "横幅高度移动"
+		  }
+		}
+	  },
+	  "main-collection": {
+		"name": "主要收藏",
+		"settings": {
+		  "sorting": {
+			"label": "启用排序"
+		  },
+		  "filters": {
+			"label": "启用过滤器"
+		  },
+		  "show_filters_always": {
+			"label": "默认打开过滤器",
+			"info": "这仅适用于垂直过滤器布局。"
+		  },
+		  "filter_layout": {
+			"label": "过滤器布局",
+			"horizontal": {
+			  "label": "水平的"
+			},
+			"horizontal-bottom": {
+			  "label": "横底"
+			},
+			"vertical": {
+			  "label": "垂直的"
+			}
+		  },
+		  "horizontal_top_filter_sticky": {
+			"label": "使水平过滤器具有粘性"
+		  },
+		  "is_subcollections": {
+			"label": "显示收藏"
+		  },
+		  "collections": {
+			"label": "收藏"
+		  },
+		  "sort_style": {
+			"label": "按风格排序",
+			"list": {
+			  "label": "列表"
+			},
+			"dropdown": {
+			  "label": "下拉菜单"
+			}
+		  },
+		  "show_category_menus": {
+			"label": "显示类别菜单",
+			"info": "这些菜单项显示在过滤器中"
+		  },
+		  "category_title": {
+			"label": "标题"
+		  },
+		  "headers": {
+			"horizontal": {
+			  "content": "水平的"
+			},
+			"vertical": {
+			  "content": "立式过滤器"
+			}
+		  }
+		},
+		"blocks": {
+		  "products_grid": {
+			"name": "产品网格",
+			"settings": {
+			  "products_limit": {
+				"label": "每页产品数"
+			  },
+			  "card_image_size": {
+				"label": "图像比例"
+			  },
+			  "pagination_type": {
+				"label": "分页类型",
+				"page_number": {
+				  "label": "页码"
+				},
+				"load_more": {
+				  "label": "加载更多按钮"
+				},
+				"infinite": {
+				  "label": "无限滚动"
+				}
+			  }
+			}
+		  }
+		}
+	  },
+	  "main-collection-list": {
+		"name": "主要藏品清单",
+		"settings": {
+		  "sort": {
+			"label": "种类",
+			"alphabetical": {
+			  "label": "按字母顺序，A-Z"
+			},
+			"alphabetical_reversed": {
+			  "label": "按字母顺序，Z-A"
+			},
+			"date_reversed": {
+			  "label": "日期，从旧到新"
+			},
+			"date": {
+			  "label": "日期，从新到旧"
+			},
+			"products_high": {
+			  "label": "产品数量，从高到低"
+			},
+			"products_low": {
+			  "label": "产品数量，从低到高"
+			}
+		  },
+		  "collections_per_page": {
+			"label": "每页收藏数"
+		  },
+		  "column_count": {
+			"label": "桌面连续列"
+		  },
+		  "image_ratio": {
+			"label": "图像比例"
+		  }
+		}
+	  },
+	  "main-login": {
+		"name": "主要登录",
+		"settings": {}
+	  },
+	  "main-order": {
+		"name": "主要订单",
+		"settings": {}
+	  },
+	  "main-page": {
+		"name": "主页",
+		"settings": {}
+	  },
+	  "main-password": {
+		"name": "密码",
+		"settings": {},
+		"blocks": {
+		  "text": {
+			"name": "文本",
+			"settings": {
+			  "text_size": {
+				"label": "文字大小"
+			  }
+			}
+		  },
+		  "heading": {
+			"name": "标题",
+			"settings": {}
+		  },
+		  "social_icons": {
+			"name": "社交图标",
+			"settings": {}
+		  },
+		  "password_message": {
+			"name": "密码留言",
+			"settings": {
+			  "pass_msg": {
+				"content": "要更新内容，请转至（在线商店>首选项）"
+			  },
+			  "text_size": {
+				"label": "密码消息文字大小"
+			  }
+			}
+		  },
+		  "newsletter_form": {
+			"name": "形式",
+			"settings": {
+			  "placeholder_text": {
+				"label": "占位符文本"
+			  }
+			}
+		  }
+		}
+	  },
+	  "main-product": {
+		"name": "产品信息",
+		"settings": {
+		  "layout_style": {
+			"label": "桌面布局",
+			"layout_1": {
+			  "label": "卡重叠"
+			},
+			"layout_2": {
+			  "label": "轮播"
+			},
+			"layout_3": {
+			  "label": "带有粘性选项的轮播"
+			}
+		  },
+		  "first_layout_height": {
+			"label": "卡重叠高度",
+			"screen_wise": {
+			  "label": "屏幕方面"
+			},
+			"section_wise": {
+			  "label": "部分明智"
+			}
+		  },
+		  "image_ratio": {
+			"label": "媒体比例"
+		  },
+		  "is_sticky_addtocart": {
+			"label": "显示粘性添加到购物车"
+		  },
+		  "card_headers": {
+			"content": "t:sections.main-product.settings.card_headers.content"
+		  },
+		  "autoplay": {
+			"label": "启用自动播放"
+		  },
+		  "images_views": {
+			"label": "视图中的图像",
+			"two_images": {
+			  "label": "2 张图片"
+			},
+			"three_images": {
+			  "label": "3 张图片"
+			}
+		  },
+		  "slider_images_views": {
+			"label": "一张产品图片视图",
+			"duplicates": {
+			  "label": "重复项"
+			},
+			"single": {
+			  "label": "单身的"
+			}
+		  },
+		  "sticky_option_radius": {
+			"label": "粘性选项半径"
+		  },
+		  "carousel_border_radius": {
+			"label": "边界半径",
+			"square": {
+			  "label": "正方形"
+			},
+			"rounded": {
+			  "label": "圆形"
+			}
+		  }
+		},
+		"blocks": {
+		  "title": {
+			"name": "标题",
+			"settings": {
+			  "title_size": {
+				"label": "标题大小"
+			  }
+			}
+		  },
+		  "price": {
+			"name": "价格",
+			"settings": {
+			  "hide_unit_price": {
+				"label": "隐藏单价"
+			  },
+			  "hide_shipping_content": {
+				"label": "隐藏税费和运费文本"
+			  }
+			}
+		  },
+		  "sku": {
+			"name": "存货单位",
+			"settings": {}
+		  },
+		  "custom_text": {
+			"name": "文本",
+			"settings": {}
+		  },
+		  "custom_content": {
+			"name": "定制内容",
+			"settings": {}
+		  },
+		  "custom_liquid": {
+			"name": "定制液体",
+			"settings": {
+			  "custom_liquid": {
+				"label": "定制液体"
+			  }
+			}
+		  },
+		  "description": {
+			"name": "描述",
+			"settings": {
+			  "description_style": {
+				"label": "风格",
+				"accordion": {
+				  "label": "手风琴"
+				},
+				"fullwidth": {
+				  "label": "全角"
+				}
+			  }
+			}
+		  },
+		  "collapsible_content": {
+			"name": "可折叠内容",
+			"settings": {}
+		  },
+		  "variant_picker": {
+			"name": "变体选择器",
+			"settings": {
+			  "label": "变体类型",
+			  "dropdown": {
+				"label": "下拉菜单"
+			  },
+			  "button": {
+				"label": "按钮"
+			  }
+			}
+		  },
+		  "size_chart": {
+			"name": "尺码表",
+			"settings": {
+			  "size_chart_style": {
+				"label": "风格",
+				"accordion": {
+				  "label": "手风琴"
+				},
+				"fullwidth": {
+				  "label": "全角"
+				},
+				"popup": {
+				  "label": "弹出窗口"
+				}
+			  }
+			}
+		  },
+		  "quantity_picker": {
+			"name": "数量选择器"
+		  },
+		  "social_sharing": {
+			"name": "社交分享"
+		  },
+		  "payment_icons": {
+			"name": "付款图标"
+		  },
+		  "pickup_availability": {
+			"name": "提供接送服务"
+		  },
+		  "buy_button": {
+			"name": "购买按钮",
+			"settings": {
+			  "show_dynamic_checkout": {
+				"label": "显示动态结账按钮"
+			  },
+			  "show_gift_card_recipient": {
+				"label": "显示礼品卡的收件人信息表"
+			  }
+			}
+		  },
+		  "icon-with-text": {
+			"name": "带文字的图标",
+			"settings": {
+			  "icon-1": {
+				"label": "图标1"
+			  },
+			  "icon-2": {
+				"label": "图标2"
+			  },
+			  "icon-3": {
+				"label": "图标3"
+			  }
+			}
+		  },
+		  "inventory_status": {
+			"name": "库存状况",
+			"settings": {
+			  "minimun_inventory": {
+				"label": "最低库存"
+			  },
+			  "inventory_available_status": {
+				"label": "可用消息"
+			  },
+			  "inventory_less_status": {
+				"label": "库存不足消息",
+				"info": "使用 [inventory ] 显示消息中的库存数量"
+			  },
+			  "inventory_unavailable_status": {
+				"label": "已售完留言"
+			  }
+			}
+		  },
+		  "query_form": {
+			"name": "问一个问题",
+			"settings": {
+			  "help_with_share_icons": {
+				"label": "在共享图标前面显示标签"
+			  }
+			}
+		  },
+		  "complementary_products": {
+			"name": "配套产品",
+			"settings": {
+			  "products_count": {
+				"label": "显示的最大产品数"
+			  }
+			}
+		  }
+		}
+	  },
+	  "main-register": {
+		"name": "主寄存器",
+		"settings": {
+		  "heading_size": {
+			"label": "页面标题大小"
+		  }
+		}
+	  },
+	  "main-reset-password": {
+		"name": "主要重置密码",
+		"settings": {}
+	  },
+	  "main-search": {
+		"name": "搜索",
+		"settings": {
+		  "image_ratio": {
+			"label": "图像比例"
+		  },
+		  "filter_header": {
+			"content": "过滤器"
+		  },
+		  "show_filters_always": {
+			"label": "启用过滤器"
+		  }
+		}
+	  },
+	  "marquee-old": {
+		"name": "跑马灯老",
+		"settings": {
+		  "sapce_between_text": {
+			"label": "马克·盖普"
+		  },
+		  "inner_spacing": {
+			"content": "内间距"
+		  }
+		},
+		"blocks": {
+		  "text": {
+			"name": "文本",
+			"settings": {
+			  "marquee_text_style": {
+				"label": "文字样式",
+				"normal": {
+				  "label": "普通的"
+				},
+				"outline-font": {
+				  "label": "大纲"
+				},
+				"gradient": {
+				  "label": "坡度"
+				}
+			  }
+			}
+		  },
+		  "icon": {
+			"name": "图标",
+			"settings": {}
+		  },
+		  "image": {
+			"name": "图像",
+			"settings": {
+			  "image_size": {
+				"label": "图片尺寸"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "跑马灯老"
+		}
+	  },
+	  "marquee-text-with-image": {
+		"name": "带图像的选框文本",
+		"settings": {
+		  "rotation_type": {
+			"label": "滚动式",
+			"onscroll": {
+			  "label": "滚动时"
+			},
+			"auto_rotate": {
+			  "label": "自动旋转"
+			},
+			"both": {
+			  "label": "两个都"
+			}
+		  },
+		  "marquee_style": {
+			"label": "风格",
+			"row": {
+			  "label": "行明智"
+			},
+			"column": {
+			  "label": "按列"
+			}
+		  }
+		},
+		"blocks": {
+		  "marque": {
+			"name": "文字与图像",
+			"settings": {
+			  "desktop_image_width": {
+				"label": "图像宽度（桌面）"
+			  },
+			  "mobile_image_width": {
+				"label": "图像宽度（移动设备）"
+			  },
+			  "sapce_between_text_desktop": {
+				"label": "文本|图标|图像空间（桌面）"
+			  },
+			  "sapce_between_text_mobile": {
+				"label": "文本|图标|图像空间（移动）"
+			  },
+			  "sapce_between_items_desktop": {
+				"label": "水平空间（桌面）"
+			  },
+			  "sapce_between_items_mobile": {
+				"label": "水平空间（移动）"
+			  },
+			  "spacing": {
+				"label": "间距"
+			  },
+			  "marquee_icon_color": {
+				"label": "图标"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "带图像的选框文本"
+		}
+	  },
+	  "media-gallery": {
+		"name": "媒体库",
+		"settings": {
+		  "media_style": {
+			"label": "桌面风格",
+			"default": {
+			  "label": "普通的"
+			},
+			"tilt": {
+			  "label": "倾斜"
+			},
+			"scroll-tilt": {
+			  "label": "滚动倾斜"
+			}
+		  },
+		  "hover_style": {
+			"label": "悬停风格",
+			"none": {
+			  "label": "没有任何"
+			},
+			"animated_border": {
+			  "label": "动画边框"
+			}
+		  },
+		  "is_media_text_on_hover": {
+			"label": "悬停时显示媒体文本"
+		  },
+		  "image_ratio": {
+			"label": "图像比例"
+		  },
+		  "visibility": {
+			"label": "媒体内容可见性",
+			"on-hover": {
+			  "label": "悬停时"
+			},
+			"time-delay": {
+			  "label": "延时"
+			},
+			"delay-and-disappear": {
+			  "label": "延迟并消失"
+			}
+		  },
+		  "delay-duration": {
+			"label": "延迟时间"
+		  },
+		  "disappear-duration": {
+			"label": "消失持续时间"
+		  },
+		  "media_columns_gap": {
+			"label": "立柱间隙"
+		  },
+		  "header": {
+			"content": "媒体设置"
+		  }
+		},
+		"blocks": {
+		  "image_grid": {
+			"name": "媒体"
+		  },
+		  "product": {
+			"label": "产品"
+		  },
+		  "text_size": {
+			"label": "文字大小",
+			"small": {
+			  "label": "小的"
+			},
+			"medium": {
+			  "label": "中等的"
+			},
+			"large": {
+			  "label": "大的"
+			}
+		  }
+		},
+		"presets": {
+		  "name": "媒体库"
+		}
+	  },
+	  "media-grid": {
+		"name": "媒体网格",
+		"settings": {
+		  "desktop_row_height": {
+			"label": "桌面行高"
+		  },
+		  "mobile_row_height": {
+			"label": "移动行高"
+		  },
+		  "desktop_grid_gap": {
+			"label": "桌面立柱间隙"
+		  },
+		  "mobile_grid_gap": {
+			"label": "移动柱间隙"
+		  }
+		},
+		"blocks": {
+		  "grid": {
+			"name": "媒体",
+			"settings": {
+			  "column": {
+				"label": "桌面栏目"
+			  },
+			  "row": {
+				"label": "桌面排"
+			  },
+			  "column_mobile": {
+				"label": "移动专栏"
+			  },
+			  "row_mobile": {
+				"label": "移动排"
+			  },
+			  "content_width": {
+				"label": "内容宽度"
+			  },
+			  "background_opacity": {
+				"label": "背景不透明度"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "媒体网格"
+		}
+	  },
+	  "multiboxes": {
+		"name": "多功能盒",
+		"settings": {
+		  "image_ratio": {
+			"label": "图像比例"
+		  },
+		  "show_count": {
+			"label": "显示列数"
+		  },
+		  "column_background": {
+			"label": "显示背景"
+		  }
+		},
+		"blocks": {
+		  "media_card": {
+			"name": "媒体卡",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "多功能盒"
+		}
+	  },
+	  "multicolumn": {
+		"name": "多列",
+		"settings": {
+		  "image_ratio": {
+			"label": "图像比例"
+		  },
+		  "multicolumn_image_size": {
+			"label": "网格图像比例"
+		  },
+		  "rounded": {
+			"label": "制作圆形图像"
+		  },
+		  "desktop_column_count": {
+			"label": "桌面列数"
+		  },
+		  "mobile_column_count": {
+			"label": "移动列数"
+		  }
+		},
+		"blocks": {
+		  "column": {
+			"name": "柱子",
+			"settings": {
+			  "link_label": {
+				"label": "链接文字"
+			  },
+			  "column_background": {
+				"label": "显示背景"
+			  },
+			  "column_background_color": {
+				"label": "栏目背景"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "多列"
+		}
+	  },
+	  "newsletter-popup": {
+		"name": "时事通讯弹出窗口",
+		"settings": {
+		  "newsletter_display_mode": {
+			"label": "显示方式",
+			"info": "在测试模式下，无论相关设置或关闭，弹出窗口始终显示，以便您可以随时查看。",
+			"enable": {
+			  "label": "使能够"
+			},
+			"test_mode": {
+			  "label": "测试模式"
+			}
+		  },
+		  "image_position": {
+			"label": "位置",
+			"left": {
+			  "label": "左边"
+			},
+			"right": {
+			  "label": "正确的"
+			},
+			"top": {
+			  "label": "顶部"
+			}
+		  },
+		  "pop_position": {
+			"label": "位置",
+			"center-left": {
+			  "label": "左边"
+			},
+			"center": {
+			  "label": "中心"
+			},
+			"center-right": {
+			  "label": "正确的"
+			},
+			"bottom-left": {
+			  "label": "左边"
+			},
+			"bottom-center": {
+			  "label": "中心"
+			},
+			"bottom-right": {
+			  "label": "正确的"
+			}
+		  },
+		  "newsletter_popup_delay": {
+			"label": "延迟直到弹出窗口出现"
+		  },
+		  "show_on_home_page": {
+			"label": "仅在首页显示"
+		  },
+		  "disable_for_account_holders": {
+			"label": "对账户持有人禁用"
+		  },
+		  "show_once_to_visitors": {
+			"label": "向访客展示一次"
+		  },
+		  "newsletter_popup_cookie": {
+			"label": "设置时事通讯弹出窗口的 cookie（天）"
+		  }
+		}
+	  },
+	  "newsletter": {
+		"name": "通讯",
+		"settings": {
+		  "content_position": {
+			"label": "垂直位置",
+			"flex-start": {
+			  "label": "顶部"
+			},
+			"center": {
+			  "label": "中心"
+			},
+			"flex-end": {
+			  "label": "底部"
+			}
+		  },
+		  "content_alignment": {
+			"label": "水平对齐",
+			"flex-start": {
+			  "label": "左边"
+			},
+			"center": {
+			  "label": "中心"
+			},
+			"flex-end": {
+			  "label": "正确的"
+			}
+		  },
+		  "background_style": {
+			"label": "背景风格",
+			"none": {
+			  "label": "没有任何"
+			},
+			"solid": {
+			  "label": "坚硬的"
+			},
+			"glass": {
+			  "label": "玻璃"
+			}
+		  }
+		},
+		"presets": {
+		  "name": "通讯"
+		}
+	  },
+	  "page-banner": {
+		"name": "主横幅",
+		"settings": {
+		  "heading": {
+			"label": "标题",
+			"info": "将此字段保留为空以显示当前页面的默认标题。"
+		  },
+		  "enable_description": {
+			"label": "显示说明"
+		  },
+		  "description": {
+			"label": "描述",
+			"info": "将此字段保留为空以显示当前页面的默认描述。"
+		  },
+		  "content_overlay": {
+			"label": "内容叠加",
+			"info": "它会因横幅图像而异",
+			"heading_overlay": {
+			  "label": "标题"
+			},
+			"both_overlay": {
+			  "label": "标题和描述"
+			},
+			"no_overlay": {
+			  "label": "无叠加"
+			}
+		  },
+		  "banner_image": {
+			"label": "横幅图片",
+			"info": "将此图像保留为空白以显示当前页面的默认图像。"
+		  }
+		},
+		"presets": {
+		  "name": "主横幅"
+		}
+	  },
+	  "parallax-images": {
+		"name": "视差图像",
+		"settings": {},
+		"blocks": {
+		  "image": {
+			"name": "图像",
+			"settings": {
+			  "hide_background": {
+				"label": "隐藏背景颜色"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "视差图像"
+		}
+	  },
+	  "promotional-bar": {
+		"name": "促销栏",
+		"settings": {
+		  "collection_list": {
+			"label": "收藏清单"
+		  },
+		  "link_text": {
+			"label": "链接文字"
+		  },
+		  "enable_video": {
+			"label": "显示视频"
+		  },
+		  "video_size": {
+			"label": "视频弹出窗口大小"
+		  },
+		  "cover_image": {
+			"label": "视频封面图片"
+		  },
+		  "right_short_description": {
+			"label": "简短描述"
+		  },
+		  "radius_selector": {
+			"label": "桌面",
+			"d-border-radius-none": {
+			  "label": "没有任何"
+			},
+			"d-border-radius-top": {
+			  "label": "顶部"
+			},
+			"m-border-radius-bottom": {
+			  "label": "底部"
+			},
+			"m-border-radius-all": {
+			  "label": "所有侧面"
+			}
+		  }
+		},
+		"presets": {
+		  "name": "促销栏"
+		}
+	  },
+	  "products-collapse": {
+		"name": "产品崩溃",
+		"settings": {
+		  "products": {
+			"label": "产品"
+		  },
+		  "description_alignment": {
+			"label": "文本对齐（移动）"
+		  }
+		},
+		"presets": {
+		  "name": "产品崩溃"
+		}
+	  },
+	  "products-grid": {
+		"name": "产品网格",
+		"settings": {
+		  "products": {
+			"label": "产品",
+			"info": "选择时替换集合"
+		  },
+		  "collection": {
+			"label": "收藏"
+		  }
+		},
+		"presets": {
+		  "name": "产品网格"
+		}
+	  },
+	  "product-quick-view": {
+		"name": "产品快速查看",
+		"settings": {
+		  "image_ratio": {
+			"label": "图像比例"
+		  }
+		},
+		"blocks": {
+		  "title": {
+			"name": "标题",
+			"settings": {
+			  "title_size": {
+				"label": "标题大小"
+			  }
+			}
+		  },
+		  "price": {
+			"name": "价格",
+			"settings": {
+			  "hide_unit_price": {
+				"label": "隐藏单价"
+			  },
+			  "hide_shipping_content": {
+				"label": "隐藏税费和运费文本"
+			  }
+			}
+		  },
+		  "sku": {
+			"name": "存货单位",
+			"settings": {}
+		  },
+		  "custom_text": {
+			"name": "文本",
+			"settings": {}
+		  },
+		  "custom_content": {
+			"name": "定制内容",
+			"settings": {
+			  "show_in_fullwidth": {
+				"label": "以全角显示"
+			  }
+			}
+		  },
+		  "variant_picker": {
+			"name": "变体选择器",
+			"settings": {
+			  "label": "变体类型",
+			  "dropdown": {
+				"label": "下拉菜单"
+			  },
+			  "button": {
+				"label": "按钮"
+			  }
+			}
+		  },
+		  "quantity_picker": {
+			"name": "数量选择器",
+			"settings": {}
+		  },
+		  "inventory_status": {
+			"name": "库存状况",
+			"settings": {
+			  "minimun_inventory": {
+				"label": "最低库存"
+			  },
+			  "inventory_available_status": {
+				"label": "可用消息"
+			  },
+			  "inventory_less_status": {
+				"label": "库存不足消息",
+				"info": "使用 [inventory ] 显示消息中的库存数量"
+			  },
+			  "inventory_unavailable_status": {
+				"label": "已售完留言"
+			  }
+			}
+		  },
+		  "payment_icons": {
+			"name": "付款图标",
+			"settings": {}
+		  },
+		  "buy_button": {
+			"name": "购买按钮",
+			"settings": {
+			  "show_dynamic_checkout": {
+				"label": "显示动态结账按钮"
+			  },
+			  "show_gift_card_recipient": {
+				"label": "显示礼品卡的收件人信息表"
+			  }
+			}
+		  },
+		  "custom-liquid": {
+			"name": "定制液体",
+			"settings": {
+			  "custom_liquid": {
+				"label": "定制液体"
+			  }
+			}
+		  },
+		  "social_sharing": {
+			"name": "社交分享"
+		  },
+		  "pickup_availability": {
+			"name": "提供接送服务"
+		  }
+		}
+	  },
+	  "recently-viewed-products": {
+		"name": "最近查看的产品",
+		"settings": {
+		  "header": {
+			"content": "内容"
+		  },
+		  "paragraph": {
+			"content": "如果没有访问过任何产品，该部分将隐藏。"
+		  },
+		  "image_ratio": {
+			"label": "图像比例"
+		  },
+		  "desktop_column_count": {
+			"label": "桌面连续列"
+		  }
+		},
+		"presets": {
+		  "name": "最近查看的产品"
+		}
+	  },
+	  "related-products": {
+		"name": "相关产品",
+		"settings": {
+		  "image_ratio": {
+			"label": "图像比例"
+		  },
+		  "products_to_show": {
+			"label": "要显示的产品数量"
+		  },
+		  "desktop_to_show": {
+			"label": "桌面连续列"
+		  }
+		},
+		"presets": {
+		  "name": "相关产品"
+		}
+	  },
+	  "revealing-text": {
+		"name": "揭示文字",
+		"settings": {
+		  "revealing_style": {
+			"label": "彰显风格",
+			"style-1": {
+			  "label": "充满"
+			},
+			"style-2": {
+			  "label": "褪色"
+			}
+		  },
+		  "is_parallax": {
+			"label": "启用视差"
+		  },
+		  "revealing_height": {
+			"label": "高度",
+			"height-auto": {
+			  "label": "汽车"
+			},
+			"height-100vh": {
+			  "label": "适合屏幕"
+			}
+		  },
+		  "font_type": {
+			"label": "字体"
+		  },
+		  "heading_size": {
+			"label": "尺寸"
+		  },
+		  "seo_heading": {
+			"label": "标签"
+		  }
+		},
+		"presets": {
+		  "name": "揭示文字"
+		}
+	  },
+	  "rich-text": {
+		"name": "富文本",
+		"settings": {},
+		"blocks": {
+		  "heading": {
+			"name": "标题",
+			"info": "将文本括在 [ ] 之间以添加标记字体。",
+			"settings": {}
+		  },
+		  "description": {
+			"name": "文本",
+			"settings": {}
+		  },
+		  "image": {
+			"name": "图像",
+			"settings": {
+			  "image": {
+				"label": "富文本图像"
+			  },
+			  "image_ratio": {
+				"label": "图像比例"
+			  }
+			}
+		  },
+		  "button": {
+			"name": "按钮",
+			"settings": {}
+		  }
+		},
+		"presets": {
+		  "name": "富文本"
+		}
+	  },
+	  "scrollable-media-content": {
+		"name": "可滚动的媒体内容",
+		"settings": {
+		  "scrollable_content": {
+			"label": "可滚动内容"
+		  }
+		},
+		"blocks": {
+		  "text": {
+			"name": "添加区块",
+			"settings": {
+			  "scrollable_media_description": {
+				"label": "您的描述"
+			  },
+			  "scrollable_media_image": {
+				"label": "选择您的图片"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "可滚动的媒体内容"
+		}
+	  },
+	  "shop-the-look": {
+		"name": "选购外观",
+		"settings": {
+		  "image": {
+			"label": "桌面图片"
+		  },
+		  "mb_image": {
+			"label": "手机图片"
+		  },
+		  "border_color": {
+			"label": "点"
+		  },
+		  "active_color": {
+			"label": "活性点"
+		  }
+		},
+		"blocks": {
+		  "hot-spot": {
+			"name": "产品列表",
+			"settings": {
+			  "product_list": {
+				"label": "产品列表"
+			  }
+			}
+		  },
+		  "image-with-text": {
+			"name": "带文字的图像",
+			"settings": {}
+		  },
+		  "collection_list": {
+			"name": "带有文字的集合",
+			"settings": {
+			  "collection_list": {
+				"label": "收藏"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "选购外观"
+		}
+	  },
+	  "slideshow": {
+		"name": "幻灯片",
+		"settings": {
+		  "animation_style": {
+			"label": "动画风格",
+			"coverflow": {
+			  "label": "盖弗流"
+			},
+			"creative": {
+			  "label": "有创造力的"
+			},
+			"cube": {
+			  "label": "立方体"
+			},
+			"fade": {
+			  "label": "褪色"
+			},
+			"flip": {
+			  "label": "翻动"
+			},
+			"slide": {
+			  "label": "滑动"
+			}
+		  },
+		  "carousel_navigation": {
+			"label": "桌面分页",
+			"arrows": {
+			  "label": "箭头"
+			},
+			"dots": {
+			  "label": "点"
+			},
+			"both": {
+			  "label": "带点的箭头"
+			},
+			"none": {
+			  "label": "没有任何"
+			}
+		  },
+		  "desktop_custom_height": {
+			"label": "定制高度"
+		  },
+		  "enable_animation": {
+			"label": "启用内容动画"
+		  }
+		},
+		"blocks": {
+		  "slide_grid": {
+			"name": "滑动",
+			"settings": {
+			  "show_description": {
+				"label": "显示说明",
+				"above-heading": {
+				  "label": "标题上方"
+				},
+				"below-heading": {
+				  "label": "标题下方"
+				}
+			  },
+			  "overlay_opacity": {
+				"label": "图像叠加不透明度",
+				"info": "要更改叠加颜色，请在主题设置下的配色方案中编辑“图像叠加背景”颜色。"
+			  },
+			  "content_width": {
+				"label": "内容宽度"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "幻灯片"
+		}
+	  },
+	  "split-slider": {
+		"name": "分割幻灯片",
+		"settings": {
+		  "desktop_image_h": {
+			"label": "桌面图像高度"
+		  },
+		  "mobile_image_h": {
+			"label": "移动图像高度"
+		  },
+		  "carousel_navigation": {
+			"label": "桌面分页",
+			"arrows": {
+			  "label": "箭头"
+			},
+			"dots": {
+			  "label": "点"
+			},
+			"both": {
+			  "label": "带点的箭头"
+			},
+			"none": {
+			  "label": "没有任何"
+			}
+		  }
+		},
+		"blocks": {
+		  "slide": {
+			"name": "滑动",
+			"settings": {}
+		  },
+		  "image-with-text-column": {
+			"name": "带文本栏的图像",
+			"settings": {
+			  "media_position": {
+				"label": "动画媒体位置"
+			  },
+			  "overlay_opacity": {
+				"label": "图像叠加不透明度",
+				"info": "要更改叠加颜色，请在主题设置下的配色方案中编辑“图像叠加背景”颜色。"
+			  },
+			  "content_desktop_bg_image": {
+				"label": "桌面背景图片"
+			  },
+			  "content_mobile_bg_image": {
+				"label": "手机背景图片"
+			  },
+			  "content_overlay_opacity": {
+				"label": "背景叠加不透明度",
+				"info": "要更改叠加颜色，请在主题设置下的配色方案中编辑方案“图像叠加背景”颜色。"
+			  }
+			}
+		  },
+		  "product_with_media": {
+			"name": "带媒体的产品",
+			"settings": {
+			  "media_position": {
+				"label": "动画媒体位置"
+			  },
+			  "overlay_opacity": {
+				"label": "图像叠加不透明度",
+				"info": "要更改叠加颜色，请在主题设置下的配色方案中编辑方案“图像叠加背景”颜色。"
+			  },
+			  "content_desktop_bg_image": {
+				"label": "桌面背景图片"
+			  },
+			  "content_mobile_bg_image": {
+				"label": "手机背景图片"
+			  },
+			  "content_overlay_opacity": {
+				"label": "背景叠加不透明度",
+				"info": "要更改叠加颜色，请在主题设置下的配色方案中编辑方案“图像叠加背景”颜色。"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "分割幻灯片"
+		}
+	  },
+	  "store-locator": {
+		"name": "商店定位器",
+		"settings": {},
+		"blocks": {
+		  "address": {
+			"name": "地址",
+			"settings": {
+			  "address_content": {
+				"label": "地址"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "商店定位器"
+		}
+	  },
+	  "testimonials": {
+		"name": "感言",
+		"settings": {
+		  "testimonial_style": {
+			"label": "感言风格"
+		  }
+		},
+		"blocks": {
+		  "testimonial_grid": {
+			"name": "感言",
+			"settings": {
+			  "testimonial_heading": {
+				"label": "标题反馈"
+			  },
+			  "stars_rating": {
+				"label": "等级"
+			  },
+			  "stars_rating_color": {
+				"label": "评级颜色"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "感言"
+		}
+	  },
+	  "text-with-icons": {
+		"name": "带图标的文本",
+		"settings": {
+		  "description_style": {
+			"label": "描述风格",
+			"fixed": {
+			  "label": "固定的"
+			},
+			"on_hover": {
+			  "label": "悬停时"
+			}
+		  },
+		  "desktop_column_count": {
+			"label": "桌面列数"
+		  },
+		  "mobile_column_count": {
+			"label": "移动列数"
+		  },
+		  "column_style": {
+			"label": "栏目样式"
+		  },
+		  "icon_style": {
+			"label": "图标风格"
+		  },
+		  "icon_size": {
+			"label": "图标大小"
+		  },
+		  "icon_position": {
+			"label": "图标位置",
+			"info": "左侧位置不适用于悬停描述样式。",
+			"left": {
+			  "label": "左边"
+			},
+			"top": {
+			  "label": "顶部"
+			}
+		  },
+		  "icon_gap": {
+			"label": "图标和文本之间的间距"
+		  },
+		  "content_alignment": {
+			"label": "列内容对齐"
+		  }
+		},
+		"blocks": {
+		  "column": {
+			"name": "柱子",
+			"settings": {
+			  "icon": {
+				"content": "图标"
+			  },
+			  "column_background_color": {
+				"label": "栏目背景"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "带图标的文本"
+		}
+	  },
+	  "timeline": {
+		"name": "时间轴",
+		"settings": {
+		  "heading_alignment": {
+			"label": "标题对齐"
+		  }
+		},
+		"blocks": {
+		  "timeline-block": {
+			"name": "时间轴块",
+			"settings": {
+			  "tab_heading": {
+				"label": "选项卡标题"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "时间轴"
+		}
+	  },
+	  "trending-products": {
+		"name": "热门产品",
+		"settings": {
+		  "image_ratio": {
+			"label": "图像比例"
+		  }
+		},
+		"blocks": {
+		  "trending-products": {
+			"name": "产品",
+			"settings": {
+			  "bg_heading": {
+				"label": "背景标题",
+				"info": "最多 11 个字符"
+			  },
+			  "layout": {
+				"label": "动画风格",
+				"updwards": {
+				  "label": "向上"
+				},
+				"downwards": {
+				  "label": "向下"
+				}
+			  },
+			  "product": {
+				"label": "产品"
+			  },
+			  "description": {
+				"label": "简短描述"
+			  },
+			  "spinning_button": {
+				"content": "旋转按钮"
+			  },
+			  "hover": {
+				"content": "徘徊"
+			  },
+			  "image_overlay_bg": {
+				"label": "图像叠加"
+			  }
+			}
+		  }
+		},
+		"presets": {
+		  "name": "热门产品"
+		}
+	  },
+	  "video_banner": {
+		"name": "视频横幅",
+		"settings": {
+		  "video_url": {
+			"label": "网址"
+		  },
+		  "cover_image": {
+			"label": "封面图片",
+			"info": "建议使用 1920 x 720 像素。"
+		  },
+		  "autoplay": {
+			"label": "视频行为",
+			"info": "如果启用自动播放，则视频将静音。",
+			"true": {
+			  "label": "自动播放"
+			},
+			"false": {
+			  "label": "点击播放"
+			}
+		  },
+		  "button_play": {
+			"content": "播放按钮"
+		  },
+		  "play_button": {
+			"label": "风格",
+			"info": "如果启用自动播放，则播放按钮将不起作用。",
+			"fixed": {
+			  "label": "固定的"
+			},
+			"floated": {
+			  "label": "悬停时浮动"
+			}
+		  },
+		  "content_position": {
+			"label": "垂直位置",
+			"flex-start": {
+			  "label": "顶部"
+			},
+			"center": {
+			  "label": "中间"
+			},
+			"flex-end": {
+			  "label": "底部"
+			}
+		  },
+		  "content_width": {
+			"label": "内容宽度"
+		  },
+		  "content_visibility": {
+			"label": "内容可见性",
+			"always": {
+			  "label": "总是"
+			},
+			"hidden": {
+			  "label": "视频播放时隐藏"
+			}
+		  }
+		},
+		"presets": {
+		  "name": "视频横幅"
+		}
+	  }
+	}
+  }
