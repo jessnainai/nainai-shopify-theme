@@ -1,18 +1,37 @@
 {% comment %}
   NAINAI x OFYSINA — Hero Banner Section
-  Replace contents of: sections/hero-banner.liquid
+  Matches Figma design: full-bleed hero with text on right, frosted glass CTA
+  File: sections/hero-banner.liquid
 {% endcomment %}
 
 <style>
+  /* ── Satoshi font ── */
+  @font-face {
+    font-family: 'Satoshi';
+    src: url('https://cdn.fontshare.com/wf/YDIKSKGVJXGCDRPZQNULWUBKGY3ELHLF/GFRTWGFIDJ5YFKRUXIIHKDLQK36HO6ML/SDHQMYJ637HXRJG7BQNCJ6EBK5XRDJNL.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Satoshi';
+    src: url('https://cdn.fontshare.com/wf/YDIKSKGVJXGCDRPZQNULWUBKGY3ELHLF/CWXU3RLPHTLFPB7MHSVZDXQBG3YYRFLJ/YJCH5YRWNWQRQLHOBKNP5EK5VWYUHZBI.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* ── Hero container ── */
   .nainai-hero {
     position: relative;
     width: 100%;
     height: 100vh;
     min-height: 580px;
+    max-height: 934px;
     overflow: hidden;
   }
 
-  /* Background image */
+  /* ── Background image ── */
   .nainai-hero__bg {
     position: absolute;
     inset: 0;
@@ -30,103 +49,157 @@
     z-index: 0;
   }
 
-  /* Gradient overlay — lighter left, darker right for text */
+  /* ── Gradient overlay — subtle left, darker right for legibility ── */
   .nainai-hero__overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
       to right,
-      rgba(0,0,0,0.08) 0%,
-      rgba(0,0,0,0.08) 35%,
-      rgba(0,0,0,0.42) 100%
+      rgba(0, 0, 0, 0.05) 0%,
+      rgba(0, 0, 0, 0.05) 40%,
+      rgba(0, 0, 0, 0.38) 100%
     );
     z-index: 1;
   }
 
-  /* Hero text content — right side */
+  /* ── Text content — right half ── */
   .nainai-hero__content {
     position: absolute;
     z-index: 5;
-    right: 7%;
+    left: 50%;
     top: 50%;
     transform: translateY(-50%);
-    max-width: 400px;
+    max-width: 486px;
+    padding-right: 7%;
   }
 
+  /* ── Heading ── */
   .nainai-hero__heading {
-    color: #ffffff;
-    font-family: 'Georgia', 'Times New Roman', Times, serif;
-    font-size: clamp(20px, 2.4vw, 34px);
-    font-weight: 400;
-    line-height: 1.28;
-    margin: 0 0 18px;
-    letter-spacing: -0.01em;
+    color: #FFFDF3;
+    font-family: 'Satoshi', sans-serif;
+    font-size: clamp(22px, 2.1vw, 30px);
+    font-weight: 700;
+    line-height: 0.87;
+    letter-spacing: -0.03em;
+    text-transform: lowercase;
+    margin: 0 0 25px;
   }
 
-  .nainai-hero__subtext {
-    color: rgba(255,255,255,0.86);
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: clamp(11px, 1vw, 13px);
+  /* ── Body text ── */
+  .nainai-hero__body {
+    color: #FFFDF3;
+    font-family: 'Satoshi', sans-serif;
+    font-size: clamp(11px, 0.95vw, 14px);
     font-weight: 400;
-    line-height: 1.65;
-    margin: 0 0 26px;
-    max-width: 320px;
+    line-height: 1.6;
+    margin: 0 0 14px;
+    max-width: 486px;
+    opacity: 0.92;
   }
 
+  .nainai-hero__body:last-of-type {
+    margin-bottom: 32px;
+  }
+
+  /* ── Frosted glass CTA button ── */
   .nainai-hero__btn {
-    display: inline-block;
-    color: #ffffff;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 279px;
+    height: 51px;
+    padding: 0 40px;
+    color: #FFFDF3;
+    font-family: 'Satoshi', sans-serif;
+    font-size: 14px;
     font-weight: 400;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.02em;
     text-decoration: none;
     text-transform: none;
-    border-bottom: 1px solid rgba(255,255,255,0.55);
-    padding-bottom: 3px;
-    transition: border-color 0.25s ease;
+    background: rgba(255, 253, 243, 0.2);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border: 0.3px solid #FFFDF3;
+    border-radius: 100px;
+    transition: background 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
   }
 
   .nainai-hero__btn:hover {
-    border-color: #ffffff;
-    color: #ffffff;
+    background: rgba(255, 253, 243, 0.32);
+    border-color: #FFFDF3;
+    color: #FFFDF3;
     text-decoration: none;
   }
 
-  /* Mobile */
+  /* ── Mobile ── */
   @media (max-width: 768px) {
+    .nainai-hero {
+      min-height: 500px;
+      max-height: none;
+    }
+
     .nainai-hero__content {
-      right: 5%;
       left: 5%;
+      right: 5%;
       max-width: 100%;
       top: auto;
-      bottom: 10%;
+      bottom: 12%;
       transform: none;
+      padding-right: 0;
     }
 
     .nainai-hero__overlay {
       background: linear-gradient(
         to top,
-        rgba(0,0,0,0.55) 0%,
-        rgba(0,0,0,0.1) 60%
+        rgba(0, 0, 0, 0.55) 0%,
+        rgba(0, 0, 0, 0.08) 60%
       );
+    }
+
+    .nainai-hero__heading {
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .nainai-hero__body {
+      font-size: 12px;
+    }
+
+    .nainai-hero__body:last-of-type {
+      margin-bottom: 24px;
+    }
+
+    .nainai-hero__btn {
+      min-width: 100%;
+      height: 48px;
+      font-size: 13px;
     }
   }
 </style>
 
-<section class="nainai-hero">
+<section class="nainai-hero" aria-label="Hero banner">
 
-  {% if section.settings.hero_image != blank %}
+  {%- if section.settings.hero_image != blank -%}
     <img
       class="nainai-hero__bg"
       src="{{ section.settings.hero_image | image_url: width: 2400 }}"
-      alt="{{ section.settings.hero_image.alt | default: shop.name }}"
+      srcset="
+        {{ section.settings.hero_image | image_url: width: 800 }} 800w,
+        {{ section.settings.hero_image | image_url: width: 1200 }} 1200w,
+        {{ section.settings.hero_image | image_url: width: 1800 }} 1800w,
+        {{ section.settings.hero_image | image_url: width: 2400 }} 2400w
+      "
+      sizes="100vw"
+      alt="{{ section.settings.hero_image.alt | default: section.settings.heading | default: shop.name }}"
       loading="eager"
       fetchpriority="high"
+      width="2400"
+      height="934"
     >
-  {% else %}
+  {%- else -%}
     <div class="nainai-hero__bg-placeholder"></div>
-  {% endif %}
+  {%- endif -%}
 
   <div class="nainai-hero__overlay"></div>
 
@@ -134,9 +207,15 @@
     <h1 class="nainai-hero__heading">
       {{ section.settings.heading | default: 'ancient herbal remedies in gummy form' }}
     </h1>
-    <p class="nainai-hero__subtext">
-      {{ section.settings.subtext | default: 'Centuries-old plant remedies inspired by Traditional Chinese Medicine (TCM) brewed into a full-spectrum decoction & delivered in an ultra-clean, vegan gummy. Used in clinical practice for generations to support immunity, mood, digestion & hormone balance.' }}
+
+    <p class="nainai-hero__body">
+      {{ section.settings.subtext_1 | default: 'Centuries-old plant remedies inspired by Traditional Chinese Medicine (TCM) brewed into a full-spectrum decoction & delivered in an ultra-clean, vegan gummy.' }}
     </p>
+
+    <p class="nainai-hero__body">
+      {{ section.settings.subtext_2 | default: 'Used in clinical practice for generations to support immunity, mood, digestion & hormone balance.' }}
+    </p>
+
     <a
       href="{{ section.settings.btn_link | default: '/collections/all' }}"
       class="nainai-hero__btn"
@@ -157,7 +236,7 @@
       "type": "image_picker",
       "id": "hero_image",
       "label": "Hero Background Image",
-      "info": "Use a high-resolution photo. Recommended: 2400px wide."
+      "info": "Use a high-resolution photo (recommended: 2400 x 934px)."
     },
     {
       "type": "text",
@@ -167,9 +246,15 @@
     },
     {
       "type": "textarea",
-      "id": "subtext",
-      "label": "Subtext",
-      "default": "Centuries-old plant remedies inspired by Traditional Chinese Medicine (TCM) brewed into a full-spectrum decoction & delivered in an ultra-clean, vegan gummy. Used in clinical practice for generations to support immunity, mood, digestion & hormone balance."
+      "id": "subtext_1",
+      "label": "Body Text — Paragraph 1",
+      "default": "Centuries-old plant remedies inspired by Traditional Chinese Medicine (TCM) brewed into a full-spectrum decoction & delivered in an ultra-clean, vegan gummy."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext_2",
+      "label": "Body Text — Paragraph 2",
+      "default": "Used in clinical practice for generations to support immunity, mood, digestion & hormone balance."
     },
     {
       "type": "text",
