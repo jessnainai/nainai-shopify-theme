@@ -1,0 +1,75 @@
+<ul class="list-inline social--icons-list">
+  {%- if settings.share_facebook -%}
+    <li class="social--icons-item" is="hover-li" style="transform: translate3d(0px, 0px, 0px) rotate3d(0, 0, 0, 0deg);">
+      <a
+        target="_blank"
+        href="//facebook.com/sharer.php?u={{ share_link }}"
+        class="social--icons-link facebook"
+        aria-label="{{ 'general.social_share.alt_text.share_on_facebook' | t }}"
+        title="{{ 'general.social_share.alt_text.share_on_facebook' | t }}"
+      >
+        {% render 'icons', icon: 'facebook' %}
+      </a>
+    </li>
+  {%- endif -%}
+
+  {%- if settings.tweet_twitter -%}
+    <li class="social--icons-item" is="hover-li" style="transform: translate3d(0px, 0px, 0px) rotate3d(0, 0, 0, 0deg);">
+      <a
+        target="_blank"
+        href="//x.com/intent/tweet?text={{ product.title | escape }}&amp;url={{ share_link }}"
+        class="social--icons-link twitter-x"
+        aria-label="{{ 'general.social_share.alt_text.share_on_twitter' | t }}"
+        title="{{ 'general.social_share.alt_text.share_on_twitter' | t }}"
+      >
+        {% render 'icons', icon: 'x' %}
+      </a>
+    </li>
+  {%- endif -%}
+
+  {%- if settings.pin_pinterest %}
+    <li class="social--icons-item" is="hover-li" style="transform: translate3d(0px, 0px, 0px) rotate3d(0, 0, 0, 0deg);">
+      <a
+        target="_blank"
+        href="//pinterest.com/pin/create/link/?url={{ share_link }}&amp;media={{ product.featured_image |  img_url:'1024x1024'  }}?crop=center&amp;height=1024&amp;width=1024&amp;description={{ product.title | escape }}"
+        class="social--icons-link twitter-x"
+         aria-label="{{ 'general.social_share.alt_text.share_on_pinterest' | t }}"
+        title="{{ 'general.social_share.alt_text.share_on_pinterest' | t }}"
+      >
+        {% render 'icons', icon: 'pinterest' %}
+      </a>
+    </li>
+  {%- endif -%}
+
+  {%- if settings.share_telegram %}
+    <li class="social--icons-item" is="hover-li" style="transform: translate3d(0px, 0px, 0px) rotate3d(0, 0, 0, 0deg);">
+      <a
+        target="_blank"
+        href="//telegram.me/share/url?url={{ share_link }}&amp;media={{ product.featured_image | img_url }}&amp;description={{ product.title | escape }}"
+        title="{{ 'general.social_share.alt_text.share_on_telegram' | t }}"
+        aria-label="{{ 'general.social_share.alt_text.share_on_telegram' | t }}"
+        class="social--icons-link telegram"
+      >
+        <svg class="icon icon-telegram icon-sm" viewBox="0 0 24 24" stroke="none" fill="currentColor">
+          <path d="M23.9518 2.41324C23.9118 2.23324 23.7818 2.08324 23.6018 2.03324C23.2818 1.97324 22.9618 1.99324 22.6618 2.10324C22.6618 2.09324 1.63178 9.65324 0.431777 10.4932C0.171777 10.6732 0.0917771 10.7732 0.0417771 10.9032C-0.168223 11.5032 0.481777 11.7632 0.481777 11.7632L5.90178 13.5332C5.99178 13.5532 6.09178 13.5432 6.18178 13.5132C7.41178 12.7332 18.5818 5.68324 19.2318 5.44324C19.3318 5.41324 19.4118 5.44324 19.3918 5.51324C19.1318 6.41324 9.48178 14.9932 9.43178 15.0432C9.38178 15.0832 9.35178 15.1532 9.36178 15.2232L8.85178 20.5132C8.85178 20.5132 8.64178 22.1632 10.2818 20.5132C11.4518 19.3432 12.5718 18.3732 13.1318 17.9032C14.9918 19.1932 17.0018 20.6132 17.8618 21.3532C18.1518 21.6332 18.5518 21.7932 18.9618 21.7732C19.4718 21.7132 19.8918 21.3432 20.0118 20.8432C20.0118 20.8432 23.8418 5.42324 23.9718 3.35324C23.9818 3.15324 24.0018 3.02324 24.0018 2.88324C24.0018 2.72324 24.0018 2.56324 23.9518 2.40324V2.41324Z"></path>
+        </svg>
+      </a>
+    </li>
+  {%- endif -%}
+
+  {%- if settings.share_email %}
+    <li class="social--icons-item" is="hover-li" style="transform: translate3d(0px, 0px, 0px) rotate3d(0, 0, 0, 0deg);">
+      <a
+        target="_blank"
+        href="mailto:?&amp;subject={{ product.title | escape }}&amp;body={{share_link}}"
+        class="social--icons-link email"
+        aria-label="{{ 'general.social_share.alt_text.share_on_email' | t }}"
+        title="{{ 'general.social_share.alt_text.share_on_email' | t }}"
+      >
+        <svg class="icon icon-email icon-sm" viewBox="0 0 24 22" stroke="none" fill="currentColor">
+          <path d="M2.73.545C3.8 0 5.2 0 8 0h8c2.8 0 4.2 0 5.27.545a5 5 0 0 1 2.185 2.185C24 3.8 24 5.2 24 8v5.767c0 2.8 0 4.2-.545 5.27a5 5 0 0 1-2.185 2.186c-1.07.544-2.47.544-5.27.544H8c-2.8 0-4.2 0-5.27-.544a5 5 0 0 1-2.185-2.186C0 17.967 0 16.567 0 13.767V8c0-2.8 0-4.2.545-5.27A5 5 0 0 1 2.73.545Zm2.988 5.25a.75.75 0 1 0-.832 1.248l1.117.744.256.17.139.093c1.791 1.195 2.858 1.906 4.029 2.187a6.75 6.75 0 0 0 3.146 0c1.171-.28 2.238-.992 4.03-2.187l.138-.092.256-.171 1.117-.744a.75.75 0 1 0-.832-1.248l-1.117.744-.256.17c-1.973 1.316-2.807 1.858-3.685 2.07a5.25 5.25 0 0 1-2.447 0c-.88-.212-1.713-.754-3.686-2.07l-.256-.17-1.117-.744Z"></path>
+        </svg>
+      </a>
+    </li>
+  {%- endif -%}
+</ul>

@@ -1,0 +1,459 @@
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'query_form' %}
+      {% liquid
+        if share_block != true
+          assign share_block = false
+        endif
+        assign help_block_heading = false
+        if block.settings.help_with_share_icons == true
+          assign with_share_icons = block.settings.help_with_share_icons
+        else
+          assign with_share_icons = false
+        endif
+      %}
+      {%- liquid
+        if block.settings.title != blank
+          assign help_block_heading = true
+        endif
+      -%}
+      {% capture queryForm %}  
+        <product-query-form class="product--query-form"
+        data-queryform="{{ block.id }}"
+        id="product-query-form-{{ block.id }}"
+        {{ block.shopify_attributes }}>
+            <div class="product--query-hyperlink">
+                <a href="/" class="product--query-form-title text-underline cursor-pointer">{{ block.settings.title }}</a>
+            </div>
+        </product-query-form>
+      {% endcapture %}
+    {% when 'social_sharing' %}
+      {% liquid
+        assign share_block = true
+      %}
+  {% endcase %}
+{% endfor %}
+{%- capture accordionContent -%}
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {%  when 'collapsible_content' %}
+
+        {% assign collapsible_content_type = block.settings.collapsible_content_type  %}
+          {% if collapsible_content_type == 'page' %}
+              {% assign page = pages[block.settings.page_content] %}
+              {% if block.settings.heading != blank
+                and page.content != blank
+                %}
+                <div class="product-accordion">
+                  <details class="product-accordion--item border-bottom" {{ block.shopify_attributes }}>
+                    <summary class="product-accordion--heading detail-summary">
+                      <p class="product-accordion--heading-text h6">{{ block.settings.heading }}</p>
+                      <span class="product-accordion--icon">
+                        {% render 'icons', icon: 'accordion-icon' %}
+                      </span>
+                    </summary>
+                    <div class="product-accordion--content" data-accordion-content>
+                      <div class="product-accordion--content-body rte">
+                        {{ page.content | replace: '<table', '<div class="table--responsive"><table' | replace: '</table>', '</table></div>' }}
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              {% endif %}            
+          {% else %}
+
+        {% if block.settings.heading != blank
+          and block.settings.description != blank
+          %}
+          <div class="product-accordion">
+            <details class="product-accordion--item border-bottom" {{ block.shopify_attributes }}>
+              <summary class="product-accordion--heading detail-summary">
+                <p class="product-accordion--heading-text h6">{{ block.settings.heading }}</p>
+                <span class="product-accordion--icon">
+                  {% render 'icons', icon: 'accordion-icon' %}
+                </span>
+              </summary>
+              <div class="product-accordion--content" data-accordion-content>
+                <div class="product-accordion--content-body rte">
+                  {{ block.settings.description }}
+                </div>
+              </div>
+            </details>
+          </div>
+        {% endif %}
+        {% endif %}
+      {% when 'description' %}
+        {% if block.settings.description_style == 'accordion'
+          and product.description != blank
+          %}
+          <div class="product-accordion">
+            <details class="product-accordion--item border-bottom" {{ block.shopify_attributes }}>
+              <summary class="product-accordion--heading detail-summary">
+                <p class="product-accordion--heading-text h6">Description</p>
+                <span class="product-accordion--icon">
+                  {% render 'icons', icon: 'accordion-icon' %}
+                </span>
+              </summary>
+              <div class="product-accordion--content" data-accordion-content>
+                <div class="product-accordion--content-body rte">
+                  {{ product.description | replace: '<table', '<div class="table--responsive"><table' | replace: '</table>', '</table></div>' }}
+                </div>
+              </div>
+            </details>
+          </div>
+        {% endif %}
+      {% when 'size_chart' %}
+        {% liquid 
+          assign optionName = settings.size_name | downcase
+          for option in product.options
+            assign optionList = settings.size_name | downcase
+            assign currentOptionName = option | downcase
+            if optionList contains currentOptionName
+              assign optionName = currentOptionName
+              assign sizeChart = pages[block.settings.size_chart_page]
+              if sizeChart != blank and block.settings.size_chart_style == 'accordion'
+                render 'size-chart', block: block, sizeGuide: true, sizeChart: sizeChart
+              endif
+              break
+            endif
+          endfor %}  
+    {% endcase %}
+  {% endfor %}
+{% endcapture %}
+
+{% for block in section.blocks %}
+  {% case block.type %}
+    {%- when '@app' -%}
+      <div class="product-app-block">
+        {% render block %}
+      </div>
+    {% when 'title' %}
+      {% if product != blank %}
+        <a
+          href="{{ product.url }}"
+          class="{{ block.settings.title_size }} heading-font d-block product-title-heading"
+          {{ block.shopify_attributes }}
+        >
+          {{- product.title | escape -}}
+        </a>
+      {% else %}
+        <h6
+          class="{{ block.settings.title_size }} heading-font d-block product-title-heading"
+          {{ block.shopify_attributes }}
+        >
+          {{ 'onboarding.product_title' | t }}
+        </h6>
+      {% endif %}
+    {% when 'rating' %}
+      {% render 'review-rating', product: product, currentVariant: currentVariant %}
+    {% when 'price' %}
+      <div class="price-wrapper" id="price--wrapper-{{ section.id }}" {{ block.shopify_attributes }}>
+        {% render 'product-price', product: product, currentVariant: currentVariant, block: block %}
+      </div>
+      {% if product != blank %}
+        <div {{ block.shopify_attributes }} class="product--installment-form">
+          {%- assign product_form_installment_id = 'main-product-form-installment-' | append: section.id -%}
+          {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            {{ form | payment_terms }}
+          {%- endform -%}
+        </div>
+      {% endif %}
+    {% when 'sku' %}
+      {% if currentVariant.sku != blank %}
+        <p class="product--sku product--description" id="product--sku-{{ section.id }}" {{ block.shopify_attributes }}>
+          {{ currentVariant.sku }}
+        </p>
+      {% endif %}
+    {% when 'custom_content' %}
+      {% unless pdp_layout_style == 'layout_1' %}
+        {% if block.settings.content != blank or block.settings.heading != blank %}
+          <div class="product--custom-content" {{ block.shopify_attributes }}>
+            {% if block.settings.heading != blank %}
+              <div class="product--custom-content-heading text-xlarge heading-font">{{ block.settings.heading }}</div>
+            {% endif %}
+            {% if block.settings.content != blank %}
+              <div class="product--custom-content-desc rte" id="product--custom-content-{{ section.id }}">
+                {{ block.settings.content }}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endunless %}
+    {% when 'custom_text' %}
+      {% if block.settings.text != blank %}
+        <div
+          class="product--description {{ block.settings.text_description_size }}"
+          id="product--custom-text-{{ section.id }}"
+          {{ block.shopify_attributes }}
+        >
+          {{ block.settings.text }}
+        </div>
+      {% endif %}
+    {% when 'custom_liquid' %}
+      {% unless pdp_layout_style == 'layout_1' %}
+        {% if block.settings.custom_liquid != blank %}
+          <div class="product--custom-liquid" id="product--custom-text-{{ section.id }}" {{ block.shopify_attributes }}>
+            {{ block.settings.custom_liquid }}
+          </div>
+        {% endif %}
+      {% endunless %}
+    {% when 'variant_picker' %}
+      {% unless product.has_only_default_variant %}
+        <div class="product--variants-options" {{ block.shopify_attributes }}>
+          {% if block.settings.varaint_type == 'button' %}
+            {% render 'variant-swatches',
+              product: product,
+              source: 'main-product',
+              section: section,
+              block: block,
+              product_form_id: product_form_id
+            %}
+          {% else %}
+            {% render 'variant-swatches-dropdown',
+              product: product,
+              source: 'main-product',
+              section: section,
+              block: block,
+              product_form_id: product_form_id
+            %}
+          {% endif %}
+        </div>
+      {% endunless %}
+    {% when 'quantity_picker' %}
+      {% render 'product-quantity', section: section, block: block, source: 'main-product', product: product %}
+    {% when 'buy_button' %}
+      <div class="" id="product--buy-buttons-{{ section.id }}" {{ block.shopify_attributes }}>
+        {% if product != blank %}
+          {% render 'purchase-buttons',
+            product: product,
+            section_id: section.id,
+            block: block,
+            currentVariant: currentVariant,
+            product_form_id: product_form_id
+          %}
+        {% else %}
+          <div class="product-checkout-buttons">
+            <button
+              type="submit"
+              name="add"
+              aria-label="Add to cart"
+              id="product--submit-btn-{{ section.id }}"
+              class="button button-block medium-button"
+              disabled="disabled"
+            >
+              <span data-atc-text>{{ 'products.product.sold_out' | t }}</span>
+            </button>
+          </div>
+        {% endif %}
+      </div>
+     {% when 'divider' %}
+          <div class="product-block-divider">
+          <span></span>
+          </div>
+    {% when 'query_form' %}
+      {% if with_share_icons == true and share_block == false and help_block_heading == true %}
+        <div class="product-query-form">
+          {{ queryForm }}
+        </div>
+      {% endif %}
+      {% if with_share_icons == false and help_block_heading == true %}
+        <div class="product-query-form">
+          {{ queryForm }}
+        </div>
+      {% endif %}
+    {% when 'social_sharing' %}
+      {% capture social_sharing %} 
+          <div class="product--social-share{% if with_share_icons == true %} social--share-with-help{% endif %}">
+              {% assign share_url = request.origin | append: product.url %}
+              {% if settings.share_facebook
+                or settings.tweet_twitter
+                or settings.pin_pinterest
+                or settings.share_telegram
+                or settings.share_email
+              %}
+              <div class="product--share-icons">
+                  {% render 'social-share', block: block, share_link: share_url, product: product %}
+              </div>
+            {% endif %}
+              {% if with_share_icons == true and help_block_heading == true %}
+                {{ queryForm }}
+            {% endif %}
+          </div>
+      {% endcapture %}
+      {% if settings.share_facebook
+        or settings.tweet_twitter
+        or settings.pin_pinterest
+        or settings.share_telegram
+        or settings.share_email
+        or with_share_icons == true
+        and help_block_heading == true
+      %}
+        {{ social_sharing }}
+      {% endif %}
+    {% when 'size_chart' %}
+      {% liquid
+        assign optionName = settings.size_name | downcase
+        for option in product.options
+          assign optionList = settings.size_name | downcase
+          assign currentOptionName = option | downcase
+          if optionList contains currentOptionName
+            assign optionName = currentOptionName
+            assign sizeChart = pages[block.settings.size_chart_page]
+            if sizeChart != blank and pdp_layout_style != 'layout_3'
+              if block.settings.size_chart_style == 'popup' or block.settings.size_chart_style == 'fullwidth'
+                if pdp_layout_style == 'layout_1' and block.settings.size_chart_style == 'popup'
+                  render 'size-chart', block: block, sizeGuide: true, sizeChart: sizeChart
+                elsif pdp_layout_style == 'layout_2'
+                  render 'size-chart', block: block, sizeGuide: true, sizeChart: sizeChart
+                elsif pdp_layout_style != 'layout_1' and pdp_layout_style != 'layout_2'
+                  render 'size-chart', block: block, sizeGuide: true, sizeChart: sizeChart
+                endif
+              endif
+            endif
+            break
+          endif
+        endfor
+      %}
+
+    {% when 'inventory_status' %}
+      {% render 'product-inventory', product: product, currentVariant: currentVariant, block: block %}
+      {% comment %}
+        {% when 'collapsible_content' %}
+        {% unless pdp_layout_style == 'layout_1' %}
+          {% if block.settings.heading != blank and block.settings.description != blank %}
+            <div class="product-accordion">
+              <details class="product-accordion--item border-bottom" {{ block.shopify_attributes }}>
+                <summary class="product-accordion--heading detail-summary">
+                  <p class="product-accordion--heading-text h5">{{ block.settings.heading }}</p>
+                  <span class="product-accordion--icon">
+                    {% render 'icons', icon: 'accordion-icon' %}
+                  </span>
+                </summary>
+                <div class="product-accordion--content" data-accordion-content>
+                  <div class="product-accordion--content-body rte">
+                    {{ block.settings.description }}
+                  </div>
+                </div>
+              </details>
+            </div>
+
+          {% endif %}
+        {%- endunless -%}
+      {% endcomment %}
+    {% when 'description' %}
+      {% unless pdp_layout_style == 'layout_1' %}
+        {% if block.settings.description_style == 'fullwidth' and product.description != blank %}
+          <div class="product--description product--description-fullwidth rte" {{ block.shopify_attributes }}>
+            {{
+              product.description
+              | replace: '<table', '<div class="table--responsive"><table'
+              | replace: '</table>', '</table></div>'
+            }}
+          </div>
+        {% endif %}
+      {% endunless %}
+    {% when 'payment_icons' %}
+      {%- unless shop.enabled_payment_types == empty -%}
+        <div class="product-payment-icons">
+          {% render 'payment-icons' %}
+        </div>
+      {%- endunless -%}
+    {% when 'pickup_availability' %}
+      {%- assign pickup_availabilities = currentVariant.store_availabilities | where: 'pick_up_enabled', true -%}
+      <div class="pickup-info" data-main-pickup-info="{{ section.id }}-{{ product.id }}">
+        <pickup-info
+          class="product--pickup-availability d-block"
+          id="pickup-availability-{{ section.id }}-{{ product.id }}"
+          data-root-url="{{ routes.root_url }}"
+          data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+          data-has-only-default-variant="{{ product.has_only_default_variant }}"
+          data-section-scheme="{{ section.settings.color_scheme }}"
+          {% if currentVariant.available and pickup_availabilities.size > 0 %}
+            available
+          {% endif %}
+          data-pickup-availability
+          {{ block.shopify_attributes }}
+        >
+          {% render 'pickup-availability', product: product, currentVariant: currentVariant %}
+          {% comment %} <script src="{{ 'pickup-availability.js' | asset_url }}"></script> {% endcomment %}
+        </pickup-info>
+      </div>
+    {% when 'icon-with-text' %}
+      {% capture iconText %}  
+        <div class="custom-icons-box">
+          <ul class="list-inline custom-icons-list">
+          {% if block.settings.text_1 != blank %} 
+            <li class="custom-icons-item">
+              <span class="custom-icons-icon">
+                {% if block.settings.icon_1 != blank %}
+                  {% render 'lazy-image', image: block.settings.icon_1 %}
+                {% else %}
+                  {% render 'icons', icon: block.settings.icon_list_1 %}
+                {% endif %}
+              </span>
+              {% if block.settings.text_1 != blank %}
+                <p class="custom-icons-text">{{ block.settings.text_1 }}</p>
+              {% endif %}
+            </li>
+          {% endif %}
+          {% if block.settings.text_2 != blank %} 
+            <li class="custom-icons-item">
+              <span class="custom-icons-icon">
+                {% if block.settings.icon_2 != blank %}
+                  {% render 'lazy-image', image: block.settings.icon_2 %}
+                {% else %}
+                  {% render 'icons', icon: block.settings.icon_list_2 %}
+                {% endif %}
+              </span>
+              {% if block.settings.text_2 != blank %}
+                <p class="custom-icons-text">{{ block.settings.text_2 }}</p>
+              {% endif %}
+            </li>
+          {% endif %}
+          {% if block.settings.text_3 != blank %} 
+            <li class="custom-icons-item">
+              <span class="custom-icons-icon">
+                {% if block.settings.icon_3 != blank %}
+                  {% render 'lazy-image', image: block.settings.icon_3 %}
+                {% else %}
+                  {% render 'icons', icon: block.settings.icon_list_3 %}
+                {% endif %}
+              </span>
+              {% if block.settings.text_3 != blank %}
+                <p class="custom-icons-text">{{ block.settings.text_3 }}</p>
+              {% endif %}
+            </li>
+          {% endif %}
+          </ul>
+        </div>
+      {% endcapture %}
+      {{ iconText }}
+    {% when 'complementary_products' %}
+      {% unless pdp_layout_style == 'layout_1' %}
+        {% capture complementary_products %}  
+                <product-recommendations
+                class="d-block complementary-products no-js-hidden"
+                data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ block.settings.products_count }}&intent=complementary"
+            >
+                {% render 'product-recommendation',
+                product_list: recommendations.products,
+                limit: block.settings.products_count,
+                block: block,
+                pdp_layout_style: pdp_layout_style
+                %}
+            </product-recommendations>
+            {% endcapture %}
+
+        {{ complementary_products }}
+      {% endunless %}
+  {% endcase %}
+{% endfor %}
+
+{% unless pdp_layout_style == 'layout_1' %}
+  {% if accordionContent != blank %}
+    <div class="product--detail-accordion">
+      {{ accordionContent }}
+    </div>
+  {% endif %}
+{% endunless %}

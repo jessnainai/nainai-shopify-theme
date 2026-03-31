@@ -1,0 +1,118 @@
+<div class="localization-form-content">
+  {% if localization.available_countries.size > 1 and settings.is_country_selector %}
+    <localization-form class="d-block localization-form-box country-wrapper">
+      {% form 'localization', id: 'localization_form_country_country1' %}
+        <input type="hidden" name="country_code" data-value="{{ localization.country.iso_code }}" value="{{ localization.country.iso_code }}" data-input-selector>
+        {% comment %}
+          <input type="hidden" name="form_type" value="localization">
+          <input type="hidden" name="utf8" value="✓">
+          <input type="hidden" name="_method" value="put">
+          <input type="hidden" name="return_to" value="/">
+        {% endcomment %}
+        <p class="localization-form-heading">Country</p>
+        <div class="custom-select fullwidth" data-custom-select="">
+          <button
+            type="button"
+            class="custom-select-button form-control"
+            aria-label="Select Currency"
+            tabindex="0"
+            data-custom-select-button
+          >
+            <span class="custom-select-text">
+              <strong data-custom-select-button>
+                {{- localization.country.name }} ({{ localization.country.currency.iso_code }}
+                {{ localization.country.currency.symbol }})</strong
+              >
+            </span>
+            <span class="custom-select-arrow">
+              <svg width="8" height="5" viewBox="0 0 8 5" fill="none" data-custom-select-button>
+                <path d="M7 1L4 4L1 1" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+          </button>
+          <div
+            class="custom-select-content"
+            data-custom-select-summary
+            style="display: none;"
+          >
+            <ul class="custom-select-list" role="listbox">
+              {% for country in localization.available_countries %}
+                <li class="custom-select-item" role="option">
+                  <button
+                    type="submit"
+                    name="country_code"
+                    id="country-{{ section.id }}-{{ forloop.index }}"
+                    value="{{ country.iso_code }}"
+                    data-value="{{ country.iso_code }}"
+                    class="custom-select-item-active"
+                    data-button-submit
+                  >
+                    {% comment %} <span class="countryflags countryflag__{{ country.iso_code }}"></span> {% endcomment %}
+                    <span>
+                      {{- country.name }} ({{ country.currency.iso_code }}
+                      {{ country.currency.symbol }})</span
+                    >
+                  </button>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endform %}
+    </localization-form>
+  {% endif %}
+  {% if localization.available_languages.size > 1 and settings.is_language_selector %}
+    <localization-form class="d-block localization-form-box language-wrapper">
+      {% comment %} language {% endcomment %}
+      {% form 'localization', id: 'localization_form_language_language1' %}
+        <input type="hidden" name="form_type" value="localization">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="_method" value="put">
+        <input type="hidden" name="return_to" value="/">
+        <input type="hidden" name="language_code" value="{{ localization.language.endonym_name }}" data-input-selector>
+        <p class="localization-form-heading">Language</p>
+        <div class="custom-select fullwidth" data-custom-select="">
+          <button
+            type="button"
+            class="custom-select-button form-control"
+            aria-label="Select Language"
+            tabindex="0"
+            data-custom-select-button
+          >
+            <span class="custom-select-text">
+              <strong data-custom-select-button>{{ localization.language.endonym_name | capitalize }}</strong>
+            </span>
+            <span class="custom-select-arrow">
+              <svg width="8" height="5" viewBox="0 0 8 5" fill="none" data-custom-select-button>
+                <path d="M7 1L4 4L1 1" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+          </button>
+          <div
+            class="custom-select-content"
+            data-custom-select-summary
+            style="display: none;"
+          >
+            <ul class="custom-select-list" role="listbox">
+              {% for language in localization.available_languages %}
+                <li class="custom-select-item" role="option">
+                  <button
+                    type="submit"
+                    name="language_code"
+                    id="language-{{ section.id }}-{{ forloop.index }}"
+                    value="{{ language.iso_code }}"
+                    data-value="{{ country.iso_code }}"
+                    class="custom-select-item-active"
+                    data-button-submit
+                  >
+                    {{ language.endonym_name | capitalize }}
+                  </button>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endform %}
+    </localization-form>
+  {% endif %}
+</div>

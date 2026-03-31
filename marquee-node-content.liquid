@@ -1,0 +1,24 @@
+{% if block.settings.marquee_text != blank %}
+  {%- capture markersPrefix -%}
+    <span class="markers-text {{ block.settings.markers_font }} {{ block.settings.markers_text }}">
+  {%- endcapture -%}
+  {%- capture markersSuffix -%}
+    </span>
+  {%- endcapture -%}
+  
+  <div class="marquee--block-item text-item">
+    <p class="marquee-text ">
+      {{ block.settings.marquee_text | replace: "[", markersPrefix | replace: "]", markersSuffix }}
+    </p>
+  </div>
+{% endif %}
+{% if block.settings.marquee_custom_icon != blank %}
+  <div class="marquee--block-item icon-item">
+    {{ block.settings.marquee_custom_icon }}
+  </div>
+{% endif %}
+{% if block.settings.marquee_custom_image != blank %}
+  <div class="marquee--block-item image-item">
+      {{ block.settings.marquee_custom_image | image_url: width: null | image_tag }}
+  </div>
+{% endif %}

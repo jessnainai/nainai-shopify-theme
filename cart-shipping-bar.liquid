@@ -1,0 +1,41 @@
+{%- if settings.enable_shipping and settings.shipping_rate != blank and cart.item_count > 0 -%}
+  {% liquid
+    assign status = false
+    assign shippingRate = settings.shipping_rate | times: 100
+    assign cartTotal = cart.total_price
+    assign shippingPrice = shippingRate | minus: cartTotal
+    if shippingPrice > 0
+      assign sprice = shippingPrice
+      assign shippingPrice = shippingPrice | abs | money
+      assign shippingMessage = settings.shipping_message | replace: '[amount]', shippingPrice
+    else
+      assign shippingMessage = settings.free_shipping_text
+      assign status = true
+    endif
+
+    assign shippingPercentage = cartTotal | times: 100 | divided_by: shippingRate
+    if shippingPercentage > 10 and shippingPercentage < 100
+      assign shippingPercentage = shippingPercentage | abs
+    elsif shippingPercentage > 100
+      assign shippingPercentage = 100
+    endif
+  %}
+
+  {% if status %}
+    <div class="free-shipping-bar">
+      {{ shippingMessage }}
+    </div>
+  {% else %}
+    <div
+      class="free-shipping d-grid gap-10 width-100"
+      data-cart-total="{{ cartTotal }}"
+      data-cart-shipping="{{ sprice }}"
+      data-cart-rate="{{ shippingRate }}"
+      data-barwidth="{{ shippingPercentage }}%"
+      data-cart-shippingbar
+    >
+      <span class="free-shipping-text" data-cart-shipping-text="">{{ shippingMessage }}</span>
+      <div class="progress-bar pos-relative" data-cart-shipping-bar=""></div>
+    </div>
+  {% endif %}
+{% endif %}

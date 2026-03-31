@@ -1,1 +1,84 @@
-{% render 'account-drawer', section: section %}
+{{ 'account.css' | asset_url | stylesheet_tag }}
+<account-drawer
+  class="side-drawer account--side-drawer scheme-{{ settings.search_drawer_color_scheme }}"
+  id="AccountDrawer"
+  data-drawer="account-drawer"
+  data-section-id="{{ section.id }}"
+  data-drawer-popup
+>
+  <div class="close-fullwidth" data-close-drawer></div>
+  <div class="side--drawer-panel">
+    <div class="side--drawer-inner">
+      <div class="side--drawer-header">
+        <h5 class="account--drawer-heading heading-font h5" data-heading="login">
+          {{ 'customer.login_page.log_in' | t }}
+        </h5>
+        <h5 class="account--drawer-heading heading-font h5 hidden" data-heading="reset">
+          {{ 'customer.login_page.reset_password' | t }}
+        </h5>
+        <h5 class="account--drawer-heading heading-font h5 hidden" data-heading="create">
+          {{ 'customer.login_page.create_account' | t }}
+        </h5>
+        <close-drawer>
+          <button class="drawer-close" data-drawer-close>
+            {% render 'icons', icon: 'cross-icon' %}
+          </button>
+        </close-drawer>
+      </div>
+      <div class="side--drawer-body" drawer-body="drawer-body">
+        <div class="account--login-form" data-form="login">
+          {% render 'login-form', section: section %}
+        </div>
+        <div class="account--recover-password-form hidden" data-form="reset">
+          {% render 'recover-password-form', section: section %}
+        </div>
+        <div class="account--register-form hidden" data-form="create">
+          {% render 'register-form', section: section %}
+        </div>
+      </div>
+    </div>
+  </div>
+</account-drawer>
+
+<script>
+  class AccountEvent extends HTMLElement {
+    constructor() {
+      super();
+      this.addEventListener('click', this.initialize.bind(this));
+      this.data_close_drawer = this.closest('[data-drawer="account-drawer"]').querySelector('[data-drawer-close]');
+    }
+
+    initialize(e) {
+      const accountDrawer = this.closest('account-drawer');
+      if (!accountDrawer) return;
+      e.preventDefault();
+      const { target } = this.dataset;
+      // Select all items and target elements at once to minimize DOM queries
+      const allFormsAndHeadings = accountDrawer.querySelectorAll('[data-form], [data-heading]');
+      const targetForm = accountDrawer.querySelector(`[data-form="${target}"]`);
+      const targetHeading = accountDrawer.querySelector(`[data-heading="${target}"]`);
+
+      // Hide all forms and headings, remove 'active' class
+      allFormsAndHeadings.forEach((item) => {
+        item.classList.add('hidden');
+        item.classList.remove('active');
+      });
+
+      // Show and activate the target elements if they exist
+      if (targetForm) {
+        console.log('check button click');
+        targetForm.classList.remove('hidden');
+        targetForm.classList.add('active');
+        console.log('data_close_drawer', this.data_close_drawer);
+        this.data_close_drawer.focus();
+      }
+
+      if (targetHeading) {
+        targetHeading.classList.remove('hidden');
+        targetHeading.classList.add('active');
+      }
+    }
+  }
+
+  customElements.define('account-event', AccountEvent);
+</script>

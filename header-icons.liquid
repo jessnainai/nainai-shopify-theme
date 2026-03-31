@@ -1,0 +1,85 @@
+{% liquid
+  assign accountIcon = false
+  if section.settings.show_account_icon and shop.customer_accounts_enabled
+    assign accountIcon = true
+  endif
+
+  assign account_behaviour = settings.account_behaviour
+  assign isRedirectToAcccount = false
+
+  if settings.account_behaviour == 'drawer' and request.page_type contains 'customers' or customer
+    assign isRedirectToAcccount = true
+    assign account_behaviour = 'page'
+  endif
+
+  assign search_behaviour = settings.search_behaviour
+  if settings.search_behaviour == 'drawer' and request.page_type contains 'search'
+  assign search_behaviour = 'page'
+  endif
+%}
+
+  <div class="header--icons{% unless section.settings.header_style == 'half-width-menu' %} height-100{% endunless %}">
+    <ul class="d-flex header--icons-list {% unless section.settings.header_style == 'half-width-menu' %} height-100{% endunless %}">
+      {% if section.settings.show_search %}
+        <li class="header--icon-item search">
+          <list-set
+            class="header--icon-link"
+            data-header-view="{{ section.settings.header_style }}"
+            data-behaviour="{{ search_behaviour }}"
+            data-source="search-drawer"
+            is="hover-icons"
+          >
+            <a href="{{ routes.search_url }}" class="header--icon-link-text cursor-pointer" title="Search">
+              {% render 'icons', icon: 'search' %}
+            </a>
+          </list-set>
+      {% endif %}
+
+      {% if accountIcon %}
+        <li class="header--icon-item account" data-vvip="{{ isRedirectToAcccount }}">
+          <list-set
+            class="header--icon-link"
+            ata-header-view="{{ section.settings.header_style }}"
+            data-behaviour="{{ account_behaviour }}"
+            data-source="account-drawer"
+            is="hover-icons"
+          >
+            <a
+              href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}"
+              class="header--icon-link-text cursor-pointer"
+              title="{% if customer %}Account{% else %}Login{% endif %}"
+            >
+              {% render 'icons', icon: 'account' %}
+            </a>
+          </list-set>
+        </li>
+      {% endif %}
+
+      <li class="header--icon-item cart">
+        <list-set
+          class="header--icon-link"
+          data-header-view="{{ section.settings.header_style }}"
+          data-behaviour="{{ settings.cart_behaviour }}"
+          id="cart-count-icon"
+          data-source="cart-drawer"
+          is="hover-icons"
+        >
+          <a
+            href="{{ routes.cart_url }}"
+            class="header--icon-link-text cursor-pointer"
+            aria-label="Cart with {{ cart.item_count }} items"
+          >
+            {% render 'icons', icon: 'cart' %}
+            {% comment %} {%- if cart != empty -%} {% endcomment %}
+            <span
+              class="cart--count{% if cart == empty %} hidden{% elsif cart.item_count > 99 %} large-items{% endif %}"
+              data-cart-count=""
+            >
+              {%- if cart.item_count < 100 %}{{ cart.item_count }}{% endif -%}
+            </span>
+          </a>
+          {% comment %} {%- endif -%} {% endcomment %}
+        </list-set>
+      </li>
+    </ul>
+  </div>

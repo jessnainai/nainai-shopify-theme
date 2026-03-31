@@ -1,0 +1,7 @@
+<ul class="list-inline payment-icons gap-5">
+  {%- for type in shop.enabled_payment_types -%}
+    <li class="payment-icons-item" is="hover-li">
+      {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+    </li>
+  {%- endfor -%}
+</ul>

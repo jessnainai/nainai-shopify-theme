@@ -1,0 +1,139 @@
+<div data-product-media-content>
+  <template>
+    <product-media-popup
+      id="product-media-content-{{ section.id }}"
+      class="popup product-media-popup scheme-{{ settings.popup_color_scheme }}"
+      data-product-media-popup
+    >
+      <div class="popup-dialog fullwidth">
+        <div class="popup-content">
+          <button class="popup-close" data-popup-close aria-label="close">
+            {% render 'icons', icon: 'cross-icon' %}
+          </button>
+          <div class="popup-content-body" popup-content-body>
+            <swiper-content>
+              <div
+                class="swiper"
+                data-swiper-main
+                data-swiper='
+                  {
+                      "loop": true,
+                      "speed": 800,
+                      "slidesPerView": 1,
+                      "zoom": true,
+                      "spaceBetween": 0,
+                      "navigation": {
+                          "nextEl": ".swiper-button-model-next-{{ section.id }}",
+                          "prevEl": ".swiper-button-model-prev-{{ section.id }}"
+                      },
+                      "resizeObserver":true
+                  }
+                '
+              >
+                <div class="swiper-wrapper">
+                  {% if product != blank %}
+                    {%- if product.selected_or_first_available_variant.featured_media != null -%}
+                      {% liquid
+                        if image_size == 'auto'
+                          assign imageRatio = 1 | divided_by: product.selected_or_first_available_variant.featured_media.aspect_ratio | times: 100 | minus: 1 | append: '%'
+                        endif
+                      %}
+                      {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
+                      <div class="swiper-slide" data-media-id="{{ section.id }}-{{ featured_media.id }}">
+                        <div class="main--product-media-item">
+                          <div class="swiper-zoom-container">
+                            {% render 'lazy-image', image: featured_media %}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% for media in product.media %}
+                      {% unless media.id == currentVariant.featured_media.id %}
+                        {% liquid
+                          if image_size == 'auto'
+                            assign imageRatio = 1 | divided_by: media.preview_image.aspect_ratio | times: 100 | minus: 1 | append: '%'
+                          endif
+                        %}
+                        <div class="swiper-slide" data-media-id="{{ section.id }}-{{ media.id }}">
+                          <div class="main--product-media-item">
+                            {% case media.media_type %}
+                              {% when 'image' %}
+                                {% if product.featured_media != blank %}
+                                  <div class="swiper-zoom-container">
+                                    {% render 'lazy-image', image: media %}
+                                  </div>
+                                {% endif %}
+                              {%- when 'video' -%}
+                                {%- liquid
+                                  if media.preview_image.aspect_ratio
+                                    assign media_aspect_ratio = media.preview_image.aspect_ratio
+                                  endif
+                                -%}
+
+                                {{
+                                  media
+                                  | media_tag:
+                                    image_size: '2048x',
+                                    loading: 'lazy',
+                                    class: 'no-js-hidden',
+                                    autoplay: false,
+                                    loop: true,
+                                    controls: true,
+                                    preload: 'none'
+                                }}
+
+                              {%- when 'external_video' -%}
+                                {% liquid
+                                  assign videoUrl = media | external_video_url
+                                  assign videoClass = 'youtube-video'
+                                  if videoUrl contains 'vimeo'
+                                    assign videoClass = 'vimeo-video'
+                                  endif
+                                %}
+
+                                {{
+                                  media
+                                  | external_video_url: autoplay: false, loop: false, controls: true
+                                  | external_video_tag: class: videoClass, loading: 'lazy'
+                                }}
+
+                              {%- when 'model' -%}
+                                <div class="swiper-zoom-container">
+                                  {% render 'lazy-image', image: media %}
+                                </div>
+                            {% endcase %}
+                          </div>
+                        </div>
+                      {% endunless %}
+                    {% endfor %}
+                  {% endif %}
+                </div>
+                <div class="swiper--button-wrapper">
+                  {% liquid
+                    if settings.slilder_button_style == 'square'
+                      assign btnIcon = 'curve-arrow'
+                    else
+                      assign btnIcon = 'arrow-icon'
+                    endif
+                  %}
+                  <swiper-nav
+                    class="swiper-button-next swiper-button swiper-button-model-next-{{ section.id }} button-{{ settings.slilder_button_style }}"
+                    data-productId="product-{{ section.id }}-{{ product.id }}"
+                  >
+                    {% render 'icons', icon: btnIcon %}
+                  </swiper-nav>
+                  <swiper-nav
+                    class="swiper-button-prev swiper-button swiper-button-model-prev-{{ section.id }} button-{{ settings.slilder_button_style }}"
+                    data-productId="product-{{ section.id  }}-{{ product.id }}"
+                  >
+                    {% render 'icons', icon: btnIcon %}
+                  </swiper-nav>
+                </div>
+              </div>
+            </swiper-content>
+          </div>
+        </div>
+      </div>
+    </product-media-popup>
+  </template>
+</div>

@@ -1,0 +1,431 @@
+<div class="sticky-top-filter-bar" data-custom-dropdown-wrapper>
+
+<filter-faced-form
+    class="d-block"
+    data-horizontal-filter="{{ section.settings.filter_layout }}"
+    data-filter-sticky="{{ section.settings.horizontal_top_filter_sticky }}"
+    data-filter-faced-form
+  >
+    <form id="sticky-horizontalFilterForm" class="horizontal-filters-bar">
+      {% if section.settings.filters %}
+        <div class="horizontal-filters--options pos-relative" data-filter-option>
+          <div class="horizontal-filters--main">
+            <button type="button" class="filter-arrow left" data-arrow-left>
+              <svg width="6" height="9" viewBox="0 0 6 9" fill="none">
+                <path d="M4.97057 9L6 7.97057L2.65617 4.61943L6 1.2683L4.97057 0.238867L0.590001 4.61943L4.97057 9Z" fill="currentColor"/>
+              </svg>
+            </button>
+            <div class="horizontal-filters--main-inner">
+              <div class="horizontal-filters--main-list">
+                <div class="horizontal-filters--list" data-horizontal-wrapper>
+                  {% if section.settings.show_category_menus and section.settings.menu != blank %}
+                    <custom-dropdown class="horizontal-filters--list-item">
+                      <button
+                        type="button"
+                        class="horizontal-filters--button heading-font text-medium"
+                        data-dropdown-button
+                      >
+                        <span class="">
+                          {{- section.settings.category_title | default: section.settings.menu.title -}}
+                        </span>
+                        <svg role="presentation" focusable="false" width="8" height="6" viewBox="0 0 8 6">
+                          <path d="m1 1.5 3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+                        </svg>
+                      </button>
+                      <div class="horizontal-filters--content" data-dropdown-content>
+                        <div class="horizontal-filters--content-list">
+                          <ul class="filter--option-list-items">
+                            {% for link in section.settings.menu.links %}
+                              <li class="filter-option-item" is="hover-li">
+                                <a class="" href="{{ link.url }}">{{ link.title }}</a>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      </div>
+                    </custom-dropdown>
+                  {% endif %}
+
+                  {%- for filter in collection.filters -%}
+                    {% liquid
+                      assign color_options = settings.color_name | downcase
+                      assign size_options = settings.size_name | downcase
+                      assign filter_label = filter.label | downcase
+                      assign filter_limit = 6
+                      assign color_filter_class = ''
+                      assign size_filter_class = ''
+                      assign is_size_button = false
+                      assign is_color_swatch = false
+                      if color_options contains filter_label
+                        assign filter_limit = 100
+                        assign is_color_swatch = true
+                        assign color_filter_class = 'filter--color-item'
+                      endif
+                      if size_options contains filter_label
+                        assign is_size_button = true
+                        assign size_filter_class = 'filter--size-item'
+                      endif
+                    %}
+                    <custom-dropdown
+                      class="horizontal-filters--list-item {{ color_filter_class }} {{ size_filter_class }}"
+                    >
+                      <button
+                        type="button"
+                        class="horizontal-filters--button heading-font text-medium"
+                        data-dropdown-button
+                      >
+                        <span class="">{{ filter.label }}</span>
+                        <svg
+                          role="presentation"
+                          focusable="false"
+                          width="8"
+                          height="6"
+                          viewBox="0 0 8 6"
+                        >
+                          <path d="m1 1.5 3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+                        </svg>
+                      </button>
+                      <div class="horizontal-filters--content" data-dropdown-content>
+                        {%- case filter.type -%}
+                          {% when 'boolean', 'list' %}
+                            {% liquid
+                              assign loop = 1
+                              assign valueSize = filter.values.size
+                              assign limit = 7
+                              assign offset = 0
+                              if valueSize > 6 and valueSize <= 14
+                                assign loop = 2
+                                assign limit = valueSize | divided_by: 2.0 | ceil
+                              elsif valueSize > 14 and valueSize <= 21
+                                assign loop = 3
+                                assign limit = valueSize | divided_by: 3.0 | ceil
+                              elsif valueSize > 21
+                                assign loop = 4
+                                assign limit = valueSize | divided_by: 4.0 | ceil
+                              endif
+                              if is_size_button or is_color_swatch
+                                assign loop = 1
+                              endif
+                              assign swatchStatus = false
+                              if filter.presentation == 'swatch' or filter.presentation == 'image'
+                                assign swatchStatus = true
+                              endif
+                            %}
+                            <div
+                              class="horizontal-filters--content-list{% if swatchStatus %} swatch-list{% endif %}"
+                              style="--column-count:{{ loop }}"
+                            >
+                              {% if is_size_button == true and swatchStatus == false %}
+                                <ul class="product--variants-list size-option">
+                                  {%- for value in filter.values -%}
+                                    <li
+                                      class="variant--item{% if value.count == 0 and value.active == false %} disabled{% endif %}"
+                                      is="hover-li"
+                                    >
+                                      <input
+                                        class="productOption{% if value.count == 0 and value.active == false %} disabled{% endif %}"
+                                        type="checkbox"
+                                        aria-label="Option-{{ value.value }}"
+                                        name="{{ value.param_name }}"
+                                        value="{{ value.value }}"
+                                        title="{{ value.label | escape }}"
+                                        id="sticky-Filter-{{ filter.label | handle }}-{{ forloop.index }}"
+                                        {% if value.count == 0 and value.active == false %}
+                                          disabled
+                                        {% endif %}
+                                        {% if value.active %}
+                                          checked="checked"
+                                        {% endif %}
+                                        aria-labelledby="label-{{ value.label }}"
+                                      >
+                                      <label
+                                        class="variant-item-name{% if value.count == 0 and value.active == false %} disabled{% endif %}"
+                                        for="Filter-{{ filter.label | handle }}-{{ forloop.index }}"
+                                      >
+                                        {{- value.label | escape -}}
+                                      </label>
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              {% elsif is_color_swatch and swatchStatus == false %}
+                                <ul class="product--variants-list color-option{% if settings.color_style == 'circle' %} color-circle{% else %} color-square{% endif %}">
+                                  {%- for value in filter.values -%}
+                                    {% assign filter_value = value %}
+                                    <li
+                                      class="variant--item{% if value.count == 0 and value.active == false %} disabled{% endif %}{% if value.active %} active{% endif %}"
+                                      is="hover-li"
+                                      data-type-case="{{ filter_value.display.type }}"
+                                    >
+                                      <input
+                                        class="productOption"
+                                        type="checkbox"
+                                        name="{{ value.param_name }}"
+                                        value="{{ value.value }}"
+                                        title="{{ value.label | escape }}"
+                                        id="sticky-Filter-{{ filter.label | handle }}-{{ forloop.index }}"
+                                        {% if value.count == 0 and value.active == false %}
+                                          disabled
+                                        {% endif %}
+                                        {% if value.active %}
+                                          checked="checked"
+                                        {% endif %}
+                                      >
+                                      <label
+                                        class="variant-item-name{% if value.count == 0 and value.active == false %} disabled{% endif %}"
+                                        for="Filter-{{ filter.label | handle }}-{{ forloop.index }}"
+                                        data-pallet-color="{{ value.value | downcase }}"
+                                        style="--swatch_color:{{ value.value | downcase }}"
+                                      ></label>
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              {% else %}
+                                {% for i in (1..loop) %}
+                                  {% assign mainIndex = forloop.index %}
+                                  <ul class="filter--option-list-items">
+                                    {%- for value in filter.values offset: offset limit: limit -%}
+                                      {% liquid
+                                        assign is_disabled = false
+                                        if value.count == 0 and value.active == false
+                                          assign is_disabled = true
+                                        endif
+                                      %}
+                                      <li class="filter-option-item radio-box{% if value.active %} selected{% endif %}{% if value.count == 0 and value.active == false %} disabled{% endif %}">
+                                        <input
+                                          type="checkbox"
+                                          class="checkmark-input"
+                                          name="{{ value.param_name }}"
+                                          value="{{ value.value }}"
+                                          title="{{ value.label | escape }}"
+                                          id="sticky-Filter-{{ filter.label | handle }}-{{ mainIndex }}-{{ forloop.index }}"
+                                          {% if value.count == 0 and value.active == false %}
+                                            disabled
+                                          {% endif %}
+                                          {% if value.active %}
+                                            checked="checked"
+                                          {% endif %}
+                                        >
+                                        {% comment %} <span class="checkmark"></span> {% endcomment %}
+                                        {% if color_options contains filter_label %}
+                                          <span
+                                            class="checkmark swatch--color-circle"
+                                            data-pallet-color="{{ value.label | downcase }}"
+                                            style="--swatch_color:{{ value.label | escape }}"
+                                          ></span>
+                                        {% else %}
+                                          <span class="checkmark"></span>
+                                        {% endif %}
+
+                                        <label
+                                          class="cursor-pointer{% if value.count == 0 and value.active == false %} disabled{% endif %}"
+                                          for="Filter-{{ filter.label | handle }}-{{ mainIndex }}-{{ forloop.index }}"
+                                        >
+                                          {% liquid
+                                            if swatchStatus
+                                              render 'swatch-display', value: value, presentation: filter.presentation
+                                            else
+                                              echo value.label | escape
+                                            endif
+                                          %}
+                                        </label>
+                                      </li>
+                                    {% endfor %}
+                                  </ul>
+                                  {% assign offset = offset | plus: limit %}
+                                {% endfor %}
+                              {% endif %}
+                            </div>
+                          {% when 'price_range' %}
+                            {%- liquid
+                              assign currencies_using_comma_decimals = 'ANG,ARS,BRL,BYN,BYR,CLF,CLP,COP,CRC,CZK,DKK,EUR,HRK,HUF,IDR,ISK,MZN,NOK,PLN,RON,RUB,SEK,TRY,UYU,VES,VND' | split: ','
+                              assign uses_comma_decimals = false
+                              if currencies_using_comma_decimals contains cart.currency.iso_code
+                                assign uses_comma_decimals = true
+                              endif
+                            -%}
+                            {%- liquid
+                              if uses_comma_decimals
+                                assign max_value = filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' | floor
+                                assign min_value = filter.range_min | money_without_currency | replace: '.', '' | replace: ',', '.' | floor
+                              else
+                                assign max_value = filter.range_max | money_without_currency
+                                assign min_value = filter.range_min | money_without_currency
+                              endif
+
+                              if filter.max_value.value
+                                assign max_value = filter.max_value.value | money_without_currency
+                              endif
+                              if filter.min_value.value
+                                assign min_value = filter.min_value.value | money_without_currency
+                              endif
+
+                              if uses_comma_decimals
+                                assign minpricevalue = min_value | replace: '.', '' | replace: ',', '.' | floor
+                                assign maxpricevalue = min_value | replace: '.', '' | replace: ',', '.' | floor
+                                assign filtermax = filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' | floor
+                              else
+                                assign minpricevalue = min_value | replace: ',', '' | floor
+                                assign maxpricevalue = max_value | replace: ',', '' | floor
+                                assign filtermax = filter.range_max | money_without_currency | replace: ',', '' | floor
+                              endif
+
+                              assign minRange = minpricevalue | times: 100.0 | divided_by: filtermax
+                              assign maxrangeminus = maxpricevalue | times: 100.0 | divided_by: filtermax
+                              assign maxRange = 100 | minus: maxrangeminus
+                            -%}
+                            <div class="horizontal-filters--content-list">
+                              <div class="filter--columns-item filter--price-range">
+                                <h6 class="filter--columns-heading text-large">{{ filter.label }}</h6>
+                                <price-range-bar>
+                                  <div class="filter--range-slider pos-relative" data-range-bars>
+                                    {% liquid
+                                      if uses_comma_decimals
+                                        assign range_min_value = filter.range_min | money_without_currency | replace: '.', '' | replace: ',', '.' | floor
+                                        assign range_max_value = filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' | floor
+                                        assign min_input_current_value = min_value | replace: '.', '' | replace: ',', '.' | floor
+                                        assign max_input_current_value = max_value | replace: '.', '' | replace: ',', '.' | floor
+                                      else
+                                        assign range_min_value = filter.range_min | money_without_currency | replace: ',', '' | floor
+                                        assign range_max_value = filter.range_max | money_without_currency | replace: ',', '' | floor
+                                        assign min_input_current_value = min_value | replace: ',', '' | floor
+                                        assign max_input_current_value = max_value | replace: ',', '' | floor
+                                      endif
+
+                                      assign range_value = range_max_value | minus: range_min_value
+
+                                      if range_value == 0
+                                        assign min_bar_percentage = 0
+                                        assign max_bar_percentage = 0
+                                      else
+                                        assign min_bar_percentage = min_input_current_value | minus: range_min_value | times: 100.0 | divided_by: range_value | round: 2
+                                        assign max_bar_percentage = max_input_current_value | minus: range_min_value | times: 100.0 | divided_by: range_value | round: 2
+                                        assign max_bar_percentage = 100.0 | minus: max_bar_percentage
+                                      endif
+                                    %}
+
+                                    <div
+                                      class="filter--progress"
+                                      data-filter-progress
+                                      style="left: {{ min_bar_percentage | append : '%'}}; right: {{ max_bar_percentage | append : '%' }};"
+                                    ></div>
+
+                                    {%- if uses_comma_decimals -%}
+                                      <input
+                                        type="range"
+                                        class="filter--slider-range input-min"
+                                        min="{{ filter.range_min | money_without_currency | replace: '.', '' | replace: ',', '.' | floor }}"
+                                        max="{{ filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' | floor }}"
+                                        value="{{ min_value | replace: '.', '' | replace: ',', '.' | floor }}"
+                                        step="1"
+                                      >
+                                      <input
+                                        type="range"
+                                        class="filter--slider-range input-max"
+                                        min="{{ filter.range_min | money_without_currency | replace: '.', '' | replace: ',', '.' | floor }}"
+                                        max="{{ filter.range_max | money_without_currency | replace: '.', '' | replace: ',', '.' | floor }}"
+                                        value="{{ max_value | replace: '.', '' | replace: ',', '.' | floor }}"
+                                        step="1"
+                                      >
+                                    {%- else -%}
+                                      <input
+                                        type="range"
+                                        class="filter--slider-range input-min"
+                                        min="{{ filter.range_min | money_without_currency | replace: ',', '' | floor }}"
+                                        max="{{ filter.range_max | money_without_currency | replace: ',', '' | floor }}"
+                                        value="{{ min_value | replace: ',', '' | floor }}"
+                                        step="1"
+                                      >
+                                      <input
+                                        type="range"
+                                        class="filter--slider-range input-max"
+                                        min="{{ filter.range_min | money_without_currency | replace: ',', '' | floor }}"
+                                        max="{{ filter.range_max | money_without_currency | replace: ',', '' | floor }}"
+                                        value="{{ max_value | replace: ',', '' | floor }}"
+                                        step="1"
+                                      >
+                                    {% endif %}
+                                  </div>
+                                  <div class="price-inputs">
+                                    <div class="price-input-item">
+                                      <label class="cursor-pointer" for="Filter-{{ filter.label | escape }}-GTE">
+                                        From
+                                      </label>
+                                      <div class="price-input-field">
+                                        <span class="field-currency">{{ cart.currency.symbol }}</span>
+                                        <input
+                                          class="field--input"
+                                          name="{{ filter.min_value.param_name }}"
+                                          id="sticky-Filter-{{ filter.label | escape }}-GTE"
+                                          type="number"
+                                          min="0"
+                                          {%- if uses_comma_decimals -%}
+                                            max="{{ filter.range_max | money_without_currency | replace: ',', '.' | floor }}"
+                                            placeholder="{{ min_value | replace: ',', '.' | floor }}"
+                                            {% if filter.min_value.value %}
+                                              value="{{ min_value | replace: ',', '.' | floor }}"
+                                              data-min-value="{{ min_value | replace: ',', '.' | floor }}"
+                                            {% endif %}
+                                          {%- else -%}
+                                            max="{{ filter.range_max | money_without_currency | replace: ',', '' | floor }}"
+                                            placeholder="{{ min_value | replace: ',', '' | floor }}"
+                                            {% if filter.min_value.value %}
+                                              value="{{ min_value | replace: ',', '' | floor }}"
+                                              data-min-value="{{ min_value | replace: ',', '' | floor }}"
+                                            {% endif %}
+                                          {% endif %}
+                                        >
+                                      </div>
+                                    </div>
+                                    <div class="price-input-item">
+                                      <label class="cursor-pointer" for="Filter-{{ filter.label | escape }}-LTE"
+                                        >To</label
+                                      >
+                                      <div class="price-input-field">
+                                        <span class="field-currency">{{ cart.currency.symbol }}</span>
+                                        <input
+                                          class="field--input"
+                                          name="{{ filter.max_value.param_name }}"
+                                          id="sticky-Filter-{{ filter.label | escape }}-LTE"
+                                          type="number"
+                                          min="0"
+                                          {% if uses_comma_decimals %}
+                                            max="{{ filter.range_max | money_without_currency | replace: ',', '.' | floor }}"
+                                            placeholder="{{ max_value | replace: ',', '.' | floor }}"
+                                            {% if filter.max_value.value %}
+                                              value="{{ max_value | replace: ',', '.' | floor }}"
+                                              data-max-value="{{ max_value | replace: ',', '.' | floor }}"
+                                            {% endif %}
+                                          {% else %}
+                                            max="{{ filter.range_max | money_without_currency | replace: ',', '' | floor }}"
+                                            placeholder="{{ max_value | replace: ',', '' | floor }}"
+                                            {% if filter.min_value.value %}
+                                              value="{{ max_value | replace: ',', '' | floor }}"
+                                              data-max-value="{{ max_value | replace: ',', '' | floor }}"
+                                            {% endif %}
+                                          {% endif %}
+                                        >
+                                      </div>
+                                    </div>
+                                  </div>
+                                </price-range-bar>
+                              </div>
+                            </div>
+                        {% endcase %}
+                      </div>
+                    </custom-dropdown>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            <button type="button" class="filter-arrow right" data-arrow-right aria-label="Next">
+              <svg width="6" height="9" viewBox="0 0 6 9" fill="none">
+                <path d="M1.02943 9L-8.99959e-08 7.97057L3.34383 4.61943L-6.75927e-07 1.2683L1.02943 0.238867L5.41 4.61943L1.02943 9Z" fill="currentColor"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      {% endif %}
+     
+    </form>
+  </filter-faced-form>
+</div>

@@ -1,0 +1,64 @@
+{%- if product.available-%}
+<div class="product--card-badges">
+  
+    {% if settings.sale_badge and product.compare_at_price_max %}
+      {%- if product.compare_at_price > product.price -%}
+        <span class="product--badge sale" id="product--badge-sale-{{ section.id }}-{{ product.id }}">{{ 'products.product.badges.sale' | t }}</span>
+      {%- endif -%}
+    {%- endif -%}
+
+    
+    {% unless settings.saving_price == 'none' %}
+      {% if product.compare_at_price_min > product.price_min %}
+        {% assign offText = 'OFF' %}
+        {% assign discount = product.compare_at_price_min | minus: product.price_min %}
+    
+        <span class="product--badge discount">
+          {% case settings.saving_price %}
+            {% when 'amount-off' %}
+              {{ discount | money | append: ' ' | append: offText }}
+            {% when 'percentage-off' %}
+              {{ discount | times: 100 | divided_by: product.compare_at_price_min | append: '% ' | append: offText }}
+          {% endcase %}
+        </span>
+      {% endif %}
+    {% endunless %}
+    
+
+    {% if settings.preorder_badge %}
+      {% if product.selected_or_first_available_variant.inventory_quantity <= 0
+        and product.selected_or_first_available_variant.inventory_policy == 'continue'
+      %}
+        <span class="product--badge preorder" id="product--badge-preorder-{{ section.id }}-{{ product.id }}">{{ 'products.product.badges.preorder' | t }}</span>
+      {% endif %}
+    {% endif %}
+
+    {% if settings.custom_tag and settings.custom_badges_text != blank %}
+      {% assign custom_tags = settings.custom_tag | downcase | split: ',' %}
+      {% liquid
+        assign tag_status = false
+        for tag in custom_tags
+          for productTag in product.tags
+            assign product_tag = productTag | downcase
+            if product_tag contains tag
+              assign tag_status = true
+              break
+            endif
+          endfor
+        endfor
+      %}
+      {%- if tag_status -%}
+        <span class="product--badge custom" id="product--badge-new-{{ section.id }}-{{ product.id }}">
+          {{- settings.custom_badges_text -}}
+        </span>
+      {%- endif -%}
+    {%- endif -%}
+
+  </div>
+{%- else -%}
+    {% if settings.soldout_badge and product.selected_or_first_available_variant.inventory_quantity <= 0 and product.selected_or_first_available_variant.inventory_policy == 'deny' %}
+      <div class="product--card-badges">
+        <span class="product--badge sold-out" id="product--badge-soldout-{{ section.id }}-{{ product.id }}">{{ 'products.product.badges.soldout' | t }}</span>
+      </div>
+    {% endif %}
+{%- endif -%}

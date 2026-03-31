@@ -1,0 +1,74 @@
+{% liquid   
+  if image_size == 'landscape'
+    assign imageRatio = '70%'
+  elsif image_size == 'square'
+    assign imageRatio = '100%'
+  elsif image_size == 'portrait'
+    assign imageRatio = '150%'
+  else
+    if block.settings.image != blank
+      assign imageRatio = 1 | divided_by: block.settings.image.aspect_ratio | times: 100 | plus: 1 | append: '%'
+    elsif collection.featured_image != blank
+      assign imageRatio = 1 | divided_by: collection.featured_image.aspect_ratio | times: 100 | plus: 1 | append: '%'
+    else
+      assign imageRatio = 120 | append: '%'
+    endif
+  endif
+
+  if block.settings.image != blank
+    assign collection_img = block.settings.image
+  elsif collection.featured_image != blank
+    assign collection_img = collection.featured_image
+  endif
+%}
+{% capture collectionButton %}
+  {% if collection != blank %}
+    <div class="collection--card-btn {% unless section.settings.content_position == 'overlay' %} btn-on-image{% endunless %}">
+      <button class="arrow--btn outline--btn" is="hover-link" aria-label="Navigate to details">
+        {% render 'icons', icon: 'arrow-icon' %}
+      </button>
+    </div>
+  {% endif %}
+{% endcapture %}
+{% comment %} < id="container-{{ collection.id }}-{{ index }}"> {% endcomment %}
+<div class="collection--card-item{% if is_slider %} swiper-slide{% endif %}" id="container-{{ collection.id }}-{{ index }}"  data-textAnimation="{{ section.settings.text_animation }}"
+  {% if settings.is_card_animation %} is="card-animate"{% endif %}
+  {% if block %}
+    {{- block.shopify_attributes -}}
+  {% endif %}
+>
+  <{% if collection.url != blank %}a href="{{ collection.url  }}"{% else %}div{% endif %} class="collection--card animate-hover pos-relative  {{ section.settings.content_position }}-content d-block">
+    <div class="collection--card-img width-100 height-100 media-wrapper media-overlay">     
+      <div class="media" style="--image_ratio:{{ imageRatio }}; ">        
+          {% liquid
+            if collection_img != blank
+              render 'lazy-image', image: collection_img, class: 'collection--card-image'
+            else
+              echo placeholder_image | placeholder_svg_tag: 'placeholder-svg'
+            endif
+          %}
+        </div> 
+        {% unless section.settings.content_position == 'overlay' %}
+          {{ collectionButton }}
+        {% endunless %}
+      </div>
+      <div class="collection--card-content {{ section.settings.text_animation }}">
+        {% liquid
+          if block.settings.title != blank
+            assign collectionTitle = block.settings.title
+          elsif collection != blank
+            assign collectionTitle = collection.title
+          else
+            assign collectionTitle = 'Collection title'
+          endif
+        %}
+        <div class="collection--heading-wrap">
+          <h6 class="collection--heading heading-font {{ block.settings.title_size }}" data-text="{{ collectionTitle }}">{{ collectionTitle }}</h6>
+        </div>
+        {% if section.settings.content_position == 'overlay' %}
+          {{ collectionButton }}
+        {% endif %}
+      </div>
+      </{% if collection.url != blank %}a{% else %}div{% endif %}>
+    </div>
+  

@@ -1,0 +1,45 @@
+{%- if image_url != blank %}
+  <img
+    class="no-js-hidden {{ class }}"
+    src="{{ image_url }}"
+    alt="{{ shop.name }}"
+  >
+  <noscript>
+    <img
+      class="no-js-hidden {{ class }}"
+      src="{{ image_url }}"
+      alt="{{ shop.name }}"
+    >
+  </noscript>
+{% elsif image != blank -%}
+  {%- assign img_url = image | image_url: width: '100' | replace: 'width=100', 'width={width}' -%}
+  <img
+    class="lazyload no-js-hidden {{ class }}{% if lazypreload %} lazypreload{% endif %}"
+    data-src="{{ img_url }}"
+    src="{{ image | image_url: width: '250' }}"
+    data-aspectratio="{{ image.aspect_ratio }}"
+    data-sizes="auto"
+    data-widths="{{ sizes }}"
+    width="{{ image.width }}"
+    height="{{ image.height }}"
+    data-original="{{ image | image_url }}"
+    alt="{% if image.alt != blank %}Image of {{ image.alt | strip_html }}{% else %}{{ image.alt | default: shop.name | strip_html }}{% endif %}"
+    lazyload="lazy"
+    loading="lazy"
+    {% if image.presentation.focal_point != blank %}
+      style="object-position:{{ image.presentation.focal_point }}"
+    {% endif %}
+  >
+  <noscript>
+    <img
+      class="{{ class }}"
+      src="{{ image | img_url: 'master' }}"
+      alt="{{ image.alt | default: shop.name | strip_html }}"
+      width="{{ image.width }}"
+      height="{{ image.height }}"
+      {% if image.presentation.focal_point != blank %}
+        style="object-position:{{ image.presentation.focal_point }}"
+      {% endif %}
+    >
+  </noscript>
+{% endif %}

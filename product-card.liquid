@@ -1,0 +1,244 @@
+{%- liquid
+  assign product = cardproduct
+  assign current_variant = product.selected_or_first_available_variant
+  if cardImageSize == 'landscape'
+    assign productImageRatio = '75%'
+  elsif cardImageSize == 'square'
+    assign productImageRatio = '100%'
+  elsif cardImageSize == 'portrait'
+    assign productImageRatio = '130%'
+  else
+    if product.featured_media != blank
+      assign productImageRatio = 1 | divided_by: product.featured_media.preview_image.aspect_ratio | times: 100 | append: '%'
+    else
+      assign productImageRatio = 100 | append: '%'
+    endif
+  endif
+assign second_image = ''
+assign second_media_type = ''
+assign second_media = ''
+  if settings.on_hover == 'second-image'
+    assign hoverClass = 'image-hover'
+    if product.media.size > 1
+      for media in product.media
+      
+        unless media.id == product.featured_media.id
+          assign second_image = media.preview_image
+          assign second_media_type = media.media_type
+          assign second_media = media
+          break
+        endunless
+      endfor
+    endif
+  endif
+
+  if settings.on_hover == 'product-options'
+  assign hoverClass = 'options-hover'
+  endif
+
+  assign carouselSwiper = ''
+  if section.settings.card_layout == 'carousel'
+    assign carouselSwiper = 'swiper-slide'
+  endif
+
+   assign product_form_id = 'main-product-form-' | append: section.id | append: '-' |  append: product.id
+   assign section_id = section.id | append: '-' | append: product.id
+
+   assign check_against_inventory = true
+   if current_variant.inventory_management != 'shopify' or current_variant.inventory_policy == 'continue'
+    assign check_against_inventory = false
+  endif
+  if current_variant.quantity_rule.min > current_variant.inventory_quantity and check_against_inventory
+    assign quantity_rule_soldout = true
+  endif
+
+  assign status = ''
+  assign statuscls = ''
+  if current_variant.available == false or quantity_rule_soldout
+    assign status = 'Out of stock'
+    assign statuscls = 'sold-out'
+    assign button_text = 'Sold Out'
+  else 
+    assign status = 'In Stock'
+    assign statuscls = 'in-stock'
+    assign button_text = 'Add to Cart'
+  endif
+
+
+  assign cardClass = ''
+  if source == 'products-collapse'
+    assign cardClass = card_layout
+  else
+    if settings.is_card_layout == 'border-with-background'
+      assign cardClass = 'product-background-enabled product-border-enabled'
+    elsif settings.is_card_layout == 'only-border'
+      assign cardClass = 'product-border-enabled'
+    elsif settings.is_card_layout == 'only-background'
+      assign cardClass = 'product-background-enabled'
+    elsif settings.is_card_layout == 'none'
+      assign cardClass = 'product-background-none'
+    endif
+  endif
+-%} 
+
+{% liquid 
+  assign product_url = product.url | within: collection
+  
+  if settings.hide_collection_from_url
+      assign product_url = product.url 
+  endif
+%}
+
+  <div class="product--card-inner animate-hover {{ hoverClass }} quickview-{{settings.quick_view}} {{ cardClass }}" 
+    {% if product %}
+      data-id="{{ product.id }}"
+    {% endif %}
+    data-product-card
+    > 
+    <div class="product--card-image width-100 pos-relative">
+      <{% if product %}a href="{{ product_url }}" aria-label="{{ 'general.search.button.view_details' | t }}for {{ product.title | escape }}" {% else %}div{% endif %} class="product--image d-block width-100">
+        <div class="media" style="--image_ratio:{{ productImageRatio }}" data-product-media>
+          {% if product.featured_media != blank %}
+            {% for media in product.media %}
+              {% case media.media_type %}
+              {% when 'image' %}
+                {% render 'lazy-image' , image: product.featured_media.preview_image , class: 'product--card-image' %}
+                {% break %}
+              {%- when 'video' -%}
+                {%- liquid
+                  if media.preview_image.aspect_ratio
+                    assign media_aspect_ratio = media.preview_image.aspect_ratio
+                  endif
+                -%}
+
+                {%- liquid
+                  if media.preview_image.aspect_ratio
+                    assign media_aspect_ratio = media.preview_image.aspect_ratio
+                  endif
+                -%}
+                <deferred-media-video
+                  class="deferred-media"
+                  class="deferred-media autoplay-status-true"
+                  id="deffered-{{ media.media_type }}"
+                  data-type="{{ media.media_type }}"
+                >
+                  <template>
+                    {{
+                      media
+                      | media_tag:
+                        loading: 'lazy',
+                        class: 'no-js-hidden',
+                        autoplay: true,
+                        loop: true,
+                        mute:true,
+                        controls: false,
+                        preload: 'none'
+                    }}
+                  </template>
+                </deferred-media-video>
+                {%  break  %} 
+              {%- when 'external_video' -%}
+                {% render 'lazy-image' , image: product.featured_media.preview_image , class: 'product--card-image' %}
+              {%- when 'model' -%}
+                {% render 'lazy-image' , image: product.featured_media.preview_image , class: 'product--card-image' %}
+                {%  break %}
+            {% endcase %}
+            {% endfor %}
+          {% else %}
+            {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          {% if second_media_type == 'video' %}
+            {{ second_media | media_tag: loading: 'lazy', class: 'product-second-img', autoplay: true, loop: true, controls: false, preload: 'none' }}
+          {% else %}
+            {% if second_image != blank %}
+              {% render 'lazy-image', image: second_image, class: 'product-second-img' %}
+            {% endif %}
+          {% endif %}
+        </div>
+      </{% if product %}a{% else %}div{% endif %}>
+      {% unless source == 'search-product' or source == 'countdown' or source == 'collection-grid' %}
+        {% render 'badges', product: product, section: section, current_variant: current_variant %}
+        
+        {% if settings.quick_view != 'none' and product %}
+          <quick-view id="QuickView-{{ product.id }}" data-product-url="{{ product.url }}" data-product-id="{{ product.id }}"> 
+            <a href="{{ product.url }}" class="product-quickview-button product--icon" aria-label="Quick view of {{ product.title | escape }}" is="hover-link" data-handle="{{ product.handle }}" product-quickview-btn>
+              {% render 'icons', icon: 'quick-view' %}
+              {% comment %} <span class="product--submit-btn-loader hidden" data-atc-loader>
+                {%- render 'icons', icon: 'animated-loader' -%}
+              </span> {% endcomment %}
+            </a>
+          </quick-view>
+        {% endif %}
+      
+        {% if settings.on_hover == 'second-image' and product %}
+                    <div class="product--card-detail-button product-addtocart-btn">
+              {% render 'purchase-buttons', product: product, section_id: section_id, block: block, currentVariant: current_variant, product_form_id: product_form_id, 
+              source:'product-card', button_text: button_text, source:'product-card' %}
+          </div>
+        {% elsif settings.on_hover == 'second-image' %}
+          <div class="product--card-detail-button product-addtocart-btn">
+            <button type="submit" name="add" id="product--submit-btn-{{ section_id }}" class="product--icon" disabled="disabled" aria-label="Add to cart">
+              <span class="width-100 height-100 d-flex">{% render 'icons', icon: 'cart' %}</span>
+            </button>
+          </div>
+      
+        {% endif %}
+      {% endunless %}
+
+      {% unless source == 'countdown' or source == 'collection-grid' or product.has_only_default_variant %}
+        {% if settings.on_hover == 'product-options' %}
+          <div class="product--variant-picker-list border-radius-bottom-left-none border-radius-bottom-right-none">
+            {% render 'variant-swatches', product: product, source: 'main-product', section: section, cardoptions: true %}
+          </div>
+        {% elsif settings.on_hover == 'size-options' %}
+            {% render 'size-options' product: product, source: 'main-product', section: section %}
+        {% endif %}
+
+      {% endunless %}
+    </div>
+    <div class="product--card-detail">
+      <div class="product--card-detail-inner">
+        <div class="product--card-detail-content">
+          
+          {% if product and settings.show_vendor %}
+          <div class="product--vendor text-small">
+              {{ product.vendor }}
+          </div>
+          {% endif %}
+          {% if product %}
+            <a
+              href="{{ product_url }}"
+              class="product--title {{ settings.product_card_font_size }}"
+              aria-label="{{ product.title | escape }}">
+              {{- product.title | escape -}}
+            </a>
+              {% if settings.show_price %}
+                {% render 'product-card-price', product: product, section: section, currentVariant: current_variant %}
+              {% endif  %}
+            {% else %}
+              <span class="product--title {{ settings.product_card_font_size }}">{{ 'onboarding.product_title' | t }}</span>
+                <div class="product--pricing {{ settings.product_card_font_size }}" id="price-title-wrapper-{{section.id}}-{{product.id}}">
+                  <span class="product--actual-price heading-font">{{ 1999 | money_with_currency }}</span>
+                </div>
+            {% endif %}
+              
+        </div>
+        {% unless source == 'search-product' or source == 'countdown' or source == 'collection-grid' or settings.on_hover == 'second-image' %}
+          {% if product %}
+          
+              <div class="product--card-detail-button">
+                {% render 'purchase-buttons', product: product, section_id: section_id, block: block, currentVariant: current_variant, product_form_id: product_form_id, 
+                source:'product-card', button_text: button_text, source:'product-card' %}
+              </div>
+            
+          {% else %}
+            <div class="product--card-detail-button">
+              <button type="submit" name="add" id="product--submit-btn-{{ section_id }}" class="product--icon" disabled="disabled" aria-label="Add to cart">
+                <span class="width-100 height-100 d-flex">{% render 'icons', icon: 'cart' %}</span>
+              </button>
+            </div>
+          {% endif %}
+        {% endunless %}
+      </div>
+    </div>
+  </div>

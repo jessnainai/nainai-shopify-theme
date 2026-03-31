@@ -1,0 +1,24 @@
+{% assign megaMenucount = 0 %}
+<div class="header--menu-megamenu-column-right" style="--image_overlay_opacity:{{ block.settings.vertical_overlay_opacity }}">
+  <div class="images-option">
+    {%- for i in (1..3) -%}
+      {%- liquid
+        assign headingSetting = 'content_heading_' | append: i
+        assign linkSetting = 'content_url_' | append: i
+        assign imageSetting = 'content_img_' | append: i
+      -%}
+
+      {%- if block.settings[imageSetting] != blank -%}
+        {% assign megaMenucount = megaMenucount | plus: 1 %}
+
+        {% render 'mega-menu-image',
+          section: section,
+          block: block,
+          headingSetting: headingSetting,
+          linkSetting: linkSetting,
+          imageSetting: imageSetting
+        %}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>

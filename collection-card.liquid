@@ -1,0 +1,28 @@
+{% liquid
+  capture placeholderIndex
+    cycle cycleGroup: '1', '2', '3', '4'
+  endcapture
+  if image_ratio
+    assign image_ratio = image_ratio
+  else
+    assign image_ratio = '100%'
+  endif
+%}
+{% if collection %}<a {% else %} <div {% endif %} {% if collection %} href="{{ collection.url }}" {% endif %} class="d-block card--item animate-hover">
+  <div class="card--image media-wrapper">
+    <div class="media" style="--image_ratio:{{ image_ratio }};">
+      {% if collection.featured_image != blank %}
+        {% render 'lazy-image', image: collection.featured_image, class: 'collection-product-image' %}
+      {% else %}
+        {{ 'product-apparel-' | append: placeholderIndex | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  </div>
+  <h6 class="card--title heading-font text-medium text-center">
+    {% if collection.title != blank %}
+      {{ collection.title }}
+    {% else %}
+      {{ 'onboarding.collection_title' | t }}
+    {% endif %}
+  </h6>
+{% if collection %}</a>{% else %}</div>{% endif %}

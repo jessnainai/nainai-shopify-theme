@@ -1,0 +1,76 @@
+{% liquid
+  assign launch_month = section.settings.months
+  assign launch_date = section.settings.day
+  assign launch_year = section.settings.year
+  assign launch_hour = section.settings.hours
+  assign launch_minute = section.settings.minutes
+%}
+
+<filpclock-counter
+  class="d-block countdown--timer-box"
+  data-timeout-style="{{section.settings.timer_expire}}"
+  data-countdown-input="{{ launch_month }}/{{ launch_date }}/{{ launch_year }} {{ launch_hour }}:{{ launch_minute }}:00"
+>
+  <div class="flip-clock" data-flip-clock>
+    <!-- hours -->
+    <div class="days" data-days="days">
+      <div class="flip days-first" data-days-first>
+        <input type="hidden" data-day value="0">
+        <div class="flip-display">
+          <div class="flip-display-top" data-day-top flip-display-top>0</div>
+          <div class="flip-display-bottom" data-day-bottom flip-display-bottom>0</div>
+        </div>
+        <div class="flipper">
+          <div class="flipper-top" data-day-top flipper-top>0</div>
+          <div class="flipper-bottom" data-day-bottom flipper-bottom>0</div>
+        </div>
+        
+      </div>
+      <p class="timer--unit">{{ 'sections.countdown.days' | t }}</p>
+    </div>
+    <div class="hours" data-hours="hours">
+      <div class="flip hours-first" data-hours-first>
+        <input type="hidden" data-hour value="0">
+        <div class="flip-display">
+          <div class="flip-display-top" data-hour-top flip-display-top>0</div>
+          <div class="flip-display-bottom" data-hour-bottom data-day-bottom flip-display-bottom>0</div>
+        </div>
+        <div class="flipper">
+          <div class="flipper-top" data-hour-top flipper-top>0</div>
+          <div class="flipper-bottom" data-hour-bottom flipper-bottom>0</div>
+        </div>
+        
+      </div>
+      <p class="timer--unit">{{ 'sections.countdown.hours' | t }}</p>
+    </div>
+    <!-- minutes -->
+    <div class="minutes" data-minutes="minutes">
+      <div class="flip minutes-first" data-minutes-first>
+        <input type="hidden" data-minute value="0">
+        <div class="flip-display">
+          <div class="flip-display-top" data-minute-top flip-display-top>0</div>
+          <div class="flip-display-bottom" data-minute-bottom flip-display-bottom>0</div>
+        </div>
+        <div class="flipper">
+          <div class="flipper-top" data-minute-top flipper-top>0</div>
+          <div class="flipper-bottom" data-minute-bottom flipper-bottom>0</div>
+        </div></div>
+      <p class="timer--unit">{{ 'sections.countdown.minutes' | t }}</p>
+    </div>
+    <!-- seconds -->
+    <div class="seconds" data-seconds="seconds">
+      <div class="flip seconds-first" data-seconds-first>
+        <input type="hidden" data-second value="0">
+        <div class="flip-display">
+          <div class="flip-display-top" data-second-top flip-display-top>0</div>
+          <div class="flip-display-bottom" data-second-bottom flip-display-bottom>0</div>
+        </div>
+        <div class="flipper">
+          <div class="flipper-top" data-second-top flipper-top>00</div>
+          <div class="flipper-bottom" data-second-bottom flipper-bottom>00</div>
+        </div>
+      </div>
+      <p class="timer--unit">{{ 'sections.countdown.seconds' | t }}</p>
+    </div>
+  </div>
+</filpclock-counter>

@@ -1,0 +1,46 @@
+<popup-modal
+  class="popup {{ modal_name }}-popup position-{{ modal_position }} scheme-{{ popup_color_scheme }}"
+  data-popup-modal
+  data-{{ modal_name }}-popup
+  data-id="{{ section.id }}"
+  data-{{ modal_name }}-popup-{{ section.id }}
+  tabindex="0"
+  data-drawer-popup
+>
+  <div class="close-fullwidth" data-popup-close></div>
+  <div class="popup-dialog {{ modal_size }}">
+    <div class="popup-content" data-popup-content>
+      <button class="popup-close" data-popup-close aria-label="close">
+        {% render 'icons', icon: 'cross-icon' %}
+      </button>
+      <div class="popup-content-body" popup-content-body>
+        {% case modal_name %}
+          {% when 'localization-form' %}
+            {% render 'localization-form' %}
+          {% when 'newsletter' %}
+            {% render 'newsletter-popup' %}
+          {% when 'password-form' %}
+            {% render 'password-form', section: section %}
+          {% when 'size-chart' %}
+            {{ content }}
+          {% when 'video' %}
+            <video
+              class="promotional-bar--popup-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              controls
+              data-autoplay="{{ section.settings.autoplay }}"
+              data-video-image-wrapper
+            >
+              <source
+                src="{% if section.settings.video.sources[0].url contains 'mp4' %}{{ section.settings.video.sources[0].url -}}{% else %}{{ section.settings.video.sources[1].url -}}{% endif %}"
+                type="video/mp4"
+              >
+            </video>
+        {% endcase %}
+      </div>
+    </div>
+  </div>
+</popup-modal>

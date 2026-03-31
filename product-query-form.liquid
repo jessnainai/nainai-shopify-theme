@@ -1,0 +1,122 @@
+<div
+  class="side-drawer product-query--side-drawer scheme-{{ settings.popup_color_scheme }}"
+  data-drawer="product-query--drawer-{{ block.id }}"
+  data-section-id="product-query--drawer"
+  product-query-section-block
+  data-id="product-query--drawer"
+  data-drawer-popup
+>
+  <div class="close-fullwidth" data-product-query-drawer data-close-drawer></div>
+  <div class="side--drawer-panel" data-drawer-panel>
+    <div class="side--drawer-inner">
+      <div class="side--drawer-header">
+        {% if block.settings.title != blank %}
+          <h5 class="product-query--heading heading-font h5">{{ block.settings.title }}</h5>
+        {% endif %}
+        <close-drawer
+          class="close-shop-the-look"
+          product-query-drawer
+          data-query="{{ block.id }}"
+          data-block="{{ block.id }}"
+        >
+          <button class="drawer-close" data-drawer-close>
+            <svg class="close-icon" width="20" height="20" viewBox="0 0 23.691 22.723">
+              <g transform="translate(-126.154 -143.139)">
+                  <line x2="23" y2="22" transform="translate(126.5 143.5)" fill="none" stroke="CurrentColor" stroke-width="2"></line>
+                  <path d="M0,22,23,0" transform="translate(126.5 143.5)" fill="none" stroke="CurrentColor" stroke-width="2"></path>
+              </g>
+            </svg>
+          </button>
+        </close-drawer>
+      </div>
+      <div class="side--drawer-body">
+        <div class="product--query-body">
+          {% assign formId = 'productQueryForm' | append: product.id | append: '_' | append: section.id %}
+          {%- form 'contact', id: formId, class: 'get-in-touch-form' -%}
+            <input type="hidden" name="contact[form title]" value="{{ block.settings.title }}">
+            <input type="hidden" name="contact[product]" value="{{ product.title | strip_html | escape }}">
+            <input type="hidden" name="contact[product url]" value="{{ shop.url }}{{ product.url }}">
+            <div class="form-group">
+              <label class="hidden" for="ContactName">{{ 'templates.contact.form.name' | t }}</label>
+              <input
+                type="text"
+                class="form-control{% if settings.enable_input_shadow %} small-shadow-enabled{% endif %}"
+                name="contact[name]"
+                id="ContactName-{{section.id}}"
+                autocomplete="name"
+                autocapitalize="off"
+                placeholder="Name"
+                required
+              >
+            </div>
+            <div class="form-group">
+              <label class="hidden" for="ContactEmail">{{ 'templates.contact.form.email' | t }}</label>
+              <input
+                type="email"
+                class="form-control{% if settings.enable_input_shadow %} small-shadow-enabled{% endif %}"
+                name="contact[email]"
+                id="ContactEmail-{{section.id}}"
+                autocomplete="email"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                aria-required="true"
+                spellcheck="false"
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"
+                  aria-describedby="ContactForm-email-error"
+                {% endif %}
+                placeholder="{{ 'templates.contact.form.email' | t }}"
+                pattern="^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$"
+                required
+              >
+            </div>
+            <div class="form-group">
+              <label class="hidden" for="ContactNumber">{{ 'templates.contact.form.phone' | t }}</label>
+              <input
+                type="number"
+                class="form-control{% if settings.enable_input_shadow %} small-shadow-enabled{% endif %}"
+                name="contact[number]"
+                id="ContactNumber-{{section.id}}"
+                autocomplete="phone"
+                autocapitalize="off"
+                placeholder="{{ 'templates.contact.form.phone' | t }}"
+                required
+              >
+            </div>
+            <div class="form-group">
+              <label class="hidden" for="ContactForm-body">{{ 'templates.contact.form.comment' | t }}</label>
+              <textarea
+                id="ContactForm-body-{{section.id}}"
+                name="contact[message]"
+                rows="3"
+                placeholder="Message"
+                class="form-control{% if settings.enable_input_shadow %} small-shadow-enabled{% endif %}"
+                required
+              ></textarea>
+            </div>
+            {%- if form.errors -%}
+              <div class="form--message error" autofocus data-contact-message>
+                <div class="form-message-title" tabindex="-1"> {{ form.errors.translated_fields.email | capitalize }}
+                  {{ form.errors.messages.email }}
+                </p></div>
+              </div>
+            {%- endif -%}
+            {%- if form.posted_successfully? -%}
+              <div class="form--message success" role="status" tabindex="-1" autofocus data-contact-message>
+                <p class="form-message-title" tabindex="-1">{{ 'templates.contact.form.post_success' | t }}
+                  </p>
+              </div>
+              <script></script>
+            {%- endif -%}
+            <button
+              type="submit"
+              class="button btn-block{% if settings.enable_button_shadow %} button-shadow{% endif %}"
+            >
+              Send
+            </button>
+          {%- endform -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

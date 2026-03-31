@@ -1,64 +1,53 @@
-{% render 'store-locator', section: section %}
-
-{% schema %}
-{
-  "name": "t:sections.store-locator.name",
-  "tag": "section",
-  "class": "store-locator",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
-  "settings": [
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "default": "primary",
-      "label": "t:sections.all.colors.label"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "default": "Store locator",
-      "label": "t:settings_schema.global.settings.heading.label"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "address",
-      "name": "t:sections.store-locator.blocks.address.name",
-      "settings": [
-        {
-          "type": "text",
-          "id": "address_heading",
-          "label": "t:settings_schema.global.settings.heading.label",
-          "default": "Store"
-        },
-        {
-          "type": "richtext",
-          "id": "address_content",
-          "label": "t:sections.store-locator.blocks.address.settings.address_content.label",
-          "default": "<p>Ottawa street, 3996</p>"
-        },
-        {
-          "type": "image_picker",
-          "id": "address_image",
-          "label": "t:settings_schema.global.settings.image.label"
-        }
-      ]
-    }
-  ],
-  "default": {
-    "blocks": [
-      {
-          "type": "address"
-        },
-        {
-          "type": "address"
-        },
-        {
-          "type": "address"
-        }
-    ]
-  }
-}
-{% endschema %}
+<store-locator
+  class="side-drawer store--locator-side-drawer scheme-{{ section.settings.color_scheme }}"
+  id="StoreLocator"
+  data-drawer="store-locator"
+  data-section-id="{{ section.id }}"
+>
+  <div class="close-fullwidth" data-close-drawer></div>
+  <div class="side--drawer-panel">
+    <div class="side--drawer-inner">
+      <div class="side--drawer-header">
+        <h5 class="heading-font h5">{{ section.settings.heading | default: 'Store locator' }}</h5>
+        <close-drawer>
+          <button class="drawer-close" data-drawer-close>
+            {% render 'icons', icon: 'cross-icon' %}
+          </button>
+        </close-drawer>
+      </div>
+      <div class="side--drawer-body">
+        <div class="store--locator-main">
+          {% if section.blocks.size > 0 %}
+            <ul class="store--locator-location-list">
+              {% for block in section.blocks %}
+                <li class="store--locator-location-list-item" {{ block.shopify_attributes }}>
+                  {% if block.settings.address_image != blank %}
+                    <div class="store--locator-store-image media-wrapper">
+                      <div class="media" style="--image_ratio:85%;">
+                        {%- render 'lazy-image', image: block.settings.address_image -%}
+                      </div>
+                    </div>
+                  {% endif %}
+                  <div class="store--locator-store-content">
+                    {% if block.settings.address_heading != blank %}
+                      <p class="text-xlarge store--locator-store-title heading-font">
+                        {{ block.settings.address_heading }}
+                      </p>
+                    {% endif %}
+                    {% if block.settings.address_content != blank %}
+                      <address class="store--locator-store-address font-normal">
+                        {{ block.settings.address_content }}
+                      </address>
+                    {% endif %}
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            {% render 'empty-card', source: 'store-locator' %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</store-locator>

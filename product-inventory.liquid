@@ -1,0 +1,66 @@
+{%- liquid
+  assign variantQuantity = currentVariant.inventory_quantity
+  assign lowstatus = false
+  assign hideInventoryStatus = false
+  if variantQuantity > 0 and variantQuantity <= block.settings.minimun_inventory and currentVariant.inventory_policy == 'deny'
+    assign lowstatus = true
+  endif
+  if variantQuantity <= 0
+    assign hideInventoryStatus = true
+  endif
+  assign check_against_inventory = true
+  if currentVariant.inventory_management != 'shopify' 
+    assign check_against_inventory = false
+  endif
+  if currentVariant.quantity_rule.min > currentVariant.inventory_quantity and check_against_inventory
+    assign quantity_rule_soldout = true
+  endif
+
+  assign statusCls = 'in-stock'
+  if hideInventoryStatus
+    if currentVariant.inventory_policy == 'continue' or check_against_inventory == false
+      assign statusCls = 'in-stock'
+    else
+      assign statusCls = 'sold-out'
+    endif
+  elsif lowstatus
+    assign statusCls = 'low-stock'
+  elsif currentVariant.available == false or quantityRuleSoldOut
+    if currentVariant.inventory_policy == 'continue'
+      assign statusCls = 'in-stock'
+      assign variantQuantity = currentVariant.inventory_quantity
+    else
+      assign statusCls = 'sold-out'
+    endif
+  endif
+-%}
+
+<div
+  class="product-inventory{% if lowstatus == true %} low-inventory{% else %} full-inventory{% endif %} {{ check_against_inventory }}"
+  data-product-inventory-bar-wrapper
+  id="product-inventory-wrapper-{{ section.id }}-{{ product.id }}"
+  {{ block.shopify_attributes }}
+>
+  <span class="product-inventory-text text-small {{ statusCls }} {{ currentVariant.inventory_policy  }}">
+    {% liquid
+    if variantQuantity > 0 
+      assign inStockQuantity = variantQuantity 
+    endif
+      if lowstatus
+        assign lowInventoryContent = variantQuantity | prepend: '<strong>' | append: '</strong>'
+        echo block.settings.inventory_less_status | replace: '[inventory]', lowInventoryContent
+      elsif hideInventoryStatus == true
+        if currentVariant.inventory_policy == 'continue' or check_against_inventory == false
+          echo block.settings.inventory_available_status | replace: '[inventory]', inStockQuantity
+        else
+         echo block.settings.inventory_unavailable_status
+        endif
+      else
+        echo block.settings.inventory_available_status | replace: '[inventory]', inStockQuantity 
+      endif
+    -%}
+  </span>
+  {% if block.settings.show_inventory_bar == true and lowstatus %}
+  <progress-bar class="d-block progress-bar pos-relative" data-value="{{ currentVariant.inventory_quantity }}" data-max="{{ block.settings.minimun_inventory }}" ></progress-bar>
+  {% endif %}
+</div>

@@ -1,0 +1,148 @@
+{%- liquid
+  assign product_card_swatches = settings.enable_swatches
+  assign optionNameDowncase = option.name | downcase
+  assign optionInputName = 'option-' | append: index
+  assign forloop_index = index
+  assign color_option_names = settings.color_name | downcase
+
+  if settings.variants_style == 'color_swatch'
+    if color_option_names contains optionNameDowncase
+      assign isContainColor = true
+    else
+      assign isContainColor = false
+    endif
+  elsif settings.variants_style == 'varaint_image'
+    if color_option_names contains optionNameDowncase
+      assign isContainVariantImage = true
+    else
+      assign isContainVariantImage = false
+    endif
+  else
+    assign isContainColor = false
+    assign isContainVariantImage = false
+  endif
+%}
+<optionset class="product--options-set" data-optionset="{{ option.name }}">
+  {% if isContainColor or isContainVariantImage %}
+    {% render 'color-swatches',
+      product: product,
+      forloop_index: forloop_index,
+      option: option,
+      section: section,
+      source: 'main-product'
+    %}
+  {% else %}
+    <div class="product--options">
+      {% if source == 'main-product' %}
+        <div class="product--variants-title {{ settings.label_font }} text">
+          {{ option.name }}
+          {% if isContainColor or isContainVariantImage %}
+            <span class="body-font" data-selected-variant="{{ section.id }}-{{ product.id }}">| {{ option.selected_value }}</span>
+          {% endif %}
+        </div>
+      {% endif %}
+      <div class="product--variants-box">
+        <ul class="product--variants-list{% if isContainColor %} color-option {% elsif isContainVariantImage %} color-option variants-image {% else %} options-style-{{ settings.other_style }}{% endif %}">
+          {% for value in option.values %}
+            {% liquid
+              assign hide_unavailable = settings.hide_unavailable
+
+              assign valueVariant = ''
+              for variant in product.variants
+                for option in variant.options
+                  if option == value and variant.featured_media != blank
+                    assign valueVariant = variant
+                    assign productAvialable = variant.available
+                    break
+                  endif
+                endfor
+                if valueVariant != blank
+                  break
+                endif
+              endfor
+              assign option_disabled = true
+
+              for option1_name in variants_option1_arr
+                case option.position
+                  when 1
+                    if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                      assign option_disabled = false
+                    endif
+                  when 2
+                    if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                      assign option_disabled = false
+                    endif
+                  when 3
+                    if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                      assign option_disabled = false
+                    endif
+                endcase
+              endfor
+              assign showStatus = false
+
+              if isContainVariantImage and valueVariant == blank
+                assign showStatus = true
+              endif
+
+              unless color_option_names contains optionNameDowncase
+                assign showStatus = true
+              endunless
+            %}
+
+            <li class="variant--item {{productAvialable}}" is="hover-li" title="{{ value }}">
+              <input
+                class="productOption{% if option_disabled %} disabled{% endif %}"
+                id="{{ optionInputName }}-{{ value }}"
+                type="radio"
+                name="{{ optionInputName }}"
+                value="{{ value }}"
+                {% if source == 'main-product' %}
+                  form="main-product-form-{{ section.id }}"
+                {% endif %}
+                {% if value == option.selected_value %}
+                  checked
+                {% endif %}
+                aria-labelledby="label-{{ value }}"
+              >
+              <label
+                for="{{ optionInputName }}-{{ value }}"
+                id="label-{{ value }}"
+                class="variant-item-name"
+                {% if isContainColor %}
+                  {% if value.swatch.image %}
+                    style="background-image:url({{ value.swatch.image | image_url: width: 70 }}); background-position:{{ value.swatch.image.presentation.focal_point }};"
+                  {% elsif value.swatch.color %}
+                    style="--swatch_color: rgb({{ value.swatch.color.rgb }})"
+                  {% else %}
+                    data-pallet-color="{{ value | downcase }}"
+                    style="--swatch_color: {{ value | downcase }}"
+                  {% endif %}
+                {% endif %}
+                {% if isContainVariantImage %}
+                  {% if valueVariant != blank %}
+                    style="background-image:url({{ valueVariant.featured_media.preview_image | image_url: width: '70' }})"
+                  {% else %}
+                    {% if value.swatch.image %}
+                      style="background-image:url({{ value.swatch.image | image_url: width: 70 }}); background-position:{{ value.swatch.image.presentation.focal_point }};"
+                    {% elsif value.swatch.color %}
+                      style="--swatch_color: rgb({{ value.swatch.color.rgb }})"
+                    {% else %}
+                      data-pallet-color="{{ value | downcase }}"
+                      style="--swatch_color: {{ value | downcase }}"
+                    {% endif %}
+                  {% endif %}
+                {% endif %}
+              >
+                {% liquid
+                  if showStatus
+                    echo value
+                  endif
+                %}
+              </label>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  {% endif %}
+</optionset>

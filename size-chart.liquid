@@ -1,0 +1,51 @@
+{% if block.settings.size_chart_page != blank %}
+  {% capture content %}
+    {%- if sizeChart.content != blank -%}
+      <div class="size-chart size-chart-{{ block.settings.size_chart_style }}">
+        {% if block.settings.size_chart_heading != blank %}
+          <div class="size-chart-heading text-xlarge heading-font">{{ block.settings.size_chart_heading }}</div>
+        {% endif %}
+        <div class="size-chart-content width-100 rte" {{ block.shopify_attributes }}>
+        {{ sizeChart.content | replace: '<table', '<div class="table--responsive"><table' | replace: '</table>', '</table></div>' }}
+        </div>
+      </div>
+    {% endif %}
+  {% endcapture %}
+
+  {% if block.settings.size_chart_style == 'popup' %}
+    {% if block.settings.size_chart_heading != blank %}
+      <div class="size-chart size-chart-{{ block.settings.size_chart_style }}">
+        <size-chart class="size-chart-block cursor-pointer" id="product--size-chart-{{ section.id }}">
+          {% render 'icons', icon: 'size-chart' %}
+          <a href="/" class="text-underline" data-size-chart>{{ block.settings.size_chart_heading }}</a>
+          {% render 'popup',
+            modal_name: 'size-chart',
+            modal_position: 'center',
+            modal_size: 'large',
+            content: content
+          %}
+        </size-chart>
+      </div>
+    {% endif %}
+  {% elsif block.settings.size_chart_style == 'fullwidth' %}
+    {{ content }}
+  {% elsif block.settings.size_chart_style == 'accordion' %}
+    {% if block.settings.size_chart_heading != blank %}
+      <div class="product-accordion">
+        <details class="product-accordion--item border-bottom" {{ block.shopify_attributes }}>
+          <summary class="product-accordion--heading detail-summary">
+            <p class="product-accordion--heading-text h6">{{ block.settings.size_chart_heading }}</p>
+            <span class="product-accordion--icon">
+              {% render 'icons', icon: 'accordion-icon' %}
+            </span>
+          </summary>
+          <div class="product-accordion--content" data-accordion-content>
+            <div class="product-accordion--content-body rte">
+              {{ content }}
+            </div>
+          </div>
+        </details>
+      </div>
+    {% endif %}
+  {% endif %}
+{% endif %}

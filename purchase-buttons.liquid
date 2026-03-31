@@ -1,0 +1,123 @@
+<product-form-context
+  data-section-id="{{ section_id }}"
+  class="product-checkout-buttons-outer{% if source == 'product-card' %} product--card-form{% endif %}"
+  data-product-id="{{ product.id }}"
+  id="product-form-context-{{ section.id }}-{{ product.id }}"
+>
+  {% liquid
+    assign preorder = false
+    if settings.enable_preorder and currentVariant.inventory_policy == 'continue' and currentVariant.inventory_quantity <= 0
+      assign preorder = true
+    endif
+  %}
+  {%- form 'product',
+    product,
+    id: product_form_id,
+    class: 'form main-product-form',
+    novalidate: 'novalidate',
+    data-type: 'add-to-cart-form'
+  -%}
+    <input
+      type="hidden"
+      name="id"
+      value="{{ currentVariant.id }}"
+      {% unless product.has_only_default_variant %}
+        disabled
+      {% endunless %}
+    >
+    {% unless source == 'product-card' %}
+      <div class="form--message error hidden" tabindex="-1" data-add-cart-error></div>
+    {% endunless %}
+    {%- liquid
+      assign gift_card_recipient_feature_active = false
+      if block.settings.show_gift_card_recipient and product.gift_card?
+        assign gift_card_recipient_feature_active = true
+      endif
+
+      assign show_dynamic_checkout = false
+      if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
+        assign show_dynamic_checkout = true
+      endif
+    -%}
+    {%- if gift_card_recipient_feature_active -%}
+      {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
+    {%- endif -%}
+    <purchase-buttons>
+      {%- liquid
+        assign check_against_inventory = true
+        if currentVariant.inventory_management != 'shopify' or currentVariant.inventory_policy == 'continue'
+          assign check_against_inventory = false
+        endif
+        if currentVariant.quantity_rule.min > currentVariant.inventory_quantity and check_against_inventory
+          assign quantity_rule_soldout = true
+        endif
+      -%}
+
+      <div
+        class="product-checkout-buttons{% if block.settings.show_dynamic_checkout %} dynamic-button-enable{% endif %}"
+        data-qty-rule="{{ quantity_rule_soldout }}"
+      >
+        {% liquid
+          assign buttonSize = 'medium-button'
+
+          if section.settings.layout_style == 'layout_3'
+            assign purchaseButtonClasses = 'button button-block' | append: ' ' | append: buttonSize
+          else
+            assign purchaseButtonClasses = 'button button-block' | append: ' ' | append: buttonSize
+          endif
+        %}
+        <button
+          type="submit"
+          name="add"
+          data-button="product--submit-{{ product.id }}"
+          id="product--submit-btn-{{ section_id }}-{{ product.id }}"
+          data-prid="product--submit-btn-{{ section_id }}-{{ product.id }}"
+          aria-label="Add product to cart"
+          class="{% if source == 'product-card' %}product--icon{% else %}{{ purchaseButtonClasses }}{% endif %}"
+          data-add-to-cart
+          {% if currentVariant.available == false or quantity_rule_soldout %}
+            disabled="disabled"
+          {% endif %}
+        >
+          {% unless source == 'product-card' %}
+            <span data-atc-text data-product-button>
+              {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+                {{ 'products.product.sold_out' | t }}
+              {%- elsif preorder -%}
+                {{ 'products.product.preorder' | t }}
+              {% else %}
+                {{ 'products.product.add_to_cart' | t }}
+              {%- endif -%}
+            </span>
+          {% else %}
+            <span data-atc-text class="width-100 height-100 d-flex">{% render 'icons', icon: 'cart' %}</span>
+          {% endunless %}
+
+          {% comment %}
+            <span class="product--submit-btn-loader hidden" data-atc-loader>
+              {%- render 'icons', icon: 'animated-loader' -%}
+            </span>
+          {% endcomment %}
+        </button>
+        {% if block.settings.show_dynamic_checkout %}
+          {{ form | payment_button }}
+        {% endif %}
+      </div>
+    </purchase-buttons>
+    <script type="application/json" data-name="product-options">
+      {{ product.options_with_values | json }}
+    </script>
+    <script type="application/json" data-name="product-inventories">
+      [
+          {% for variant in product.variants %}
+              {
+                  "id": {{- variant.id -}},
+                  "inventory_management": "{{- variant.inventory_management -}}",
+                  "inventory_policy": "{{- variant.inventory_policy -}}",
+                  "inventory_quantity": "{{- variant.inventory_quantity -}}"
+              }{%- unless forloop.last -%},{%- endunless -%}
+          {% endfor %}
+      ]
+    </script>
+  {% endform %}
+</product-form-context>

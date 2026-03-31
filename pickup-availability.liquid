@@ -1,0 +1,40 @@
+{%- assign pickup_availabilities = currentVariant.store_availabilities | where: 'pick_up_enabled', true -%}
+{% if pickup_availabilities.size > 0 and currentVariant.available %}
+
+<div class="pickup--availability-content" data-pickup-availability-content>
+   {%- liquid assign nearestLocation = pickup_availabilities.first -%}
+
+   <div class="pickup--availability-inner">
+      <p class="pickup--availability-heading">
+      <span class="pickup-icon success">
+         <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+            <path d="M13.0005 1.00049L5.00018 9.00049L1 5.00067" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+         </svg>
+      </span>
+         {%- if nearestLocation.available -%}
+            {{ 'products.product.pickup_availability.pick_up_available_at_html' | t: location_name: nearestLocation.location.name }}
+
+         {%- else -%}
+         <span class="pickup-icon error">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+<path d="M0.382031 17.7734C-0.127344 18.2828 -0.127344 19.1086 0.382031 19.618C0.891406 20.1273 1.71729 20.1273 2.22666 19.618L0.382031 17.7734ZM10.9223 10.9223C11.4317 10.4129 11.4317 9.58715 10.9223 9.07776C10.4129 8.56836 9.58715 8.56836 9.07776 9.07776L10.9223 10.9223ZM9.07776 9.07776C8.56836 9.58715 8.56836 10.4129 9.07776 10.9223C9.58715 11.4317 10.4129 11.4317 10.9223 10.9223L9.07776 9.07776ZM19.618 2.22666C20.1273 1.71729 20.1273 0.891406 19.618 0.382031C19.1086 -0.127344 18.2828 -0.127344 17.7734 0.382031L19.618 2.22666ZM10.9223 9.07776C10.4129 8.56836 9.58715 8.56836 9.07776 9.07776C8.56836 9.58715 8.56836 10.4129 9.07776 10.9223L10.9223 9.07776ZM17.7734 19.618C18.2828 20.1273 19.1086 20.1273 19.618 19.618C20.1273 19.1086 20.1273 18.2828 19.618 17.7734L17.7734 19.618ZM9.07776 10.9223C9.58715 11.4317 10.4129 11.4317 10.9223 10.9223C11.4317 10.4129 11.4317 9.58715 10.9223 9.07776L9.07776 10.9223ZM2.22666 0.382031C1.71729 -0.127344 0.891406 -0.127344 0.382031 0.382031C-0.127344 0.891406 -0.127344 1.71729 0.382031 2.22666L2.22666 0.382031ZM2.22666 19.618L10.9223 10.9223L9.07776 9.07776L0.382031 17.7734L2.22666 19.618ZM10.9223 10.9223L19.618 2.22666L17.7734 0.382031L9.07776 9.07776L10.9223 10.9223ZM9.07776 10.9223L17.7734 19.618L19.618 17.7734L10.9223 9.07776L9.07776 10.9223ZM10.9223 9.07776L2.22666 0.382031L0.382031 2.22666L9.07776 10.9223L10.9223 9.07776Z" fill="currentColor"/>
+</svg>
+         </span>
+         {{ 'products.product.pickup_availability.pick_up_unavailable_at_html' | t: location_name: nearestLocation.location.name }}
+         {%- endif -%} 
+         <p class="text-small">
+            {{ nearestLocation.pick_up_time }}
+         </p>
+      </p>
+   </div>
+   
+   <button data-variant-id="{{ currentVariant.id }}" data-id="pickup-side-drawer" id="pickup-availability-button" pickup-availability-button class="pickup-availability-button text-underline text-small" aria-haspopup="dialog" data-sidedrawer-button>
+      {%- if pickup_availabilities.size == 1 -%}
+         {{ 'products.product.pickup_availability.view_store_info' | t }}
+      {%- else -%}
+      {{ 'products.product.pickup_availability.check_other_stores' | t }}
+      {%- endif -%}
+   </button>
+   
+</div>
+{% endif %}

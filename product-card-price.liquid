@@ -1,0 +1,66 @@
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  else
+    assign target = product
+  endif
+
+  assign compare_at_price = target.compare_at_price
+  assign price = target.price | default: 1999
+  assign price_min = product.price_min
+  assign price_max = product.price_max
+  assign available = target.available | default: false
+  assign money_price = price | money
+  assign money_price_min = price_min | money
+  assign money_price_max = price_max | money
+  if settings.currency_code_enabled
+    assign money_price = price | money_with_currency
+    assign money_price_min = price_min | money_with_currency
+    assign money_price_max = price_max | money_with_currency
+  endif
+
+  if target == product and product.price_varies
+    assign money_price = 'products.product.price.from_price_html' | t: price: money_price
+  endif
+-%}
+{%- unless target == null -%}
+  <div
+    class="product--pricing {{ settings.product_card_font_size }}"
+    id="price-title-wrapper-{{section.id}}-{{product.id}}"
+  >
+    {%- unless product.price_varies == false and product.compare_at_price_varies %}
+      <span class="product--actual-price heading-font">{{ money_price }}</span>
+      {%- if compare_at_price > 0 and compare_at_price > price %}
+        <span class="product--cut-price line-through">
+          {{ compare_at_price | money }}
+        </span>
+      {% endif %}
+      {%- if product.selected_or_first_available_variant.unit_price_measurement -%}
+        <span class="product-unit-price uppercase text-small">
+          {{ product.selected_or_first_available_variant.unit_price | money }} /
+          {% if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+            {{- product.selected_or_first_available_variant.unit_price_measurement.reference_value -}}
+          {%- endif -%}
+          {{- product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
+        </span>
+      {% endif %}
+    {% endunless %}
+    {% if source == 'horizontal' %}
+      {% unless settings.saving_price == 'none' %}
+        {% if product.compare_at_price_min > product.price_min %}
+          {% assign offText = 'OFF' %}
+          {% assign discount = product.compare_at_price_min | minus: product.price_min %}
+
+          <span class="product--badge discount">
+            {% case settings.saving_price %}
+              {% when 'amount-off' %}
+                {{ discount | money | append: ' ' | append: offText }}
+              {% when 'percentage-off' %}
+                {{ discount | times: 100 | divided_by: product.compare_at_price_min | append: '% ' | append: offText }}
+            {% endcase %}
+          </span>
+        {% endif %}
+      {% endunless %}
+    {% endif %}
+  </div>
+{% endunless %}

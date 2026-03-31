@@ -1,0 +1,314 @@
+{% if product != blank %}
+  <variants-set
+    data-template="{{ template }}"
+    data-section="{{ section.id }}"
+    data-page="{{template}}"
+    data-url="{{ product.url }}"
+    {% unless template == 'product' %}
+      data-handle="{{ product.handle }}"
+    {% endunless %}
+    data-product="{{ product.id }}"
+    data-type="{{ block.settings.varaint_type }}"
+    data-unavailable="false"
+    data-preorder="{{ settings.enable_preorder }}"
+    class="no-js-hidden"
+  >
+    {%- liquid
+      assign product_card_swatches = settings.enable_swatches
+
+      assign variants_available_arr = product.variants | map: 'available'
+      assign variants_option1_arr = product.variants | map: 'option1'
+      assign variants_option2_arr = product.variants | map: 'option2'
+      assign variants_option3_arr = product.variants | map: 'option3'
+    -%}
+    {% for option in product.options_with_values %}
+      {% liquid
+        assign optionNameDowncase = option.name | downcase
+        assign optionInputName = 'option-' | append: forloop.index | append: '-' | append: product.id
+        assign forloop_index = forloop.index
+        assign color_option_names = settings.color_name | downcase
+
+        if settings.variants_style == 'color_swatch'
+          if color_option_names contains optionNameDowncase
+            assign isContainColor = true
+          else
+            assign isContainColor = false
+          endif
+        elsif settings.variants_style == 'varaint_image'
+          if color_option_names contains optionNameDowncase
+            assign isContainVariantImage = true
+          else
+            assign isContainVariantImage = false
+          endif
+        else
+          assign isContainColor = false
+          assign isContainVariantImage = false
+        endif
+      %}
+
+      <optionset class="product--options-set" data-optionset="{{ option.name }}">
+        {% if isContainColor or isContainVariantImage %}
+          {% render 'color-swatches',
+            product: product,
+            forloop_index: forloop_index,
+            option: option,
+            section: section,
+            source: 'main-product',
+            cardoptions: cardoptions
+          %}
+        {% else %}
+          <div class="product--options">
+            {% if source == 'main-product' %}
+              <div class="product--variants-title {{ settings.label_font }} text">
+                {{ option.name }}
+                {% if isContainColor or isContainVariantImage %}
+                  <span class="{{ settings.label_font }}" data-selected-variant="{{ section.id }}-{{ product.id }}"
+                    >| {{ option.selected_value -}}
+                  </span>
+                {% endif %}
+              </div>
+            {% endif %}
+            <div class="product--variants-box">
+              <ul class="product--variants-list{% if isContainColor %} color-option {% elsif isContainVariantImage %} color-option variants-image {% else %} options-style-{{ settings.other_style }}{% endif %}">
+                {% for value in option.values %}
+                  {% liquid
+                    assign valueVariant = ''
+                    assign swatch_disabled = true
+                    if value.available
+                      assign swatch_disabled = false
+                    endif
+                    for variant in product.variants
+                      for option in variant.options
+                        if option == value and variant.featured_media != blank
+                          assign valueVariant = variant
+                          break
+                        endif
+                      endfor
+                      if valueVariant != blank
+                        break
+                      endif
+                    endfor
+                    assign option_disabled = true
+
+                    for option1_name in variants_option1_arr
+                      case option.position
+                        when 1
+                          if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                            assign option_disabled = false
+                            assign vals = variants_available_arr[forloop.index0]
+                          endif
+                        when 2
+                          if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                            assign option_disabled = false
+                            assign vals = variants_available_arr[forloop.index0]
+                          endif
+                        when 3
+                          if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                            assign option_disabled = false
+                            assign vals = variants_available_arr[forloop.index0]
+                          endif
+                      endcase
+                    endfor
+
+                    assign showStatus = false
+
+                    if isContainVariantImage and valueVariant == blank
+                      assign showStatus = true
+                    endif
+
+                    unless color_option_names contains optionNameDowncase
+                      assign showStatus = true
+                    endunless
+
+                    if option_disabled
+                      assign classDisable = 'disabled'
+                    endif
+
+                    if settings.hide_unavailable == true
+                      if value.available == true
+                        assign option_disabled = false
+                        assign classHidden = ''
+                        assign classDisable = ''
+                        assign counter = 1
+                      elsif value.available == false
+                        assign option_disabled = false
+                        assign classHidden = ''
+                        assign classDisable = 'disabled'
+                        assign counter = 2
+                      else
+                        assign option_disabled = true
+                        assign classHidden = 'hidden'
+                        assign classDisable = 'disabled'
+                      endif
+                    endif
+                  %}
+
+                  <li
+                    class="variant--item"
+                    is="hover-li"
+                    title="{{ value }}"
+                    data-option-disabled="{{ option_disabled }}"
+                  >
+                    <input
+                      class="productOption{% if option_disabled %} disabled{% endif %}"
+                      id="{{ optionInputName }}-{{ value }}"
+                      type="radio"
+                      name="{{ optionInputName }}-{{ section.id }}"
+                      value="{{ value | escape }}"
+                      {% if source == 'main-product' %}
+                        form="main-product-form-{{ section.id }}"
+                      {% endif %}
+                      {% if value == option.selected_value %}
+                        checked
+                      {% endif %}
+                      aria-labelledby="label-{{ value }}"
+                    >
+                    <label
+                      for="{{ optionInputName }}-{{ value }}"
+                      id="label-{{ value }}"
+                      class="variant-item-name"
+                      {% if isContainColor %}
+                        {% if value.swatch.image %}
+                          style="background-image:url({{ value.swatch.image | image_url: width: 70 }}); background-position:{{ value.swatch.image.presentation.focal_point }};"
+                        {% elsif value.swatch.color %}
+                          style="--swatch_color: rgb({{ value.swatch.color.rgb }})"
+                        {% else %}
+                          data-pallet-color="{{ value | downcase }}"
+                          style="--swatch_color: {{ value | downcase }}"
+                        {% endif %}
+                      {% endif %}
+                      {% if isContainVariantImage %}
+                        {% if valueVariant != blank %}
+                          style="background-image:url({{ valueVariant.featured_media.preview_image | image_url: width: '70' }})"
+                        {% else %}
+                          {% if value.swatch.image %}
+                            style="background-image:url({{ value.swatch.image | image_url: width: 70 }}); background-position:{{ value.swatch.image.presentation.focal_point }};"
+                          {% elsif value.swatch.color %}
+                            style="--swatch_color: rgb({{ value.swatch.color.rgb }})"
+                          {% else %}
+                            data-pallet-color="{{ value | downcase }}"
+                            style="--swatch_color: {{ value | downcase }}"
+                          {% endif %}
+                        {% endif %}
+                      {% endif %}
+                    >
+                      {% liquid
+                        if showStatus
+                          echo value
+                        endif
+                      %}
+                    </label>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        {% endif %}
+      </optionset>
+    {% endfor %}
+    <script type="application/json" data-name="main-product">
+      {{ product.variants | json }}
+    </script>
+    <script type="application/json" data-name="main-product-options">
+      {{ product.options_with_values | json }}
+    </script>
+    <script type="application/json" data-name="main-product-inventories">
+      [
+      {% for variant in product.variants %}
+        {
+          "id": {{- variant.id -}},
+          "inventory_management": "{{- variant.inventory_management -}}",
+          "inventory_policy": "{{- variant.inventory_policy -}}",
+          "inventory_quantity": "{{- variant.inventory_quantity -}}"
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {% endfor %}
+      ]
+    </script>
+  </variants-set>
+  <noscript>
+    <div class="product--options">
+      <div class="product--variants-title {{ settings.label_font }} text">
+        {{ 'products.product.choose_options' | t }}
+      </div>
+      <div class="product--variants-box select-box">
+        <select
+          id="variants-{{ section.id }}"
+          name="id"
+          {% if product_form_id != blank %}
+            form="{{ product_form_id }}"
+          {% endif %}
+          aria-label="Product options"
+        >
+          {% for variant in product.variants %}
+            <option
+              value="{{ variant.id }}"
+              {% if variant.selected %}
+                selected
+              {% endif -%}
+              {% if variant.available == false %}
+                disabled
+              {% endif %}
+            >
+              {{ variant.title }} - {{ variant.price | money }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  </noscript>
+{% else %}
+  <variants-set data-section="template--17991319879928__main">
+    <optionset class="product--options-set">
+      <div class="product--options">
+        <div class="product--variants-title {{ settings.label_font }} text">{{ 'products.product.size' | t }}</div>
+        <div class="product--variants-box">
+          <ul class="product--variants-list">
+            <li class="variant--item" is="hover-li">
+              <label for="option-1" class="variant-item-name cursor-pointer">{{ 'products.product.onboarding.options.option2.value2' | t }}</label>
+            </li>
+            <li class="variant--item" is="hover-li">
+              <label for="option-1" class="variant-item-name cursor-pointer">{{ 'products.product.onboarding.options.option2.value3' | t }}</label>
+            </li>
+            <li class="variant--item" is="hover-li">
+              <label for="option-1" class="variant-item-name cursor-pointer">{{ 'products.product.onboarding.options.option2.value4' | t }}</label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </optionset>
+    <optionset class="product--options-set">
+      <div class="product--options">
+        <div class="product--variants-title {{ settings.label_font }} text">{{ 'products.product.color' | t }}</div>
+        <div class="product--variants-box">
+          <ul class="product--variants-list color-option{% if settings.color_style == 'circle' %} color-circle{% else %} color-square{% endif %}">
+            <li class="variant--item" is="hover-li">
+              <label for="option-2" class="variant-item-name cursor-pointer" style="--swatch_color: moccasin"
+                ><span class="tooltip">{{ 'products.product.onboarding.options.option1.value1' | t }}</span></label
+              >
+            </li>
+            <li class="variant--item" is="hover-li">
+              <label for="option-2" class="variant-item-name cursor-pointer" style="--swatch_color: khaki"
+                ><span class="tooltip">{{ 'products.product.onboarding.options.option1.value2' | t }}</span></label
+              >
+            </li>
+            <li class="variant--item" is="hover-li">
+              <label for="option-2" class="variant-item-name cursor-pointer" style="--swatch_color: darkseagreen"
+                ><span class="tooltip">{{ 'products.product.onboarding.options.option1.value3' | t }}</span></label
+              >
+            </li>
+            <li class="variant--item" is="hover-li">
+              <label for="option-2" class="variant-item-name cursor-pointer" style="--swatch_color: tan"
+                ><span class="tooltip">{{ 'products.product.onboarding.options.option1.value4' | t }}</span></label
+              >
+            </li>
+            <li class="variant--item" is="hover-li">
+              <label for="option-2" class="variant-item-name cursor-pointer" style="--swatch_color: peru"
+                ><span class="tooltip">{{ 'products.product.onboarding.options.option1.value5' | t }}</span></label
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </optionset>
+  </variants-set>
+{% endif %}

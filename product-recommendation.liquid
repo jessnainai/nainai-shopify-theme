@@ -1,0 +1,60 @@
+{% if recommendations.products_count > 0 %}
+  <div class="product--recommendations">
+    <div class="product--recommendation-header">
+      {% if block.settings.heading != blank and recommendations.products_count > 1 %}
+        <p class="product--recommendation-heading heading-font text-large">
+          {{ block.settings.heading }}
+        </p>
+      {% endif %}
+      <div class="swiper-pagination-recommendations-{{ section.id }} swiper-pagination-product--recommendations"></div>
+    </div>
+    {% if recommendations.products_count > 1 %}
+      <swiper-content data-resize="false">
+    {% endif %}
+    <div
+      class="product--recommendation-outer {% if recommendations.products_count > 1 %} swiper{% endif %} "
+      {% if recommendations.products_count > 1 %}
+        data-swiper='
+          {
+            "loop": true,
+            "slidesPerView": 1,
+            "spaceBetween": 10,
+            "pagination": {
+                "el": ".swiper-pagination-recommendations-{{ section.id }}",
+                "type": "bullets",
+                "clickable": true
+            },
+              "breakpoints": {
+                  "768": {
+                    "loop": true,
+                    "spaceBetween": 10,
+                    "pagination": {
+                        "el": ".swiper-pagination-recommendations-{{ section.id }}",
+                        "type": "bullets",
+                        "clickable": true
+                    },
+                    "slidesPerView":{% if pdp_layout_style == 'layout_2' %}1{% else %}2{% endif %}
+                  }
+              }
+          }
+        '
+      {% endif %}
+    >
+      <div class="product--recommendation-wrapper{% if recommendations.products_count > 1 %} p-0 swiper-wrapper is-slider{% endif %} ">
+        {%- for product in product_list limit: limit -%}
+          {%- liquid
+            if product.featured_media != blank
+              assign productImageRatio = 1 | divided_by: product.featured_media.preview_image.aspect_ratio | times: 100 | append: '%'
+            else
+              assign productImageRatio = 100 | append: '%'
+            endif
+          -%}
+          {% render 'product-layout', product: product, slider: 'swiper-slide' %}
+        {% endfor %}
+      </div>
+    </div>
+    {% if settings.recommendations_product_list.size > 1 %}
+      </swiper-content>
+    {% endif %}
+  </div>
+{% endif %}

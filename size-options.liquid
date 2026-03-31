@@ -1,0 +1,25 @@
+{% capture has_size_options %}
+
+    {% for option in product.options_with_values %}
+    {% liquid
+        assign is_size_option = false
+        assign size_options = settings.size_name | downcase
+        assign option_name_downcase = option.name | downcase
+        if size_options contains option_name_downcase
+        assign is_size_option = true
+        endif
+    %}
+    {% if is_size_option %}
+        {% for value in option.values limit: 5 %}
+        <span class="product-variant-item"> {{ value }} </span>
+        {% endfor %}
+    {% endif %}
+    {% endfor %}
+
+{% endcapture %}
+
+{% if has_size_options != blank %}
+  <div class="product-size-variant-list">
+    {{ has_size_options }}
+  </div>
+{% endif %}

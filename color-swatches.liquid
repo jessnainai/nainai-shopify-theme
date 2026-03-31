@@ -1,0 +1,155 @@
+{% liquid
+  assign optionNameDowncase = option.name | downcase
+  assign optionInputName = 'option-' | append: forloop_index | append: '-' | append: product.id
+
+  assign color_option_names = settings.color_name | downcase
+
+  if settings.variants_style == 'color_swatch'
+    if color_option_names contains optionNameDowncase
+      assign isContainColor = true
+    else
+      assign isContainColor = false
+    endif
+  elsif settings.variants_style == 'varaint_image'
+    if color_option_names contains optionNameDowncase
+      assign isContainVariantImage = true
+    else
+      assign isContainVariantImage = false
+    endif
+  else
+    assign isContainColor = false
+    assign isContainVariantImage = false
+  endif
+  assign variants_available_arr = product.variants | map: 'available'
+  assign variants_option1_arr = product.variants | map: 'option1'
+  assign variants_option2_arr = product.variants | map: 'option2'
+  assign variants_option3_arr = product.variants | map: 'option3'
+%}
+<div class="product--options">
+  {% if source == 'main-product' %}
+    <div class="product--variants-title {{ settings.label_font }} text">
+      {{ option.name }}
+      {% if isContainColor or isContainVariantImage %}
+        <span class="{{ settings.label_font }}" data-selected-variant="{{ section.id }}-{{ product.id }}"
+          >| {{ option.selected_value -}}
+        </span>
+      {% endif %}
+    </div>
+  {% endif %}
+  <div class="product--variants-box">
+    <ul class="product--variants-list{% if isContainColor %} color-option{% endif %}{% if isContainVariantImage %} color-option variants-image{% endif %}{% if settings.color_style == 'circle' %} color-circle{% else %} color-square{% endif %}">
+      {% for value in option.values %}
+        {% liquid
+          assign valueVariant = ''
+
+          for variant in product.variants
+            unless variant.available
+              assign variant_una = variant.id
+            endunless
+
+            for option in variant.options
+              if option == value and variant.featured_media != blank
+                assign valueVariant = variant
+                break
+              endif
+            endfor
+            if valueVariant != blank
+              break
+            endif
+          endfor
+          assign option_disabled = true
+
+          for option1_name in variants_option1_arr
+            case option.position
+              when 1
+                if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                  assign option_disabled = false
+                endif
+              when 2
+                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                  assign option_disabled = false
+                endif
+              when 3
+                if option1_name == product.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == product.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                  assign option_disabled = false
+                endif
+            endcase
+          endfor
+
+          assign showStatus = false
+
+          if isContainVariantImage and valueVariant == blank
+            assign showStatus = true
+          endif
+
+          unless color_option_names contains optionNameDowncase
+            assign showStatus = true
+          endunless
+        %}
+
+        <li class="variant--item" is="hover-li" variant-item title="{{ value }}">
+          <input
+            class="productOption{% if option_disabled %} disabled{% endif %}"
+            id="{{ optionInputName }}-{{ value }}-{{ section.id }}"
+            aria-label="option-{{ option.selected_value }}"
+            type="radio"
+            name="{{ optionInputName }}-{{ section.id }}"
+            value="{{ value }}"
+            {% if source == 'main-product' %}
+              form="main-product-form-{{ section.id }}"
+            {% endif %}
+            {% if value == option.selected_value %}
+              checked="checked"
+            {% endif %}
+            aria-labelledby="label-{{ value }}"
+          >
+          <label
+            for="{{ optionInputName }}-{{ value }}-{{ section.id }}"
+            id="label-{{ value }}"
+            class="variant-item-name"
+            {% if isContainColor %}
+              {% if value.swatch.image %}
+                style="background-image:url({{ value.swatch.image | image_url: width: 70 }}); background-position:{{ value.swatch.image.presentation.focal_point }};"
+              {% elsif value.swatch.color %}
+                style="--swatch_color: rgb({{ value.swatch.color.rgb }})"
+              {% else %}
+                data-pallet-color="{{ value | downcase }}"
+                style="--swatch_color: {{ value | downcase }}"
+              {% endif %}
+            {% endif %}
+            {% if isContainVariantImage %}
+              {% if valueVariant != blank %}
+                style="background-image:url({{ valueVariant.featured_media.preview_image | image_url: width: '70' }})"
+              {% else %}
+                {% if value.swatch.image %}
+                  style="background-image:url({{ value.swatch.image | image_url: width: 70 }}); background-position:{{ value.swatch.image.presentation.focal_point }};"
+                {% elsif value.swatch.color %}
+                  style="--swatch_color: rgb({{ value.swatch.color.rgb }})"
+                {% else %}
+                  data-pallet-color="{{ value | downcase }}"
+                  style="--swatch_color: {{ value | downcase }}"
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          >
+            <span class="tooltip">{{ value }}</span>
+            {% comment %}
+              {% liquid
+                  if showStatus
+                      echo value
+                  endif
+              %}
+            {% endcomment %}
+          </label>
+          {% comment %}
+            {% if valueVariant != blank and cardoptions %}
+              <div class="hidden" data-variant-image>
+                {% render 'lazy-image', image: valueVariant.featured_media.preview_image, class: 'product--card-image' %}
+              </div>
+            {% endif %}
+          {% endcomment %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

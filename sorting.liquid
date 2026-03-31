@@ -1,0 +1,51 @@
+{% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+{% assign sort_by_name = '' %}
+{% capture heading %} 
+  <h6 class="filter--columns-heading text-large">{{ 'products.facets.sort_by_label' | t }}</h6>
+{% endcapture %}
+{% capture sorting_options %}
+      {%- for option in collection.sort_options -%}
+        {% if option.value == sort_by %}
+        {% assign sort_by_name = option.name | escape %}
+        {% endif %}
+        <li class="filter-option-item radio-box{% if option.value == sort_by %} selected{% endif %}">
+            <input type="radio" class="checkmark-input{% if option.value == sort_by %} sort-by-selected{% endif %}" name="sort_by" id="sortByOption-{{ forloop.index }}-{{ filterstyle }}" value="{{ option.value | escape }}" data-name="{{ option.name | escape }}" {% if option.value == sort_by %}checked="checked"{% endif %}>
+            <span class="checkmark"></span>
+            <label class="cursor-pointer" for="sortByOption-{{ forloop.index }}-{{ filterstyle }}" >{{ option.name | escape }}</label>
+        </li>
+      {% endfor %}
+{% endcapture %}
+
+<div class="filter--columns-item filter--sorting">
+  {% if style == 'list' and filterstyle == 'vertical' %}
+    {{ heading }}
+    <div class="filter--option-list">
+      <ul class="filter--option-list-items">
+        {{ sorting_options }}
+      </ul>
+    </div>
+  {% endif %}
+  {% if style == 'dropdown' and filterstyle == 'vertical' %}
+    {{ heading }}
+    <select name="sort_by" aria-label="Sort">
+      {%- for option in collection.sort_options -%}
+        <option
+          value="{{ option.value | escape }}"
+          {% if option.value == sort_by %}
+            selected="selected"
+          {% endif %}
+        >
+          {{ option.name | escape }}
+        </option>
+      {%- endfor -%}
+    </select>
+  {% endif %}
+  {% if filterstyle == 'horizontal' %}
+    {{ heading }}
+    <div class="filter--option-list">
+      <ul class="filter--option-list-items">
+        {{ sorting_options }}
+      </ul>
+    </div>
+  {% endif %}
+</div>

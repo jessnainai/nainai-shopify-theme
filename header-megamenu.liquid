@@ -1,0 +1,85 @@
+{% liquid
+  assign link_size = link.links | size
+  assign megaMenucount = 0
+  assign defaul_count = 5
+
+  for block in section.blocks
+    if block.type == 'style-1'
+      for i in (1..4)
+        assign imageSetting = 'content_image_' | append: i
+        if block.settings[imageSetting] != blank
+          assign megaMenucount = megaMenucount | plus: 1
+          if megaMenucount >= 4
+            break
+          endif
+        endif
+      endfor
+    endif
+    if megaMenucount >= 4
+      break
+    endif
+  endfor
+
+  assign total_count = link_size | plus: megaMenucount
+  if total_count <= 5 and megaMenucount != blank
+    assign total_count = total_count
+  else
+    assign total_count = defaul_count
+  endif
+%}
+
+<div class="container-fullwidth">
+  <div
+    class="header--menu-megamenu-columns{% if megamenuStyle == 'style-1' %} megamenu_style1{% elsif megamenuStyle == 'style-2' %} megamenu_style2{% if link.links.size >= 4 %} menu-size-large{% endif %}{% else %} megamenu_style3{% endif %}"
+    {% if megaMenucount != blank and megamenuStyle == 'style-1' %}
+      style="--menu_column_count:{{ total_count }}"
+    {% endif %}
+    {% if megaMenucount != blank and megamenuStyle == 'style-2' %}
+      style="--menu_links_count:{{ link.links.size }}"
+    {% endif %}
+  >
+    {% if megamenuStyle == 'style-3' %}
+      {{ megaMenuData }}
+    {% endif %}
+    {% if megamenuStyle == 'style-2' and link.links.size > 0 %}
+      <div class="header--menu-megamenu-column-left">
+    {% endif %}
+    {% for childlink in link.links %}
+      <div class="navmenu-option">
+        <a
+          href="{{ childlink.url }}"
+          class="megamenu-main-heading text-medium {{ section.settings.submenu_font_type }}"
+        >
+          {% if section.settings.submenu_font_style == 'bold' %}
+            <strong>
+          {% endif %}
+          {{ childlink.title }}
+          {% if section.settings.submenu_font_style == 'bold' %}
+            </strong>
+          {% endif %}
+        </a>
+        {%- if childlink.links != blank -%}
+          <ul class="header--menu-megamenu-inner">
+            {% for grandchildlink in childlink.links %}
+              <li>
+                <a
+                  href="{{ grandchildlink.url }}"
+                  class="{% unless section.settings.sub_menu_font_size == 'regular' %} text-{{ section.settings.sub_menu_font_size }}{% endunless %}"
+                >
+                  {{- grandchildlink.title -}}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endfor %}
+    {% if megamenuStyle == 'style-2' and link.links.size > 0 %}
+      </div>
+    {% endif %}
+
+    {% unless megamenuStyle == 'style-3' %}
+      {{ megaMenuData }}
+    {% endunless %}
+  </div>
+</div>

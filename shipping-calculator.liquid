@@ -1,0 +1,40 @@
+<div class="shippng-estimation-form">
+  <country-province>
+    <div class="form-group">
+      <div class="select-box">
+        <select
+          id="shippingCountry"
+          class="form-control"
+          name="address[country]"
+          data-default="{{ shop.address.country }}"
+          autocomplete="country"
+          data-country-select
+          shippingCountry
+        >
+          {{ all_country_option_tags }}
+        </select>
+      </div>
+    </div>
+    <div class="form-group" id="shipping-province-container" id="shippingProvinceContainer">
+      <div class="select-box">
+        <select
+          id="shippingProvince"
+          class="form-control"
+          name="address[province]"
+          autocomplete="address-level1"
+          shippingProvince
+        ></select>
+      </div>
+    </div>
+  </country-province>
+  <div class="form-group">
+    <label class="hidden" for="shippingZip"> {{ 'sections.cart.pin_code' | t }} </label>
+    <input type="text" name="address[zip]" id="shippingZip" class="form-control" placeholder="Pincode">
+  </div>
+  <div class="form-group">
+    <button type="submit" class="button btn-block default-btn" id="fetch-sipping-estimates">
+      <span>{{ 'sections.cart.estimate' | t }}</span>
+    </button>
+  </div>
+  <div id="ShippingWrapperResponse" data-shipping-result></div>
+</div>

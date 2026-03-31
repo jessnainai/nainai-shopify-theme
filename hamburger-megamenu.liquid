@@ -1,0 +1,58 @@
+{% liquid
+  if megamenuStyle == 'style-1' 
+    assign megamenuContClass = 'megamenu_style1'
+  elsif megamenuStyle == 'style-2'
+    assign megamenuContClass = 'megamenu_style2'
+  elsif megamenuStyle == 'style-3'
+    assign megamenuContClass = 'megamenu_style3'
+  endif 
+%}
+<div class="header--menu-megamenu-content {{ megamenuContClass }}">
+    {%- liquid
+      assign linkTitle = link.title | handleize
+      assign megaMenuStatus = false
+      assign lastBlock = null
+
+      for block in section.blocks
+        assign blockLabel = block.settings.title | handleize
+        if blockLabel == linkTitle
+          assign lastBlock = block
+          assign megaMenuStatus = true
+        endif
+      endfor
+
+      if megaMenuStatus
+        assign megamenuClass = 'mega-menu-' | append: lastBlock.type | append: '-' | append: forloop.index
+        assign blockAttributes = lastBlock.shopify_attributes
+        capture megaMenuImagesData
+          case lastBlock.type
+            when 'style-1'
+              for i in (1..4)
+                assign headingSetting = 'content_title_' | append: i
+                assign linkSetting = 'content_link_' | append: i
+                assign imageSetting = 'content_image_' | append: i
+                assign overlay_opacity = lastBlock.settings.horizontal_overlay_opacity
+                if lastBlock.settings[headingSetting] != blank or lastBlock.settings[imageSetting] != blank
+                  render 'mega-menu-image', section: section, block: lastBlock, headingSetting: headingSetting, linkSetting: linkSetting, imageSetting: imageSetting, overlay_opacity: overlay_opacity
+                endif
+              endfor
+            when 'style-2'
+              for i in (1..3)
+                assign headingSetting = 'content_heading_' | append: i
+                assign linkSetting = 'content_url_' | append: i
+                assign imageSetting = 'content_img_' | append: i
+                assign overlay_opacity = lastBlock.settings.vertical_overlay_opacity
+                if lastBlock.settings[imageSetting] != blank or lastBlock.settings[imageSetting] != blank
+                  render 'mega-menu-image', section: section, block: lastBlock, headingSetting: headingSetting, linkSetting: linkSetting, imageSetting: imageSetting, overlay_opacity: overlay_opacity
+                endif
+              endfor
+            when 'style-3'
+              assign megamenuClass = 'mega-menu3-' | append: indexmenu
+              render 'mega-menu3', section: section, block: lastBlock, megamenu: megamenuClass
+          endcase
+        endcapture
+      endif
+    -%}
+
+    {{ megaMenuImagesData }}
+  </div>

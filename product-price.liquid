@@ -1,0 +1,61 @@
+{% liquid
+  if source == 'sticky-buy-button'
+    assign actualPriceClass = ''
+  else
+    assign actualPriceClass = 'h6'
+  endif
+%}
+<div class="product--pricing" id="price-title-wrapper-{{ section.id }}-{{ product.id }}">
+  {% if product != blank %}
+    <span class="product--actual-price {{ actualPriceClass }}">{{ currentVariant.price | money }}</span>
+    {% if currentVariant.compare_at_price > currentVariant.price and settings.disbale_soldout == false %}
+      <span class="product--cut-price line-through">{{ currentVariant.compare_at_price | money }}</span>
+    {% endif %}
+
+    {% unless block.settings.hide_unit_price and product %}
+      {%- if currentVariant.unit_price_measurement -%}
+        <span class="product-unit-price uppercase text-small">
+          {{ currentVariant.unit_price | money }} /
+          {% if currentVariant.unit_price_measurement.reference_value != 1 -%}
+            {{- currentVariant.unit_price_measurement.reference_value -}}
+          {%- endif -%}
+          {{- currentVariant.unit_price_measurement.reference_unit }}
+        </span>
+      {% endif %}
+    {% endunless %}
+  {% else %}
+    <span class="product--actual-price {{ actualPriceClass }}">{{ 1999 | money_with_currency }}</span>
+  {% endif %}
+
+  {% comment %}
+    {% unless settings.saving_price == 'none' %}
+      {% if currentVariant.compare_at_price_min > currentVariant.price %}
+        {% assign offText = 'OFF' %}
+        {% assign discount = currentVariant.compare_at_price | minus: currentVariant.price %}
+        {{discount}}
+        <div class="product-discount-item">
+          <span>
+            <strong>
+              {% case settings.saving_price %}
+                  {% when 'amount-off' %}
+                    {{ discount | money | append: ' ' | append: offText }}
+                  {% when 'percentage-off' %}
+                    {{ discount | times: 100 | divided_by: currentVariant.compare_at_price | append: '% ' | append: offText }}
+            {% endcase %}
+        </strong>
+        </span>
+        </div>
+      {% endif %}
+    {% endunless %}
+  {% endcomment %}
+</div>
+{% if block.settings.hide_shipping_content == false and product != blank %}
+  <div class="product--tax caption rte text-small">
+    {%- if cart.taxes_included -%}
+      {{ 'products.product.include_taxes' | t }}
+    {%- endif -%}
+    {%- if shop.shipping_policy.body != blank -%}
+      {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+    {%- endif -%}
+  </div>
+{% endif %}

@@ -1,0 +1,29 @@
+{% if settings.button_animation_style == "default" %}
+        {% if icon != '' and show_as_link == false %}
+            <span class="btn-icon btn-default">
+                {% render 'icons', icon: icon %}
+            </span>
+        {% endif %}
+   <span>{{- button_text -}}</span>
+{% elsif show_as_link == true %}  
+    <span>{{- button_text -}}</span>
+{% else %}
+    {% assign buttonsize = button_text | size %}
+    {% assign space = "&nbsp;" %}
+    {% if icon != '' %}
+        <span class="btn-icon">
+            {% render 'icons', icon: icon %}
+        </span>
+    {% endif %}
+    <span class="button--text">{{- button_text -}}</span>
+    <button-animate class="button--hover-text">
+        {% for i in (0..buttonsize) %}
+            {% assign button_char = button_text | slice: i %}
+            {% if button_char == blank %}
+                <span class="button-char" data-button-char>{{ space }}</span>
+            {% else %}
+                <span class="button-char" data-button-char>{{ button_text | slice: i }}</span>
+            {% endif %}
+        {% endfor %} 
+    </button-animate>
+{% endif %}

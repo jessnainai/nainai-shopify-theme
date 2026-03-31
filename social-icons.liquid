@@ -1,0 +1,77 @@
+{% liquid
+  assign iconClass = 'social--icons-link'
+  if customIconClass != blank
+    assign iconClass = customIconClass
+  endif
+%}
+{%- capture socialMediaIcons -%}
+  {%- if settings.social_facebook_link != blank -%}
+    <li class="social--icons-item" is="hover-li" >
+        <a target="_blank" href="{{ settings.social_facebook_link }}" class="{{ iconClass }} facebook"  aria-label="{{ 'general.social.links.facebook' | t }}">
+            {% render 'icons', icon: 'facebook' %}
+        </a>
+    </li>
+    {%- endif -%}
+    {%- if settings.social_instagram_link != blank -%}
+      <li class="social--icons-item" is="hover-li">
+          <a target="_blank" href="{{ settings.social_instagram_link }}" class="{{ iconClass }} instagram"  aria-label="{{ 'general.social.links.instagram' | t }}">
+              {% render 'icons', icon: 'instagram' %}
+          </a>
+      </li>
+      {%- endif -%}
+    {%- if settings.social_youtube_link != blank -%}
+      <li class="social--icons-item" is="hover-li">
+          <a target="_blank" href="{{ settings.social_youtube_link }}" class="{{ iconClass }} youtube"  aria-label="{{ 'general.social.links.youtube' | t }}">
+              {% render 'icons', icon: 'youtube' %}
+          </a>
+      </li>
+    {%- endif -%}
+   
+    {%- if settings.social_tiktok_link != blank -%}  
+    <li class="social--icons-item" is="hover-li"> 
+        <a target="_blank" href="{{ settings.social_tiktok_link }}" class="{{ iconClass }} tiktok" aria-label="{{ 'general.social.links.tiktok' | t }}">
+            {% render 'icons', icon: 'tiktok' %}
+        </a>
+    </li>
+    {%- endif -%}
+    {%- if settings.social_twitter_link != blank -%}
+      <li class="social--icons-item" is="hover-li">
+          <a target="_blank" href="{{ settings.social_twitter_link }}" class="{{ iconClass }} twitter-x" aria-label="{{ 'general.social.links.twitter' | t }}">
+              {% render 'icons', icon: 'x' %}
+          </a>
+      </li>
+    {%- endif -%}
+    {%- if settings.social_snapchat_link != blank -%}
+      <li class="social--icons-item" is="hover-li">
+          <a target="_blank" href="{{ settings.social_snapchat_link }}" class="{{ iconClass }} snapchat" aria-label="{{ 'general.social.links.snapchat' | t }}">
+            {% render 'icons', icon: 'snapchat' %}
+          </a>
+      </li>
+    {%- endif -%}    
+    {%- if settings.social_pinterest_link != blank -%}
+      <li class="social--icons-item" is="hover-li">
+          <a target="_blank" href="{{ settings.social_pinterest_link }}" class="{{ iconClass }} pinterest" aria-label="{{ 'general.social.links.pinterest' | t }}">
+            {% render 'icons', icon: 'pinterest' %}
+          </a>
+      </li>
+    {%- endif -%}
+    {%- if settings.social_tumblr_link != blank -%}
+      <li class="social--icons-item" is="hover-li">
+          <a target="_blank" href="{{ settings.social_tumblr_link }}" class="{{ iconClass }} tumblr" aria-label="{{ 'general.social.links.tumblr' | t }}">
+            {% render 'icons', icon: 'tumblr' %}
+          </a>
+      </li>
+    {%- endif -%}
+    {%- if settings.social_vimeo_link != blank -%}
+      <li class="social--icons-item" is="hover-li">
+          <a target="_blank" href="{{ settings.social_vimeo_link }}" class="{{ iconClass }} vimeo" ria-label="{{ 'general.social.links.vimeo' | t }}">
+            {% render 'icons', icon: 'vimeo' %}
+          </a>
+      </li>
+    {%- endif -%}
+{%- endcapture -%}
+{% if socialMediaIcons != blank %}
+  <ul class="list-inline social--icons-list {{ class }}">
+    {{ socialMediaIcons }}
+  </ul>
+{% endif %}

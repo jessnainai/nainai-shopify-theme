@@ -1,0 +1,53 @@
+{% assign megaMenucount = 0 %}
+{%- for i in (1..4) -%}
+  {%- liquid
+    assign headingSetting = 'content_title_' | append: i
+    assign linkSetting = 'content_link_' | append: i
+    assign imageSetting = 'content_image_' | append: i
+  -%}
+  {%- if block.settings[imageSetting] != blank -%}
+    {% assign megaMenucount = megaMenucount | plus: 1 %}
+
+
+    <div class="images-option" style="--image_overlay_opacity:{{ block.settings.horizontal_overlay_opacity }}">
+      {% render 'mega-menu-image', section: section, block: block, headingSetting: headingSetting, linkSetting: linkSetting, imageSetting: imageSetting %}
+      {% comment %} <div class="megamenu--promotional" {{ block.shopify_attributes }}>
+        {%- if block.settings[imageSetting] != blank -%}
+          {% assign image = block.settings[imageSetting] %}
+          <div class="megamenu--promotional-img">
+            {% liquid
+              assign image_size = block.settings.image_ratio
+              if image_size == 'landscape'
+                assign imageRatio = '70%'
+              elsif image_size == 'square'
+                assign imageRatio = '100%'
+              elsif image_size == 'portrait'
+                assign imageRatio = '130%'
+              else
+                if block.settings[imageSetting] != blank
+                  assign imageRatio = 1 | divided_by: block.settings[imageSetting].aspect_ratio | times: 100 | minus: 1 | append: '%'
+                else
+                  assign imageRatio = 100 | append: '%'
+                endif
+              endif
+            %}
+            <div class="media" style="--image_ratio:{{ imageRatio }};">
+              {% render 'lazy-image', image: image %}
+            </div>
+          </div>
+        {%- endif -%}
+        {%- if block.settings[headingSetting] != blank -%}
+          <div class="megamenu--promotional-content">
+            <h6 class="megamenu--promotional-title {{ section.settings.sub_menu_font }}-font">
+              {{ block.settings[headingSetting] }}
+            </h6>
+          </div>
+        {%- endif -%}
+        {%- if block.settings[linkSetting] != blank -%}
+          <a href="{{ block.settings[linkSetting] }}" class="focus-inside megamenu--promotional-link "></a>
+        {%- endif -%}
+      </div> {% endcomment %}
+    </div>
+
+  {%- endif -%}
+{%- endfor -%}

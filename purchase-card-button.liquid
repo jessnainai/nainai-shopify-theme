@@ -1,0 +1,42 @@
+<product-form-context data-section-id="{{ section_id }}">
+  {%- form 'product',
+    product,
+    id: product_form_id,
+    class: 'form main-product-form',
+    novalidate: 'novalidate',
+    data-type: 'add-to-cart-form'
+  -%}
+    <input type="hidden" name="id" value="{{ currentVariant.id }}">
+    <div class="form--message error hidden" tabindex="-1" data-add-cart-error></div>
+    <purchase-buttons>
+      {%- liquid
+        assign check_against_inventory = true
+        if currentVariant.inventory_management != 'shopify' or currentVariant.inventory_policy == 'continue'
+          assign check_against_inventory = false
+        endif
+        if currentVariant.quantity_rule.min > currentVariant.inventory_quantity and check_against_inventory
+          assign quantity_rule_soldout = true
+        endif
+      -%}
+
+      <div class="product-checkout-buttons" data-qty-rule="{{ quantity_rule_soldout }}" {{ block }}>
+        {% render 'icons', icon: 'cart' %}
+      </div>
+    </purchase-buttons>
+    <script type="application/json" data-name="product-options">
+      {{ product.options_with_values | json }}
+    </script>
+    <script type="application/json" data-name="product-inventories">
+      [
+          {% for variant in product.variants %}
+              {
+                  "id": {{- variant.id -}},
+                  "inventory_management": "{{- variant.inventory_management -}}",
+                  "inventory_policy": "{{- variant.inventory_policy -}}",
+                  "inventory_quantity": "{{- variant.inventory_quantity -}}"
+              }{%- unless forloop.last -%},{%- endunless -%}
+          {% endfor %}
+      ]
+    </script>
+  {% endform %}
+</product-form-context>

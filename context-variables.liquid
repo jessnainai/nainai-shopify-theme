@@ -1,0 +1,97 @@
+<script>
+  const showFilters = "{{ 'products.facets.show_filter' | t }}";
+  const hideFilters = "{{ 'products.facets.hide_filter' | t }}";
+  const googleMapApiKey = '{{ settings.googlemapapi }}';
+  const graphicsFont = '{{ 'graphics-font.json' | asset_url }}';
+  const googleMapId = '{{ settings.googlemapid }}';
+  const atcLoaderSVG = `<span class="product--submit-btn-loader" data-atc-loader><svg viewBox="0 0 24 24">
+    <circle cx="4" cy="12" r="3" fill="currentColor">
+      <animate id="svgSpinners3DotsScale0" attributeName="r" begin="0;svgSpinners3DotsScale1.end-0.375s" dur="1.125s" values="3;.2;3"/>
+    </circle>
+    <circle cx="12" cy="12" r="3" fill="currentColor">
+      <animate attributeName="r" begin="svgSpinners3DotsScale0.end-0.9s" dur="1.125s" values="3;.2;3"/>
+    </circle>
+    <circle cx="20" cy="12" r="3" fill="currentColor">
+      <animate id="svgSpinners3DotsScale1" attributeName="r" begin="svgSpinners3DotsScale0.end-0.675s" dur="1.125s" values="3;.2;3"/>
+    </circle>
+    </svg>`;
+</script>
+<script>
+  window.theme = window.theme || {};
+  window.shopUrl = '{{ request.origin }}';
+  window.routes = {
+    cart_add_url: '{{ routes.cart_add_url }}',
+    cart_change_url: '{{ routes.cart_change_url }}',
+    cart_update_url: '{{ routes.cart_update_url }}',
+    cart_url: '{{ routes.cart_url }}',
+    predictive_search_url: '{{ routes.predictive_search_url }}',
+  };
+
+  window.cartStrings = {
+    error: `{{ 'sections.cart.cart_error' | t }}`,
+    quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`,
+  };
+
+  window.addToCartButtonStrings = {
+    preOrder: `{{ 'products.product.preorder' | t }}`,
+    addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+    soldOut: `{{ 'products.product.sold_out' | t }}`,
+    unavailable: `{{ 'products.product.unavailable' | t }}`,
+    unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`,
+  };
+
+  window.quickOrderListStrings = {
+    itemsAdded: `{{ 'sections.quick_order_list.items_added.other' | t: quantity: '[quantity]' }}`,
+    itemAdded: `{{ 'sections.quick_order_list.items_added.one' | t: quantity: '[quantity]' }}`,
+    itemsRemoved: `{{ 'sections.quick_order_list.items_removed.other' | t: quantity: '[quantity]' }}`,
+    itemRemoved: `{{ 'sections.quick_order_list.items_removed.one' | t: quantity: '[quantity]' }}`,
+    viewCart: `{{- 'sections.quick_order_list.view_cart' | t -}}`,
+    each: `{{- 'sections.quick_order_list.each' | t: money: '[money]' }}`,
+  };
+
+  window.accessibilityStrings = {
+    imageAvailable: `{{ 'products.product.media.image_available' | t: index: '[index]' }}`,
+    shareSuccess: `{{ 'general.share.success_message' | t }}`,
+    pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
+    playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
+    recipientFormExpanded: `{{ 'recipient.form.expanded' | t }}`,
+    recipientFormCollapsed: `{{ 'recipient.form.collapsed' | t }}`,
+    countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
+  };
+
+  const ON_CHANGE_DEBOUNCE_TIMER = 300;
+  const PUB_SUB_EVENTS = {
+    cartUpdate: 'cart-update',
+    quantityUpdate: 'quantity-update',
+    variantChange: 'variant-change',
+    cart_error: 'cart-error',
+  };
+
+  try{
+
+    const recentlyViewedProducts = new Set(JSON.parse(window.localStorage.getItem(`king-recently-viewed`) || '[]'));
+    recentlyViewedProducts.delete({{ product.id }}); 
+    recentlyViewedProducts.add({{ product.id}});
+    const arrayFromSet = Array.from(recentlyViewedProducts.values()).reverse();
+    const filteredArray = arrayFromSet.filter(id => id !== null && id !== undefined); // Filter out null and undefined values
+    const jsonString = JSON.stringify(filteredArray);
+    window.localStorage.setItem(`king-recently-viewed`, jsonString);
+    
+  }catch{
+
+  }
+</script>
+
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'cookies.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'animate.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'lazyload.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'gsap.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'ScrollTrigger.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'SplitText.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'magnet.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-3d-model.js' | asset_url }}" defer="defer"></script>
+
+{% comment %} <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOyw9TNt8YzANQjJMjjijfr8MC2DV_f1s&callback=initMap&v=weekly&libraries=marker&loading=async" async></script> {% endcomment %}

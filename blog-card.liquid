@@ -1,0 +1,141 @@
+ {%- if article and article != empty -%}
+  {% liquid
+    if cardImageSize == 'landscape'
+      assign imageRatio = '75%'
+    elsif cardImageSize == 'square'
+      assign imageRatio = '100%'
+    elsif cardImageSize == 'portrait'
+      assign imageRatio = '130%'
+    else
+      if article.image != blank
+        assign imageRatio = 1 | divided_by: article.image.aspect_ratio | times: 100 | append: '%'
+      else
+        assign imageRatio = 100 | append: '%'
+      endif
+    endif
+  %}
+
+  <div
+    class="blog--item animate-hover{% if section.settings.blog_style == 'stacked' %} horizontal-view{% endif %}"
+    {% unless section.settings.blog_style == 'collage' %}
+      {%- if settings.is_card_animation %} data-card-animate {% endif -%}
+    {% endunless %}
+  >
+    <a href="{{- article.url -}}" class="blog--image media-wrapper width-100">
+      <div class="media" style="--image_ratio:{{ imageRatio }};">
+        {%- if article.image -%}
+          {% render 'lazy-image', image: article.image %}
+        {% else %}
+          {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+    </a>
+    <div class="blog--content">
+      
+      {%- liquid 
+        assign has_comments = false
+        if article.comments_count > 0 and blog.comments_enabled? and section.settings.comments_enabled 
+        assign has_comments = true
+        endif 
+        -%}
+      {% if section.settings.show_date != blank
+        or section.settings.show_author != blank
+        or has_comments
+      %}
+        <ul class="blog--info">
+          {% if section.settings.show_date %}
+            <li class="blog--data text-small">{{ article.published_at | date: '%B %d, %Y' }}</li>
+          {% endif %}
+          {% if section.settings.show_author %}
+            <li class="blog--data text-small author--name">{{ article.author }}</li>
+          {% endif %}
+          {%- if has_comments -%}
+            <li class="blog--data text-small comment">
+              {% render 'icons', icon: 'comment-message' %}
+              <span>{{ article.comments_count }}</span>
+            </li>
+          {%- endif -%}
+        </ul>
+      {% endif %}
+      <a href="{{- article.url -}}" class="blog--title h6 heading-font" aria-label="{{ article.title }} Blog Post">
+        {{ article.title }}
+      </a>
+      {% if section.settings.show_excerpt or source == 'main-search' %}
+        <p class="blog--desc">{{ article.excerpt_or_content | strip_html | truncatewords: 20 }}</p>
+      {% endif %}
+      {% liquid
+        assign show_tags = false
+        if source == 'main-search' and article.tags.size > 0
+          assign show_tags = true
+        elsif section.settings.show_tags and article.tags.size > 0
+          assign show_tags = true
+        endif
+      %}
+      {% if show_tags == true %}
+        <div class="blog--tags">
+          <ul class="list-inline blog--tags-list gap-5 22">
+            {% for tag in article.tags %}
+              <li class="blog--tags-item">
+                <a class="blog--tags-link text-small" href="{{ blog.url }}/tagged/{{ tag }}" aria-label="{{ tag }} Tag">
+                  {{- tag -}}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+      {% assign read_more_text = 'blogs.article.read_more' | t %}
+     
+      {% if showReadmoreButton %}
+        {% if section.settings.blog_style == 'collage' %}
+          <div class="blog--button hidden d-md-block" data-blog-readmore>
+            <a href="{{- article.url -}}" class="blog--button-item" aria-label="Read more about{{ article.title }}">
+              <blog-read-more class="blog--button-text">{{ read_more_text }}</blog-read-more>
+              <span class="blog--button-arrow arrow--btn small-width">
+                <svg
+                  class="arrow--icon"
+                  viewBox="0 0 13 13"
+                  fill="none"
+                >
+                  <path d="M1.52537 6.20033H11.7227" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path d="M6.62402 1.10168L11.7227 6.20033L6.62402 11.299" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </span>
+            </a>
+          </div>
+          <div class="blog--button d-block d-md-none" data-blog-readmore>
+            <a href="{{- article.url -}}" class="button small-button {{ settings.button_animation_style }}">
+              {% render 'button-appearance', button_text: read_more_text, icon: 'arrow-right' %}
+            </a>
+          </div>
+        {% else %}
+          <div class="blog--button" data-blog-readmore>
+            <a href="{{- article.url -}}" class="button small-button {{ settings.button_animation_style }}">
+              {% render 'button-appearance', button_text: read_more_text, icon: 'arrow-right' %}
+            </a>
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+{%- else -%}
+  <div
+    class="blog--item animate-hover{% if section.settings.blog_style == 'stacked' %} horizontal-view{% endif %}"
+    {% unless section.settings.blog_style == 'collage' %}
+      {%- if settings.is_card_animation %} data-card-animate {% endif -%}
+    {% endunless %}
+  >
+    <div class="blog--image media-wrapper width-100">
+      <div
+        class="media"
+        style="--image_ratio:65%;"
+      >
+        {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    </div>
+    <div class="blog--content">
+      <h6 class="blog--title h6 heading-font">{{ 'onboarding.blog_title' | t }}</h6>
+      <p class="blog--desc">{{ 'onboarding.blog_desc' | t }}</p>
+    </div>
+  </div>
+{%- endif -%}

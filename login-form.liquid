@@ -1,0 +1,82 @@
+{%- if recover_success == true -%}
+  <div class="form--message success" tabindex="-1" autofocus>
+    {{ 'customer.recover_password.success' | t }}
+  </div>
+{%- endif -%}
+
+{%- form 'customer_login', novalidate: 'novalidate', class: 'account--form' -%}
+  {%- if form.errors -%}
+    <div class="form--message error" tabindex="-1" autofocus>
+      <ul>
+        {%- for field in form.errors -%}
+          <li>
+            {%- if field == 'form' -%}
+              {{ form.errors.messages[field] }}
+            {%- else -%}
+              <a href="#RegisterForm-{{ field }}" class="text-small">
+                {{ form.errors.translated_fields[field] | capitalize }}
+                {{ form.errors.messages[field] }}
+              </a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endif -%}
+  <div class="form-group">
+    <label for="CustomerEmail" class="">{{ 'customer.login_page.email' | t }}</label>
+    <input
+      class="form-control "
+      type="email"
+      name="customer[email]"
+      autocomplete="email"
+      id="CustomerEmail"
+      placeholder="Email address"
+      {% if form.errors contains 'form' %}
+        aria-invalid="true"
+      {% endif %}
+      autocapitalize="off"
+      required=""
+    >
+  </div>
+  <div class="form-group">
+    <label for="customerPassword" class="">{{ 'customer.login_page.password' | t }}</label>
+    <input
+      class="form-control "
+      name="customer[password]"
+      type="password"
+      {% if form.errors contains 'password' %}
+        aria-invalid="true"
+      {% endif %}
+      placeholder="Enter your password"
+      autocapitalize="off"
+      required=""
+    >
+  </div>
+  <div class="form-group forgot-password text-right">
+    {% if settings.account_behaviour == 'drawer' and request.page_type != 'customers/login' %}
+      <account-event class="text-underline text-small cursor-pointer" data-target="reset">
+        <a href="/">{{ 'customer.login_page.forgot_password' | t }}?</a>
+      </account-event>
+    {% else %}
+      <a href="#recover" class="text-underline text-small" data-target-forgot>
+        {{- 'customer.login_page.forgot_password' | t }}
+      </a>
+    {% endif %}
+  </div>
+  <button class="button medium-button button-block">{{ 'customer.log_in' | t }}</button>
+  <p class="account--text-info text-center text-medium">
+    {{ 'customer.login_page.dont_account' | t }}
+    {% if settings.account_behaviour == 'drawer' and request.page_type != 'customers/login' %}
+      <account-event class="text-underline cursor-pointer" data-target="create">
+        <a href="/">
+          {{- 'customer.login_page.create_account' | t -}}
+        </a>
+      </account-event>
+    {% else %}
+      <a href="{{ routes.account_register_url }}" class="text-underline">
+        {{- 'customer.login_page.create_account' | t -}}
+      </a>
+    {% endif %}
+  </p>
+{%- endform -%}

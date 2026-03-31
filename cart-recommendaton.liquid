@@ -1,0 +1,54 @@
+<div class="cart--drawer-suggestions">
+  <div class="cart--drawer-suggestion-header">
+    {% if settings.recommendation_heading != blank %}
+      <h6 class="cart--drawer-suggestion-heading heading-font image-overlay-heading">
+        {{ settings.recommendation_heading }}
+      </h6>
+    {% endif %}
+    <div class="swiper--custom-buttons d-md-flex d-none">
+      {% liquid
+        if settings.slilder_button_style == 'square'
+          assign btnIcon = 'curve-arrow'
+        else
+          assign btnIcon = 'arrow-icon'
+        endif
+      %}
+      <swiper-nav class="swiper-button-prev swiper-button-prev-{{ section.id }} swiper-button button-{{ settings.slilder_button_style }}">
+        {% render 'icons', icon: btnIcon %}
+      </swiper-nav>
+      <swiper-nav class="swiper-button-next swiper-button-next-{{ section.id }} swiper-button button-{{ settings.slilder_button_style }}">
+        {% render 'icons', icon: btnIcon %}
+      </swiper-nav>
+    </div>
+  </div>
+  {% if product_list.count > 1 %}
+    <swiper-content>
+  {% endif %}
+  <div
+    class="cart--drawer-suggestion-outer {% if product_list.count > 1 %} swiper{% endif %}"
+    {% if product_list.count > 1 %}
+      data-swiper='
+        { "slidesPerView": 1 ,"navigation": {
+            "nextEl": ".swiper-button-next-{{ section.id }}",
+            "prevEl": ".swiper-button-prev-{{ section.id }}"
+        },"breakpoints": {
+         "1025": { "slidesPerView": 2} ,
+         "1200": { "slidesPerView": 3 } } }
+      '
+    {% endif %}
+  >
+    <div
+      class="cart--drawer-suggestion-wrapper  {% if product_list.count > 1 %}swiper-wrapper is-slider{% endif %}"
+      data-view="carousel"
+    >
+      {%- for product in product_list limit: limit -%}
+        <div class="product--card {% if product_list.count > 1 %} swiper-slide {% endif %}">
+          {% render 'product-card', cardproduct: product, section: section, cardImageSize: 'square' %}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+  {% if product_list.count > 1 %}
+    </swiper-content>
+  {% endif %}
+</div>

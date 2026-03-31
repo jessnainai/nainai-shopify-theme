@@ -1,0 +1,41 @@
+{% liquid
+  capture placeholderIndex
+    cycle cycleGroup: '1', '2', '3', '4'
+  endcapture
+  if image_ratio
+    assign image_ratio = image_ratio
+  else
+    assign image_ratio = '100%'
+  endif
+%}
+<div class="horizontal--product-card {{ slider }}">
+{% if product != blank %} <a href="{{ product.url }}" {% else %} <div {% endif %} class="horizontal--product-image media-wrapper">
+    <div class="media" style="--image_ratio:{{ image_ratio }};">
+      {% if product.featured_media != blank %}
+        {% render 'lazy-image', image: product.featured_media.preview_image, class: 'product-image' %}
+      {% else %}
+        {{ 'product-apparel-' | append: placeholderIndex | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  {% if product != blank %}</a> {% else %} </div> {% endif %}
+    <div class="horizontal--product-detail">
+
+      {% if product != blank %}
+          <a href="{{ product.url }}" class="product--title">
+            {{ product.title | escape }}
+          </a>
+          {% if settings.show_price %}
+            {% render 'product-card-price', product: product, section: section, currentVariant: current_variant, source:'horizontal'%}
+          {% endif  %}
+
+          <div class="product--view-detail text-right">
+            <a href="{{ product.url }}" class="text-underline text-small"> {{ 'general.search.button.view_details' | t }}</a>
+          </div>
+        {% else %}
+          <div class="product--title">{{ 'Example Title' }}</div>
+            <div class="product--pricing" id="price-title-wrapper-{{section.id}}-{{product.id}}">
+              <span class="product--actual-price heading-font">{{ 1999 | money_with_currency }}</span>
+            </div>
+        {% endif %}
+    </div>
+</div>

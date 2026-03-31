@@ -1,0 +1,32 @@
+{%- for item in item -%}
+  {% liquid
+    assign gift_product = settings.gift_wrap_product
+    if item.variant.id == settings.gift_wrap_product.selected_or_first_available_variant.id and settings.enable_gift_wrap
+      assign gift_wrap = 1
+    endif
+  %}
+{% endfor %}
+{% if settings.enable_gift_wrap == true and settings.gift_wrap_text != blank %}
+  <gift-wrapping
+    class="d-block"
+    data-gift-wrap-id="{{ gift_product.selected_or_first_available_variant.id}}"
+    cart-items-size="{{ cart.item_count }}"
+    gift-wraps-in-cart="{{gift_wrap}}"
+    gift-template="{{giftWraptemplate}}"
+    item-in-cart="1"
+    gift-wrapping-section
+  >
+    <div class="gift-wrap-box custom-checkbox">
+      <input
+        type="checkbox"
+        class="checkmark-input"
+        name="cart-drawer-gift-wrap"
+        id="gift-wrap-{{ section.id }}"
+      >
+      <span class="checkmark"></span>
+      {% if settings.gift_wrap_text %}
+        <label for="gift-wrap-{{ section.id }}" class="gift-wrap-text cursor-pointer">{{ settings.gift_wrap_text }}</label>
+      {% endif %}
+    </div>
+  </gift-wrapping>
+{% endif %}

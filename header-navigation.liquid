@@ -1,0 +1,196 @@
+{% if section.settings.header_style == 'half-width-menu' -%}
+  <button class="menu-arrow left" data-arrow-left role="button" type="submit">
+    <svg width="6" height="9" viewBox="0 0 6 9" fill="none">
+      <path d="M4.97057 9L6 7.97057L2.65617 4.61943L6 1.2683L4.97057 0.238867L0.590001 4.61943L4.97057 9Z" fill="currentColor"/>
+    </svg>
+  </button>
+{%- endif %}
+<div class="header--navigation">
+  <div class="header--navigation-inner">
+    <ul
+      class="d-flex width-100 header--navigation-list"
+      {% if section.settings.header_style == 'half-width-menu' %}
+        is="menu-slide"
+      {% endif %}
+    >
+      {% assign reverseBlocks = section.blocks | reverse %}
+      {% for link in section.settings.menu.links %}
+        {%- liquid
+          assign megaMenuStatus = false
+          assign linkTitle = link.title | handleize
+          assign indexmenu = forloop.index
+          assign megamenuStyle = ''
+          capture megaMenuData
+            for block in section.blocks
+              case block.type
+                when 'style-1'
+                  assign blockLabel = block.settings.title | handleize
+                  if blockLabel == linkTitle
+                    assign megaMenuStatus = true
+                    assign megamenuStyle = 'style-1'
+                    assign megamenuClass = 'mega-menu-' | append: indexmenu
+                    render 'mega-menu', block: block, megamenu: megamenuClass
+                  endif
+                when 'style-2'
+                  assign blockLabel = block.settings.title | handleize
+                  if blockLabel == linkTitle
+                    assign megaMenuStatus = true
+                    assign megamenuStyle = 'style-2'
+                    assign megamenuClass = 'mega-menu2-' | append: indexmenu
+                    render 'mega-menu2', block: block, megamenu: megamenuClass
+                  endif
+                when 'style-3'
+                  assign blockLabel = block.settings.title | handleize
+                  if blockLabel == linkTitle
+                    assign megaMenuStatus = true
+                    assign megamenuStyle = 'style-3'
+                    assign megamenuClass = 'mega-menu3-' | append: indexmenu
+                    render 'mega-menu3', section: section, block: block, megamenu: megamenuClass
+                  endif
+              endcase
+              if megaMenuStatus
+                break
+              endif
+            endfor
+          endcapture
+        -%}
+        {% liquid
+          assign fullwidth_megamenu = false
+
+          if section.settings.menu_type == 'mega_menu' or megaMenuData != blank
+            assign fullwidth_megamenu = true
+          endif
+
+          if megaMenuData != blank
+            assign classMenuType = 'megamenu'
+          else
+            if section.settings.menu_type == 'mega_menu'
+              assign classMenuType = 'megamenu'
+            else
+              assign classMenuType = 'dropdown'
+            endif
+          endif
+        %}
+
+        <li class="header--menu-item{% if link.links.size > 0 or megaMenuData != blank %} has-children {{ classMenuType }}{% endif %}{% if fullwidth_megamenu %} fullwidth-megamenu{% endif %}">
+          {% if link.links != blank or megaMenuData != blank %}
+            <header-menu
+              class="d-block {% if megaMenuData != blank %}header-megamenu{% elsif section.settings.menu_type == 'mega_menu' %}header-megamenu{% else %}header-dropdown{% endif %}"
+              data-header-navigation="{{ section.settings.menu_navigations }}"
+              data-menu-type="{{ section.settings.menu_type }}"
+            >
+              {% comment %}
+                <a
+                  {% unless section.settings.menu_navigations == 'click' %}
+                    href="{{ link.url }}"
+                  {% endunless %}
+                  class="header--menu-link {{ section.settings.font_type }}{% if section.settings.main_menu_font_size == 'regular' %} text{% endif %}{% unless section.settings.main_menu_font_size == 'regular' %} text-{{ section.settings.main_menu_font_size }}{% endunless %}"
+                >
+              {% endcomment %}
+              <a
+                href="{{ link.url }}"
+                class="header--menu-link {{ section.settings.font_type }}{% if section.settings.main_menu_font_size == 'regular' %} text{% endif %}{% unless section.settings.main_menu_font_size == 'regular' %} text-{{ section.settings.main_menu_font_size }}{% endunless %}"
+              >
+                {% if section.settings.menu_font_style == 'bold' %}
+                  <strong>
+                {% endif %}
+                {{- link.title -}}
+                {% if section.settings.menu_font_style == 'bold' %}
+                  </strong>
+                {% endif %}
+                <svg width="8" height="6" viewBox="0 0 8 6">
+                  <path d="m1 1.5 3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+                </svg>
+              </a>
+              <div
+                class="header--menu-submenu{% if megaMenuData != blank or section.settings.menu_type == 'mega_menu' %} megamenu-container{% endif %}"
+                header-menu-inner
+              >
+                {% if megaMenuData != blank or section.settings.menu_type == 'mega_menu' %}
+                  <div class="header--menu-megamenu" data-header-menu-megamenu>
+                    {% unless section.settings.header_style == 'half-width-menu' %}
+                      {% render 'header-megamenu',
+                        link: link,
+                        section: section,
+                        block: section.blocks,
+                        megaMenuData: megaMenuData,
+                        megamenuStyle: megamenuStyle
+                      %}
+                    {% else %}
+                      {% render 'half-header-megamenu',
+                        link: link,
+                        section: section,
+                        block: section.blocks,
+                        megamenuStyle: megamenuStyle
+                      %}
+                    {% endunless %}
+                  </div>
+                {% else %}
+                  <ul class="header--menu-submenu-list" data-child-list>
+                    {% for childlink in link.links %}
+                      <li class="header--menu-submenu-item" data-child>
+                        <a
+                          href="{{ childlink.url }}"
+                          class="header--menu-submenu-link {{ section.settings.submenu_font_type }} text-medium"
+                        >
+                          <span>
+                            {% if section.settings.submenu_font_style == 'bold' %}
+                              <strong>
+                            {% endif %}
+                            {{ childlink.title }}
+                            {% if section.settings.submenu_font_style == 'bold' %}
+                              </strong>
+                            {% endif %}
+                          </span>
+                          {%- if childlink.links != blank -%}
+                            <span class="menu--icon">
+                              <svg width="12" height="12" viewBox="0 0 13 13" fill="none">
+                                <path d="M0.999955 6.53072L11.9385 6.53072" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6.46924 12L11.9385 6.53072L6.46924 1.06143" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                            </span>
+                          {%- endif -%}
+                        </a>
+                        {%- if childlink.links != blank -%}
+                          <ul class="header--menu-submenu-list-inner" data-grand-child-list>
+                            {% for grandchildlink in childlink.links %}
+                              <li class="header--menu-submenu-item" data-grand-child>
+                                <a href="{{ grandchildlink.url }}" class="header--menu-submenu-link text-small">
+                                  {{- grandchildlink.title -}}
+                                </a>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+            </header-menu>
+          {% else %}
+            <a
+              href="{{ link.url }}"
+              class="header--menu-link {{ section.settings.font_type }} {% if section.settings.main_menu_font_size == 'regular' %}text{% endif %}{% unless section.settings.main_menu_font_size == 'regular' %}text-{{ section.settings.main_menu_font_size }}{% endunless %}"
+            >
+              {% if section.settings.menu_font_style == 'bold' %}
+                <strong>
+              {% endif %}
+              {{- link.title }}
+              {% if section.settings.menu_font_style == 'bold' %}
+                </strong>
+              {% endif %}
+            </a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% if section.settings.header_style == 'half-width-menu' -%}
+  <button class="menu-arrow right" data-arrow-right aria-label="Next" role="button" type="button">
+    <svg width="6" height="9" viewBox="0 0 6 9" fill="none">
+      <path d="M1.02943 9L-8.99959e-08 7.97057L3.34383 4.61943L-6.75927e-07 1.2683L1.02943 0.238867L5.41 4.61943L1.02943 9Z" fill="currentColor"/>
+    </svg>
+  </button>
+{%- endif %}

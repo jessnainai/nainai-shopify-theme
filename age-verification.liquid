@@ -1,286 +1,114 @@
-{% render 'age-verification', section: section %}
-<style>
-  #shopify-section-{{ section.id }} {
-    --image_overlay_opacity: {{ section.settings.overlay_opacity }};
-  }
-</style>
-{% schema %} 
-{
-  "name": "t:sections.age-verification.name",
-  "tag": "section",
-  "class": "age-verification",
-  "settings": [
-    {
-      "type": "select",
-      "id": "age_verification_display_mode", 
-      "label": "t:sections.age-verification.settings.age_verification_display_mode.label",
-      "default": "enable",
-      "info": "t:sections.age-verification.settings.age_verification_display_mode.info",
-      "options": [
-        {
-          "label": "t:sections.age-verification.settings.age_verification_display_mode.enable.label",
-          "value": "enable"
-        },
-        {
-          "label": "t:sections.age-verification.settings.age_verification_display_mode.test_mode.label",
-          "value": "test_mode"
-        }
-      ]
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "default": "primary",
-      "label": "t:sections.all.colors.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.headers.background"
-    },
-    {
-      "type": "image_picker",
-      "label": "t:settings_schema.global.settings.image.label",
-      "id": "background_image"
-    },
-    {
-      "type": "range",
-      "id": "overlay_opacity",
-      "default": 0.2,
-      "label": "t:settings_schema.global.settings.overlay_opacity.label",
-      "min": 0,
-      "max": 1,
-      "step": 0.1
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.headers.logo"
-    },
-    {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "t:sections.all.headers.logo"
-    },
-    {
-      "type": "header",
-      "content": "t:settings_schema.global.settings.content.label"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "heading",
-      "label": "t:settings_schema.global.settings.heading.label",
-      "default": "Age Verification",
-      "info": "t:settings_schema.global.settings.heading.info"
-    },
-    {
-      "type": "select",
-      "id": "markers_font",
-      "label": "t:sections.all.markers_font.label",
-      "info": "t:sections.all.markers_font.info",
-      "default": "accent-font",
-      "options": [
-        {
-          "label": "t:sections.all.markers_font.accent-font.label",
-          "value": "accent-font"
-        },
-        {
-          "label": "t:sections.all.markers_font.body-font.label",
-          "value": "body-font"
-        },
-        {
-          "label": "t:sections.all.markers_font.heading-font.label",
-          "value": "heading-font"
-        }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "markers_text",
-      "label": "t:sections.all.markers_text.label",
-      "default": "no-markers",
-      "options": [
-        {
-          "label": "t:sections.all.markers_text.no-markers.label",
-          "value": "no-markers"
-        },
-        {
-          "label": "t:sections.all.markers_text.highlight-color.label",
-          "value": "highlight-color"
-        },
-        {
-          "label": "t:sections.all.markers_text.outline--text.label",
-          "value": "outline--text"
-        },
-        {
-          "label": "t:sections.all.markers_text.outline--filled.label",
-          "value": "outline--filled"
-        },
-        {
-          "label": "t:sections.all.markers_text.text-background-cover.label",
-          "value": "text-background-cover"
-        }
-      ]
-    },
-     {
-      "type": "select",
-      "id": "heading_size",
-      "label": "t:sections.all.heading_size.label",
-      "default": "h2",
-      "options": [
-        {
-          "value": "h1",
-          "label": "t:sections.all.heading_size.h1.label"
-        },
-        {
-          "value": "h2",
-          "label": "t:sections.all.heading_size.h2.label"
-        },
-        {
-          "value": "h3",
-          "label": "t:sections.all.heading_size.h3.label"
-        },
-        {
-          "value": "h4",
-          "label": "t:sections.all.heading_size.h4.label"
-        },
-        {
-          "value": "h5",
-          "label": "t:sections.all.heading_size.h5.label"
-        },
-        {
-          "value": "h6",
-          "label": "t:sections.all.heading_size.h6.label"
-        }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "seo_heading",
-      "label": "t:sections.all.seo_heading.label",
-      "info": "t:sections.all.seo_heading.info",
-      "default": "h2",
-      "options": [
-        {
-          "value": "h1",
-          "label": "H1"
-        },
-        {
-          "value": "h2",
-          "label": "H2"
-        },
-        {
-          "value": "h3",
-          "label": "H3"
-        },
-        {
-          "value": "h4",
-          "label": "H4"
-        },
-        {
-          "value": "h5",
-          "label": "H5"
-        },
-        {
-          "value": "h6",
-          "label": "H6"
-        },
-        {
-          "value": "div",
-          "label": "div"
-        },
-        {
-          "value": "span",
-          "label": "span"
-        },
-        {
-          "value": "p",
-          "label": "p"
-        }
-      ]
-    },
-    {
-      "type": "textarea",
-      "id": "description",
-      "label": "t:settings_schema.global.settings.description.label",
-      "default": "Are you old enough to consume alcohol in your country?"
-    },
-    {
-      "type": "select",
-      "id": "description_size",
-      "label": "t:sections.all.description_size.label",
-      "default": "text-medium",
-      "options": [
-        {
-          "label": "t:sections.all.description_size.text-xsmall.label",
-          "value": "text-xsmall"
-        },
-        {
-          "label": "t:sections.all.description_size.text-small.label",
-          "value": "text-small"
-        },
-        {
-          "label": "t:sections.all.description_size.text.label",
-          "value": "text"
-        },
-        {
-          "label": "t:sections.all.description_size.text-medium.label",
-          "value": "text-medium"
-        },
-        {
-          "label": "t:sections.all.description_size.text-large.label",
-          "value": "text-large"
-        },
-        {
-          "label": "t:sections.all.description_size.text-xlarge.label",
-          "value": "text-xlarge"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "id": "sub_description",
-      "label": "t:sections.age-verification.settings.sub_description.label",
-      "default": "By entering this site you are agreeing to the Terms of Use and Privacy Policy."
-    },
-    {
-      "type": "text",
-      "id": "approve_btn_text",
-      "label": "t:sections.age-verification.settings.approve_btn_text.label",
-      "default": "Yes"
-    },
-    {
-      "type": "text",
-      "id": "decline_btn_text",
-      "label": "t:sections.age-verification.settings.decline_btn_text.label",
-      "default": "No"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "decline_heading",
-      "label": "t:sections.age-verification.settings.decline_heading.label",
-      "default": "Come back when you're older",
-      "info": "t:sections.age-verification.settings.decline_heading.info"
-    },
-    {
-      "type": "textarea",
-      "id": "decline_description",
-      "label": "t:sections.age-verification.settings.decline_description.label",
-      "default": "Sorry, the content of this store can't be seen by a younger audience. Come back when you're older."
-    },
-    {
-      "type": "text",
-      "id": "age_decline_btn_text",
-      "label": "t:sections.age-verification.settings.age_decline_btn_text.label",
-      "default": "Oops, I entered incorrectly"
-    },
-    {
-      "type": "range",
-      "id": "age_verify_popup_cookie",
-      "label": "t:sections.age-verification.settings.age_verify_popup_cookie.label",
-      "default": 7,
-      "min": 1,
-      "max": 30,
-      "info": "t:sections.age-verification.settings.age_verify_popup_cookie.info"
+{{ 'age-verification.css' | asset_url | stylesheet_tag }}
+<age-verifier
+  class="age-verification--main scheme-{{ section.settings.color_scheme }}"
+  id="AgeVerifier"
+  data-drawer="age-verifier"
+  data-section-id="{{ section.id }}"
+>
+  {% if section.settings.background_image != blank %}
+    <div class="background--overlay-image">
+      {% render 'lazy-image', image: section.settings.background_image %}
+    </div>
+  {% endif %}
+  <div class="age-verification--content pos-relative width-100" data-age-verifier>
+    <div class="age-verification--content-box width-100 height-100">
+      <div class="age-verification--text">
+        {%- if section.settings.logo != blank -%}
+          <a class="age-verification--logo" href="/" aria-label="King Development">
+            <img
+              src="{{ section.settings.logo | image_url: width: '300' }}"
+              alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+            >
+          </a>
+        {% endif %}
+        {% if section.settings.heading != blank %}
+          {%- capture markersPrefix -%}
+            <span class="markers-text {{ section.settings.markers_font }} {{ section.settings.markers_text }}">
+          {%- endcapture -%}
+          {%- capture markersSuffix -%}
+            </span>
+          {%- endcapture -%}
+          <{{ section.settings.seo_heading }} class="age-verification--heading heading-font {{ section.settings.heading_size }}">
+            {{ section.settings.heading | replace: "[", markersPrefix | replace: "]", markersSuffix }}
+          </{{ section.settings.seo_heading }}>
+        {% endif %}
+        {% if section.settings.description != blank %}
+          <p class="age-verification--desc {{ section.settings.description_size }}">
+            {{ section.settings.description | newline_to_br }}
+          </p>
+        {% endif %}
+        {% if section.settings.sub_description != blank %}
+          <p class="age-verification--info text-small">
+            {{ section.settings.sub_description }}
+          </p>
+        {% endif %}
+      </div>
+    </div>
+    {% if section.settings.approve_btn_text != blank or section.settings.decline_btn_text != blank %}
+      <div class="age-verifiction--button button-group gap-0">
+        {% if section.settings.decline_btn_text != blank %}
+          <button class="button large-button secondary--button decline-age border-radius-none" data-decline-age>
+            <span>{{ section.settings.decline_btn_text }}</span>
+          </button>
+        {% endif %}
+        {% if section.settings.approve_btn_text != blank %}
+          <button class="button large-button submit-age border-radius-none" data-submit-age>
+            <span>{{ section.settings.approve_btn_text }}</span>
+          </button>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+  <div class="age-verification--content pos-relative width-100 hidden" data-age-declined>
+    <div class="age-verification--content-box width-100 height-100">
+      <div class="age-verification--text">
+        {%- if section.settings.logo != blank -%}
+          <a class="age-verification--logo" href="/" aria-label="King Development">
+            <img
+              src="{{ section.settings.logo | image_url: width: '300' }}"
+              alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+            >
+          </a>
+        {% endif %}
+        {% if section.settings.decline_heading != blank %}
+          {%- capture markersPrefix -%}
+            <span class="markers-text {{ section.settings.markers_font }} {{ section.settings.markers_text }}">
+          {%- endcapture -%}
+          {%- capture markersSuffix -%}
+            </span>
+          {%- endcapture -%}
+          <{{ section.settings.seo_heading }} class="age-verification--heading heading-font {{ section.settings.heading_size }}">
+            {{ section.settings.decline_heading | replace: "[", markersPrefix | replace: "]", markersSuffix }}
+          </{{ section.settings.seo_heading }}>
+        {% endif %}
+        {% comment %} <{{ section.settings.seo_heading }} class="age-verification--heading heading-font {{ section.settings.heading_size }}">
+          {{ section.settings.decline_heading }}
+        </{{ section.settings.seo_heading }}> {% endcomment %}
+        <p class="age-verification--desc {{ section.settings.description_size }}">
+          {{ section.settings.decline_description }}
+        </p>
+        <p class="age-verification--info text-small">
+          {{ section.settings.sub_description }}
+        </p>
+      </div>
+    </div>
+    <div class="age-verifiction--button">
+      <button class="button submit-age border-radius-none" data-submit-incorrect>
+        <span>{{ section.settings.age_decline_btn_text }}</span>
+      </button>
+    </div>
+  </div>
+</age-verifier>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if((!Shopify.designMode) && ('{{ section.settings.age_verification_display_mode }}' == 'enable')){
+      var age_Pop = Cookies.get('is_age_verified');
+      if (age_Pop != 'age_verified' && window.location.pathname.indexOf('/challenge') < 0) {
+        document.querySelector('[data-drawer="age-verifier"]').style.display = 'flex';
+        document.querySelector('[data-submit-age]').focus();
+      }
     }
-  ]
-}
-{% endschema %}
+  });
+</script>
+ 

@@ -1,0 +1,17 @@
+
+  {% capture collectionListData %}
+    {% for collection in block.settings.collection_list %}
+      <li class="">
+        <a href="{{ collection.url }}" class="{{ section.settings.submenu_font_type }} h6">{{ collection.title }}</a>
+      </li>
+    {% endfor %}
+  {% endcapture %}
+
+{% if collectionListData != blank %}
+<div class="collections-option">
+  <ul class="header--menu-megamenu-collection">
+    {{ collectionListData }}
+  </ul>
+</div>
+{% endif %}
+

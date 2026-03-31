@@ -1,0 +1,49 @@
+<div class="quantity quantity-main-product" id="quantity--main-product-{{ section.id }}" {{ block.shopify_attributes }}>
+  <div class="product--variants-title {{ settings.label_font }} text">{{ 'products.product.quantity.label' | t }}</div>
+  <quantity-set>
+    <div class="quantity--inner">
+      <button
+        type="button"
+        class="quantity-button quantity--down "
+        aria-label="decrease"
+        name="decrease"
+        is="magnet-button"
+        button-minus 
+      >
+        <span class="hidden"></span>
+        <svg width="10" height="2" viewBox="0 0 10 2" fill="none">
+          <path d="M7.45058e-08 2L0 9.53674e-07L10 0V2L7.45058e-08 2Z" fill="currentColor"></path>
+        </svg>
+      </button>
+      <label class="hidden" for="quantity-input-{{ section.id }}">{{ 'products.product.quantity.label' | t }}</label>
+      <input
+        id="quantity-input-{{ section.id }}-{{ product.id }}"
+        class="quantity-input"
+        type="number"
+        form="main-product-form-{{ section.id }}-{{ product.id }}"
+        name="quantity"
+        min="1"
+        step="1"
+        value="1"
+        data-page="{{ section.id }}"
+        data-quantity-input=""
+        data-line="1"
+        aria-label="Quantity"
+      >
+      <button
+        type="button"
+        class="quantity-button quantity--up"
+        aria-label="increase"
+        name="increase"
+        is="magnet-button"
+        button-plus
+      >
+        <span class="hidden"></span>
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+          <path d="M7.45058e-08 6L0 4L10 4V6L7.45058e-08 6Z" fill="currentColor"></path>
+          <path d="M4 0L6 1.29166e-08L6 10H4L4 0Z" fill="currentColor"></path>
+        </svg>
+      </button>
+    </div>
+  </quantity-set>
+</div>
