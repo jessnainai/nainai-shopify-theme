@@ -1,0 +1,346 @@
+{% if section.index <= 2 %}
+  {{ 'announcement.css' | asset_url | preload_tag: as: 'style' }}
+{% endif %}
+{{ 'announcement.css' | asset_url | stylesheet_tag }}
+{% liquid
+  assign social_icons = true
+  if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
+    assign social_icons = false
+  endif
+
+  assign isBlockSize = false
+  if section.blocks.size > 1
+    assign isBlockSize = true
+  endif
+%}
+{% if section.blocks.size > 0 %}
+  {% capture announcement_headings %}
+    {% for block in section.blocks %}
+      {%- if block.settings.heading != blank -%}
+        <div class="announcement-bar--item swiper-slide">
+          <p class="announcement-bar--text text-center {{ section.settings.text_size }}">
+            {{ block.settings.heading }}
+          </p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endcapture %}
+{% endif %}
+
+{% if section.settings.show_announcement_bar_home_page == false or template.name == 'index' %}
+  {% comment %}
+    {% if section.settings.enable_social_icons
+      or announcement_headings != blank
+      or section.settings.show_location_and_language
+      or section.settings.show_info
+      and section.settings.contact_text != blank
+      or section.settings.show_store_locator
+      and section.settings.locator_text != blank
+    %}
+  {% endcomment %}
+
+  <div
+    class="announcement-bar--main section-wrapper scheme-{{ section.settings.color_scheme }} section-{{ section.settings.section_background }} {{ request.page_type }}"
+    data-announcement-wrapper
+  >
+    <div class="container-fullwidth">
+      {% if section.settings.enable_social_icons
+        or section.settings.show_info
+        or section.settings.show_store_locator
+        or announcement_headings != blank
+      %}
+        <announcement-bar class="announcement-bar--wrapper">
+          {% if section.settings.enable_social_icons or section.settings.show_info %}
+            <div class="announcement-bar--left">
+              {% if section.settings.enable_social_icons %}
+                <div class="social--icons announcement-bar-icons">
+                  {% render 'social-icons' %}
+                </div>
+              {% endif %}
+              {% if section.settings.show_info %}
+                <div class="contact-information">
+                  {{ section.settings.contact_text }}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+          {% if section.blocks.size > 0 and announcement_headings != blank %}
+            <div class="announcement-bar--middle">
+              {% if isBlockSize %}
+                <swiper-content data-resize="false">
+                  <div
+                    class="announcement-bar--slide-outer{% if isBlockSize %} swiper{% endif %}"
+                    {% if isBlockSize %}
+                      data-swiper='
+                        {
+                          "loop": true,
+                          "centeredSlides": true,
+                          "speed": 800,
+                          "slidesPerView": 1,
+                          {% if section.settings.auto_rotate %}
+                          "autoplay":  {
+                            "delay": {{ section.settings.change_slides_speed | times: 1000 }}
+                          },
+                          {% endif %}
+                          "grabCursor": true
+                        }
+                      '
+                    {% endif %}
+                  >
+              {% endif %}
+              <div class="announcement-bar--slide-wrapper{% if isBlockSize %} swiper-wrapper is-slider{% endif %}">
+                {{ announcement_headings }}
+                {% comment %}
+                  {% for block in section.blocks %}
+                    {% if block.settings.heading != blank %}
+                      <div class="announcement-bar--item swiper-slide">
+                        <p class="announcement-bar--text text-center">
+                          {{ block.settings.heading }}
+                        </p>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                {% endcomment %}
+              </div>
+              {% if isBlockSize %}
+                </div>
+                </swiper-content>
+              {% endif %}
+            </div>
+          {% endif %}
+          {% if section.settings.show_store_locator or section.settings.show_location_and_language %}
+            <div class="announcement-bar--right">
+              {% if section.settings.show_store_locator %}
+                <button is="store-locator-context" type="button" class="list-inline store--details cursor-pointer">
+                  {% render 'icons', icon: 'store' %}
+                  <span class="text-small">{{ section.settings.locator_text }}</span>
+                </button>
+              {% endif %}
+              {% if section.settings.show_location_and_language %}
+                {% if settings.is_country_selector or settings.is_language_selector %}
+                  <localization-context
+                    type="button"
+                    is="localization-context"
+                    class="localization-form cursor-pointer"
+                    tabindex="0"
+                    data-size="{{ localization.available_countries.size }}"
+                  > 
+                    <div class="localization--current-locale">
+                      {% render 'icons', icon: 'globe' %}
+                      <span class="text-small">
+                        {%- if settings.is_country_selector -%}
+                          {{- localization.country.currency.symbol }}
+                          {{ localization.country.currency.iso_code -}}
+                        {%- endif -%}
+                        {%- if settings.is_language_selector -%}
+                          {%- if settings.is_country_selector %} / {% endif -%}
+                          {{- localization.language.iso_code | upcase -}}
+                        {%- endif -%}
+                      </span>
+                    </div>
+                  </localization-context>
+                {% endif %}
+              {% endif %}
+            </div>
+          {% endif %}
+        </announcement-bar>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+{% comment %} {% endif %} {% endcomment %}
+
+<script>
+  class AnnouncementBar extends HTMLElement {
+    constructor() {
+      super();
+      this.currentScrollTop = 0;
+      this.updateAnnouncementHeight();
+      this.updateDynamicAnnouncementHeight();
+      window.addEventListener('scroll', this.updateDynamicAnnouncementHeight.bind(this), false);
+
+      const resizeObserver = new ResizeObserver(this.updateDynamicAnnouncementHeight.bind(this));
+      resizeObserver.observe(this.closest('[data-announcement-wrapper]'));
+    }
+
+    updateAnnouncementHeight() {
+      const announcementWrapper = this.closest('[data-announcement-wrapper]');
+      if (announcementWrapper) {
+        const announcementBarHeight = announcementWrapper.offsetHeight;
+        document.body.style.setProperty('--announcement_height', `${announcementBarHeight}px`);
+      }
+    }
+
+    updateDynamicAnnouncementHeight() {
+      const announcementWrapper = this.closest('[data-announcement-wrapper]');
+
+      if (announcementWrapper) {
+        const announcementBarHeight = announcementWrapper.offsetHeight;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        const dynamicHeight = scrollTop > announcementBarHeight ? 0 : Math.max(announcementBarHeight - scrollTop, 0);
+        document.body.style.setProperty('--dynamic_announcement_height', `${dynamicHeight}px`);
+
+        this.currentScrollTop = scrollTop;
+      }
+    }
+  }
+
+  customElements.define('announcement-bar', AnnouncementBar);
+</script>
+{%- schema -%}
+{
+  "name": "t:sections.announcement-bar.name",
+  "tag": "section",
+  "class": "section-announcement-bar",
+  "max_blocks": 3,
+  "disabled_on": {
+    "groups": ["footer", "custom.Overlay"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "primary",
+      "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "select",
+      "id": "section_background",
+      "label": "t:sections.all.section_background.label",
+      "default": "solid",
+      "options": [
+        {
+          "label": "t:sections.all.section_background.solid.label",
+          "value": "solid"
+        },
+        {
+          "label": "t:sections.all.section_background.gradient.label",
+          "value": "gradient"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_announcement_bar_home_page",
+      "label": "t:sections.announcement-bar.settings.show_announcement_bar_home_page.label",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "t:sections.all.description_size.label",
+      "default": "text",
+      "options": [
+        {
+          "label": "t:sections.all.description_size.text-xsmall.label",
+          "value": "text-xsmall"
+        },
+        {
+          "label": "t:sections.all.description_size.text-small.label",
+          "value": "text-small"
+        },
+        {
+          "label": "t:sections.all.description_size.text.label",
+          "value": "text"
+        },
+        {
+          "label": "t:sections.all.description_size.text-medium.label",
+          "value": "text-medium"
+        },
+        {
+          "label": "t:sections.all.description_size.text-large.label",
+          "value": "text-large"
+        },
+        {
+          "label": "t:sections.all.description_size.text-xlarge.label",
+          "value": "text-xlarge"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.global.settings.slides.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "t:sections.announcement-bar.settings.auto_rotate.label",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "min": 3,
+      "max": 9,
+      "step": 2,
+      "unit": "s",
+      "label": "t:sections.announcement-bar.settings.change_slides_speed.label",
+      "default": 5
+    },
+
+    {
+      "type": "header",
+      "content": "t:settings_schema.global.settings.desktop_settings.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_social_icons",
+      "label": "t:sections.announcement-bar.settings.enable_social_icons.label",
+      "info": "t:sections.announcement-bar.settings.enable_social_icons.info",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_info",
+      "label": "t:sections.announcement-bar.settings.show_info.label",
+      "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "contact_text",
+      "default": "Need help",
+      "label": "t:sections.announcement-bar.settings.contact_text.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_store_locator",
+      "label": "t:sections.announcement-bar.settings.show_store_locator.label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "locator_text",
+      "default": "Stores",
+      "label": "t:sections.announcement-bar.settings.locator_text.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_location_and_language",
+      "label": "t:sections.announcement-bar.settings.show_location_and_language.label",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "t:settings_schema.global.settings.text.label",
+          "default": "Announcement text here"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "announcement"
+      }
+    ]
+  }
+}
+{%- endschema -%}

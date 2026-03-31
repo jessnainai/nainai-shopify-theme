@@ -1,0 +1,379 @@
+{% if section.index <= 2 %}
+  {{ 'featured-collections-list.css' | asset_url | preload_tag: as: 'style' }}
+{% endif %}
+{{ 'featured-collections-list.css' | asset_url | stylesheet_tag }}
+
+<div class="section-wrapper section-spacing scheme-{{ section.settings.color_scheme }} section-{{ section.settings.section_background }}">
+  <div class="featured-collections-list--wrapper">
+    <div class="featured-collections-list--item active" data-content-wrapper>
+      <div class="featured-collections-list--image media-overlay width-100 height-100 pos-relative overflow-hidden">
+        {% for block in section.blocks %}
+          {% assign mod = forloop.index | modulo: 2 %}
+          {% if forloop.first or mod == 1 %} 
+            <div class="featured-collections-list--image-inner media-wrapper{% if forloop.first %} active{% endif %}" data-image-id="{{ block.id }}">
+              <div class="media media-fixed">
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: null | image_tag }}
+                  {% elsif block.settings.collection != blank %}
+                  {{ block.settings.collection.featured_image | image_url: width: null | image_tag }} 
+                {%- else -%}
+                {%  liquid 
+                capture current
+                  cycle section.id: 1, 2, 3, 4
+                endcapture
+                %}
+                  {{ 'collection-apparel-' |  append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="featured-collections-list--content width-100 height-100">
+        {% for block in section.blocks %}
+          {% assign mod = forloop.index | modulo: 2 %}
+          {% if forloop.first or mod == 1 %}           
+            <image-overlay-text
+              class="featured-collections-list--content-inner {% if forloop.first %} active{% endif %}"
+              data-id="{{ block.id }}"
+            >
+              {%  if block.settings.title != blank %}
+              <{% if block.settings.collection.url != blank %}a href="{{ block.settings.collection.url  }}"{% else %}span{% endif %} class="featured-collections-list--link heading-font h5" >
+                {% if block.settings.title != blank %}
+                  <span>{{- block.settings.title -}}</span>
+                  {% else %}
+                  <span>{{- block.settings.collection.title -}}</span>
+                {% endif %}
+                  <svg class="icon icon-circle" viewBox="0 0 800 350" stroke="currentColor" fill="none" role="presentation" preserveAspectRatio="none">
+                    <path transform="matrix(0.9791300296783447,0,0,0.9791300296783447,400,179)" stroke-linejoin="miter" stroke-miterlimit="4" stroke-width="10" pathLength="1" d=" M253,-161 C253,-161 -284.78900146484375,-201.4600067138672 -376,-21 C-469,163 67.62300109863281,174.2100067138672 256,121 C564,34 250.82899475097656,-141.6929931640625 19.10700035095215,-116.93599700927734"></path>
+                  </svg>
+                  <svg class="star left--star" width="24" height="26" viewBox="0 0 24 26" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.486 5.20495C9.41541 4.78499 9.36224 4.36979 9.32789 3.95455C9.27613 3.33168 9.30813 2.70406 9.28978 2.0812C9.28178 1.81695 9.25025 1.12804 9.26295 1.02894C9.37824 0.165429 10.0733 0.0332902 10.2766 0.00969688C10.3749 -0.0044591 11.3847 -0.117656 11.6026 1.00538C11.8699 2.37851 11.9555 3.76106 11.861 5.11532C12.0817 6.26667 12.4591 7.41328 12.9574 8.45139C14.9404 12.5802 18.719 12.9813 22.813 12.9436C23.4426 12.9341 23.9654 13.4296 23.9984 14.0572C24.0313 14.6895 23.5626 15.2368 22.9358 15.2934C20.6474 15.5152 16.5873 17.3555 15.1836 19.2713C14.89 19.6724 14.7192 20.6397 14.4933 21.5882C14.178 22.9047 13.803 24.207 13.3828 24.7544C13.3197 24.8393 12.5532 25.7076 12.3245 25.835C11.7748 26.137 11.3349 25.9623 11.085 25.8019C10.8351 25.6415 10.5523 25.3253 10.4394 24.8016C10.3213 24.2542 10.421 23.1311 10.4027 22.8905C10.3358 22.0175 10.1618 20.3047 9.80647 18.8324C9.61495 18.0397 9.41071 17.3083 9.07284 16.945C7.82207 15.6002 5.82215 15.7984 4.13799 16.0201C3.94458 16.0437 3.75118 16.0721 3.55825 16.0956C2.87263 16.2986 2.14464 16.4495 1.37526 16.5392C0.213423 16.676 0.0223847 15.6049 0.0120322 15.5341C-0.00961399 15.3784 -0.0900898 14.5762 0.785639 14.2554C0.881165 14.2223 1.58608 14.0666 1.8576 14.0053C2.23594 13.9203 2.61851 13.8543 3.00249 13.7929C6.96892 12.5567 9.12319 9.08368 9.486 5.20495ZM10.8474 9.49425C12.3447 12.5991 14.6171 14.0996 17.3106 14.7791H17.3102C15.6283 15.6615 14.0985 16.7657 13.2877 17.8746C12.98 18.2946 12.6976 19.1392 12.4431 20.0876C12.3052 19.2052 12.1188 18.2662 11.8727 17.464C11.5927 16.5486 11.2158 15.7889 10.7951 15.336C9.98291 14.463 8.96366 13.977 7.8677 13.7363C9.17965 12.5708 10.1744 11.1175 10.8474 9.49425Z" fill="currentColor"/>
+                  </svg> 
+                  <svg class="star right--star" width="24" height="26" viewBox="0 0 24 26" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.486 5.20495C9.41541 4.78499 9.36224 4.36979 9.32789 3.95455C9.27613 3.33168 9.30813 2.70406 9.28978 2.0812C9.28178 1.81695 9.25025 1.12804 9.26295 1.02894C9.37824 0.165429 10.0733 0.0332902 10.2766 0.00969688C10.3749 -0.0044591 11.3847 -0.117656 11.6026 1.00538C11.8699 2.37851 11.9555 3.76106 11.861 5.11532C12.0817 6.26667 12.4591 7.41328 12.9574 8.45139C14.9404 12.5802 18.719 12.9813 22.813 12.9436C23.4426 12.9341 23.9654 13.4296 23.9984 14.0572C24.0313 14.6895 23.5626 15.2368 22.9358 15.2934C20.6474 15.5152 16.5873 17.3555 15.1836 19.2713C14.89 19.6724 14.7192 20.6397 14.4933 21.5882C14.178 22.9047 13.803 24.207 13.3828 24.7544C13.3197 24.8393 12.5532 25.7076 12.3245 25.835C11.7748 26.137 11.3349 25.9623 11.085 25.8019C10.8351 25.6415 10.5523 25.3253 10.4394 24.8016C10.3213 24.2542 10.421 23.1311 10.4027 22.8905C10.3358 22.0175 10.1618 20.3047 9.80647 18.8324C9.61495 18.0397 9.41071 17.3083 9.07284 16.945C7.82207 15.6002 5.82215 15.7984 4.13799 16.0201C3.94458 16.0437 3.75118 16.0721 3.55825 16.0956C2.87263 16.2986 2.14464 16.4495 1.37526 16.5392C0.213423 16.676 0.0223847 15.6049 0.0120322 15.5341C-0.00961399 15.3784 -0.0900898 14.5762 0.785639 14.2554C0.881165 14.2223 1.58608 14.0666 1.8576 14.0053C2.23594 13.9203 2.61851 13.8543 3.00249 13.7929C6.96892 12.5567 9.12319 9.08368 9.486 5.20495ZM10.8474 9.49425C12.3447 12.5991 14.6171 14.0996 17.3106 14.7791H17.3102C15.6283 15.6615 14.0985 16.7657 13.2877 17.8746C12.98 18.2946 12.6976 19.1392 12.4431 20.0876C12.3052 19.2052 12.1188 18.2662 11.8727 17.464C11.5927 16.5486 11.2158 15.7889 10.7951 15.336C9.98291 14.463 8.96366 13.977 7.8677 13.7363C9.17965 12.5708 10.1744 11.1175 10.8474 9.49425Z" fill="currentColor"/>
+                  </svg>
+                </{% if block.settings.collection.url != blank %}a{% else %}span{% endif %}>
+              <div class="featured-collections-list--marque" data-marquee-speed="{{ section.settings.marquee_speed }}" data-marquee>  
+                <div class="featured-collections-list--marque-text-wrapper {{ section.settings.direction }}-direction">
+                  {% for i in (1..24) %}
+                    <div class="featured-collections-list--marque--text--node" data-marquee-node>
+                      <div class="featured-collections-list--marque-text--item heading-font">
+                        {% if block.settings.title != blank %}
+                          {{- block.settings.title -}}
+                        {% else %}
+                          {{- block.settings.collection.title -}}
+                      {% endif %}
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+            </image-overlay-text>            
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="featured-collections-list--item" data-content-wrapper>
+      <div class="featured-collections-list--image media-overlay width-100 height-100 pos-relative overflow-hidden">
+        {% for block in section.blocks %}
+          {% assign mod = forloop.index | modulo: 2 %}
+          {% if mod == 0 %}
+            <div class="featured-collections-list--image-inner media-wrapper{% if forloop.index == 2 %} active{% endif %}" data-image-id="{{ block.id }}">
+              <div class="media media-fixed">
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: null | image_tag }}
+                  {% elsif block.settings.collection != blank %}
+                  {{ block.settings.collection.featured_image | image_url: width: null | image_tag }}
+                {%- else -%}
+                {%  liquid 
+                capture current
+                  cycle section.id: 1, 2, 3, 4
+                endcapture
+                %}
+                  {{ 'collection-apparel-' |  append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="featured-collections-list--content width-100 height-100">
+        {% for block in section.blocks %}
+          {% assign mod = forloop.index | modulo: 2 %}
+          {% if mod == 0 %}
+            <image-overlay-text
+              class="featured-collections-list--content-inner{% if forloop.index == 2 %} active{% endif %}"
+              data-id="{{ block.id }}"
+            >
+              {%  if block.settings.title != blank %}
+              <{% if block.settings.collection.url != blank %}a href="{{ block.settings.collection.url }}"{% else %}span{% endif %} class="featured-collections-list--link heading-font h5" >
+                {% if block.settings.title != blank %}
+                  <span>{{- block.settings.title -}}</span>
+                  {% else %}
+                  <span>{{- block.settings.collection.title -}}</span>
+                {% endif %}
+                  <svg class="icon icon-circle" viewBox="0 0 800 350" stroke="currentColor" fill="none" role="presentation" preserveAspectRatio="none">
+                    <path transform="matrix(0.9791300296783447,0,0,0.9791300296783447,400,179)" stroke-linejoin="miter" stroke-miterlimit="4" stroke-width="10" pathLength="1" d=" M253,-161 C253,-161 -284.78900146484375,-201.4600067138672 -376,-21 C-469,163 67.62300109863281,174.2100067138672 256,121 C564,34 250.82899475097656,-141.6929931640625 19.10700035095215,-116.93599700927734"></path>
+                  </svg>
+                  <svg class="star left--star" width="24" height="26" viewBox="0 0 24 26" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.486 5.20495C9.41541 4.78499 9.36224 4.36979 9.32789 3.95455C9.27613 3.33168 9.30813 2.70406 9.28978 2.0812C9.28178 1.81695 9.25025 1.12804 9.26295 1.02894C9.37824 0.165429 10.0733 0.0332902 10.2766 0.00969688C10.3749 -0.0044591 11.3847 -0.117656 11.6026 1.00538C11.8699 2.37851 11.9555 3.76106 11.861 5.11532C12.0817 6.26667 12.4591 7.41328 12.9574 8.45139C14.9404 12.5802 18.719 12.9813 22.813 12.9436C23.4426 12.9341 23.9654 13.4296 23.9984 14.0572C24.0313 14.6895 23.5626 15.2368 22.9358 15.2934C20.6474 15.5152 16.5873 17.3555 15.1836 19.2713C14.89 19.6724 14.7192 20.6397 14.4933 21.5882C14.178 22.9047 13.803 24.207 13.3828 24.7544C13.3197 24.8393 12.5532 25.7076 12.3245 25.835C11.7748 26.137 11.3349 25.9623 11.085 25.8019C10.8351 25.6415 10.5523 25.3253 10.4394 24.8016C10.3213 24.2542 10.421 23.1311 10.4027 22.8905C10.3358 22.0175 10.1618 20.3047 9.80647 18.8324C9.61495 18.0397 9.41071 17.3083 9.07284 16.945C7.82207 15.6002 5.82215 15.7984 4.13799 16.0201C3.94458 16.0437 3.75118 16.0721 3.55825 16.0956C2.87263 16.2986 2.14464 16.4495 1.37526 16.5392C0.213423 16.676 0.0223847 15.6049 0.0120322 15.5341C-0.00961399 15.3784 -0.0900898 14.5762 0.785639 14.2554C0.881165 14.2223 1.58608 14.0666 1.8576 14.0053C2.23594 13.9203 2.61851 13.8543 3.00249 13.7929C6.96892 12.5567 9.12319 9.08368 9.486 5.20495ZM10.8474 9.49425C12.3447 12.5991 14.6171 14.0996 17.3106 14.7791H17.3102C15.6283 15.6615 14.0985 16.7657 13.2877 17.8746C12.98 18.2946 12.6976 19.1392 12.4431 20.0876C12.3052 19.2052 12.1188 18.2662 11.8727 17.464C11.5927 16.5486 11.2158 15.7889 10.7951 15.336C9.98291 14.463 8.96366 13.977 7.8677 13.7363C9.17965 12.5708 10.1744 11.1175 10.8474 9.49425Z" fill="currentColor"/>
+                    </svg> 
+                    <svg class="star right--star" width="24" height="26" viewBox="0 0 24 26" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M9.486 5.20495C9.41541 4.78499 9.36224 4.36979 9.32789 3.95455C9.27613 3.33168 9.30813 2.70406 9.28978 2.0812C9.28178 1.81695 9.25025 1.12804 9.26295 1.02894C9.37824 0.165429 10.0733 0.0332902 10.2766 0.00969688C10.3749 -0.0044591 11.3847 -0.117656 11.6026 1.00538C11.8699 2.37851 11.9555 3.76106 11.861 5.11532C12.0817 6.26667 12.4591 7.41328 12.9574 8.45139C14.9404 12.5802 18.719 12.9813 22.813 12.9436C23.4426 12.9341 23.9654 13.4296 23.9984 14.0572C24.0313 14.6895 23.5626 15.2368 22.9358 15.2934C20.6474 15.5152 16.5873 17.3555 15.1836 19.2713C14.89 19.6724 14.7192 20.6397 14.4933 21.5882C14.178 22.9047 13.803 24.207 13.3828 24.7544C13.3197 24.8393 12.5532 25.7076 12.3245 25.835C11.7748 26.137 11.3349 25.9623 11.085 25.8019C10.8351 25.6415 10.5523 25.3253 10.4394 24.8016C10.3213 24.2542 10.421 23.1311 10.4027 22.8905C10.3358 22.0175 10.1618 20.3047 9.80647 18.8324C9.61495 18.0397 9.41071 17.3083 9.07284 16.945C7.82207 15.6002 5.82215 15.7984 4.13799 16.0201C3.94458 16.0437 3.75118 16.0721 3.55825 16.0956C2.87263 16.2986 2.14464 16.4495 1.37526 16.5392C0.213423 16.676 0.0223847 15.6049 0.0120322 15.5341C-0.00961399 15.3784 -0.0900898 14.5762 0.785639 14.2554C0.881165 14.2223 1.58608 14.0666 1.8576 14.0053C2.23594 13.9203 2.61851 13.8543 3.00249 13.7929C6.96892 12.5567 9.12319 9.08368 9.486 5.20495ZM10.8474 9.49425C12.3447 12.5991 14.6171 14.0996 17.3106 14.7791H17.3102C15.6283 15.6615 14.0985 16.7657 13.2877 17.8746C12.98 18.2946 12.6976 19.1392 12.4431 20.0876C12.3052 19.2052 12.1188 18.2662 11.8727 17.464C11.5927 16.5486 11.2158 15.7889 10.7951 15.336C9.98291 14.463 8.96366 13.977 7.8677 13.7363C9.17965 12.5708 10.1744 11.1175 10.8474 9.49425Z" fill="currentColor"/>
+                      </svg>
+                </{% if block.settings.collection.url != blank %}a{% else %}span{% endif %}>        
+              
+              <div class="featured-collections-list--marque" data-marquee-speed="{{ section.settings.marquee_speed }}" data-marquee>
+                <div class="featured-collections-list--marque-text-wrapper {{ section.settings.direction }}-direction">
+                  {% for i in (1..20) %}
+                    <div class="featured-collections-list--marque--text--node" data-marquee-node>
+                      <div class="featured-collections-list--marque-text--item heading-font">
+                        {% if block.settings.title != blank %}
+                          {{- block.settings.title  -}}
+                        {% else %}
+                          {{- block.settings.collection.title -}}
+                      {% endif %}
+                      </div>
+                    </div>                
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+            </image-overlay-text>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+    #shopify-section-{{ section.id }} {
+      --top_spacing: {{ section.settings.top_space_desktop }}px;
+      --bottom_spacing: {{ section.settings.bottom_space_desktop }}px;
+      --animation_speed: {{ section.settings.marquee_speed }}s;
+      --media_height:{{ section.settings.desktop_height }}px;
+      --image_overlay_opacity: {{ section.settings.overlay_opacity }};
+    }
+    @media only screen and (max-width: 767px) {
+      #shopify-section-{{ section.id }} {
+        --top_spacing: {{ section.settings.top_space_mobile }}px;
+        --bottom_spacing: {{ section.settings.bottom_space_mobile }}px;
+        --media_height:{{ section.settings.mobile_height }}px;
+      }
+    }
+    {% if section.settings.section_visibility == 'large' %}
+      @media(max-width: 767px) {
+        #shopify-section-{{ section.id }} {
+          display: none !important;
+        }
+      }
+    {% elsif section.settings.section_visibility == 'small' %}
+    @media(min-width: 768px) {
+      #shopify-section-{{ section.id }} {
+        display: none !important;
+      }
+    }
+      
+  {% endif %}
+</style>
+
+{%- schema -%}
+{
+  "name": "t:sections.featured-collections-list.name",
+  "tag": "section",
+  "class": "section-featured-collections-list",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.Overlay"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "t:sections.all.section_visibility.label",
+      "default": "always",
+      "options": [
+        {
+          "label": "t:sections.all.section_visibility.always.label",
+          "value": "always"
+        },
+        {
+          "label": "t:sections.all.section_visibility.small.label",
+          "value": "small"
+        },
+        {
+          "label": "t:sections.all.section_visibility.large.label",
+          "value": "large"
+        }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "primary",
+      "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "select",
+      "id": "section_background",
+      "label": "t:sections.all.section_background.label",
+      "default": "solid",
+      "options": [
+          {
+              "label": "t:sections.all.section_background.solid.label",
+              "value": "solid"
+          },
+          {
+              "label": "t:sections.all.section_background.gradient.label",
+              "value": "gradient"
+          }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "t:sections.featured-collections-list.settings.direction.label",
+      "default": "rtl",
+      "options": [
+        {
+          "value": "rtl",
+          "label": "t:sections.featured-collections-list.settings.direction.rtl.label"
+        },
+        {
+          "value": "ltr",
+          "label": "t:sections.featured-collections-list.settings.direction.ltr.label"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed",
+      "label": "t:sections.featured-collections-list.settings.marquee_speed.label",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "label": "t:sections.all.video_height.label",
+      "default": 800,
+      "step": 10,
+      "min": 500,
+      "max": 1000,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "label": "t:sections.all.mobile_video_height.label",
+      "default": 500,
+      "step": 10,
+      "min": 300,
+      "max": 800,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "default": 0.3,
+      "label": "t:settings_schema.global.settings.image_overlay_opacity.label",
+      "min": 0,
+      "max": 1,
+      "step": 0.1
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.spacing.section_spacing_heading"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "t:sections.all.spacing.top_space_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "t:sections.all.spacing.bottom_space_desktop",
+      "default": 0,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "t:sections.all.spacing.top_space_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "t:sections.all.spacing.bottom_space_mobile",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ],
+  "blocks": [
+    {
+      "name": "t:sections.featured-collections-list.blocks.collection-image.name",
+      "type": "collection-image",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:sections.all.headers.collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:settings_schema.global.settings.image.label"
+        },
+        {
+          "type": "text",
+          "label": "t:settings_schema.global.settings.title.label",
+          "id": "title",
+          "default": "Collection title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.featured-collections-list.presets.name",
+      "blocks": [
+        {
+          "type": "collection-image"
+        },
+        {
+          "type": "collection-image"
+        },
+        {
+          "type": "collection-image"
+        },
+        {
+          "type": "collection-image"
+        },
+        {
+          "type": "collection-image"
+        },
+        {
+          "type": "collection-image"
+        }
+      ]
+    }
+  ]
+}
+{%- endschema -%}

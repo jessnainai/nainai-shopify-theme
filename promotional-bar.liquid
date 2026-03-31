@@ -1,0 +1,501 @@
+{% if section.index <= 2 %}
+  {{ 'promotional-bar.css' | asset_url | preload_tag: as: 'style' }}
+{% endif %}
+{{ 'promotional-bar.css' | asset_url | stylesheet_tag }}
+
+<div class="section-wrapper section-spacing scheme-{{ section.settings.color_scheme }} {{ section.settings.radius_selector }} {{ section.settings.mobile_radius_selector }} section-{{ section.settings.section_background }}">
+  <promotional-bar>
+    <div class="promotional-bar--main" id="slideshow-bottom--content-{{ section.id }}">
+      {% if section.settings.background_image != blank %}
+        <div class="background--overlay-image {{ section.settings.radius_selector }} {{ section.settings.mobile_radius_selector }}">
+          {% render 'lazy-image', image: section.settings.background_image %}
+        </div>
+      {% endif %}
+      <div class="container-fullwidth">
+        <div class="promotional-bar--wrapper">
+          <div class="promotional-bar--left" {% if settings.is_layout_animation %} data-card-animate {% endif %}>
+            <div class="promotional-bar--left-content">
+              {% if section.settings.collection_list.count > 0 %}
+                <div class="promotional-bar--collection-list">
+                  {% for collection in section.settings.collection_list %}
+                    <a
+                      href="{{ collection.url }}"
+                      class="promotional-bar--collection-item d-block tooltip-parent"
+                      title="{{ collection.title }}"
+                    >
+                      <div class="promotional-bar--collection-img media-wrapper rounded border border-width-2">
+                        <div class="media" style="--image_ratio:100%;">
+                          {% render 'lazy-image', image: collection.featured_image %}
+                        </div>
+                      </div>
+                      <span class="promotional-bar-tooltip tooltip">{{ collection.title }}</span>
+                    </a>
+                  {% endfor %}
+                </div>
+              {% endif %}
+              <div class="promotional-bar--inner-content">
+                {% if section.settings.left_text != blank %}
+                  <p class="promotional-bar--title {{ section.settings.left_description_size }}">
+                    {{ section.settings.left_text | newline_to_br }}
+                  </p>
+                {% endif %}
+
+                {% if section.settings.link_text != blank and section.settings.link_url != blank %}
+                  <a
+                    href="{{ section.settings.link_url }}"
+                    class="link-arrow text-underline text-small font-bold"
+                    title="{{ section.settings.link_text }}"
+                  >
+                    {{ section.settings.link_text }}
+                    {% unless section.settings.button_syle == 'link' -%}
+                      {%- render 'icons', icon: 'arrow-circle' -%}
+                    {%- endunless %}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% if section.settings.enable_video or section.settings.right_short_description != blank or section.settings.right_text_heading != blank%}
+          <div class="promotional-bar--right" {% if settings.is_layout_animation %} data-card-animate {% endif %}>
+            <div class="promotional-bar--video-content">
+              {%- liquid
+                assign poster = section.settings.video.preview_image
+                assign cover_image = section.settings.cover_image
+                if cover_image != null
+                  assign poster = cover_image
+                endif
+              -%}
+              {% if section.settings.enable_video %}
+              <div
+                class="promotional-bar--video media-wrapper cursor-pointer"
+                promotional-bar-video
+                data-id="{{ section.id }}"
+              >
+                {% if poster != null %}
+                  {% render 'lazy-image', image: poster, class: '' %}
+                {% else %}
+                  {{ 'hero-apparel-3' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+                {% endif %}
+
+                <deferred-media class="deferred-media">
+                  <template>
+                    {% if section.settings.video != blank %}
+                      <video
+                        class="videoBackgroundFile"
+                        controls
+                        data-video-image-wrapper
+                      >
+                        <source
+                          src="{% if section.settings.video.sources[0].url contains 'mp4' %}{{ section.settings.video.sources[0].url -}}{% else %}{{ section.settings.video.sources[1].url -}}{% endif %}"
+                          type="video/mp4"
+                        >
+                      </video>
+                    {% endif %}
+                  </template>
+                </deferred-media>
+
+                {% if section.settings.video != blank %}
+                  <div class="promotional-bar--video-icon">
+                    {% render 'icons', icon: 'video-icon' %}
+                  </div>
+                {% endif %}
+              </div>
+              {% endif %}
+
+              {% if section.settings.right_short_description != blank or section.settings.right_text_heading != blank %}
+                <div class="promotional-bar--video--content-inner">
+                  {% if section.settings.right_text_heading != blank %}
+                    <p class="promotional-bar--video-heading heading-font text-xlarge">
+                      {{ section.settings.right_text_heading }}
+                    </p>
+                  {% endif %}
+
+                  {% if section.settings.right_short_description != blank %}
+                  <p class="promotional-bar--title {{ section.settings.right_description_size }}">
+                    {{ section.settings.right_short_description }}
+                  </p>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% if poster != null %}
+      {% render 'popup',
+        modal_name: 'video',
+        modal_position: 'center',
+        modal_size: section.settings.video_size,
+        popup_color_scheme: section.settings.color_scheme,
+        section: section
+      %}
+    {% endif %}
+  </promotional-bar>
+</div>
+
+<style>
+    #shopify-section-{{ section.id }} .section-spacing {
+      --top_spacing: {{ section.settings.top_space_desktop }}px;
+      --bottom_spacing: {{ section.settings.bottom_space_desktop }}px;
+      --image_overlay_opacity: {{ section.settings.overlay_opacity }};
+      --image_blur_opacity: {{ section.settings.blur_effect }}px;
+    }
+    @media only screen and (max-width: 767px) {
+      #shopify-section-{{ section.id }} .section-spacing {
+        --top_spacing: {{ section.settings.top_space_mobile }}px !important;
+        --bottom_spacing: {{ section.settings.bottom_space_mobile }}px !important;
+      }
+    }
+    {% if section.settings.section_visibility == 'large' %}
+      @media(max-width: 767px) {
+        #shopify-section-{{ section.id }} {
+          display: none !important;
+        }
+      }
+    {% elsif section.settings.section_visibility == 'small' %}
+    @media(min-width: 768px) {
+      #shopify-section-{{ section.id }} {
+        display: none !important;
+      }
+    }
+  {% endif %}
+</style>
+
+{% schema %}
+{
+  "name": "t:sections.promotional-bar.name",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.Overlay"]
+  },
+  "class": "section-promotional-bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.general"
+    },
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "t:sections.all.section_visibility.label",
+      "default": "always",
+      "options": [
+        {
+          "label": "t:sections.all.section_visibility.always.label",
+          "value": "always"
+        },
+        {
+          "label": "t:sections.all.section_visibility.small.label",
+          "value": "small"
+        },
+        {
+          "label": "t:sections.all.section_visibility.large.label",
+          "value": "large"
+        }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "tertiary",
+      "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "select",
+      "id": "section_background",
+      "label": "t:sections.all.section_background.label",
+      "default": "solid",
+      "options": [
+        {
+          "label": "t:sections.all.section_background.solid.label",
+          "value": "solid"
+        },
+        {
+          "label": "t:sections.all.section_background.gradient.label",
+          "value": "gradient"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:sections.all.background_image.label"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "default": 0.4,
+      "label": "t:settings_schema.global.settings.image_overlay_opacity.label",
+      "min": 0,
+      "max": 1,
+      "step": 0.1
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.global.settings.corner_radius.label"
+    },
+    {
+      "type": "select",
+      "id": "radius_selector",
+      "label": "t:sections.all.desktop_radius_selector.label",
+      "default": "d-border-radius-none",
+      "options": [
+        {
+          "label": "t:sections.all.desktop_radius_selector.d-border-radius-none.label",
+          "value": "d-border-radius-none"
+        },
+        {
+          "label": "t:sections.all.desktop_radius_selector.d-border-radius-top.label",
+          "value": "d-border-radius-top"
+        },
+        {
+          "label": "t:sections.all.desktop_radius_selector.d-border-radius-bottom.label",
+          "value": "d-border-radius-bottom"
+        },
+        {
+          "label": "t:sections.all.desktop_radius_selector.d-border-radius-all.label",
+          "value": "d-border-radius-all"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mobile_radius_selector",
+      "label": "t:sections.all.mobile_radius_selector.label",
+      "default": "m-border-radius-none",
+      "options": [
+        {
+          "label": "t:sections.all.mobile_radius_selector.m-border-radius-none.label",
+          "value": "m-border-radius-none"
+        },
+        {
+          "label": "t:sections.all.mobile_radius_selector.m-border-radius-top.label",
+          "value": "m-border-radius-top"
+        },
+        {
+          "label": "t:sections.all.mobile_radius_selector.m-border-radius-bottom.label",
+          "value": "m-border-radius-bottom"
+        },
+        {
+          "label": "t:sections.all.mobile_radius_selector.m-border-radius-all.label",
+          "value": "m-border-radius-all"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.left_side"
+    },
+    {
+      "type": "collection_list",
+      "id": "collection_list",
+      "label": "t:sections.promotional-bar.settings.collection_list.label",
+      "limit": 5
+    },
+
+    {
+      "type": "textarea",
+      "id": "left_text",
+      "label": "t:settings_schema.global.settings.description.label",
+      "default": "Description here"
+    },
+    {
+      "type": "select",
+      "id": "left_description_size",
+      "label": "t:sections.all.description_size.label",
+      "default": "text-xlarge",
+      "options": [
+        {
+          "label": "t:sections.all.description_size.text-xsmall.label",
+          "value": "text-xsmall"
+        },
+        {
+          "label": "t:sections.all.description_size.text-small.label",
+          "value": "text-small"
+        },
+        {
+          "label": "t:sections.all.description_size.text.label",
+          "value": "text"
+        },
+        {
+          "label": "t:sections.all.description_size.text-medium.label",
+          "value": "text-medium"
+        },
+        {
+          "label": "t:sections.all.description_size.text-large.label",
+          "value": "text-large"
+        },
+        {
+          "label": "t:sections.all.description_size.text-xlarge.label",
+          "value": "text-xlarge"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "t:sections.promotional-bar.settings.link_text.label",
+      "default": "View collection"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "t:settings_schema.global.settings.link.label",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.right_side"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video",
+      "label": "t:sections.promotional-bar.settings.enable_video.label",
+      "default":true
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:sections.all.video.label"
+    },
+    {
+      "type": "select",
+      "id": "video_size",
+      "label": "t:sections.promotional-bar.settings.video_size.label",
+      "default": "medium",
+      "options": [
+        {
+          "label": "t:sections.all.desktop_image_size.small.label",
+          "value": "small"
+        },
+        {
+          "label": "t:sections.all.desktop_image_size.medium.label",
+          "value": "medium"
+        },
+        {
+          "label": "t:sections.all.desktop_image_size.large.label",
+          "value": "large"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "t:sections.promotional-bar.settings.cover_image.label"
+    },
+    {
+      "type": "text",
+      "id": "right_text_heading",
+      "label": "t:settings_schema.global.settings.heading.label",
+      "default": "Video heading"
+    },
+    {
+      "type": "textarea",
+      "id": "right_short_description",
+      "label": "t:settings_schema.global.settings.description.label",
+      "default": "Short description here"
+    },
+    {
+      "type": "select",
+      "id": "right_description_size",
+      "label": "t:sections.all.description_size.label",
+      "default": "text-xlarge",
+      "options": [
+        {
+          "label": "t:sections.all.description_size.text-xsmall.label",
+          "value": "text-xsmall"
+        },
+        {
+          "label": "t:sections.all.description_size.text-small.label",
+          "value": "text-small"
+        },
+        {
+          "label": "t:sections.all.description_size.text.label",
+          "value": "text"
+        },
+        {
+          "label": "t:sections.all.description_size.text-medium.label",
+          "value": "text-medium"
+        },
+        {
+          "label": "t:sections.all.description_size.text-large.label",
+          "value": "text-large"
+        },
+        {
+          "label": "t:sections.all.description_size.text-xlarge.label",
+          "value": "text-xlarge"
+        }
+      ]
+    },
+
+    {
+      "type": "header",
+      "content": "t:sections.all.spacing.section_spacing_heading"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "t:sections.all.spacing.top_space_desktop",
+      "default": 20,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "t:sections.all.spacing.bottom_space_desktop",
+      "default": 20,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "t:sections.all.spacing.top_space_mobile",
+      "default": 10,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "t:sections.all.spacing.bottom_space_mobile",
+      "default": 10,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.promotional-bar.presets.name"
+    }
+  ]
+}
+{% endschema %}
+{% javascript %}
+  class PromotionalBar extends HTMLElement {
+    constructor() {
+      super();
+
+      const popupModal = this.querySelector('popup-modal');
+
+      this.videos = this.querySelectorAll('[promotional-bar-video]');
+
+      this.videos.forEach((video) => {
+        video.addEventListener('click', () => {
+          const videoId = video.getAttribute('data-id');
+          console.log(videoId);
+          popupModal.modalPopupOpen(`data-video-popup-${videoId}`);
+        });
+      });
+    }
+  }
+
+  customElements.define('promotional-bar', PromotionalBar);
+{% endjavascript %}

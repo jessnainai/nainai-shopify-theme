@@ -1,0 +1,448 @@
+{{ 'collections-showcase.css' | asset_url | stylesheet_tag }}
+{% liquid
+  if section.settings.content_style == 'vertical' and section.settings.heading != blank
+    assign classHeading = section.settings.content_style
+  elsif section.settings.content_style == 'horizontal'
+    assign classHeading = section.settings.content_style
+  else
+    assign classHeading = 'horizontal'
+  endif
+
+  if section.blocks.size < 6 and section.settings.content_style == 'horizontal'
+    assign dotsClass = 'd-block d-md-none'
+    assign viewSlide = 5
+    assign centerInsufficientSlides = true
+  endif
+  if section.blocks.size < 3 and section.settings.content_style == 'vertical'
+    assign dotsClass = 'd-block d-md-none'
+    assign viewSlide = 4
+    assign centerInsufficientSlides = true
+  endif
+%}
+{% if section.blocks.size > 0 or section.settings.heading != blank %}
+  <div
+    class="section-wrapper{% if section.settings.desktop_height == '100vh' %} height-fullpage{% endif %} section-spacing scheme-{{ section.settings.color_scheme }} section-{{ section.settings.section_background }}"
+  >
+    <div class="container-holder">
+      {% if section.settings.bg_image != blank %}
+        <div class="background--overlay-image">
+          {% render 'lazy-image', image: section.settings.bg_image %}
+        </div>
+      {% endif %}
+      <div
+        class="collections-showcase--wrapper {{ classHeading }}-heading"
+        data-showcase-style="{{ classHeading }}"
+      >
+        <div class="collections-showcase--header{% if section.settings.masked_image != blank %} container-masked-image{% endif %}">
+          <h6
+            class="h1 collections-showcase--title{% if section.settings.content_style == 'vertical' %} verticale-label{% endif %} heading-font collections-showcase-title--{{ section.settings.heading_position }}"
+            {% if section.settings.content_style == 'vertical' %}
+              data-parallax-speed="2"
+            {% endif %}
+          >
+            {{ section.settings.heading }}
+          </h6>
+        </div>
+
+        {% if section.blocks.size > 0 %}
+          <swiper-content data-resize="false">
+            <div
+              class="collections-showcase--carousel{% if section.blocks.size == 1 %} single-slide{% endif %}"
+              data-size="{{ section.blocks.size }}"
+              data-swiper='
+                 {
+                    "loop":true,
+                    "speed": 850,
+                    "spaceBetween": 20,
+                    "slidesPerView": {% if section.blocks.size == 1 %}"auto"{% else %}1.2{% endif %},
+                    "scrollbar": {
+                        "el": ".swiper-scrollbar-{{ section.id }}",
+                        "draggable": true
+                    },
+
+                    "breakpoints": {
+                      "576": {
+                        "slidesPerView": 2.5,
+                        "centeredSlides":true,
+                        "speed": 850,
+                        "mousewheel": false,
+                        "grabCursor": true,
+                        "scrollbar": {
+                            "el": ".swiper-scrollbar-{{ section.id }}",
+                            "draggable": true
+                        }
+
+                        },
+                        "768": {
+                          "pagination": {
+                              "enabled": true,
+                              "el": ".swiper-pagination-{{ section.id }}",
+                              "type": "bullets",
+                              "clickable":true
+                            },
+                            "slidesPerView": 2.5,
+                            "centeredSlides":true,
+                            "speed": 850,
+                            "mousewheel": false,
+                            "grabCursor": true,
+                            "scrollbar": false
+                        },
+                        "992": {
+                          "pagination": {
+                              "enabled": true,
+                              "el": ".swiper-pagination-{{ section.id }}",
+                              "type": "bullets",
+                              "clickable":true
+                            },
+                            "slidesPerView": 3.5
+                        },
+                        "1025": {
+                          "navigation": {
+                              "nextEl": ".swiper-featured-button-next-{{ section.id }}",
+                              "prevEl": ".swiper-featured-button-prev-{{ section.id }}"
+                           },
+                          "resizeObserver":true,
+                          {% if centerInsufficientSlides == true %}
+                          "centerInsufficientSlides":true,
+                          {% endif %}
+                          {% if section.settings.content_style == 'vertical' %}
+                          "slidesPerView": 3
+                          {% else %}
+                          "slidesPerView": 5
+                          {% endif %}
+                        }
+                    }
+                }
+              '
+            >
+              <div class="collections-showcase--wrapper swiper-wrapper is-slider">
+                {% for block in section.blocks %}
+                  {% liquid
+                    capture current
+                      cycle section.id: 1, 2, 3, 4
+                    endcapture
+                    assign placeholder_image = 'collection-apparel-' | append: current
+
+                    assign collection = block.settings.collection
+
+                    if collection != blank
+                      assign collectionTitle = collection.title
+                    endif
+                    if block.settings.collection_heading != blank
+                      assign collectionTitle = block.settings.collection_heading
+                    endif
+                  %}
+                  <div class="collections-showcase--item swiper-slide">
+                    <a href="#" class="collections-showcase--contentwrap">
+                      <div class="collections-showcase--image">
+                        <div class="media media-wrapper media-overlay" style="--image_ratio:150%;">
+                          {% liquid
+                            if block.settings.custom_image != blank
+                              render 'lazy-image', image: block.settings.custom_image, class: 'collection--card-image'
+                            elsif collection.featured_image != blank
+                              render 'lazy-image', image: collection.featured_image, class: 'collection--card-image'
+                            else
+                              echo placeholder_image | placeholder_svg_tag: 'placeholder-svg'
+                            endif
+                          %}
+                        </div>
+                      </div>
+                      {% if collectionTitle != blank or block.settings.collection_desc != blank %}
+                        <div class="collections-showcase--image-info text-{{ section.settings.content_position }}">
+                          {% if block.settings.collection_desc != blank %}
+                            <p class="collections-showcase--image-desc">{{ block.settings.collection_desc }}</p>
+                          {% endif %}
+                          {% if collectionTitle != blank %}
+                            <h3 class="collections-showcase--image-heading h5">{{ collectionTitle }}</h3>
+                          {% endif %}
+                        </div>
+                      {% endif %}
+                    </a>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+
+            <div class="swiper--button-wrapper {{ dotsClass }}">
+              {% liquid
+                if settings.slilder_button_style == 'square'
+                  assign btnIcon = 'curve-arrow'
+                else
+                  assign btnIcon = 'arrow-icon'
+                endif
+              %}
+              <swiper-nav class="swiper-button-prev swiper-button swiper-featured-button-prev-{{ section.id }} button-{{ settings.slilder_button_style }}">
+                {% render 'icons', icon: btnIcon %}
+              </swiper-nav>
+              <swiper-nav class="swiper-button-next swiper-button swiper-featured-button-next-{{ section.id }} button-{{ settings.slilder_button_style }}">
+                {% render 'icons', icon: btnIcon %}
+              </swiper-nav>
+            </div>
+            <div class="swiper-pagination {{ dotsClass }} swiper-pagination-{{ section.id }}"></div>
+            {% if section.blocks.size > 1 %}
+              <div class="swiper-scrollbar swiper-scrollbar-{{ section.id }} d-block d-md-none"></div>
+            {% endif %}
+          </swiper-content>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+<style>
+  {% liquid
+    assign variable_name = section.settings.masked_image | image_url: width: '250'
+    assign masked_image_url = 'url(' | append: variable_name | append : ')'
+  %}
+  #shopify-section-{{ section.id }} .section-wrapper{
+    --section_height:100vh;
+    min-height: var(--section_height);
+    --image_overlay_opacity: {{ section.settings.overlay_opacity }};
+    --masked_image: {{ masked_image_url }};
+  }
+  #shopify-section-{{ section.id }} .background--overlay-image{
+    --image_overlay_opacity: {{ section.settings.bg_image_opacity }};
+  }
+  @media (min-width:768px) {
+    #shopify-section-{{ section.id }}  {
+      --column_count: {{ section.settings.column_count }}
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+      #shopify-section-{{ section.id }}  {
+        --top_spacing: {{ section.settings.top_space_mobile }}px !important;
+        --bottom_spacing: {{ section.settings.bottom_space_mobile }}px !important;
+      }
+      #shopify-section-{{ section.id }} .section-wrapper{
+        --section_height:90vh;
+      }
+  }
+
+  {% if section.settings.section_visibility == 'large' %}
+      @media(max-width: 767px) {
+          #shopify-section-{{ section.id }} {
+            display: none !important;
+          }
+      }
+  {% elsif section.settings.section_visibility == 'small' %}
+      @media(min-width: 768px) {
+          #shopify-section-{{ section.id }}  {
+            display: none !important;
+          }
+      }
+  {% endif %}
+
+  {% if section.blocks.size > 4 %}
+  .collections-showcase--carousel-item {
+    position: absolute;
+    }
+  {%  endif %}
+</style>
+
+{% schema %}
+{
+  "name": "t:sections.collection-showcase.name",
+  "tag": "section",
+  "class": "section-collections-showcase",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.Overlay"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_visibility",
+      "label": "t:sections.all.section_visibility.label",
+      "default": "always",
+      "options": [
+        {
+          "label": "t:sections.all.section_visibility.always.label",
+          "value": "always"
+        },
+        {
+          "label": "t:sections.all.section_visibility.small.label",
+          "value": "small"
+        },
+        {
+          "label": "t:sections.all.section_visibility.large.label",
+          "value": "large"
+        }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "secondary",
+      "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "select",
+      "id": "section_background",
+      "label": "t:sections.all.section_background.label",
+      "default": "solid",
+      "options": [
+        {
+          "label": "t:sections.all.section_background.solid.label",
+          "value": "solid"
+        },
+        {
+          "label": "t:sections.all.section_background.gradient.label",
+          "value": "gradient"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "t:sections.collection-showcase.settings.image.label"
+    },
+    {
+      "type": "range",
+      "id": "bg_image_opacity",
+      "default": 0,
+      "label": "t:sections.all.image_opacity.label",
+      "min": 0,
+      "max": 1,
+      "step": 0.1
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.global.settings.content.label"
+    },
+    {
+      "type": "select",
+      "id": "content_style",
+      "default": "horizontal",
+      "label": "t:sections.collection-showcase.settings.content_style.label",
+      "options": [
+        {
+          "label": "t:sections.collection-showcase.settings.content_style.vertical.label",
+          "value": "vertical"
+        },
+        {
+          "label": "t:sections.collection-showcase.settings.content_style.horizontal.label",
+          "value": "horizontal"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings_schema.global.settings.heading.label",
+      "default": "KING",
+      "info": "7 characters max. A heading text is required for the vertical style."
+    },
+    {
+      "type": "select",
+      "id": "heading_position",
+      "label": "t:sections.collection-showcase.settings.heading_position.label",
+      "default": "behind-image",
+      "options": [
+        {
+          "label": "t:sections.collection-showcase.settings.heading_position.above-image.label",
+          "value": "above-image"
+        },
+        {
+          "label": "t:sections.collection-showcase.settings.heading_position.behind-image.label",
+          "value": "behind-image"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "masked_image",
+      "label": "Masked image",
+      "info": "Appears behind the heading text. Use a .gif image to show an animation in the background of the heading."
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "t:sections.collection-showcase.settings.content_position.label",
+      "default": "top",
+      "options": [
+        {
+          "label": "t:sections.collection-showcase.settings.content_position.top.label",
+          "value": "top"
+        },
+        {
+          "label": "t:sections.collection-showcase.settings.content_position.center.label",
+          "value": "center"
+        },
+        {
+          "label": "t:sections.collection-showcase.settings.content_position.bottom.label",
+          "value": "bottom"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "default": 0.3,
+      "label": "t:sections.all.overlay_opacity.label",
+      "min": 0,
+      "max": 1,
+      "step": 0.1
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:sections.all.headers.collection"
+        },
+        {
+          "type": "text",
+          "id": "collection_heading",
+          "default": "Collection title",
+          "label": "t:sections.collection-showcase.blocks.collection.settings.collection_heading.label"
+        },
+        {
+          "type": "textarea",
+          "id": "collection_desc",
+          "default": "Short description",
+          "label": "t:sections.collection-showcase.blocks.collection.settings.collection_desc.label"
+        },
+        {
+          "type": "image_picker",
+          "label": "t:sections.collection-showcase.blocks.collection.settings.custom_image.label",
+          "id": "custom_image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.collection-showcase.presets.name",
+      "blocks": [
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,64 @@
+{% render 'store-locator', section: section %}
+
+{% schema %}
+{
+  "name": "t:sections.store-locator.name",
+  "tag": "section",
+  "class": "store-locator",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "primary",
+      "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Store locator",
+      "label": "t:settings_schema.global.settings.heading.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "address",
+      "name": "t:sections.store-locator.blocks.address.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "address_heading",
+          "label": "t:settings_schema.global.settings.heading.label",
+          "default": "Store"
+        },
+        {
+          "type": "richtext",
+          "id": "address_content",
+          "label": "t:sections.store-locator.blocks.address.settings.address_content.label",
+          "default": "<p>Ottawa street, 3996</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "address_image",
+          "label": "t:settings_schema.global.settings.image.label"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+          "type": "address"
+        },
+        {
+          "type": "address"
+        },
+        {
+          "type": "address"
+        }
+    ]
+  }
+}
+{% endschema %}

@@ -1,0 +1,215 @@
+{{ 'account.css' | asset_url | stylesheet_tag }}
+<div class="section-wrapper section-spacing scheme-{{ section.settings.color_scheme }} section-{{ section.settings.section_background }} pos-relative">
+  {% if section.settings.background_image != blank %}
+    <div class="background--overlay-image">
+      {% render 'lazy-image', image: section.settings.background_image %}
+    </div>
+  {% endif %}
+
+  {% capture rightContent %} 
+    {% if section.settings.description != blank %}
+      <div class="account--right-content">
+          <span class="icon--quote">
+            <svg  viewBox="0 0 39 31" fill="none">
+            <path d="M30.7268 30.744C27.5548 30.744 25.1555 29.4427 23.5288 26.84C22.1462 24.644 21.4548 21.96 21.4548 18.788C21.4548 14.7213 22.4715 11.0613 24.5048 7.808C26.6195 4.55467 29.7915 1.952 34.0208 0L35.1188 2.196C32.5975 3.25334 30.4015 4.92067 28.5308 7.198C26.7415 9.47533 25.8468 11.7933 25.8468 14.152C25.8468 15.128 25.9688 15.982 26.2128 16.714C27.5142 15.6567 29.0188 15.128 30.7268 15.128C32.9228 15.128 34.7528 15.86 36.2168 17.324C37.7622 18.7067 38.5348 20.5773 38.5348 22.936C38.5348 25.132 37.7622 27.0027 36.2168 28.548C34.7528 30.012 32.9228 30.744 30.7268 30.744ZM9.98685 30.744C6.81484 30.744 4.41551 29.4427 2.78884 26.84C1.40618 24.644 0.714844 21.96 0.714844 18.788C0.714844 14.7213 1.73151 11.0613 3.76484 7.808C5.87951 4.55467 9.05151 1.952 13.2808 0L14.3788 2.196C11.8575 3.25334 9.66151 4.92067 7.79084 7.198C6.00151 9.47533 5.10684 11.7933 5.10684 14.152C5.10684 15.128 5.22884 15.982 5.47284 16.714C6.77418 15.6567 8.27884 15.128 9.98685 15.128C12.1828 15.128 14.0128 15.86 15.4768 17.324C17.0222 18.7067 17.7948 20.5773 17.7948 22.936C17.7948 25.132 17.0222 27.0027 15.4768 28.548C14.0128 30.012 12.1828 30.744 9.98685 30.744Z" fill="currentColor"/>
+            </svg>
+          </span>
+          <p class="account--description {{ section.settings.description_size }} text-center">
+            {{ section.settings.description }}
+          </p>
+          <span class="icon--quote right-quote">
+            <svg viewBox="0 0 38 31" fill="none">
+              <path d="M7.80831 30.744C10.9803 30.744 13.3796 29.4427 15.0063 26.84C16.389 24.644 17.0803 21.96 17.0803 18.788C17.0803 14.7213 16.0636 11.0613 14.0303 7.808C11.9156 4.55467 8.74364 1.952 4.51431 0L3.41631 2.196C5.93765 3.25334 8.13364 4.92067 10.0043 7.198C11.7936 9.47533 12.6883 11.7933 12.6883 14.152C12.6883 15.128 12.5663 15.982 12.3223 16.714C11.021 15.6567 9.51631 15.128 7.80831 15.128C5.61231 15.128 3.78231 15.86 2.31831 17.324C0.772977 18.7067 0.000312805 20.5773 0.000312805 22.936C0.000312805 25.132 0.772977 27.0027 2.31831 28.548C3.78231 30.012 5.61231 30.744 7.80831 30.744ZM28.5483 30.744C31.7203 30.744 34.1196 29.4427 35.7463 26.84C37.129 24.644 37.8203 21.96 37.8203 18.788C37.8203 14.7213 36.8036 11.0613 34.7703 7.808C32.6556 4.55467 29.4836 1.952 25.2543 0L24.1563 2.196C26.6776 3.25334 28.8736 4.92067 30.7443 7.198C32.5336 9.47533 33.4283 11.7933 33.4283 14.152C33.4283 15.128 33.3063 15.982 33.0623 16.714C31.761 15.6567 30.2563 15.128 28.5483 15.128C26.3523 15.128 24.5223 15.86 23.0583 17.324C21.513 18.7067 20.7403 20.5773 20.7403 22.936C20.7403 25.132 21.513 27.0027 23.0583 28.548C24.5223 30.012 26.3523 30.744 28.5483 30.744Z" fill="currentColor"/>
+            </svg>
+          </span>
+        
+      </div>
+    {% endif %}
+  {% endcapture %}
+  <div class="container-fullwidth">
+    <div class="account--card pos-relative">
+      <div class="section--header text-center">
+        <h3 class="section--heading heding-font {{ section.settings.heading_size }}">{{ 'customer.login_page.create_account' | t }}
+          </h3>
+      </div>
+      <div class="account--card-box">
+        {{ rightContent }}
+        <div class="account--left-content">
+          {% render 'register-form', section: section %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  #shopify-section-{{ section.id }} .section-spacing {
+    --top_spacing: {{ section.settings.top_space_desktop }}px;
+    --bottom_spacing: {{ section.settings.bottom_space_desktop }}px;
+    --image_overlay_opacity: {{ section.settings.overlay_opacity }};
+  }
+  @media only screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} .section-spacing {
+      --top_spacing: {{ section.settings.top_space_mobile }}px !important;
+      --bottom_spacing: {{ section.settings.bottom_space_mobile }}px !important;
+    }
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.main-register.name",
+  "class": "customer-page main-register",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "primary",
+      "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "select",
+      "id": "section_background",
+      "label": "t:sections.all.section_background.label",
+      "default": "solid",
+      "options": [
+        {
+          "label": "t:sections.all.section_background.solid.label",
+          "value": "solid"
+        },
+        {
+          "label": "t:sections.all.section_background.gradient.label",
+          "value": "gradient"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:sections.all.background_image.label"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "t:settings_schema.global.settings.image_overlay_opacity.label",
+      "info": "t:settings_schema.global.settings.image_overlay_opacity.info",
+      "default": 0.3,
+      "step": 0.1,
+      "min": 0,
+      "max": 1
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.global.settings.content.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.main-register.settings.heading_size.label",
+      "default": "h3",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.h1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.h2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.all.heading_size.h3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.all.heading_size.h4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.all.heading_size.h5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:sections.all.heading_size.h6.label"
+        }
+      ]
+    },
+    {
+      "type": "inline_richtext",
+      "id": "description",
+      "label": "t:settings_schema.global.settings.description.label"
+    },
+    {
+      "type": "select",
+      "id": "description_size",
+      "label": "t:sections.all.description_size.label",
+      "default": "text",
+      "options": [
+        {
+          "label": "t:sections.all.description_size.text-xsmall.label",
+          "value": "text-xsmall"
+        },
+        {
+          "label": "t:sections.all.description_size.text-small.label",
+          "value": "text-small"
+        },
+        {
+          "label": "t:sections.all.description_size.text.label",
+          "value": "text"
+        },
+        {
+          "label": "t:sections.all.description_size.text-medium.label",
+          "value": "text-medium"
+        },
+        {
+          "label": "t:sections.all.description_size.text-large.label",
+          "value": "text-large"
+        },
+        {
+          "label": "t:sections.all.description_size.text-xlarge.label",
+          "value": "text-xlarge"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.spacing.section_spacing_heading"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "t:sections.all.spacing.top_space_desktop",
+      "default": 70,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "t:sections.all.spacing.bottom_space_desktop",
+      "default": 70,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "t:sections.all.spacing.top_space_mobile",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "t:sections.all.spacing.bottom_space_mobile",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ]
+}
+{% endschema %}

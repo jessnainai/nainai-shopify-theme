@@ -1,0 +1,151 @@
+{%- if predictive_search.performed -%}
+  {%- if predictive_search.resources.products.size > 0
+    or predictive_search.resources.articles.size > 0
+    or predictive_search.resources.pages.size > 0
+    or predictive_search.resources.queries.size > 0
+    or predictive_search.resources.collections.size > 0
+  -%}
+    {% if predictive_search.resources.queries.size > 0 %}
+      <div class="search--result-collection border-bottom">
+        <h6 class="search--collection-heading h6">Suggestions ({{ predictive_search.resources.queries.size }})</h6>
+        <ul class="search--result-collection-lists">
+          {%- for query in predictive_search.resources.queries -%}
+            <li class="collection--search-item">
+              <a
+                href="{{ query.url }}"
+                aria-label="{{ query.text }}"
+                class="collection--search-item-link text-large"
+              >
+                {{- query.styled_text -}}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {% endif %}
+    {% if predictive_search.resources.products.size > 0 %}
+      <div class="search--result-product-list border-bottom">
+        <h6 class="search--page-heading h6">Products ({{ predictive_search.resources.products.size }})</h6>
+        <swiper-content data-resize="false">
+          <div
+            class="product--items-wrapper swiper"
+            data-swiper='
+              {
+                  "loop": false,
+                  "slidesPerView": 2.5,
+                  "grabCursor": true,
+                  "spaceBetween": 30
+              }
+            '
+          >
+            <div class="product--items-wrapper-inner swiper-wrapper">
+              {%- for product in predictive_search.resources.products -%}
+                <div class="product--item swiper-slide">
+                  {% liquid
+                    capture placeholderIndex
+                      cycle cycleGroup: '1', '2', '3'
+                    endcapture
+                    render 'product-card', cardproduct: product, cardImageSize: 'auto', cycleIndex: placeholderIndex, section: section, source: 'search-product'
+                  %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </swiper-content>
+      </div>
+    {% endif %}
+    {% if predictive_search.resources.collections.size > 0 %}
+      <div class="search--result-collection border-bottom">
+        <h6 class="search--collection-heading h6">Collection ({{ predictive_search.resources.collections.size }})</h6>
+        <ul class="search--result-collection-lists">
+          {%- for collection in predictive_search.resources.collections -%}
+            <li class="collection--search-item">
+              <a
+                href="{{ collection.url }}"
+                class="collection--search-item-link text-large"
+                aria-label="{{ collection.title }}"
+              >
+                {{- collection.title -}}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    {% if predictive_search.resources.articles.size > 0 %}
+      <div class="search--result-article-list border-bottom">
+        <swiper-content>
+          <div
+            class="blog--items-wrapper swiper"
+            data-swiper='
+              {
+                  "loop": true,
+                  "slidesPerView": 2.5,
+                  "grabCursor": true,
+                  "spaceBetween": 30
+              }
+            '
+          >
+            <div class="blog--items-wrapper-inner swiper-wrapper">
+              {%- for article in predictive_search.resources.articles -%}
+                <div class="blog--item swiper-slide">
+                  <a
+                    href="{{ article.url }}"
+                    aria-label="{{ article.title }}"
+                    class="hyperlink blog--item-link"
+                  >
+                    <div class="blog--image border-radius-10">
+                      <div class="media" style="--image_ratio:65%;">
+                        {%- liquid
+                          if article.image
+                            render 'lazy-image', image: article.image
+                          else
+                            echo 'image' | placeholder_svg_tag: 'placeholder-svg'
+                          endif
+                        -%}
+                      </div>
+                    </div>
+                    <div class="blog--content">
+                      <p class="blog--title text-large">{{ article.title }}</p>
+                    </div>
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </swiper-content>
+      </div>
+    {% endif %}
+    {% if predictive_search.resources.pages.size > 0 %}
+      <div class="search--result-pages">
+        <h6 class="search--page-heading h6">Pages ({{ predictive_search.resources.pages.size }})</h6>
+        <ul class="search--result-pages-lists">
+          {%- for page in predictive_search.resources.pages -%}
+            <li class="page--search-item">
+              <a
+                href="{{ page.url }}"
+                aria-label="{{ page.title }}"
+                class="page--search-item-link text-large"
+              >
+                {{- page.title -}}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    <div class="search--result-link">
+      <a
+        class="button"
+        href="/search?q={{ predictive_search.terms }}&options%5Bprefix%5D=last"
+        title="View all results"
+        >View all results</a
+      >
+    </div>
+  {% else %}
+    <div class="search__empty empty__state-box">
+      <h4 class="empty__state-heading">No results found</h4>
+      <p class="empty__state-desc ">Check the spelling or use a different word or phrase.</p>
+    </div>
+  {%- endif -%}
+{%- endif -%}

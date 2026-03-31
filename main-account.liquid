@@ -1,0 +1,294 @@
+{{ 'account.css' | asset_url | stylesheet_tag }}
+<div class="section-wrapper section-spacing scheme-{{ section.settings.color_scheme }} section-{{ section.settings.section_background }}">
+  <div class="{{ settings.container_width }}">
+    <div class="section--header with--arrow">
+      <div class="section--header-inner">
+        <{{ section.settings.seo_heading }} class="section--heading heading-font {{ section.settings.heading_size }}">
+          {{ section.settings.heading | default: 'My account' }}
+          </{{ section.settings.seo_heading }}>
+
+          {% if section.settings.description != blank %}
+            <p class="section--description {{ section.settings.description_size }}">
+              {{ section.settings.description | newline_to_br }}
+            </p>
+          {% endif %}
+        </div>
+        <div class="logout--button">
+          <a href="{{ routes.account_logout_url }}" class="button logout-text">
+            <span>{{ 'customer.log_out' | t }}</span>
+          </a>
+        </div>
+      </div>
+      <div class="main-account--content">
+        <div class="row">
+          {% paginate customer.orders by 20 %}
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-9">
+              {%- if customer.orders.size > 0 -%}
+                <div class="order--history">
+                  <div class="table--responsive">
+                    <table class="no-border order--table">
+                      <thead>
+                        <tr>
+                          <th>{{ 'customer.orders.order_number' | t }}</th>
+                          <th>{{ 'customer.orders.date' | t }}</th>
+                          <th>{{ 'customer.order.payment_status' | t }}</th>
+                          <th>{{ 'customer.order.fulfillment_status' | t }}</th>
+                          <th>{{ 'customer.order.total' | t }}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {%- for order in customer.orders -%}
+                          <tr>
+                            <td id="RowOrder-{{ forloop.index }}" data-label="order number">
+                              <a class="text-underline" href="{{ order.customer_url }}">{{ order.order_name }}</a>
+                            </td>
+                            <td>{{ order.created_at | time_tag: format: 'date' }}</td>
+                            <td>
+                              <span class="payment--status paid">{{- order.financial_status_label -}}</span>
+                            </td>
+                            <td>{{ order.fulfillment_status_label }}</td>
+                            <td>{{ order.total_price | money_with_currency }}</td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                {%- if paginate.pages > 1 -%}
+                  {% render 'pagination'
+                    , paginate: paginate
+                    , anchor: '' %}
+                {%- endif -%}
+              {% else %}
+                {% render 'empty-card'
+                  , source: 'order' %}
+              {%- endif -%}
+            </div>
+          {% endpaginate %}
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3">
+            <div class="account--detail">
+              <h6 class="account--detail-heading">{{ 'customer.account.account_details' | t }}</h6>
+              <address class="font-normal">
+                {% for address in customer.addresses %}
+                  {% if address == customer.default_address %}
+                    {{ address | format_address }}
+                  {% endif %}
+                {% endfor %}
+              </address>
+              <a href="{{ routes.account_addresses_url }}" class="button {% if request.path == routes.account_addresses_url %} active{% endif %}">
+                {%- assign buttonText = 'customer.account.view_addresses' | t -%}
+                {%- assign buttonText = buttonText | append: ' ' | append: '(' | append: customer.addresses.size | append: ')'
+                -%}
+                <span>
+                  {{- buttonText -}}
+                </span>
+              {% comment %}
+                {% liquid
+                assign buttonText = 'customer.account.view_addresses' | t
+                assign addressSize = customer.addresses.size
+                assign buttonText = buttonText | append: ' ' | append: '(' | append: addressSize | append: ')'
+                render 'button-appearance', button_text: buttonText, icon: 'arrow-right'
+                %}
+              {% endcomment %}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    #shopify-section-{{ section.id }} {
+      --top_spacing: {{ section.settings.top_space_desktop }}px;
+      --bottom_spacing: {{ section.settings.bottom_space_desktop }}px;
+    }
+    @media only screen and (max-width: 767px) {
+      #shopify-section-{{ section.id }} {
+        --top_spacing: {{ section.settings.top_space_mobile }}px;
+        --bottom_spacing: {{ section.settings.bottom_space_mobile }}px;
+      }
+    }
+  </style>
+  {% schema %}
+    {
+      "name": "t:sections.main-account.name",
+      "class": "account-page main-account",
+      "tag": "section",
+      "settings": [
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "default": "primary",
+          "label": "t:sections.all.colors.label"
+        },
+        {
+          "type": "select",
+          "id": "section_background",
+          "label": "t:sections.all.section_background.label",
+          "default": "solid",
+          "options": [
+            {
+              "label": "t:sections.all.section_background.solid.label",
+              "value": "solid"
+            },
+            {
+              "label": "t:sections.all.section_background.gradient.label",
+              "value": "gradient"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "t:settings_schema.global.settings.content.label"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "t:settings_schema.global.settings.heading.label",
+          "default": "Welcome to Your Account"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "t:sections.all.heading_size.label",
+          "default": "h3",
+          "options": [
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.h1.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.h2.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:sections.all.heading_size.h3.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:sections.all.heading_size.h4.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:sections.all.heading_size.h5.label"
+            },
+            {
+              "value": "h6",
+              "label": "t:sections.all.heading_size.h6.label"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "seo_heading",
+          "label": "t:sections.all.seo_heading.label",
+          "info": "t:sections.all.seo_heading.info",
+          "default": "h3",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            }
+          ]
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "t:settings_schema.global.settings.description.label"
+        },
+        {
+          "type": "select",
+          "id": "description_size",
+          "label": "t:sections.all.description_size.label",
+          "default": "text",
+          "options": [
+            {
+              "label": "t:sections.all.description_size.text-xsmall.label",
+              "value": "text-xsmall"
+            },
+            {
+              "label": "t:sections.all.description_size.text-small.label",
+              "value": "text-small"
+            },
+            {
+              "label": "t:sections.all.description_size.text.label",
+              "value": "text"
+            },
+            {
+              "label": "t:sections.all.description_size.text-medium.label",
+              "value": "text-medium"
+            },
+            {
+              "label": "t:sections.all.description_size.text-large.label",
+              "value": "text-large"
+            },
+            {
+              "label": "t:sections.all.description_size.text-xlarge.label",
+              "value": "text-xlarge"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.spacing.section_spacing_heading"
+        },
+        {
+          "type": "range",
+          "id": "top_space_desktop",
+          "label": "t:sections.all.spacing.top_space_desktop",
+          "default": 70,
+          "min": 0,
+          "max": 150,
+          "step": 5
+        },
+        {
+          "type": "range",
+          "id": "bottom_space_desktop",
+          "label": "t:sections.all.spacing.bottom_space_desktop",
+          "default": 70,
+          "min": 0,
+          "max": 150,
+          "step": 5
+        },
+        {
+          "type": "range",
+          "id": "top_space_mobile",
+          "label": "t:sections.all.spacing.top_space_mobile",
+          "default": 40,
+          "min": 0,
+          "max": 100,
+          "step": 5
+        },
+        {
+          "type": "range",
+          "id": "bottom_space_mobile",
+          "label": "t:sections.all.spacing.bottom_space_mobile",
+          "default": 40,
+          "min": 0,
+          "max": 100,
+          "step": 5
+        }
+      ]
+    }
+  {% endschema %}

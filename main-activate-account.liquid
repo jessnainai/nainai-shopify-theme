@@ -1,0 +1,261 @@
+{% if section.index <= 2 %}
+  {{ 'account.css' | asset_url | preload_tag: as: 'style' }}
+{% endif %}
+{{ 'account.css' | asset_url | stylesheet_tag }}
+<div class="section-wrapper section-spacing background-color-primary">
+  <div class="row no-gutters">
+    {% liquid
+      assign le_image = section.settings.left_image
+      if le_image != blank
+        assign md_class = 'col-md-6 col-lg-6'
+      else
+        assign md_class = 'col-md-12 col-lg-12'
+      endif
+    %}
+    {% if le_image != blank %}
+      <div class="col-12 col-sm-12 {{ md_class }}">
+        <div class="account-content-img-wrapper">
+          <div class="account-content-img">
+            <div class="media media-fixed">
+              {% render 'lazy-image'
+                , image: le_image
+                , source: 'create-account' %}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    <div class="col-12 col-sm-12 {{ md_class }}">
+      <div class="">
+        <div class="account--card">
+          <div class="account--heading-box">
+            <{{ section.settings.seo_heading }} class="account-heading {{ section.settings.heading_size }}">
+              {{ 'customer.activate_account.title' | t }}
+              </{{ section.settings.seo_heading }}>
+              <p class="account-desc">
+                {{ 'customer.activate_account.subtext' | t }}
+              </p>
+            </div>
+            {%- form 'activate_customer_password'
+              , class: 'account--form' -%}
+              <input
+                type="hidden"
+                name="return_to"
+                value="{{ routes.account_url }}">
+
+              {%- if form.errors -%}
+                <div class="error--message">
+                  <p tabindex="-1">{{ 'templates.contact.form.error_heading' | t }}</p>
+                  <ul class="list-unstyled">
+                    {%- for field in form.errors -%}
+                      <li>
+                        {%- if field == 'form' -%}
+                          {{ form.errors.messages[field] }}
+                        {%- else -%}
+                          <a href="#{{ field }}" class="unstyled-link">
+                            {{ form.errors.translated_fields[field] | capitalize }}
+                            {{ form.errors.messages[field] }}
+                          </a>
+                        {%- endif -%}
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              {%- endif -%}
+              <div class="form-group">
+                <label class="hidden" for="password">{{ 'customer.activate_account.password' | t }}</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="customer[password]"
+                  id="password"
+                  autocomplete="new-password"
+                  placeholder="{{ 'customer.activate_account.password' | t }}"
+                  {% if form.errors contains 'password' %}
+                  aria-invalid="true"
+                  aria-describedby="password-error"
+                  {% endif %}>
+              </div>
+              <div class="form-group">
+                <label class="hidden" for="password_confirmation">
+                  {{- 'customer.activate_account.password_confirm' | t -}}
+                </label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="customer[password_confirmation]"
+                  id="password_confirmation"
+                  autocomplete="new-password"
+                  placeholder="{{ 'customer.activate_account.password_confirm' | t }}"
+                  {% if form.errors contains 'password' %}
+                  aria-invalid="true"
+                  aria-describedby="password_confirmation-error"
+                  {% endif %}>
+              </div>
+              <button
+                type=""
+                role=""
+                class="button button-block">{{ 'customer.activate_account.title' | t }}</button>
+            {%- endform -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    #shopify-section-{{ section.id }} .section-container {
+      --top-spacing: {{ section.settings.top_space_desktop }}px;
+      --bottom-spacing: {{ section.settings.bottom_space_desktop }}px;
+    }
+    @media only screen and (max-width: 767px) {
+      #shopify-section-{{ section.id }} .section-container {
+        --top-spacing: {{ section.settings.top_space_mobile }}px;
+        --bottom-spacing: {{ section.settings.bottom_space_mobile }}px;
+      }
+    }
+  </style>
+  {% schema %}
+    {
+      "name": "t:sections.main-activate-account.name",
+      "class": "customer-page main-activate-account",
+      "tag": "section",
+      "settings": [
+        {
+          "type": "header",
+          "content": "t:sections.all.headers.media"
+        },
+        {
+          "type": "image_picker",
+          "id": "left_image",
+          "label": "t:settings_schema.global.settings.image.label"
+        },
+        {
+          "type": "header",
+          "content": "t:settings_schema.global.settings.content.label"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "t:settings_schema.global.settings.description.label",
+          "default": "Add short description for this section"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "t:sections.all.heading_size.label",
+          "default": "h3",
+          "options": [
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.h1.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.h2.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:sections.all.heading_size.h3.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:sections.all.heading_size.h4.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:sections.all.heading_size.h5.label"
+            },
+            {
+              "value": "h6",
+              "label": "t:sections.all.heading_size.h6.label"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "seo_heading",
+          "label": "t:sections.all.seo_heading.label",
+          "info": "t:sections.all.seo_heading.info",
+          "default": "h3",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            },
+            {
+              "value": "div",
+              "label": "div"
+            },
+            {
+              "value": "span",
+              "label": "span"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.spacing.section_spacing_heading"
+        },
+        {
+          "type": "range",
+          "id": "top_space_desktop",
+          "label": "t:sections.all.spacing.top_space_desktop",
+          "default": 70,
+          "min": 0,
+          "max": 150,
+          "step": 5
+        },
+        {
+          "type": "range",
+          "id": "bottom_space_desktop",
+          "label": "t:sections.all.spacing.bottom_space_desktop",
+          "default": 70,
+          "min": 0,
+          "max": 150,
+          "step": 5
+        },
+        {
+          "type": "range",
+          "id": "top_space_mobile",
+          "label": "t:sections.all.spacing.top_space_mobile",
+          "default": 40,
+          "min": 0,
+          "max": 100,
+          "step": 5
+        },
+        {
+          "type": "range",
+          "id": "bottom_space_mobile",
+          "label": "t:sections.all.spacing.bottom_space_mobile",
+          "default": 40,
+          "min": 0,
+          "max": 100,
+          "step": 5
+        }
+      ]
+    }
+  {% endschema %}

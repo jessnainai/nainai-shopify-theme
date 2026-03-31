@@ -1,0 +1,814 @@
+{{ 'account.css' | asset_url | stylesheet_tag }}
+<div class="section-wrapper section-spacing scheme-{{ section.settings.color_scheme }}">
+  <div class="{{ settings.container_width }}">
+    <div class="section--header with--arrow">
+      <div class="section--header-inner">
+        <{{ section.settings.seo_heading }} class="section--heading heading-font {{ section.settings.heading_size }}">
+          {{ section.settings.heading | default: 'Address' }}
+        </{{ section.settings.seo_heading }}>
+
+        {% if section.settings.description != blank %}
+          <p class="section--description {{ section.settings.description_size }}">
+            {{ section.settings.description | newline_to_br }}
+          </p>
+        {% endif %}
+      </div>
+      <div class="logout--button">
+        <a href="{{ routes.account_logout_url }}" class="button logout-text"
+          ><span>{{ 'customer.log_out' | t }}</span></a
+        >
+      </div>
+    </div>
+
+    <div class="main-address--header">
+      <a class="text-underline" href="{{ routes.account_url }}"> {{ 'customer.account.return' | t }} </a>
+      <add-address
+        data-id="AddNewAddress-{{ section.id }}"
+        class="button add-address-button {{ settings.button_animation_style }}"
+      >
+        {% liquid
+          assign buttonText = 'customer.addresses.add_new' | t
+          render 'button-appearance', button_text: buttonText, icon: 'arrow-right'
+        %}
+      </add-address>
+    </div>
+
+    <div class="main-account--content main-address--content">
+      {%- paginate customer.addresses by 100 -%}
+        {% if customer.addresses.size > 0 %}
+          <div class="address--list">
+            {%- for address in customer.addresses -%}
+              <div class="address--card">
+                <div
+                  class="width-100 height-100 address--card-item active"
+                  id="EditAddress_{{ forloop.index }}"
+                  data-id="editAddress{{ forloop.index }}"
+                  data-content-wrapper
+                >
+                  <div class="address--head">
+                    <h6 class="address--title heading-font h6">
+                      {%- if address == customer.default_address -%}
+                        {{ 'customer.addresses.default' | t }}
+                      {% else %}
+                        {{ 'customer.addresses.title' | t }}
+                      {% endif %}
+                    </h6>
+                  </div>
+                  <div class="address--body">
+                    <address class="font-normal">
+                      {% comment %} {% if address.first_name or address.first_name != blank %} {% endcomment %}
+                      <p>
+                        {{ 'customer.addresses.name' | t }}
+                        <span>
+                          {% if address.first_name or address.first_name != blank %}
+                            {{- address.first_name }}
+                            {{ address.last_name -}}
+                          {% else %}
+                            ---
+                          {% endif %}
+                        </span>
+                      </p>
+                      {% comment %} {% endif %} {% endcomment %}
+                      <p>
+                        {{ 'customer.addresses.address1' | t }}<span>
+                          {% if address.address1 != blank %}
+                            {{ address.address1 }}
+                          {% else %}
+                            ---
+                          {% endif %}
+                        </span>
+                      </p>
+
+                      <p>
+                        {{ 'customer.addresses.address2' | t }}<span>
+                          {% if address.address2 != blank %}
+                            {{ address.address2 }}
+                          {% else %}
+                            ---
+                          {% endif %}
+                        </span>
+                      </p>
+
+                      <p>
+                        {{ 'customer.addresses.city' | t }}<span>
+                          {% if address.city != blank %}
+                            {{ address.city }}
+                          {% else %}
+                            ---
+                          {% endif %}
+                        </span>
+                      </p>
+                      <p>
+                        {{ 'customer.addresses.country' | t }}<span>
+                          {% if address.country != blank %}
+                            {{ address.country }}
+                          {% else %}
+                            ---
+                          {% endif %}
+                        </span>
+                      </p>
+                      <p>
+                        {{ 'customer.addresses.phone' | t }}<span>
+                          {% if address.phone != blank %}
+                            {{ address.phone }}
+                          {% else %}
+                            ---
+                          {% endif %}
+                        </span>
+                      </p>
+
+                      <p>
+                        {{ 'customer.addresses.province' | t }}
+                        <span>
+                          {% if address.province_code != blank %}
+                            {{ address.province_code }}
+                          {% else %}
+                            ---
+                          {% endif %}
+                        </span>
+                      </p>
+                      <p>
+                        {{ 'customer.addresses.zip' | t }}<span>
+                          {% if address.zip != blank %}
+                            {{ address.zip }}
+                          {% else %}
+                            ---
+                          {% endif %}
+                        </span>
+                      </p>
+                    </address>
+                  </div>
+                  <edit-address class="address--footer">
+                    <div class="address--buttons list-inline gap-10">
+                      <button
+                        class="edit-address-btn button"
+                        data-id="EditAddress_{{ forloop.index }}"
+                        data-address-id="{{ address.id }}"
+                        data-customer-addresses
+                      >
+                        <span>{{ 'customer.addresses.edit' | t }}</span>
+                      </button>
+                      <button
+                        class="remove-address-btn button secondary--button"
+                        data-target="{{ address.url }}"
+                        aria-label="delete {{ forloop.index }}"
+                        data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
+                        data-remove-address
+                      >
+                        <span>Remove</span>
+                      </button>
+                      {% comment %}
+                        <a
+                          href="#editAddress{{ forloop.index }}"
+                          data-id="EditAddress_{{ forloop.index }}"
+                          class="button edit-address-btn"
+                          data-address-id="{{ address.id }}"
+                          data-customer-addresses
+                        >
+                          <span>{{ 'customer.addresses.edit' | t }}</span>
+                        </a>
+
+                        <a
+                          data-target="{{ address.url }}"
+                          aria-label="delete {{ forloop.index }}"
+                          class="remove-address-btn button secondary--button"
+                          data-remove-address
+                          data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
+                        >
+                          <span>Remove</span>
+                        </a>
+                      {% endcomment %}
+                    </div>
+                  </edit-address>
+                </div>
+                <div
+                  class="width-100 height-100 address--card-item edit--address hidden"
+                  id="editAddress{{ forloop.index }}"
+                  data-id="EditAddress_{{ forloop.index }}"
+                  data-content-update
+                >
+                  <div class="address--head">
+                    <h6 class="address--title heading-font h6">
+                      {{ 'customer.addresses.edit_address' | t }}
+                    </h6>
+                  </div>
+                  {%- form 'customer_address', address -%}
+                    <div class="address--body">
+                      <div class="address--form-content">
+                        <div class="input-form--fields">
+                          <div class="input-form--fields">
+                            <div class="form-group">
+                              <label for="AddressFirstName_{{ form.id }}" class="hidden">
+                                {{- 'customer.addresses.first_name' | t -}}
+                              </label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="AddressFirstName_{{ form.id }}"
+                                name="address[first_name]"
+                                value="{{ form.first_name }}"
+                                autocomplete="given-name"
+                                placeholder="{{ 'customer.addresses.first_name' | t }}"
+                              >
+                            </div>
+                            <div class="form-group">
+                              <label for="AddressLastName_{{ form.id }}" class="hidden">
+                                {{- 'customer.addresses.last_name' | t -}}
+                              </label>
+                              <input
+                                type="text"
+                                id="AddressLastName_{{ form.id }}"
+                                class="form-control"
+                                name="address[last_name]"
+                                value="{{ form.last_name }}"
+                                autocomplete="family-name"
+                                placeholder="{{ 'customer.addresses.last_name' | t }}"
+                              >
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="AddressCompany_{{ form.id }}" class="d-none">
+                              {{- 'customer.addresses.company' | t -}}
+                            </label>
+                            <input
+                              type="text"
+                              id="AddressCompany_{{ form.id }}"
+                              class="form-control"
+                              name="address[company]"
+                              value="{{ form.company }}"
+                              autocomplete="organization"
+                              placeholder="{{ 'customer.addresses.company' | t }}"
+                            >
+                          </div>
+                        </div>
+                        <div class="input-form--fields">
+                          <div class="form-group">
+                            <label for="AddressAddress1_{{ form.id }}" class="d-none">
+                              {{- 'customer.addresses.address1' | t -}}
+                            </label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="AddressAddress1_{{ form.id }}"
+                              name="address[address1]"
+                              value="{{ form.address1 }}"
+                              autocomplete="address-line1"
+                              placeholder="{{ 'customer.addresses.address1' | t }}"
+                            >
+                          </div>
+                          <div class="form-group">
+                            <label for="AddressAddress2_{{ form.id }}" class="d-none">
+                              {{- 'customer.addresses.address2' | t -}}
+                            </label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="AddressAddress2_{{ form.id }}"
+                              name="address[address2]"
+                              value="{{ form.address2 }}"
+                              autocomplete="address-line2"
+                              placeholder="{{ 'customer.addresses.address2' | t }}"
+                            >
+                          </div>
+                        </div>
+                        <country-province class="d-block input-form--fields">
+                          <div class="form-group">
+                            <label for="AddressCountry_{{ form.id }}" class="d-none">
+                              {{- 'customer.addresses.country' | t -}}
+                            </label>
+                            <div class="select-box">
+                              <select
+                                id="AddressCountry_{{ form.id }}"
+                                class="form-control"
+                                name="address[country]"
+                                data-default="{{ form.country }}"
+                                autocomplete="country"
+                                data-country-select
+                                shippingCountry
+                              >
+                                {{ all_country_option_tags }}
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group" id="shipping-province-container" id="shippingProvinceContainer">
+                            <label for="Province_{{ form.id }}" class="d-none">
+                              {{- 'customer.addresses.province' | t -}}
+                            </label>
+                            <div class="select-box">
+                              <select
+                                id="Province_{{ form.id }}"
+                                class="form-control"
+                                name="address[province]"
+                                autocomplete="address-level1"
+                                shippingProvince
+                              ></select>
+                            </div>
+                          </div>
+                        </country-province>
+                        <div class="input-form--fields">
+                          <div class="input-form--fields">
+                            <div class="form-group">
+                              <label for="AddressCity_{{ form.id }}" class="d-none">
+                                {{- 'customer.addresses.city' | t -}}
+                              </label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="AddressCity_{{ form.id }}"
+                                name="address[city]"
+                                value="{{ form.city }}"
+                                autocomplete="address-level2"
+                                placeholder="{{ 'customer.addresses.city' | t }}"
+                              >
+                            </div>
+                            <div class="form-group">
+                              <label for="AddressPhone_{{ form.id }}" class="d-none">
+                                {{- 'customer.addresses.phone' | t -}}
+                              </label>
+                              <input
+                                type="tel"
+                                class="form-control"
+                                id="AddressPhone_{{ form.id }}"
+                                name="address[phone]"
+                                value="{{ form.phone }}"
+                                autocomplete="tel"
+                                placeholder="{{ 'customer.addresses.phone' | t }}"
+                              >
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="AddressZip_{{ form.id }}" class="d-none">
+                              {{- 'customer.addresses.zip' | t -}}
+                            </label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="AddressZip_{{ form.id }}"
+                              name="address[zip]"
+                              value="{{ form.zip }}"
+                              autocapitalize="characters"
+                              autocomplete="postal-code"
+                              placeholder="{{ 'customer.addresses.zip' | t }}"
+                            >
+                          </div>
+                          <div class="form-group">
+                            <div class="custom-checkbox">
+                              {% comment %} {{ form.set_as_default_checkbox }} {% endcomment %}
+                              <input
+                                type="checkbox"
+                                class="checkmark-input"
+                                id="address_default_address_{{ form.id }}"
+                                name="address[default]"
+                                value="1"
+                                {%- if address == customer.default_address -%}
+                                  checked=""
+                                {%- endif -%}
+                              >
+                              <span class="checkmark"></span>
+                              <label for="address_default_address_{{ form.id }}">
+                                {{ 'customer.addresses.set_default' | t }}
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="address--footer">
+                      {% comment %}
+                        <div class="address--buttons list-inline gap-10">
+                          {% comment %}
+                            <a
+                              href="{{ routes.account_addresses_url }}"
+                              class="update-address-btn button"
+                            >
+                              <span>{{ 'customer.addresses.update' | t }}</span>
+                            </a>
+                          {% endcomment %}
+                          <button class="button medium-button update-address ">
+                            <span>{{ 'customer.addresses.update' | t }}</span>
+                          </button>
+                          <a
+                            href="#EditAddress_{{ forloop.index }}"
+                            class="remove-address-btn button secondary--button"
+                            type="reset"
+                            data-customer-addresses
+                          >
+                            <span>{{ 'customer.addresses.cancel' | t }}</span>
+                          </a>
+                        </div>
+                      {% endcomment %}
+                      <button class="update-address-btn button">
+                        <span>{{ 'customer.addresses.update' | t }}</span>
+                      </button>
+                      <cancel-update>
+                        <button
+                          class="remove-address-btn button secondary--button"
+                          type="reset"
+                        >
+                          <span>{{ 'customer.addresses.cancel' | t }}</span>
+                        </button>
+                      </cancel-update>
+                    </div>
+                  {% endform %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endpaginate %}
+    </div>
+  </div>
+</div>
+
+{% render 'add-address-form', section: section %}
+
+<script>
+  class AddAddress extends HTMLElement {
+    constructor() {
+      super();
+      this.addEventListener('click', this.open.bind(this));
+    }
+    open() {
+      if (document.querySelector(`[data-drawer="${this.dataset.id}"]`)) {
+        setTimeout(() => {
+          document.querySelector(`[data-drawer="${this.dataset.id}"]`).classList.add('show');
+          document.body.classList.add('overflow-hidden');
+        }, 400);
+        document.querySelector(`[data-drawer="${this.dataset.id}"]`).style.display = 'flex';
+      }
+    }
+  }
+  customElements.define('add-address', AddAddress);
+
+  class CancelUpdate extends HTMLElement{
+    constructor() {
+      super();
+      this.addEventListener('click', this.cancel.bind(this));
+    }
+
+    cancel(e){
+      const cancel_update_content = e.target.closest('[data-content-update]').id;
+      document.querySelector(`[data-id = "${cancel_update_content}"]`).classList.add('active');
+      document.querySelector(`[data-id = "${cancel_update_content}"]`).classList.remove('hidden');
+      e.target.closest('[data-content-update]').classList.remove('active');
+      e.target.closest('[data-content-update]').classList.add('hidden');
+    }
+
+  }
+  customElements.define('cancel-update', CancelUpdate);
+
+  class EditAddress extends HTMLElement {
+    constructor() {
+      super();
+      this.editAddress = this.querySelector('[data-customer-addresses]');
+      this.editAddress.addEventListener('click', this.updateAddress.bind(this));     
+      this.removeAddress = this.querySelector('[data-remove-address]');
+      this.removeAddress.addEventListener('click', this.removeAddrss.bind(this));    
+    }
+    
+    removeAddrss(e){
+      console.log(e.currentTarget);
+      if (confirm(e.currentTarget.dataset.confirmMessage)) {
+        Shopify.postLink(e.currentTarget.dataset.target, {
+          parameters: { _method: 'delete' },
+        });
+      }
+    }
+
+    updateAddress(e){
+      const edit_address = e.target.closest('[data-content-wrapper]').dataset.id;
+      console.log(edit_address);
+      e.target.closest('[data-content-wrapper]').classList.remove('active');
+      e.target.closest('[data-content-wrapper]').classList.add('hidden');      
+      document.getElementById(`${edit_address}`).classList.remove('hidden');
+      document.getElementById(`${edit_address}`).classList.add('active');
+    }
+  }
+  customElements.define('edit-address', EditAddress);
+
+  {% comment %} if (typeof window.Shopify == 'undefined') {
+    window.Shopify = {};
+  }
+
+  Shopify.bind = function (fn, scope) {
+    return function () {
+      return fn.apply(scope, arguments);
+    };
+  };
+
+  Shopify.setSelectorByValue = function (selector, value) {
+    for (var i = 0, count = selector.options.length; i < count; i++) {
+      var option = selector.options[i];
+      if (value == option.value || value == option.innerHTML) {
+        selector.selectedIndex = i;
+        return i;
+      }
+    }
+  };
+
+  Shopify.addListener = function (target, eventName, callback) {
+    target.addEventListener
+      ? target.addEventListener(eventName, callback, false)
+      : target.attachEvent('on' + eventName, callback);
+  }; {% endcomment %}
+
+  Shopify.postLink = function (path, options) {
+    options = options || {};
+    var method = options['method'] || 'post';
+    var params = options['parameters'] || {};
+
+    var form = document.createElement('form');
+    form.setAttribute('method', method);
+    form.setAttribute('action', path);
+
+    for (var key in params) {
+      var hiddenField = document.createElement('input');
+      hiddenField.setAttribute('type', 'hidden');
+      hiddenField.setAttribute('name', key);
+      hiddenField.setAttribute('value', params[key]);
+      form.appendChild(hiddenField);
+    }
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+  }; 
+
+  {% comment %} class AddressEditor { {% endcomment %}
+    {% comment %} constructor() {
+      this.addressButtons = document.querySelectorAll('[data-customer-addresses]');
+      // Add event listener to each button
+      this.addressButtons.forEach((button) => {
+        button.addEventListener('click', this.editAddress.bind(this));
+      });
+
+      this.closepop = document.querySelector('[data-address-pop-close]');
+      this.closepop.addEventListener('click', this.closepopup.bind(this));
+    }
+    closepopup(event) {
+      this.target = event.target;
+      let parent1 = this.target.closest('.add-new--address.active');
+      if (parent1 != null) {
+        parent1.classList.remove('active');
+        parent1.classList.add('hidden');
+      }
+    } {% endcomment %}
+    {% comment %} editAddress(event) {
+      event.preventDefault();
+      this.tagName = event.target.tagName.toLowerCase();
+
+      if (this.tagName === 'a') {
+        this.target = event.target;
+
+        this.parent = this.target.closest('.address--card-item');
+        this.editBtn = this.target.classList.contains('edit-address-btn');
+        this.addnewBtn = this.target.classList.contains('add-newaddress');
+
+        this.targetContent = this.target.getAttribute('href');
+        this.targetElement = document.querySelector(this.targetContent);
+
+        if (this.target.getAttribute('data-confirm-message') != null) {
+          if (confirm(this.target.getAttribute('data-confirm-message'))) {
+            Shopify.postLink(this.target.dataset.target, {
+              parameters: { _method: 'delete' },
+            });
+          }
+        } else if (this.editBtn) {
+          console.log('edit');
+          this.currentActiveAddress = this.target.closest('.address--card-item.active');
+          if (this.currentActiveAddress && this.parent) {
+            this.currentActiveAddress.classList.remove('active');
+            this.currentActiveAddress.classList.add('hidden');
+            this.form = this.parent.querySelector('form');
+            if (this.form) {
+              this.form.reset();
+            }
+          }
+
+          if (this.targetElement) {
+            this.targetElement.classList.remove('hidden');
+            this.targetElement.classList.add('active');
+          }
+        } else if (this.addnewBtn) {
+          if (this.targetElement) {
+            this.targetElement.classList.remove('hidden');
+            this.targetElement.classList.add('active');
+          }
+        } else {
+          let parent = this.target.closest('.address--card-item.active');
+          if (parent != null) {
+            parent.classList.remove('active');
+            parent.classList.add('hidden');
+          }
+
+          let parent1 = this.target.closest('.add-new--address.active');
+          if (parent1 != null) {
+            parent1.classList.remove('active');
+            parent1.classList.add('hidden');
+          }
+
+          if (this.targetElement) {
+            this.targetElement.classList.remove('hidden');
+            this.targetElement.classList.add('active');
+          }
+        }
+      }
+    } {% endcomment %}
+  {% comment %} } {% endcomment %}
+
+  // new AddressEditor();
+</script>
+<style>
+  #shopify-section-{{ section.id }} {
+    --top_spacing: {{ section.settings.top_space_desktop }}px;
+    --bottom_spacing: {{ section.settings.bottom_space_desktop }}px;
+  }
+  @media only screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} {
+      --top_spacing: {{ section.settings.top_space_mobile }}px !important;
+      --bottom_spacing: {{ section.settings.bottom_space_mobile }}px !important;
+    }
+  }
+</style>
+{% schema %}
+{
+  "name": "Main address",
+  "class": "account-page main-address",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "primary",
+      "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "select",
+      "id": "section_background",
+      "label": "t:sections.all.section_background.label",
+      "default": "solid",
+      "options": [
+        {
+          "label": "t:sections.all.section_background.solid.label",
+          "value": "solid"
+        },
+        {
+          "label": "t:sections.all.section_background.gradient.label",
+          "value": "gradient"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:settings_schema.global.settings.content.label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings_schema.global.settings.heading.label",
+      "default": "Address"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.all.heading_size.label",
+      "default": "h3",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.h1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.h2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.all.heading_size.h3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.all.heading_size.h4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.all.heading_size.h5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:sections.all.heading_size.h6.label"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "seo_heading",
+      "label": "t:sections.all.seo_heading.label",
+      "info": "t:sections.all.seo_heading.info",
+      "default": "h3",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ]
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "t:settings_schema.global.settings.description.label"
+    },
+    {
+      "type": "select",
+      "id": "description_size",
+      "label": "t:sections.all.description_size.label",
+      "default": "text",
+      "options": [
+        {
+          "label": "t:sections.all.description_size.text-xsmall.label",
+          "value": "text-xsmall"
+        },
+        {
+          "label": "t:sections.all.description_size.text-small.label",
+          "value": "text-small"
+        },
+        {
+          "label": "t:sections.all.description_size.text.label",
+          "value": "text"
+        },
+        {
+          "label": "t:sections.all.description_size.text-medium.label",
+          "value": "text-medium"
+        },
+        {
+          "label": "t:sections.all.description_size.text-large.label",
+          "value": "text-large"
+        },
+        {
+          "label": "t:sections.all.description_size.text-xlarge.label",
+          "value": "text-xlarge"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.spacing.section_spacing_heading"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "t:sections.all.spacing.top_space_desktop",
+      "default": 70,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_desktop",
+      "label": "t:sections.all.spacing.bottom_space_desktop",
+      "default": 70,
+      "min": 0,
+      "max": 150,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "t:sections.all.spacing.top_space_mobile",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    },
+    {
+      "type": "range",
+      "id": "bottom_space_mobile",
+      "label": "t:sections.all.spacing.bottom_space_mobile",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 5
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,192 @@
+{% comment %}
+  NAINAI x OFYSINA — Hero Banner Section
+  Replace contents of: sections/hero-banner.liquid
+{% endcomment %}
+
+<style>
+  .nainai-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 580px;
+    overflow: hidden;
+  }
+
+  /* Background image */
+  .nainai-hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    z-index: 0;
+  }
+
+  .nainai-hero__bg-placeholder {
+    position: absolute;
+    inset: 0;
+    background: #1e1e1e;
+    z-index: 0;
+  }
+
+  /* Gradient overlay — lighter left, darker right for text */
+  .nainai-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(0,0,0,0.08) 0%,
+      rgba(0,0,0,0.08) 35%,
+      rgba(0,0,0,0.42) 100%
+    );
+    z-index: 1;
+  }
+
+  /* Hero text content — right side */
+  .nainai-hero__content {
+    position: absolute;
+    z-index: 5;
+    right: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 400px;
+  }
+
+  .nainai-hero__heading {
+    color: #ffffff;
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: clamp(20px, 2.4vw, 34px);
+    font-weight: 400;
+    line-height: 1.28;
+    margin: 0 0 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .nainai-hero__subtext {
+    color: rgba(255,255,255,0.86);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: clamp(11px, 1vw, 13px);
+    font-weight: 400;
+    line-height: 1.65;
+    margin: 0 0 26px;
+    max-width: 320px;
+  }
+
+  .nainai-hero__btn {
+    display: inline-block;
+    color: #ffffff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-transform: none;
+    border-bottom: 1px solid rgba(255,255,255,0.55);
+    padding-bottom: 3px;
+    transition: border-color 0.25s ease;
+  }
+
+  .nainai-hero__btn:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .nainai-hero__content {
+      right: 5%;
+      left: 5%;
+      max-width: 100%;
+      top: auto;
+      bottom: 10%;
+      transform: none;
+    }
+
+    .nainai-hero__overlay {
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.55) 0%,
+        rgba(0,0,0,0.1) 60%
+      );
+    }
+  }
+</style>
+
+<section class="nainai-hero">
+
+  {% if section.settings.hero_image != blank %}
+    <img
+      class="nainai-hero__bg"
+      src="{{ section.settings.hero_image | image_url: width: 2400 }}"
+      alt="{{ section.settings.hero_image.alt | default: shop.name }}"
+      loading="eager"
+      fetchpriority="high"
+    >
+  {% else %}
+    <div class="nainai-hero__bg-placeholder"></div>
+  {% endif %}
+
+  <div class="nainai-hero__overlay"></div>
+
+  <div class="nainai-hero__content">
+    <h1 class="nainai-hero__heading">
+      {{ section.settings.heading | default: 'ancient herbal remedies in gummy form' }}
+    </h1>
+    <p class="nainai-hero__subtext">
+      {{ section.settings.subtext | default: 'Centuries-old plant remedies inspired by Traditional Chinese Medicine (TCM) brewed into a full-spectrum decoction & delivered in an ultra-clean, vegan gummy. Used in clinical practice for generations to support immunity, mood, digestion & hormone balance.' }}
+    </p>
+    <a
+      href="{{ section.settings.btn_link | default: '/collections/all' }}"
+      class="nainai-hero__btn"
+    >
+      {{ section.settings.btn_label | default: 'Shop TCM Gummies' }}
+    </a>
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "NAINAI Hero Banner",
+  "tag": "section",
+  "class": "section-hero-banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Background Image",
+      "info": "Use a high-resolution photo. Recommended: 2400px wide."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "ancient herbal remedies in gummy form"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Centuries-old plant remedies inspired by Traditional Chinese Medicine (TCM) brewed into a full-spectrum decoction & delivered in an ultra-clean, vegan gummy. Used in clinical practice for generations to support immunity, mood, digestion & hormone balance."
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Text",
+      "default": "Shop TCM Gummies"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "NAINAI Hero Banner"
+    }
+  ]
+}
+{% endschema %}
