@@ -25,9 +25,7 @@
   .nainai-hero {
     position: relative;
     width: 100%;
-    height: 100vh;
-    min-height: 580px;
-    max-height: 934px;
+    aspect-ratio: 1440 / 934;
     overflow: hidden;
   }
 
@@ -38,7 +36,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center center;
+    object-position: center 35%;
     z-index: 0;
   }
 
@@ -134,8 +132,9 @@
   /* ── Mobile ── */
   @media (max-width: 768px) {
     .nainai-hero {
+      aspect-ratio: auto;
+      height: 100vh;
       min-height: 500px;
-      max-height: none;
     }
 
     .nainai-hero__content {
