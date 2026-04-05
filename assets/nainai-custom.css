@@ -1384,37 +1384,26 @@
       #shopify-section-template--17822082662477__media_grid_bGXVTf .nainai-hero-overlay p { color: rgba(255,255,255,0.86); font-family: 'Helvetica Neue', sans-serif; font-size: 13px; line-height: 1.65; margin: 0 0 26px; }
       #shopify-section-template--17822082662477__media_grid_bGXVTf .nainai-hero-overlay a { color: #ffffff; font-size: 12px; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.55); padding-bottom: 3px; }      
     /* ============================================
-       NAINAI HEADER / NAVIGATION v4 — Figma Match
+       NAINAI HEADER / NAVIGATION v5 — Figma Match
+       Let Noor theme handle transparent positioning.
+       Only override colors, fonts, and logo.
        ============================================ */
 
-       /* ── Header overlay on hero — fully transparent ── */
-       .shopify-section-group-header-group {
-         position: absolute !important;
-         top: 0;
-         left: 0;
-         right: 0;
-         z-index: 100;
-         background: transparent !important;
-       }
-
-       .section-header {
-         position: absolute !important;
-         top: 0;
-         left: 0;
-         right: 0;
-         z-index: 100;
-         background: transparent !important;
-       }
-
-       .header {
+       /* ── Force header background transparent always ── */
+       .header,
+       .header.desktop-transparent,
+       .header.mobile-transparent {
          background: transparent !important;
          background-color: transparent !important;
        }
 
        /* ── Prevent background reveal on hover ── */
-       .header:before {
+       .header:before,
+       .header.desktop-transparent:before,
+       .header.desktop-transparent:hover:before,
+       .header.desktop-transparent.is-sticky:before {
          opacity: 0 !important;
-         display: none !important;
+         background: transparent !important;
        }
 
        /* ── Center the logo ── */
@@ -1495,14 +1484,15 @@
          fill: #FFFDF3 !important;
        }
 
-       /* ── Scrolled state — keep transparent for now ── */
-       .header.is-sticky {
+       /* ── Scrolled/sticky state — keep transparent ── */
+       .header.is-sticky,
+       .header.is-sticky.desktop-transparent {
          background: transparent !important;
        }
 
        .header.is-sticky:before {
          opacity: 0 !important;
-         display: none !important;
+         background: transparent !important;
        }
 
        /* ── Mobile ── */
