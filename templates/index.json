@@ -785,6 +785,44 @@
         "top_space_mobile": 40,
         "bottom_space_mobile": 40
       }
+    },
+    "1775412027fc0ba055": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_1450f6f_QrEXdz": {
+          "type": "ai_gen_block_1450f6f",
+          "settings": {
+            "logo_width": 150,
+            "main_menu": "main-menu",
+            "nav_font_size": 14,
+            "nav_link_spacing": 30,
+            "letter_spacing": 0.5,
+            "general_health_link": "",
+            "immunity_link": "",
+            "hormone_balance_link": "",
+            "mood_link": "",
+            "dropdown_title_size": 14,
+            "dropdown_link_size": 13,
+            "dropdown_padding": 30,
+            "dropdown_opacity": 0.9,
+            "icon_size": 22,
+            "icon_spacing": 20,
+            "container_width": 1400,
+            "vertical_padding": 20,
+            "horizontal_padding": 40,
+            "background_opacity": 0.9,
+            "text_color": "#ffffff",
+            "cart_badge_color": "#ffffff",
+            "cart_badge_text_color": "#000000",
+            "mobile_menu_opacity": 0.9
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_1450f6f_QrEXdz"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -798,6 +836,7 @@
     "featured_collection_wVWp4t",
     "multicolumn_U4Beg3",
     "marquee_dLcFwk",
-    "collapsible_ntVFaX"
+    "collapsible_ntVFaX",
+    "1775412027fc0ba055"
   ]
 }
