@@ -1397,6 +1397,15 @@
          background: transparent !important;
        }
 
+       .section-header {
+         position: absolute !important;
+         top: 0;
+         left: 0;
+         right: 0;
+         z-index: 100;
+         background: transparent !important;
+       }
+
        .header {
          background: transparent !important;
          background-color: transparent !important;
