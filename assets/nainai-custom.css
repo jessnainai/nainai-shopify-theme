@@ -1384,209 +1384,189 @@
       #shopify-section-template--17822082662477__media_grid_bGXVTf .nainai-hero-overlay p { color: rgba(255,255,255,0.86); font-family: 'Helvetica Neue', sans-serif; font-size: 13px; line-height: 1.65; margin: 0 0 26px; }
       #shopify-section-template--17822082662477__media_grid_bGXVTf .nainai-hero-overlay a { color: #ffffff; font-size: 12px; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.55); padding-bottom: 3px; }      
     /* ============================================
-       NAINAI HEADER / NAVIGATION v3 — Figma Match
+       NAINAI HEADER / NAVIGATION v4 — Figma Match
        ============================================ */
+
+       /* ── Header overlay on hero — fully transparent ── */
+       .shopify-section-group-header-group {
+         position: absolute !important;
+         top: 0;
+         left: 0;
+         right: 0;
+         z-index: 100;
+         background: transparent !important;
+       }
+
+       .header {
+         background: transparent !important;
+         background-color: transparent !important;
+       }
+
+       /* ── Prevent background reveal on hover ── */
+       .header:before {
+         opacity: 0 !important;
+         display: none !important;
+       }
 
        /* ── Center the logo ── */
        .header--logo {
          position: absolute;
-           left: 50%;
-             transform: translateX(-50%);
-               z-index: 10;
-                 text-decoration: none;
-                 }
+         left: 50%;
+         transform: translateX(-50%);
+         z-index: 10;
+         text-decoration: none;
+       }
 
-                 .header--logo-img {
-                   height: 36px;
-                     width: auto;
-                     }
+       .header--logo-img {
+         height: 36px;
+         width: auto;
+       }
 
-                     /* ── Left nav links ── */
-                     .header--navigation {
-                       display: flex;
-                         align-items: center;
-                           gap: 28px;
-                             list-style: none;
-                               margin: 0;
-                                 padding: 0;
-                                 }
+       /* ── Always show the transparent (cream) logo ── */
+       .header--logo-img:not(.transparent-logo-img) {
+         opacity: 0 !important;
+       }
 
-                                 .header--navigation a,
-                                 .header--navigation-main a {
-                                   color: #FFFDF3;
-                                     text-decoration: none;
-                                       font-family: 'Satoshi', sans-serif;
-                                         font-size: 16px;
-                                           font-weight: 700;
-                                             line-height: 0.87;
-                                               letter-spacing: -0.03em;
-                                                 transition: opacity 0.2s ease;
-                                               }
+       .transparent-logo-img {
+         opacity: 1 !important;
+       }
 
-                                               .header--navigation a:hover {
-                                                 opacity: 0.65;
-                                                   text-decoration: none;
-                                                   }
+       /* ── Left nav links ── */
+       .header--navigation {
+         display: flex;
+         align-items: center;
+         gap: 28px;
+         list-style: none;
+         margin: 0;
+         padding: 0;
+       }
 
-                                                   /* ── Hide services, contact, booking from desktop nav ── */
-                                                   .header--navigation > li:has(a[href*="/pages/contact"]),
-                                                   .header--navigation > li:has(a[href*="/pages/booking"]),
-                                                   .header--navigation > li:has(a[href*="/pages/acupuncture"]),
-                                                   .header--navigation > li:has(a[href*="/pages/cupping"]) {
-                                                     display: none;
-                                                     }
+       .header--navigation a,
+       .header--navigation-main a,
+       .header--menu-link {
+         color: #FFFDF3 !important;
+         text-decoration: none !important;
+         font-family: 'Satoshi', sans-serif !important;
+         font-size: 16px !important;
+         font-weight: 700 !important;
+         line-height: 0.87 !important;
+         letter-spacing: -0.03em !important;
+         transition: opacity 0.2s ease;
+       }
 
-                                                     /* ── Rename "nainai pharmacy" to "Shop" visually ── */
-                                                     .header--navigation > li:has(a[href*="collections"]) > a span,
-                                                     .header--navigation > li:has(a[href*="pharmacy"]) > a span {
-                                                       visibility: hidden;
-                                                         font-size: 0;
-                                                         }
+       .header--navigation a:hover,
+       .header--menu-link:hover {
+         opacity: 0.65;
+         text-decoration: none !important;
+         color: #FFFDF3 !important;
+       }
 
-                                                         .header--navigation > li:has(a[href*="collections"]) > a::before,
-                                                         .header--navigation > li:has(a[href*="pharmacy"]) > a::before {
-                                                           content: 'Shop';
-                                                             visibility: visible;
-                                                               font-size: 16px;
-                                                               }
+       /* ── Right icons ── */
+       .header--icons a,
+       .header__icons a,
+       .header--icon-link-text,
+       .header--right a {
+         color: #FFFDF3 !important;
+         font-family: 'Satoshi', sans-serif !important;
+         font-size: 16px !important;
+         font-weight: 700 !important;
+         letter-spacing: -0.03em !important;
+         transition: opacity 0.2s ease;
+       }
 
-                                                               /* ── Rename "diaries" to "Blog" visually ── */
-                                                               .header--navigation > li:has(a[href*="blogs"]) > a span,
-                                                               .header--navigation > li:has(a[href*="diaries"]) > a span {
-                                                                 visibility: hidden;
-                                                                   font-size: 0;
-                                                                   }
+       .header--icons a:hover,
+       .header--right a:hover {
+         opacity: 0.65;
+       }
 
-                                                                   .header--navigation > li:has(a[href*="blogs"]) > a::before,
-                                                                   .header--navigation > li:has(a[href*="diaries"]) > a::before {
-                                                                     content: 'Blog';
-                                                                       visibility: visible;
-                                                                         font-size: 16px;
-                                                                         }
+       /* ── Header icon SVGs ── */
+       .header--right svg,
+       .header--icons svg {
+         color: #FFFDF3 !important;
+         fill: #FFFDF3 !important;
+       }
 
-                                                                         /* ── Rename "services" to "Encyclopedia" visually ── */
-                                                                         .header--navigation > li:has(a[href*="services"]) > a span {
-                                                                           visibility: hidden;
-                                                                             font-size: 0;
-                                                                             }
+       /* ── Scrolled state — keep transparent for now ── */
+       .header.is-sticky {
+         background: transparent !important;
+       }
 
-                                                                             .header--navigation > li:has(a[href*="services"]) > a::before {
-                                                                               content: 'Encyclopedia';
-                                                                                 visibility: visible;
-                                                                                   font-size: 16px;
-                                                                                   }
+       .header.is-sticky:before {
+         opacity: 0 !important;
+         display: none !important;
+       }
 
-                                                                                   /* ── Header transparent on hero ── */
-                                                                                   .shopify-section-group-header-group {
-                                                                                     position: absolute !important;
-                                                                                       top: 0;
-                                                                                         left: 0;
-                                                                                           right: 0;
-                                                                                             z-index: 100;
-                                                                                               background: transparent !important;
-                                                                                               }
+       /* ── Mobile ── */
+       @media (max-width: 990px) {
+         .header--logo-img {
+           height: 28px;
+         }
+       }
 
-                                                                                               /* ── Scrolled state ── */
-                                                                                               .header--scrolled .header,
-                                                                                               .js-header-sticky .header {
-                                                                                                 background: rgba(245, 240, 235, 0.97) !important;
-                                                                                                   backdrop-filter: blur(8px);
-                                                                                                     -webkit-backdrop-filter: blur(8px);
-                                                                                                     }
+       /* ============================================
+          NAINAI DROPDOWN MENU
+          Matches Figma: frosted glass over hero
+          ============================================ */
 
-                                                                                                     /* ── Scrolled — switch nav to dark text ── */
-                                                                                                     .header--scrolled .header--navigation a,
-                                                                                                     .header--scrolled .header--logo {
-                                                                                                       color: #1a1a1a;
-                                                                                                       }
+       /* ── Dropdown container ── */
+       .header--menu-submenu.megamenu-container,
+       .megamenu-container {
+         background: rgba(0, 0, 0, 0.45) !important;
+         backdrop-filter: blur(12px) !important;
+         -webkit-backdrop-filter: blur(12px) !important;
+         border: none !important;
+         border-radius: 0 !important;
+         box-shadow: none !important;
+         padding: 32px 40px !important;
+       }
 
-                                                                                                       /* ── Right icons ── */
-                                                                                                       .header--icons a,
-                                                                                                       .header__icons a {
-                                                                                                         color: #FFFDF3;
-                                                                                                           font-family: 'Satoshi', sans-serif;
-                                                                                                             font-size: 16px;
-                                                                                                               font-weight: 700;
-                                                                                                                 letter-spacing: -0.03em;
-                                                                                                                   transition: opacity 0.2s ease;
-                                                                                                           }
+       /* ── Dropdown links ── */
+       .header--menu-submenu a,
+       .megamenu-container a {
+         color: #FFFDF3 !important;
+         font-family: 'Satoshi', sans-serif !important;
+         font-size: 16px !important;
+         font-weight: 700 !important;
+         letter-spacing: -0.03em !important;
+         text-decoration: none !important;
+         line-height: 2.2 !important;
+         transition: opacity 0.2s ease !important;
+       }
 
-                                                                                                           .header--icons a:hover {
-                                                                                                             opacity: 0.65;
-                                                                                                             }
+       .header--menu-submenu a:hover,
+       .megamenu-container a:hover {
+         opacity: 0.5 !important;
+         text-decoration: none !important;
+       }
 
-                                                                                                             /* ── Mobile ── */
-                                                                                                             @media (max-width: 990px) {
-                                                                                                               .header--logo-img {
-                                                                                                                   height: 28px;
-                                                                                                                     }
-                                                                                                                     }
+       /* ── Section headings inside dropdown (SHOP ALL, SHOP BY CATEGORY) ── */
+       .header--menu-submenu .megamenu-heading,
+       .megamenu-container .megamenu-heading,
+       .header--menu-submenu h3,
+       .header--menu-submenu h4,
+       .megamenu-container h3,
+       .megamenu-container h4 {
+         color: rgba(255, 253, 243, 0.6) !important;
+         font-family: 'Satoshi', sans-serif !important;
+         font-size: 12px !important;
+         font-weight: 500 !important;
+         letter-spacing: 0.08em !important;
+         text-transform: uppercase !important;
+         margin-bottom: 12px !important;
+       }
 
-                                                                                                                     /* ============================================
-                                                                                                                        NAINAI DROPDOWN MENU
-                                                                                                                           Matches Figma: frosted glass over hero
-                                                                                                                           ============================================ */
+       /* ── Remove any dark overlays or backgrounds ── */
+       .header-megamenu,
+       .d-block.header-megamenu {
+         background: transparent !important;
+       }
 
-                                                                                                                           /* ── Dropdown container ── */
-                                                                                                                           .header--menu-submenu.megamenu-container,
-                                                                                                                           .megamenu-container {
-                                                                                                                              background: rgba(0, 0, 0, 0.45) !important;
-                                                                                                                                backdrop-filter: blur(12px) !important;
-                                                                                                                                  -webkit-backdrop-filter: blur(12px) !important;
-                                                                                                                                    border: none !important;
-                                                                                                                                      border-radius: 0 !important;
-                                                                                                                                        box-shadow: none !important;
-                                                                                                                                          padding: 32px 40px !important;
-                                                                                                                                      }
-
-                                                                                                                                      /* ── Dropdown links ── */
-                                                                                                                                      .header--menu-submenu a,
-                                                                                                                                      .megamenu-container a {
-                                                                                                                                          color: #FFFDF3 !important;
-                                                                                                                                            font-family: 'Satoshi', sans-serif !important;
-                                                                                                                                              font-size: 16px !important;
-                                                                                                                                                font-weight: 700 !important;
-                                                                                                                                                  letter-spacing: -0.03em !important;
-                                                                                                                                                    text-decoration: none !important;
-                                                                                                                                                      line-height: 2.2 !important;
-                                                                                                                                                        transition: opacity 0.2s ease !important;
-                                                                                                                                      }
-
-                                                                                                                                      .header--menu-submenu a:hover,
-                                                                                                                                      .megamenu-container a:hover {
-                                                                                                                                          opacity: 0.5 !important;
-                                                                                                                                            text-decoration: none !important;
-                                                                                                                                      }
-
-                                                                                                                                      /* ── Section headings inside dropdown (SHOP ALL, SHOP BY CATEGORY) ── */
-                                                                                                                                      .header--menu-submenu .megamenu-heading,
-                                                                                                                                      .megamenu-container .megamenu-heading,
-                                                                                                                                      .header--menu-submenu h3,
-                                                                                                                                      .header--menu-submenu h4,
-                                                                                                                                      .megamenu-container h3,
-                                                                                                                                      .megamenu-container h4 {
-                                                                                                                                          color: rgba(255, 253, 243, 0.6) !important;
-                                                                                                                                            font-family: 'Satoshi', sans-serif !important;
-                                                                                                                                              font-size: 12px !important;
-                                                                                                                                                font-weight: 500 !important;
-                                                                                                                                                  letter-spacing: 0.08em !important;
-                                                                                                                                                    text-transform: uppercase !important;
-                                                                                                                                                      margin-bottom: 12px !important;
-                                                                                                                                                      }
-
-                                                                                                                                                      /* ── Remove any dark overlays or backgrounds ── */
-                                                                                                                                                      .header-megamenu,
-                                                                                                                                                      .d-block.header-megamenu {
-                                                                                                                                                          background: transparent !important;
-                                                                                                                                                          }
-
-                                                                                                                                                          .header--menu-item.has-children:hover .header--menu-submenu,
-                                                                                                                                                          .header--menu-item.has-children:focus-within .header--menu-submenu {
-                                                                                                                                                              background: rgba(0, 0, 0, 0.45) !important;
-                                                                                                                                                                backdrop-filter: blur(12px) !important;
-                                                                                                                                                                  -webkit-backdrop-filter: blur(12px) !important;
-                                                                                                                                                              }
-                                                                                                                                                          }
+       .header--menu-item.has-children:hover .header--menu-submenu,
+       .header--menu-item.has-children:focus-within .header--menu-submenu {
+         background: rgba(0, 0, 0, 0.45) !important;
+         backdrop-filter: blur(12px) !important;
+         -webkit-backdrop-filter: blur(12px) !important;
+       }
                                                                                                                                       }
                                                                                                                                       }
                                                                                                                                       }
