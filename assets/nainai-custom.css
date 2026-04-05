@@ -1384,7 +1384,7 @@
       #shopify-section-template--17822082662477__media_grid_bGXVTf .nainai-hero-overlay p { color: rgba(255,255,255,0.86); font-family: 'Helvetica Neue', sans-serif; font-size: 13px; line-height: 1.65; margin: 0 0 26px; }
       #shopify-section-template--17822082662477__media_grid_bGXVTf .nainai-hero-overlay a { color: #ffffff; font-size: 12px; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.55); padding-bottom: 3px; }      
     /* ============================================
-       NAINAI HEADER / NAVIGATION v2
+       NAINAI HEADER / NAVIGATION v3 — Figma Match
        ============================================ */
 
        /* ── Center the logo ── */
@@ -1413,13 +1413,14 @@
 
                                  .header--navigation a,
                                  .header--navigation-main a {
-                                   color: #ffffff;
+                                   color: #FFFDF3;
                                      text-decoration: none;
-                                       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-                                         font-size: 13px;
-                                           font-weight: 400;
-                                             letter-spacing: 0.03em;
-                                               transition: opacity 0.2s ease;
+                                       font-family: 'Satoshi', sans-serif;
+                                         font-size: 16px;
+                                           font-weight: 700;
+                                             line-height: 0.87;
+                                               letter-spacing: -0.03em;
+                                                 transition: opacity 0.2s ease;
                                                }
 
                                                .header--navigation a:hover {
@@ -1446,7 +1447,7 @@
                                                          .header--navigation > li:has(a[href*="pharmacy"]) > a::before {
                                                            content: 'Shop';
                                                              visibility: visible;
-                                                               font-size: 13px;
+                                                               font-size: 16px;
                                                                }
 
                                                                /* ── Rename "diaries" to "Blog" visually ── */
@@ -1460,7 +1461,7 @@
                                                                    .header--navigation > li:has(a[href*="diaries"]) > a::before {
                                                                      content: 'Blog';
                                                                        visibility: visible;
-                                                                         font-size: 13px;
+                                                                         font-size: 16px;
                                                                          }
 
                                                                          /* ── Rename "services" to "Encyclopedia" visually ── */
@@ -1472,7 +1473,7 @@
                                                                              .header--navigation > li:has(a[href*="services"]) > a::before {
                                                                                content: 'Encyclopedia';
                                                                                  visibility: visible;
-                                                                                   font-size: 13px;
+                                                                                   font-size: 16px;
                                                                                    }
 
                                                                                    /* ── Header transparent on hero ── */
@@ -1502,8 +1503,12 @@
                                                                                                        /* ── Right icons ── */
                                                                                                        .header--icons a,
                                                                                                        .header__icons a {
-                                                                                                         color: #ffffff;
-                                                                                                           transition: opacity 0.2s ease;
+                                                                                                         color: #FFFDF3;
+                                                                                                           font-family: 'Satoshi', sans-serif;
+                                                                                                             font-size: 16px;
+                                                                                                               font-weight: 700;
+                                                                                                                 letter-spacing: -0.03em;
+                                                                                                                   transition: opacity 0.2s ease;
                                                                                                            }
 
                                                                                                            .header--icons a:hover {
@@ -1519,27 +1524,29 @@
 
                                                                                                                      /* ============================================
                                                                                                                         NAINAI DROPDOWN MENU
-                                                                                                                           Matches Figma: clean cream/white background
+                                                                                                                           Matches Figma: frosted glass over hero
                                                                                                                            ============================================ */
 
                                                                                                                            /* ── Dropdown container ── */
                                                                                                                            .header--menu-submenu.megamenu-container,
                                                                                                                            .megamenu-container {
-                                                                                                                              background: #f5f0eb !important;
-                                                                                                                                border: none !important;
-                                                                                                                                  border-radius: 0 !important;
-                                                                                                                                    box-shadow: 0 8px 32px rgba(0,0,0,0.08) !important;
-                                                                                                                                      padding: 32px 40px !important;
+                                                                                                                              background: rgba(0, 0, 0, 0.45) !important;
+                                                                                                                                backdrop-filter: blur(12px) !important;
+                                                                                                                                  -webkit-backdrop-filter: blur(12px) !important;
+                                                                                                                                    border: none !important;
+                                                                                                                                      border-radius: 0 !important;
+                                                                                                                                        box-shadow: none !important;
+                                                                                                                                          padding: 32px 40px !important;
                                                                                                                                       }
 
                                                                                                                                       /* ── Dropdown links ── */
                                                                                                                                       .header--menu-submenu a,
                                                                                                                                       .megamenu-container a {
-                                                                                                                                          color: #1a1a1a !important;
-                                                                                                                                            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-                                                                                                                                              font-size: 13px !important;
-                                                                                                                                                font-weight: 400 !important;
-                                                                                                                                                  letter-spacing: 0.02em !important;
+                                                                                                                                          color: #FFFDF3 !important;
+                                                                                                                                            font-family: 'Satoshi', sans-serif !important;
+                                                                                                                                              font-size: 16px !important;
+                                                                                                                                                font-weight: 700 !important;
+                                                                                                                                                  letter-spacing: -0.03em !important;
                                                                                                                                                     text-decoration: none !important;
                                                                                                                                                       line-height: 2.2 !important;
                                                                                                                                                         transition: opacity 0.2s ease !important;
@@ -1558,11 +1565,11 @@
                                                                                                                                       .header--menu-submenu h4,
                                                                                                                                       .megamenu-container h3,
                                                                                                                                       .megamenu-container h4 {
-                                                                                                                                          color: #888880 !important;
-                                                                                                                                            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-                                                                                                                                              font-size: 10px !important;
+                                                                                                                                          color: rgba(255, 253, 243, 0.6) !important;
+                                                                                                                                            font-family: 'Satoshi', sans-serif !important;
+                                                                                                                                              font-size: 12px !important;
                                                                                                                                                 font-weight: 500 !important;
-                                                                                                                                                  letter-spacing: 0.12em !important;
+                                                                                                                                                  letter-spacing: 0.08em !important;
                                                                                                                                                     text-transform: uppercase !important;
                                                                                                                                                       margin-bottom: 12px !important;
                                                                                                                                                       }
@@ -1575,10 +1582,11 @@
 
                                                                                                                                                           .header--menu-item.has-children:hover .header--menu-submenu,
                                                                                                                                                           .header--menu-item.has-children:focus-within .header--menu-submenu {
-                                                                                                                                                              background: #f5f0eb !important;
+                                                                                                                                                              background: rgba(0, 0, 0, 0.45) !important;
+                                                                                                                                                                backdrop-filter: blur(12px) !important;
+                                                                                                                                                                  -webkit-backdrop-filter: blur(12px) !important;
                                                                                                                                                               }
                                                                                                                                                           }
-                                                                                                                                                      }
                                                                                                                                       }
                                                                                                                                       }
                                                                                                                                       }
