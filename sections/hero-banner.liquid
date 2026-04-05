@@ -68,24 +68,25 @@
   }
 
   /* ── Text content — right half, exact Figma positioning ── */
+  /* All sizes use vw units: Figma value / 1440 * 100 */
   .nainai-hero__content {
     position: absolute;
     z-index: 5;
     left: 50%;
     top: 37.3%;
-    width: 535px;
+    width: 37.15vw; /* 535 / 1440 */
   }
 
   /* ── Heading ── */
   .nainai-hero__heading {
     color: #FFFDF3 !important;
     font-family: 'Satoshi', sans-serif !important;
-    font-size: 30px !important;
+    font-size: 2.083vw !important; /* 30 / 1440 */
     font-weight: 700 !important;
     line-height: 0.87 !important;
     letter-spacing: -0.9px !important;
     text-transform: lowercase;
-    margin: 0 0 25px !important;
+    margin: 0 0 1.736vw 0 !important; /* 25 / 1440 */
     white-space: nowrap;
   }
 
@@ -93,16 +94,16 @@
   .nainai-hero__body {
     color: #FFFDF3 !important;
     font-family: 'Satoshi', sans-serif !important;
-    font-size: 16px !important;
+    font-size: 1.111vw !important; /* 16 / 1440 */
     font-weight: 500 !important;
     line-height: 1.15 !important;
     letter-spacing: -0.48px !important;
-    margin: 0 0 14px !important;
-    max-width: 486px;
+    margin: 0 0 0.972vw 0 !important; /* 14 / 1440 */
+    max-width: 33.75vw; /* 486 / 1440 */
   }
 
   .nainai-hero__body:last-of-type {
-    margin-bottom: 32px !important;
+    margin-bottom: 2.222vw !important; /* 32 / 1440 */
   }
 
   /* ── Frosted glass CTA button ── */
@@ -110,12 +111,12 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 279px;
-    height: 51px;
+    width: 19.375vw; /* 279 / 1440 */
+    height: 3.542vw; /* 51 / 1440 */
     padding: 0;
     color: #FFFDF3;
     font-family: 'Satoshi', sans-serif;
-    font-size: 16px;
+    font-size: 1.111vw; /* 16 / 1440 */
     font-weight: 700;
     line-height: 0.87;
     letter-spacing: -0.03em;
