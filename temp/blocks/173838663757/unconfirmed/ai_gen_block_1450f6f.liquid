@@ -1,6 +1,687 @@
+{% doc %}
+  @prompt
+    Create a sticky header/navigation section for a wellness/apothecary Shopify store with the following design: Dark semi-transparent background (always, not just on hero images); Three-column layout: left has horizontal nav links, center has a logo placeholder (image upload field), right has account icon and cart icon with item count; Navigation links: Shop (with a mega dropdown showing two columns: Shop All on the left, and Shop by Category on the right with subcategories: General Health, Immunity, Hormone Balance, Mood), Encyclopedia, Blog; Dropdown menu appears on hover with the same dark/semi-transparent background, white text; Minimal, clean, editorial aesthetic with white text throughout; Logo placeholder supports image upload in theme settings; Menu connected to store's main menu link list; Mobile-responsive with hamburger menu on smaller screens
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-sticky-header-{{ ai_gen_id }} {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, {{ block.settings.background_opacity }});
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  .ai-sticky-header__container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_width }}px;
+    margin: 0 auto;
+    padding: {{ block.settings.vertical_padding }}px {{ block.settings.horizontal_padding }}px;
+  }
+
+  .ai-sticky-header__grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .ai-sticky-header__nav-left-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: {{ block.settings.nav_link_spacing }}px;
+  }
+
+  .ai-sticky-header__nav-link-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    text-decoration: none;
+    font-size: {{ block.settings.nav_font_size }}px;
+    letter-spacing: {{ block.settings.letter_spacing }}px;
+    transition: opacity 0.3s ease;
+    position: relative;
+    padding: 10px 0;
+    cursor: pointer;
+  }
+
+  .ai-sticky-header__nav-link-{{ ai_gen_id }}:hover {
+    opacity: 0.7;
+  }
+
+  .ai-sticky-header__logo-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ai-sticky-header__logo-image-{{ ai_gen_id }} {
+    max-width: {{ block.settings.logo_width }}px;
+    height: auto;
+    display: block;
+  }
+
+  .ai-sticky-header__logo-placeholder-{{ ai_gen_id }} {
+    width: {{ block.settings.logo_width }}px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+
+  .ai-sticky-header__logo-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+  }
+
+  .ai-sticky-header__nav-right-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: {{ block.settings.icon_spacing }}px;
+  }
+
+  .ai-sticky-header__icon-link-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    position: relative;
+  }
+
+  .ai-sticky-header__icon-link-{{ ai_gen_id }}:hover {
+    opacity: 0.7;
+  }
+
+  .ai-sticky-header__icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+  }
+
+  .ai-sticky-header__cart-count-{{ ai_gen_id }} {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: {{ block.settings.cart_badge_color }};
+    color: {{ block.settings.cart_badge_text_color }};
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .ai-sticky-header__dropdown-{{ ai_gen_id }} {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(0, 0, 0, {{ block.settings.dropdown_opacity }});
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    min-width: 600px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    padding: {{ block.settings.dropdown_padding }}px;
+    margin-top: 10px;
+    z-index: 100;
+  }
+
+  .ai-sticky-header__nav-item-{{ ai_gen_id }}:hover .ai-sticky-header__dropdown-{{ ai_gen_id }} {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .ai-sticky-header__dropdown-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .ai-sticky-header__dropdown-column-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ai-sticky-header__dropdown-title-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.dropdown_title_size }}px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: {{ block.settings.letter_spacing }}px;
+  }
+
+  .ai-sticky-header__dropdown-link-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    text-decoration: none;
+    font-size: {{ block.settings.dropdown_link_size }}px;
+    transition: opacity 0.3s ease;
+    letter-spacing: {{ block.settings.letter_spacing }}px;
+  }
+
+  .ai-sticky-header__dropdown-link-{{ ai_gen_id }}:hover {
+    opacity: 0.7;
+  }
+
+  .ai-sticky-header__mobile-toggle-{{ ai_gen_id }} {
+    display: none;
+    background: none;
+    border: none;
+    color: {{ block.settings.text_color }};
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .ai-sticky-header__mobile-menu-{{ ai_gen_id }} {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, {{ block.settings.mobile_menu_opacity }});
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 2000;
+    overflow-y: auto;
+    padding: 80px 30px 30px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .ai-sticky-header__mobile-menu-{{ ai_gen_id }}.active {
+    display: block;
+    transform: translateX(0);
+  }
+
+  .ai-sticky-header__mobile-close-{{ ai_gen_id }} {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: {{ block.settings.text_color }};
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .ai-sticky-header__mobile-nav-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .ai-sticky-header__mobile-link-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    text-decoration: none;
+    font-size: 20px;
+    letter-spacing: {{ block.settings.letter_spacing }}px;
+  }
+
+  .ai-sticky-header__mobile-submenu-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+    padding-left: 20px;
+  }
+
+  .ai-sticky-header__mobile-submenu-title-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .ai-sticky-header__mobile-submenu-link-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    text-decoration: none;
+    font-size: 16px;
+    opacity: 0.8;
+  }
+
+  @media screen and (max-width: 990px) {
+    .ai-sticky-header__nav-left-{{ ai_gen_id }},
+    .ai-sticky-header__nav-right-{{ ai_gen_id }} .ai-sticky-header__icon-link-{{ ai_gen_id }}:first-child {
+      display: none;
+    }
+
+    .ai-sticky-header__mobile-toggle-{{ ai_gen_id }} {
+      display: block;
+    }
+
+    .ai-sticky-header__grid-{{ ai_gen_id }} {
+      grid-template-columns: auto 1fr auto;
+    }
+
+    .ai-sticky-header__logo-{{ ai_gen_id }} {
+      justify-content: flex-start;
+    }
+  }
+{% endstyle %}
+
+<wellness-header-{{ ai_gen_id }} class="ai-sticky-header-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-sticky-header__container-{{ ai_gen_id }}">
+    <div class="ai-sticky-header__grid-{{ ai_gen_id }}">
+      <button class="ai-sticky-header__mobile-toggle-{{ ai_gen_id }}" aria-label="Open menu">
+        <svg class="ai-sticky-header__icon-{{ ai_gen_id }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <nav class="ai-sticky-header__nav-left-{{ ai_gen_id }}">
+        {% if block.settings.main_menu != blank %}
+          {% for link in block.settings.main_menu.links %}
+            <div class="ai-sticky-header__nav-item-{{ ai_gen_id }}">
+              {% if link.title == 'Shop' %}
+                <span class="ai-sticky-header__nav-link-{{ ai_gen_id }}">{{ link.title }}</span>
+                <div class="ai-sticky-header__dropdown-{{ ai_gen_id }}">
+                  <div class="ai-sticky-header__dropdown-grid-{{ ai_gen_id }}">
+                    <div class="ai-sticky-header__dropdown-column-{{ ai_gen_id }}">
+                      <div class="ai-sticky-header__dropdown-title-{{ ai_gen_id }}">Shop All</div>
+                      {% if link.links.size > 0 %}
+                        {% for child_link in link.links %}
+                          <a href="{{ child_link.url }}" class="ai-sticky-header__dropdown-link-{{ ai_gen_id }}">
+                            {{ child_link.title }}
+                          </a>
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+                    <div class="ai-sticky-header__dropdown-column-{{ ai_gen_id }}">
+                      <div class="ai-sticky-header__dropdown-title-{{ ai_gen_id }}">Shop by Category</div>
+                      <a href="{{ block.settings.general_health_link }}" class="ai-sticky-header__dropdown-link-{{ ai_gen_id }}">General Health</a>
+                      <a href="{{ block.settings.immunity_link }}" class="ai-sticky-header__dropdown-link-{{ ai_gen_id }}">Immunity</a>
+                      <a href="{{ block.settings.hormone_balance_link }}" class="ai-sticky-header__dropdown-link-{{ ai_gen_id }}">Hormone Balance</a>
+                      <a href="{{ block.settings.mood_link }}" class="ai-sticky-header__dropdown-link-{{ ai_gen_id }}">Mood</a>
+                    </div>
+                  </div>
+                </div>
+              {% else %}
+                <a href="{{ link.url }}" class="ai-sticky-header__nav-link-{{ ai_gen_id }}">{{ link.title }}</a>
+              {% endif %}
+            </div>
+          {% endfor %}
+        {% endif %}
+      </nav>
+
+      <div class="ai-sticky-header__logo-{{ ai_gen_id }}">
+        {% if block.settings.logo != blank %}
+          <a href="/">
+            <img
+              src="{{ block.settings.logo | image_url: width: 400 }}"
+              alt="{{ shop.name }}"
+              class="ai-sticky-header__logo-image-{{ ai_gen_id }}"
+              width="{{ block.settings.logo.width }}"
+              height="{{ block.settings.logo.height }}"
+              loading="lazy"
+            >
+          </a>
+        {% else %}
+          <div class="ai-sticky-header__logo-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="ai-sticky-header__nav-right-{{ ai_gen_id }}">
+        <a href="/account" class="ai-sticky-header__icon-link-{{ ai_gen_id }}" aria-label="Account">
+          <svg class="ai-sticky-header__icon-{{ ai_gen_id }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+        <a href="/cart" class="ai-sticky-header__icon-link-{{ ai_gen_id }}" aria-label="Cart">
+          <svg class="ai-sticky-header__icon-{{ ai_gen_id }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          {% if cart.item_count > 0 %}
+            <span class="ai-sticky-header__cart-count-{{ ai_gen_id }}">{{ cart.item_count }}</span>
+          {% endif %}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-sticky-header__mobile-menu-{{ ai_gen_id }}">
+    <button class="ai-sticky-header__mobile-close-{{ ai_gen_id }}" aria-label="Close menu">
+      <svg class="ai-sticky-header__icon-{{ ai_gen_id }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <nav class="ai-sticky-header__mobile-nav-{{ ai_gen_id }}">
+      {% if block.settings.main_menu != blank %}
+        {% for link in block.settings.main_menu.links %}
+          {% if link.title == 'Shop' %}
+            <div>
+              <div class="ai-sticky-header__mobile-link-{{ ai_gen_id }}">{{ link.title }}</div>
+              <div class="ai-sticky-header__mobile-submenu-{{ ai_gen_id }}">
+                <div>
+                  <div class="ai-sticky-header__mobile-submenu-title-{{ ai_gen_id }}">Shop All</div>
+                  {% if link.links.size > 0 %}
+                    {% for child_link in link.links %}
+                      <a href="{{ child_link.url }}" class="ai-sticky-header__mobile-submenu-link-{{ ai_gen_id }}">
+                        {{ child_link.title }}
+                      </a>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+                <div>
+                  <div class="ai-sticky-header__mobile-submenu-title-{{ ai_gen_id }}">Shop by Category</div>
+                  <a href="{{ block.settings.general_health_link }}" class="ai-sticky-header__mobile-submenu-link-{{ ai_gen_id }}">General Health</a>
+                  <a href="{{ block.settings.immunity_link }}" class="ai-sticky-header__mobile-submenu-link-{{ ai_gen_id }}">Immunity</a>
+                  <a href="{{ block.settings.hormone_balance_link }}" class="ai-sticky-header__mobile-submenu-link-{{ ai_gen_id }}">Hormone Balance</a>
+                  <a href="{{ block.settings.mood_link }}" class="ai-sticky-header__mobile-submenu-link-{{ ai_gen_id }}">Mood</a>
+                </div>
+              </div>
+            </div>
+          {% else %}
+            <a href="{{ link.url }}" class="ai-sticky-header__mobile-link-{{ ai_gen_id }}">{{ link.title }}</a>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </nav>
+  </div>
+</wellness-header-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class WellnessHeader{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.mobileToggle = this.querySelector('.ai-sticky-header__mobile-toggle-{{ ai_gen_id }}');
+        this.mobileMenu = this.querySelector('.ai-sticky-header__mobile-menu-{{ ai_gen_id }}');
+        this.mobileClose = this.querySelector('.ai-sticky-header__mobile-close-{{ ai_gen_id }}');
+
+        if (this.mobileToggle) {
+          this.mobileToggle.addEventListener('click', () => this.openMobileMenu());
+        }
+
+        if (this.mobileClose) {
+          this.mobileClose.addEventListener('click', () => this.closeMobileMenu());
+        }
+
+        this.mobileMenu.addEventListener('click', (e) => {
+          if (e.target === this.mobileMenu) {
+            this.closeMobileMenu();
+          }
+        });
+      }
+
+      openMobileMenu() {
+        this.mobileMenu.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      closeMobileMenu() {
+        this.mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    customElements.define('wellness-header-{{ ai_gen_id }}', WellnessHeader{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Sticky header",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width",
+      "min": 80,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 150
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "main_menu",
+      "label": "Main menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "range",
+      "id": "nav_font_size",
+      "label": "Navigation font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "nav_link_spacing",
+      "label": "Link spacing",
+      "min": 15,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "letter_spacing",
+      "label": "Letter spacing",
+      "min": 0,
+      "max": 3,
+      "step": 0.5,
+      "unit": "px",
+      "default": 0.5
+    },
+    {
+      "type": "header",
+      "content": "Shop dropdown categories"
+    },
+    {
+      "type": "url",
+      "id": "general_health_link",
+      "label": "General Health link"
+    },
+    {
+      "type": "url",
+      "id": "immunity_link",
+      "label": "Immunity link"
+    },
+    {
+      "type": "url",
+      "id": "hormone_balance_link",
+      "label": "Hormone Balance link"
+    },
+    {
+      "type": "url",
+      "id": "mood_link",
+      "label": "Mood link"
+    },
+    {
+      "type": "header",
+      "content": "Dropdown style"
+    },
+    {
+      "type": "range",
+      "id": "dropdown_title_size",
+      "label": "Title size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "dropdown_link_size",
+      "label": "Link size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "dropdown_padding",
+      "label": "Padding",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "dropdown_opacity",
+      "label": "Background opacity",
+      "min": 0.5,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.9
+    },
+    {
+      "type": "header",
+      "content": "Icons"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 18,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "icon_spacing",
+      "label": "Icon spacing",
+      "min": 15,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Container width",
+      "min": 1000,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "vertical_padding",
+      "label": "Vertical padding",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "horizontal_padding",
+      "label": "Horizontal padding",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "range",
+      "id": "background_opacity",
+      "label": "Background opacity",
+      "min": 0.5,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.9
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "cart_badge_color",
+      "label": "Cart badge background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "cart_badge_text_color",
+      "label": "Cart badge text",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Mobile menu"
+    },
+    {
+      "type": "range",
+      "id": "mobile_menu_opacity",
+      "label": "Background opacity",
+      "min": 0.5,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.9
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sticky header"
+    }
+  ]
+}
 {% endschema %}
