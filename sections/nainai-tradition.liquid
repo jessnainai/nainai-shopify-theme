@@ -1,0 +1,185 @@
+{% comment %}
+  NAINAI — "2,000+ Years of Tradition" transition section
+  Cream background, large statement text, dotted river illustration,
+  secondary body text, and "Meet our gummies" heading.
+{% endcomment %}
+
+<style>
+  .nainai-tradition {
+    position: relative;
+    width: 100%;
+    background: #FFFDF3;
+    padding: 6vw 0 4vw;
+    overflow: hidden;
+  }
+
+  .nainai-tradition__inner {
+    position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 5%;
+    min-height: 50vw;
+  }
+
+  /* ── Large statement text ── */
+  .nainai-tradition__statement {
+    color: #71210F !important;
+    font-family: 'Satoshi', sans-serif !important;
+    font-size: 3.472vw !important; /* 50 / 1440 */
+    font-weight: 700 !important;
+    line-height: 1.06 !important;
+    letter-spacing: -1.5px !important;
+    text-align: center;
+    max-width: 47.36vw; /* 682 / 1440 */
+    margin: 0 auto 0 20%;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── Illustration ── */
+  .nainai-tradition__illustration {
+    position: absolute;
+    right: -5%;
+    bottom: 20%;
+    width: 55%;
+    z-index: 1;
+  }
+
+  .nainai-tradition__illustration img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* ── Body text — bottom left ── */
+  .nainai-tradition__body {
+    color: #71210F !important;
+    font-family: 'Satoshi', sans-serif !important;
+    font-size: 1.111vw !important; /* 16 / 1440 */
+    font-weight: 500 !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.48px !important;
+    max-width: 22vw;
+    position: relative;
+    z-index: 2;
+    margin-top: 8vw;
+  }
+
+  .nainai-tradition__body strong {
+    font-weight: 700 !important;
+  }
+
+  /* ── "Meet our gummies" heading ── */
+  .nainai-tradition__meet {
+    color: #4C2E1E !important;
+    font-family: 'Satoshi', sans-serif !important;
+    font-size: 4.167vw !important; /* 60 / 1440 */
+    font-weight: 700 !important;
+    line-height: 1.06 !important;
+    letter-spacing: -1.8px !important;
+    text-align: center;
+    margin: 8vw 0 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .nainai-tradition {
+      padding: 15vw 0 10vw;
+    }
+
+    .nainai-tradition__statement {
+      font-size: 7vw !important;
+      max-width: 90%;
+      margin: 0 auto;
+    }
+
+    .nainai-tradition__illustration {
+      position: relative;
+      right: -10%;
+      bottom: auto;
+      width: 90%;
+      margin: 8vw 0;
+    }
+
+    .nainai-tradition__body {
+      font-size: 14px !important;
+      max-width: 80%;
+      margin: 0 auto 8vw;
+    }
+
+    .nainai-tradition__meet {
+      font-size: 9vw !important;
+      margin-top: 4vw;
+    }
+  }
+</style>
+
+<section class="nainai-tradition">
+  <div class="nainai-tradition__inner">
+
+    <h2 class="nainai-tradition__statement">
+      {{ section.settings.statement | default: 'For over 2,000 years, Chinese herbalists have combined botanicals into synergistic formulas to support well-being & longevity.' }}
+    </h2>
+
+    {%- if section.settings.illustration != blank -%}
+      <div class="nainai-tradition__illustration">
+        <img
+          src="{{ section.settings.illustration | image_url: width: 1600 }}"
+          alt="{{ section.settings.illustration.alt | default: 'Traditional botanical illustration' }}"
+          loading="lazy"
+          width="1600"
+          height="auto"
+        >
+      </div>
+    {%- endif -%}
+
+    <p class="nainai-tradition__body">
+      {{ section.settings.body_text | default: '<strong>Nainai</strong> honors this heritage by making ancient wisdom accessible—delivering time-tested herbal combinations to support mood, digestion, immunity, and hormone balance in one simple daily gummy ritual.' }}
+    </p>
+
+  </div>
+
+  <h2 class="nainai-tradition__meet">
+    {{ section.settings.meet_heading | default: 'Meet our gummies' }}
+  </h2>
+</section>
+
+{% schema %}
+{
+  "name": "NAINAI Tradition",
+  "tag": "section",
+  "class": "section-nainai-tradition",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "statement",
+      "label": "Statement Text",
+      "default": "For over 2,000 years, Chinese herbalists have combined botanicals into synergistic formulas to support well-being & longevity."
+    },
+    {
+      "type": "image_picker",
+      "id": "illustration",
+      "label": "Illustration Image",
+      "info": "The dotted river/landscape illustration. Export from Figma as PNG."
+    },
+    {
+      "type": "richtext",
+      "id": "body_text",
+      "label": "Body Text",
+      "default": "<p><strong>Nainai</strong> honors this heritage by making ancient wisdom accessible—delivering time-tested herbal combinations to support mood, digestion, immunity, and hormone balance in one simple daily gummy ritual.</p>"
+    },
+    {
+      "type": "text",
+      "id": "meet_heading",
+      "label": "Meet Heading",
+      "default": "Meet our gummies"
+    }
+  ],
+  "presets": [
+    {
+      "name": "NAINAI Tradition"
+    }
+  ]
+}
+{% endschema %}

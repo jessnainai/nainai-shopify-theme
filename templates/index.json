@@ -823,10 +823,15 @@
         "ai_gen_block_1450f6f_QrEXdz"
       ],
       "settings": {}
+    },
+    "nainai_tradition": {
+      "type": "nainai-tradition",
+      "settings": {}
     }
   },
   "order": [
     "nainai_hero",
+    "nainai_tradition",
     "media_grid_bGXVTf",
     "media_grid_izAtqT",
     "revealing_text_GVj3ep",
