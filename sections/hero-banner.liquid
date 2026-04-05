@@ -67,15 +67,14 @@
     z-index: 1;
   }
 
-  /* ── Text content — right half ── */
+  /* ── Text content — right half, exact Figma positioning ── */
   .nainai-hero__content {
     position: absolute;
     z-index: 5;
     left: 50%;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 37.3%;
     max-width: 486px;
-    padding-right: 7%;
+    width: 33.75%;
   }
 
   /* ── Heading ── */
@@ -85,9 +84,11 @@
     font-size: 30px;
     font-weight: 700;
     line-height: 0.87;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.9px;
     text-transform: lowercase;
     margin: 0 0 25px;
+    width: 535px;
+    max-width: 100%;
   }
 
   /* ── Body text ── */
@@ -97,9 +98,10 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 1.15;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.48px;
     margin: 0 0 14px;
-    max-width: 486px;
+    width: 486px;
+    max-width: 100%;
   }
 
   .nainai-hero__body:last-of-type {
@@ -125,7 +127,7 @@
     background: rgba(255, 253, 243, 0.2);
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
-    border: none;
+    border: 0.3px solid #FFFDF3;
     border-radius: 7px;
     transition: background 0.3s ease;
     cursor: pointer;
@@ -148,11 +150,10 @@
     .nainai-hero__content {
       left: 5%;
       right: 5%;
+      width: auto;
       max-width: 100%;
       top: auto;
       bottom: 12%;
-      transform: none;
-      padding-right: 0;
     }
 
     .nainai-hero__overlay {
