@@ -1511,7 +1511,7 @@
           Matches Figma: frosted glass over hero
           ============================================ */
 
-       /* ── Dropdown container ── */
+       /* ── Dropdown container — transparent by default ── */
        .header--menu-submenu.megamenu-container,
        .megamenu-container,
        .header--menu-submenu,
@@ -1519,15 +1519,39 @@
        .header .megamenu-container,
        .header-megamenu .header--menu-submenu,
        .header--menu-item .header--menu-submenu {
-         background: rgba(255, 253, 243, 0.2) !important;
-         background-color: rgba(255, 253, 243, 0.2) !important;
-         --submenu_background: rgba(255, 253, 243, 0.2);
-         backdrop-filter: blur(3px) !important;
-         -webkit-backdrop-filter: blur(3px) !important;
+         background: transparent !important;
+         background-color: transparent !important;
+         --submenu_background: transparent;
+         backdrop-filter: none !important;
+         -webkit-backdrop-filter: none !important;
          border: none !important;
          border-radius: 0 !important;
          box-shadow: none !important;
-         padding: 32px 40px !important;
+       }
+
+       /* ── Submenu list background — transparent by default ── */
+       .header--menu-submenu-list {
+         background: transparent !important;
+         background-color: transparent !important;
+       }
+
+       /* ── Dropdown — frosted glass only when menu item is active ── */
+       .header--menu-item.active .header--menu-submenu {
+         background: rgba(255, 253, 243, 0.2) !important;
+         background-color: rgba(255, 253, 243, 0.2) !important;
+         backdrop-filter: blur(3px) !important;
+         -webkit-backdrop-filter: blur(3px) !important;
+       }
+
+       .header--menu-item.active .header--menu-submenu-list {
+         background: transparent !important;
+         padding: 16px 24px !important;
+       }
+
+       /* ── Compact dropdown — not full width ── */
+       .header--menu-item.active .header--menu-submenu.megamenu-container {
+         width: auto !important;
+         max-width: 350px !important;
        }
 
        /* ── Dropdown links ── */
