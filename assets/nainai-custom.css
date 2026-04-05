@@ -1392,7 +1392,9 @@
        /* ── Force header background transparent always ── */
        .header,
        .header.desktop-transparent,
-       .header.mobile-transparent {
+       .header.mobile-transparent,
+       .header.desktop-transparent:hover,
+       .header.mobile-transparent:hover {
          background: transparent !important;
          background-color: transparent !important;
        }
@@ -1401,9 +1403,11 @@
        .header:before,
        .header.desktop-transparent:before,
        .header.desktop-transparent:hover:before,
-       .header.desktop-transparent.is-sticky:before {
+       .header.desktop-transparent.is-sticky:before,
+       .header:hover:before {
          opacity: 0 !important;
          background: transparent !important;
+         display: none !important;
        }
 
        /* ── Center the logo ── */
@@ -1509,8 +1513,15 @@
 
        /* ── Dropdown container ── */
        .header--menu-submenu.megamenu-container,
-       .megamenu-container {
+       .megamenu-container,
+       .header--menu-submenu,
+       .header .header--menu-submenu,
+       .header .megamenu-container,
+       .header-megamenu .header--menu-submenu,
+       .header--menu-item .header--menu-submenu {
          background: rgba(0, 0, 0, 0.45) !important;
+         background-color: rgba(0, 0, 0, 0.45) !important;
+         --submenu_background: rgba(0, 0, 0, 0.45);
          backdrop-filter: blur(12px) !important;
          -webkit-backdrop-filter: blur(12px) !important;
          border: none !important;
@@ -1521,7 +1532,10 @@
 
        /* ── Dropdown links ── */
        .header--menu-submenu a,
-       .megamenu-container a {
+       .megamenu-container a,
+       .header--menu-submenu-link,
+       .header .header--menu-submenu a,
+       .header .header--menu-submenu-link {
          color: #FFFDF3 !important;
          font-family: 'Satoshi', sans-serif !important;
          font-size: 16px !important;
@@ -1561,8 +1575,11 @@
        }
 
        .header--menu-item.has-children:hover .header--menu-submenu,
-       .header--menu-item.has-children:focus-within .header--menu-submenu {
+       .header--menu-item.has-children:focus-within .header--menu-submenu,
+       .header--menu-item.has-children:hover .megamenu-container,
+       .header--menu-item.has-children:focus-within .megamenu-container {
          background: rgba(0, 0, 0, 0.45) !important;
+         background-color: rgba(0, 0, 0, 0.45) !important;
          backdrop-filter: blur(12px) !important;
          -webkit-backdrop-filter: blur(12px) !important;
        }
