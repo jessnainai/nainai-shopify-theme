@@ -1519,11 +1519,11 @@
        .header .megamenu-container,
        .header-megamenu .header--menu-submenu,
        .header--menu-item .header--menu-submenu {
-         background: rgba(0, 0, 0, 0.45) !important;
-         background-color: rgba(0, 0, 0, 0.45) !important;
-         --submenu_background: rgba(0, 0, 0, 0.45);
-         backdrop-filter: blur(12px) !important;
-         -webkit-backdrop-filter: blur(12px) !important;
+         background: rgba(255, 253, 243, 0.2) !important;
+         background-color: rgba(255, 253, 243, 0.2) !important;
+         --submenu_background: rgba(255, 253, 243, 0.2);
+         backdrop-filter: blur(3px) !important;
+         -webkit-backdrop-filter: blur(3px) !important;
          border: none !important;
          border-radius: 0 !important;
          box-shadow: none !important;
