@@ -1529,10 +1529,29 @@
          box-shadow: none !important;
        }
 
-       /* ── Submenu list background — transparent by default ── */
+       /* ── Override mega-menu to compact dropdown ── */
+       .header--menu-submenu.megamenu-container {
+         width: auto !important;
+         max-width: none !important;
+       }
+
+       /* ── Submenu list — vertical, compact ── */
        .header--menu-submenu-list {
          background: transparent !important;
          background-color: transparent !important;
+         display: flex !important;
+         flex-direction: column !important;
+         min-width: auto !important;
+         max-width: none !important;
+         min-height: auto !important;
+         max-height: none !important;
+         padding: 0 !important;
+         gap: 0 !important;
+       }
+
+       /* ── Submenu items — single column, no grid ── */
+       .header--menu-submenu-item {
+         white-space: nowrap !important;
        }
 
        /* ── Dropdown — frosted glass only when menu item is active ── */
