@@ -51,18 +51,22 @@
   }
 
   /* ── Body text — bottom left ── */
-  .nainai-tradition__body {
+  .nainai-tradition__body,
+  .nainai-tradition__body p {
     color: #71210F !important;
     font-family: 'Satoshi', sans-serif !important;
     font-size: 1.111vw !important; /* 16 / 1440 */
     font-weight: 500 !important;
     line-height: 1.15 !important;
     letter-spacing: -0.48px !important;
-    max-width: 20vw;
-    position: absolute;
-    bottom: 8%;
-    left: 5%;
+  }
+
+  .nainai-tradition__body {
+    max-width: 22vw;
+    position: relative;
     z-index: 2;
+    margin: 0;
+    padding: 0 0 0 5%;
   }
 
   .nainai-tradition__body strong {
@@ -135,10 +139,10 @@
       </div>
     {%- endif -%}
 
-    <p class="nainai-tradition__body">
-      {{ section.settings.body_text | default: '<strong>Nainai</strong> honors this heritage by making ancient wisdom accessible—delivering time-tested herbal combinations to support mood, digestion, immunity, and hormone balance in one simple daily gummy ritual.' }}
-    </p>
+  </div>
 
+  <div class="nainai-tradition__body">
+    {{ section.settings.body_text | default: '<p><strong>Nainai</strong> honors this heritage by making ancient wisdom accessible—delivering time-tested herbal combinations to support mood, digestion, immunity, and hormone balance in one simple daily gummy ritual.</p>' }}
   </div>
 
   <h2 class="nainai-tradition__meet">
