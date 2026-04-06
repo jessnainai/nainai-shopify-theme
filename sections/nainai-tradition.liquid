@@ -40,8 +40,8 @@
   .nainai-tradition__illustration {
     position: absolute;
     right: -5%;
-    bottom: 12%;
-    width: 42%;
+    bottom: -5%;
+    width: 35%;
     z-index: 1;
   }
 
@@ -126,7 +126,7 @@
     {%- if section.settings.illustration != blank -%}
       <div class="nainai-tradition__illustration">
         <img
-          src="{{ section.settings.illustration | image_url: width: 1600 }}"
+          src="{{ section.settings.illustration | image_url: width: 800 }}"
           alt="{{ section.settings.illustration.alt | default: 'Traditional botanical illustration' }}"
           loading="lazy"
           width="1600"
