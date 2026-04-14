@@ -29,6 +29,81 @@
         "meet_heading": "Meet our gummies"
       }
     },
+    "nainai_gummies": {
+      "type": "nainai-gummies",
+      "blocks": {
+        "card_1": {
+          "type": "product_card",
+          "settings": {
+            "default_image": "PackagingLongTermImmune.png",
+            "category": "Immunity",
+            "name": "Long-Term Immunity"
+          }
+        },
+        "card_2": {
+          "type": "product_card",
+          "settings": {
+            "default_image": "PackagingFirstFewSneezes.png",
+            "category": "Immunity",
+            "name": "First-Few-Sneezes"
+          }
+        },
+        "card_3": {
+          "type": "product_card",
+          "settings": {
+            "default_image": "PackagingLongTermStress.png",
+            "category": "Mood",
+            "name": "Long-Term-Stress Support"
+          }
+        },
+        "card_4": {
+          "type": "product_card",
+          "settings": {
+            "default_image": "PackagingSteadyNerves.png",
+            "category": "Mood",
+            "name": "Steady-The-Nerves"
+          }
+        },
+        "card_5": {
+          "type": "product_card",
+          "settings": {
+            "default_image": "PackagingEaseMyTimeOfTheMonth.png",
+            "category": "Hormone Balance",
+            "name": "Ease-My-Time-Of-The-Month"
+          }
+        },
+        "card_6": {
+          "type": "product_card",
+          "settings": {
+            "default_image": "PackagingPauseMyMeno.png",
+            "category": "Hormone Balance",
+            "name": "Pause-My-Meno"
+          }
+        },
+        "card_7": {
+          "type": "product_card",
+          "settings": {
+            "default_image": "PackagingSteadyEnergy.png",
+            "category": "Energy & Digestion",
+            "name": "Steady-Energy"
+          }
+        },
+        "card_8": {
+          "type": "product_card",
+          "settings": {
+            "default_image": "PackagingBeforeorAfter.png",
+            "category": "Energy & Digestion",
+            "name": "Before-or-After Meal"
+          }
+        }
+      },
+      "block_order": ["card_1", "card_2", "card_3", "card_4", "card_5", "card_6", "card_7", "card_8"],
+      "settings": {
+        "show_cta": true,
+        "cta_label": "Explore All Gummies",
+        "cta_link": "/collections/all"
+      }
+    },
     "media_grid_bGXVTf": {
       "type": "media-grid",
       "blocks": {
@@ -837,6 +912,7 @@
   "order": [
     "nainai_hero",
     "nainai_tradition",
+    "nainai_gummies",
     "media_grid_bGXVTf",
     "media_grid_izAtqT",
     "revealing_text_GVj3ep",

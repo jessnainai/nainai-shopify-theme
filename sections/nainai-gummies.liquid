@@ -1,0 +1,346 @@
+{% comment %}
+  NAINAI — "Meet Our Gummies" product grid
+  4 columns x 2 rows of product cards with Figma-exact positioning
+{% endcomment %}
+
+<style>
+  .nainai-gummies {
+    position: relative;
+    width: 100%;
+    background: #FFFDF3;
+    padding: 4vw 0 7vw;
+    overflow: hidden;
+  }
+
+  .nainai-gummies__inner {
+    position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 7.15%; /* 103/1440 */
+  }
+
+  /* ── Grid: 4 columns, 2 rows ── */
+  .nainai-gummies__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 3.75vw; /* 54/1440 */
+    row-gap: 3.5vw; /* 50/1440 */
+  }
+
+  /* ── Product card ── */
+  .nainai-gummies__card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .nainai-gummies__card:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* ── Product image ── */
+  .nainai-gummies__img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 275 / 467;
+    overflow: hidden;
+    margin-bottom: 1.25vw; /* 18/1440 */
+  }
+
+  .nainai-gummies__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* ── Category label ── */
+  .nainai-gummies__category {
+    color: #4C2E1E !important;
+    font-family: 'Satoshi', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    line-height: 1.15 !important;
+    margin: 0 0 5px 0 !important;
+  }
+
+  /* ── Product name ── */
+  .nainai-gummies__name {
+    color: #4C2E1E !important;
+    font-family: 'Satoshi', sans-serif !important;
+    font-size: 19px !important;
+    font-weight: 700 !important;
+    line-height: 0.87 !important;
+    letter-spacing: -0.57px !important;
+    margin: 0 !important;
+  }
+
+  /* ── "Explore All Gummies" button ── */
+  .nainai-gummies__cta-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 6vw;
+  }
+
+  .nainai-gummies__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #4C2E1E;
+    color: #FFFDF3 !important;
+    font-family: 'Satoshi', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: -0.48px !important;
+    text-decoration: none !important;
+    padding: 18px 80px;
+    border-radius: 100px;
+    border: none;
+    transition: background 0.3s ease;
+    cursor: pointer;
+  }
+
+  .nainai-gummies__cta:hover {
+    background: #6b4428;
+    color: #FFFDF3 !important;
+    text-decoration: none !important;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .nainai-gummies {
+      padding: 8vw 0 10vw;
+    }
+
+    .nainai-gummies__inner {
+      padding: 0 5%;
+    }
+
+    .nainai-gummies__grid {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 4vw;
+      row-gap: 6vw;
+    }
+
+    .nainai-gummies__category {
+      font-size: 11px !important;
+    }
+
+    .nainai-gummies__name {
+      font-size: 15px !important;
+    }
+
+    .nainai-gummies__cta-wrap {
+      margin-top: 10vw;
+    }
+
+    .nainai-gummies__cta {
+      padding: 16px 48px;
+      font-size: 14px !important;
+    }
+  }
+</style>
+
+{% liquid
+  assign products_list = section.blocks
+%}
+
+<section class="nainai-gummies" aria-label="Meet our gummies">
+  <div class="nainai-gummies__inner">
+
+    <div class="nainai-gummies__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'product_card' -%}
+          <a
+            class="nainai-gummies__card"
+            href="{{ block.settings.link | default: '#' }}"
+            {{ block.shopify_attributes }}
+          >
+            <div class="nainai-gummies__img-wrap">
+              {%- if block.settings.image != blank -%}
+                <img
+                  class="nainai-gummies__img"
+                  src="{{ block.settings.image | image_url: width: 600 }}"
+                  srcset="
+                    {{ block.settings.image | image_url: width: 400 }} 400w,
+                    {{ block.settings.image | image_url: width: 600 }} 600w,
+                    {{ block.settings.image | image_url: width: 800 }} 800w
+                  "
+                  sizes="(max-width: 768px) 45vw, 20vw"
+                  alt="{{ block.settings.image.alt | default: block.settings.name }}"
+                  loading="lazy"
+                  width="600"
+                  height="1020"
+                >
+              {%- else -%}
+                {% assign img_name = block.settings.default_image %}
+                {%- if img_name != blank -%}
+                  <img
+                    class="nainai-gummies__img"
+                    src="{{ img_name | asset_url }}"
+                    alt="{{ block.settings.name }}"
+                    loading="lazy"
+                    width="600"
+                    height="1020"
+                  >
+                {%- endif -%}
+              {%- endif -%}
+            </div>
+            <p class="nainai-gummies__category">{{ block.settings.category }}</p>
+            <h3 class="nainai-gummies__name">{{ block.settings.name }}</h3>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.show_cta -%}
+      <div class="nainai-gummies__cta-wrap">
+        <a
+          href="{{ section.settings.cta_link | default: '/collections/all' }}"
+          class="nainai-gummies__cta"
+        >
+          {{ section.settings.cta_label | default: 'Explore All Gummies' }}
+        </a>
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "NAINAI Gummies Grid",
+  "tag": "section",
+  "class": "section-nainai-gummies",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show Explore Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button Text",
+      "default": "Explore All Gummies"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Product Image (upload to Shopify Files)",
+          "info": "If left empty, the default image will be used"
+        },
+        {
+          "type": "text",
+          "id": "default_image",
+          "label": "Default Image Filename",
+          "info": "e.g. PackagingLongTermImmune.png (fallback if no image picked)"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category Label",
+          "default": "Immunity"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Product Name",
+          "default": "Long-Term Immunity"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Product Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "NAINAI Gummies Grid",
+      "blocks": [
+        {
+          "type": "product_card",
+          "settings": {
+            "default_image": "PackagingLongTermImmune.png",
+            "category": "Immunity",
+            "name": "Long-Term Immunity"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "default_image": "PackagingFirstFewSneezes.png",
+            "category": "Immunity",
+            "name": "First-Few-Sneezes"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "default_image": "PackagingLongTermStress.png",
+            "category": "Mood",
+            "name": "Long-Term-Stress Support"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "default_image": "PackagingSteadyNerves.png",
+            "category": "Mood",
+            "name": "Steady-The-Nerves"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "default_image": "PackagingEaseMyTimeOfTheMonth.png",
+            "category": "Hormone Balance",
+            "name": "Ease-My-Time-Of-The-Month"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "default_image": "PackagingPauseMyMeno.png",
+            "category": "Hormone Balance",
+            "name": "Pause-My-Meno"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "default_image": "PackagingSteadyEnergy.png",
+            "category": "Energy & Digestion",
+            "name": "Steady-Energy"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "default_image": "PackagingBeforeorAfter.png",
+            "category": "Energy & Digestion",
+            "name": "Before-or-After Meal"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
