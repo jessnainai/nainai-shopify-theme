@@ -154,43 +154,61 @@
     <div class="nainai-gummies__grid">
       {%- for block in section.blocks -%}
         {%- if block.type == 'product_card' -%}
+          {%- liquid
+            assign product = block.settings.product
+            assign card_link = '#'
+            assign card_name = block.settings.name
+            assign card_category = block.settings.category
+            assign card_image = null
+
+            if product != blank
+              assign card_link = product.url
+              if card_name == blank
+                assign card_name = product.title
+              endif
+              if card_image == null and product.featured_image != blank
+                assign card_image = product.featured_image
+              endif
+            endif
+
+            if block.settings.link != blank
+              assign card_link = block.settings.link
+            endif
+          -%}
           <a
             class="nainai-gummies__card"
-            href="{{ block.settings.link | default: '#' }}"
+            href="{{ card_link }}"
             {{ block.shopify_attributes }}
           >
             <div class="nainai-gummies__img-wrap">
-              {%- if block.settings.image != blank -%}
+              {%- if card_image != null -%}
                 <img
                   class="nainai-gummies__img"
-                  src="{{ block.settings.image | image_url: width: 600 }}"
+                  src="{{ card_image | image_url: width: 600 }}"
                   srcset="
-                    {{ block.settings.image | image_url: width: 400 }} 400w,
-                    {{ block.settings.image | image_url: width: 600 }} 600w,
-                    {{ block.settings.image | image_url: width: 800 }} 800w
+                    {{ card_image | image_url: width: 400 }} 400w,
+                    {{ card_image | image_url: width: 600 }} 600w,
+                    {{ card_image | image_url: width: 800 }} 800w
                   "
                   sizes="(max-width: 768px) 45vw, 20vw"
-                  alt="{{ block.settings.image.alt | default: block.settings.name }}"
+                  alt="{{ card_image.alt | default: card_name }}"
                   loading="lazy"
                   width="600"
                   height="1020"
                 >
-              {%- else -%}
-                {% assign img_name = block.settings.default_image %}
-                {%- if img_name != blank -%}
-                  <img
-                    class="nainai-gummies__img"
-                    src="{{ img_name | asset_url }}"
-                    alt="{{ block.settings.name }}"
-                    loading="lazy"
-                    width="600"
-                    height="1020"
-                  >
-                {%- endif -%}
+              {%- elsif block.settings.default_image != blank -%}
+                <img
+                  class="nainai-gummies__img"
+                  src="{{ block.settings.default_image | asset_url }}"
+                  alt="{{ card_name }}"
+                  loading="lazy"
+                  width="600"
+                  height="1020"
+                >
               {%- endif -%}
             </div>
-            <p class="nainai-gummies__category">{{ block.settings.category }}</p>
-            <h3 class="nainai-gummies__name">{{ block.settings.name }}</h3>
+            <p class="nainai-gummies__category">{{ card_category }}</p>
+            <h3 class="nainai-gummies__name">{{ card_name }}</h3>
           </a>
         {%- endif -%}
       {%- endfor -%}
@@ -240,33 +258,38 @@
       "name": "Product Card",
       "settings": [
         {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Product Image (upload to Shopify Files)",
-          "info": "If left empty, the default image will be used"
-        },
-        {
-          "type": "text",
-          "id": "default_image",
-          "label": "Default Image Filename",
-          "info": "e.g. PackagingLongTermImmune.png (fallback if no image picked)"
+          "type": "product",
+          "id": "product",
+          "label": "Product",
+          "info": "Pick a product from your store — image, name, and link will be used automatically."
         },
         {
           "type": "text",
           "id": "category",
           "label": "Category Label",
-          "default": "Immunity"
+          "info": "e.g. Immunity, Mood, Hormone Balance, Energy & Digestion"
         },
         {
           "type": "text",
           "id": "name",
-          "label": "Product Name",
-          "default": "Long-Term Immunity"
+          "label": "Override Product Name",
+          "info": "Leave blank to use the product title"
         },
         {
           "type": "url",
           "id": "link",
-          "label": "Product Link"
+          "label": "Override Link",
+          "info": "Leave blank to link to the product page"
+        },
+        {
+          "type": "header",
+          "content": "Fallback (if no product picked)"
+        },
+        {
+          "type": "text",
+          "id": "default_image",
+          "label": "Default Image Filename",
+          "info": "e.g. PackagingLongTermImmune.png — used only if no product is picked"
         }
       ]
     }
