@@ -1,0 +1,228 @@
+/* ==========================================================================
+   NAINAI x OFYSINA — Flexible Canvas Section
+   Replace contents of: assets/brand-canvas.css
+
+   Positioning model (per block):
+     - The canvas is a position:relative container sized by min-height.
+     - Each block is position:absolute with left/top driven by the anchor
+       CSS variables (--bc-h-pos, --bc-v-pos).
+     - A first translate snaps the block's own origin to its anchor
+       (left/top/middle/right/bottom) via --bc-h-translate / --bc-v-translate.
+     - A second translate applies the merchant's X/Y nudge in percentages.
+     - --bc-z controls layering, --bc-width-desktop / --bc-width-mobile size.
+   ========================================================================== */
+
+.brand-canvas {
+  position: relative;
+  width: 100%;
+  background: var(--bc-bg, #F5F0E6);
+  color: var(--bc-text, #3B2A1A);
+  padding-top: var(--bc-pad-top-desktop, 0px);
+  padding-bottom: var(--bc-pad-bottom-desktop, 0px);
+  overflow: hidden;
+  isolation: isolate;
+  min-height: var(--bc-min-height-desktop, 800px);
+}
+
+/* Full-bleed background image */
+.brand-canvas__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Darkening / tint overlay over the bg image */
+.brand-canvas__overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--bc-overlay, #000000);
+  opacity: var(--bc-overlay-opacity, 0);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Stage: the relative-positioned coordinate space for all blocks.
+   It fills the section (optionally constrained to a max-width) so blocks
+   measure their anchor/offset % against predictable dimensions. */
+.brand-canvas__stage {
+  position: absolute;
+  inset: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: var(--bc-content-max, 100%);
+  z-index: 2;
+}
+
+/* ---------- Blocks ---------- */
+
+.brand-canvas__block {
+  position: absolute;
+  left: var(--bc-h-pos, 50%);
+  top: var(--bc-v-pos, 50%);
+  /* Two-step translate:
+       1) snap block origin to its chosen anchor point
+       2) apply merchant's X/Y % nudge on top                         */
+  transform:
+    translate(var(--bc-h-translate, -50%), var(--bc-v-translate, -50%))
+    translate(var(--bc-x-offset, 0%), var(--bc-y-offset, 0%));
+  width: var(--bc-width-desktop, auto);
+  max-width: 100%;
+  z-index: var(--bc-z, 5);
+}
+
+@media (max-width: 989px) {
+  .brand-canvas {
+    min-height: var(--bc-min-height-mobile, 600px);
+    padding-top: var(--bc-pad-top-mobile, 0px);
+    padding-bottom: var(--bc-pad-bottom-mobile, 0px);
+  }
+
+  .brand-canvas__block {
+    width: var(--bc-width-mobile, var(--bc-width-desktop, auto));
+  }
+}
+
+.brand-canvas__block--hide-mobile { display: block; }
+.brand-canvas__block--hide-desktop { display: none; }
+
+@media (max-width: 989px) {
+  .brand-canvas__block--hide-mobile  { display: none; }
+  .brand-canvas__block--hide-desktop { display: block; }
+}
+
+/* ---------- Image block ---------- */
+
+.brand-canvas__image,
+.brand-canvas__decor {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+.brand-canvas__image-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-canvas__placeholder-svg {
+  width: 60%;
+  height: 60%;
+  opacity: 0.4;
+}
+
+/* ---------- Text block ---------- */
+
+.brand-canvas__text {
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  color: var(--bc-text, #3B2A1A);
+  border-radius: 0;
+}
+
+.brand-canvas__text--align-left   { text-align: left; }
+.brand-canvas__text--align-center { text-align: center; }
+.brand-canvas__text--align-right  { text-align: right; }
+
+.brand-canvas__eyebrow {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+  opacity: 0.75;
+}
+
+.brand-canvas__heading {
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  margin: 0 0 20px;
+  color: inherit;
+}
+
+.brand-canvas__body {
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  line-height: 1.7;
+  color: inherit;
+  opacity: 0.92;
+}
+
+.brand-canvas__body p {
+  margin: 0 0 1em;
+}
+
+.brand-canvas__body p:last-child {
+  margin-bottom: 0;
+}
+
+.brand-canvas__caption {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 16px 0 0;
+  opacity: 0.65;
+}
+
+.brand-canvas__btn {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 14px 28px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.brand-canvas__btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* ---------- Decorative SVG ---------- */
+
+.brand-canvas__decor--svg {
+  overflow: visible;
+}
+
+/* ---------- Mobile typography scaling ---------- */
+
+@media (max-width: 989px) {
+  .brand-canvas__heading {
+    /* Shrink the merchant-chosen heading size by ~25% on mobile */
+    font-size: calc(var(--bc-heading-size, 1em) * 0.75);
+  }
+}
+
+/* ---------- Responsive tweaks ---------- */
+
+@media (max-width: 749px) {
+  .brand-canvas__text {
+    max-width: 100%;
+  }
+
+  .brand-canvas__eyebrow {
+    font-size: 11px;
+  }
+
+  .brand-canvas__btn {
+    padding: 12px 22px;
+    font-size: 12px;
+  }
+}

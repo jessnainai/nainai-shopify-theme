@@ -1,0 +1,304 @@
+{% comment %}
+  NAINAI x OFYSINA — Trail + Nature Philosophy Section
+  Replace contents of: sections/trail-nature.liquid
+
+  Two stacked halves in one section:
+    1. TOP — parchment background with the pre-rendered trail graphic
+       (trail.png) + a heading & body column on the right.
+    2. BOTTOM — full-bleed nature photo (naturetrail.png) with a
+       "Guided by TCM Philosophy" heading + body overlay anchored to
+       the bottom, darkened via a gradient so the white text is legible.
+
+  Default image assets in the repo:
+    • trail.png         — trail graphic (top half)
+    • naturetrail.png   — person walking through grass (bottom half)
+
+  Companion asset: assets/trail-nature.css
+{% endcomment %}
+
+{{ 'trail-nature.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  # Use the merchant-selected images if present, otherwise fall back
+  # to the assets committed in the theme (trail.png / naturetrail.png).
+  if section.settings.trail_image != blank
+    assign trail_src        = section.settings.trail_image | image_url: width: 1800
+    assign trail_src_800    = section.settings.trail_image | image_url: width: 800
+    assign trail_src_1200   = section.settings.trail_image | image_url: width: 1200
+    assign trail_alt        = section.settings.trail_image.alt | default: 'NaiNai brand journey trail'
+  else
+    assign trail_src        = 'trail.png' | asset_url
+    assign trail_src_800    = trail_src
+    assign trail_src_1200   = trail_src
+    assign trail_alt        = 'NaiNai brand journey trail'
+  endif
+
+  if section.settings.nature_image != blank
+    assign nature_src       = section.settings.nature_image | image_url: width: 2400
+    assign nature_src_800   = section.settings.nature_image | image_url: width: 800
+    assign nature_src_1400  = section.settings.nature_image | image_url: width: 1400
+    assign nature_src_2000  = section.settings.nature_image | image_url: width: 2000
+    assign nature_alt       = section.settings.nature_image.alt | default: 'Herbal harvesting in nature'
+  else
+    assign nature_src       = 'naturetrail.png' | asset_url
+    assign nature_src_800   = nature_src
+    assign nature_src_1400  = nature_src
+    assign nature_src_2000  = nature_src
+    assign nature_alt       = 'Herbal harvesting in nature'
+  endif
+-%}
+
+<section
+  class="nainai-trail"
+  id="nainai-trail-{{ section.id }}"
+  style="
+    --tn-top-bg: {{ section.settings.top_bg_color | default: '#F5F0E6' }};
+    --tn-top-text: {{ section.settings.top_text_color | default: '#3B2A1A' }};
+    --tn-bottom-text: {{ section.settings.bottom_text_color | default: '#FFFFFF' }};
+    --tn-overlay-strength: {{ section.settings.overlay_strength | default: 65 | divided_by: 100.0 }};
+    --tn-top-pad-desktop: {{ section.settings.top_space_desktop }}px;
+    --tn-top-pad-mobile: {{ section.settings.top_space_mobile }}px;
+    --tn-bottom-min-height-desktop: {{ section.settings.bottom_height_desktop }}px;
+    --tn-bottom-min-height-mobile: {{ section.settings.bottom_height_mobile }}px;
+  "
+>
+
+  {%- comment -%} ========== TOP HALF: trail graphic + text ========== {%- endcomment -%}
+  <div class="nainai-trail__top">
+    {%- if section.settings.top_bg_image != blank -%}
+      <img
+        class="nainai-trail__top-bg"
+        src="{{ section.settings.top_bg_image | image_url: width: 2400 }}"
+        srcset="{{ section.settings.top_bg_image | image_url: width: 800 }} 800w, {{ section.settings.top_bg_image | image_url: width: 1400 }} 1400w, {{ section.settings.top_bg_image | image_url: width: 2000 }} 2000w, {{ section.settings.top_bg_image | image_url: width: 2400 }} 2400w"
+        sizes="100vw"
+        width="{{ section.settings.top_bg_image.width }}"
+        height="{{ section.settings.top_bg_image.height }}"
+        alt=""
+        loading="lazy"
+        aria-hidden="true"
+      >
+    {%- endif -%}
+
+    <div class="nainai-trail__top-inner">
+
+      <div class="nainai-trail__graph">
+        <img
+          class="nainai-trail__graph-img"
+          src="{{ trail_src }}"
+          srcset="{{ trail_src_800 }} 800w, {{ trail_src_1200 }} 1200w, {{ trail_src }} 1800w"
+          sizes="(max-width: 989px) 92vw, 65vw"
+          alt="{{ trail_alt | escape }}"
+          loading="lazy"
+        >
+      </div>
+
+      {%- if section.settings.top_heading != blank or section.settings.top_body != blank -%}
+        <div class="nainai-trail__top-content">
+          {%- if section.settings.top_eyebrow != blank -%}
+            <p class="nainai-trail__top-eyebrow">{{ section.settings.top_eyebrow }}</p>
+          {%- endif -%}
+          {%- if section.settings.top_heading != blank -%}
+            <h2 class="nainai-trail__top-heading">{{ section.settings.top_heading }}</h2>
+          {%- endif -%}
+          {%- if section.settings.top_body != blank -%}
+            <div class="nainai-trail__top-body rte">{{ section.settings.top_body }}</div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+
+  {%- comment -%} ========== BOTTOM HALF: nature photo + overlay text ========== {%- endcomment -%}
+  <div class="nainai-trail__bottom">
+    <img
+      class="nainai-trail__bottom-bg"
+      src="{{ nature_src }}"
+      srcset="{{ nature_src_800 }} 800w, {{ nature_src_1400 }} 1400w, {{ nature_src_2000 }} 2000w, {{ nature_src }} 2400w"
+      sizes="100vw"
+      alt="{{ nature_alt | escape }}"
+      loading="lazy"
+    >
+
+    <div class="nainai-trail__bottom-gradient" aria-hidden="true"></div>
+
+    {%- if section.settings.bottom_heading != blank or section.settings.bottom_body != blank -%}
+      <div class="nainai-trail__bottom-inner">
+        {%- if section.settings.bottom_heading != blank -%}
+          <h2 class="nainai-trail__bottom-heading">{{ section.settings.bottom_heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.bottom_body != blank -%}
+          <div class="nainai-trail__bottom-body rte">{{ section.settings.bottom_body }}</div>
+        {%- endif -%}
+        {%- if section.settings.bottom_btn_label != blank -%}
+          <a
+            class="nainai-trail__bottom-btn"
+            href="{{ section.settings.bottom_btn_link | default: '#' }}"
+          >
+            {{ section.settings.bottom_btn_label }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "NAINAI Trail & Nature",
+  "tag": "section",
+  "class": "section-trail-nature",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Top — Trail graphic + text"
+    },
+    {
+      "type": "paragraph",
+      "content": "The trail graphic is pre-rendered as an image. If you leave the image picker empty, the section falls back to trail.png from the theme assets."
+    },
+    {
+      "type": "image_picker",
+      "id": "trail_image",
+      "label": "Trail graphic",
+      "info": "Optional. Leave empty to use trail.png from theme assets."
+    },
+    {
+      "type": "image_picker",
+      "id": "top_bg_image",
+      "label": "Top background texture (parchment)",
+      "info": "Optional. Sits behind the trail graphic and text."
+    },
+    {
+      "type": "color",
+      "id": "top_bg_color",
+      "label": "Top background color",
+      "default": "#F5F0E6"
+    },
+    {
+      "type": "color",
+      "id": "top_text_color",
+      "label": "Top text color",
+      "default": "#3B2A1A"
+    },
+    {
+      "type": "text",
+      "id": "top_eyebrow",
+      "label": "Top eyebrow (small label)",
+      "default": "Our formulation philosophy"
+    },
+    {
+      "type": "text",
+      "id": "top_heading",
+      "label": "Top heading",
+      "default": "Rooted in 2,000 years of tradition"
+    },
+    {
+      "type": "richtext",
+      "id": "top_body",
+      "label": "Top body",
+      "default": "<p>In TCM, the body is understood as an integrated whole where mind & body are inseparable. We use the exact herbal pairings and proportions written by ancient herbalists — honoring these original formulas while ensuring every ingredient is something your body recognizes.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Bottom — Nature photo + overlay text"
+    },
+    {
+      "type": "image_picker",
+      "id": "nature_image",
+      "label": "Nature photo",
+      "info": "Optional. Leave empty to use naturetrail.png from theme assets."
+    },
+    {
+      "type": "color",
+      "id": "bottom_text_color",
+      "label": "Bottom text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "overlay_strength",
+      "label": "Bottom overlay darkness",
+      "info": "Darkens the nature photo near the text so the overlay is legible.",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 65
+    },
+    {
+      "type": "text",
+      "id": "bottom_heading",
+      "label": "Bottom heading",
+      "default": "Guided by TCM Philosophy"
+    },
+    {
+      "type": "richtext",
+      "id": "bottom_body",
+      "label": "Bottom body",
+      "default": "<p>In TCM, the body is understood as an integrated whole where mind and body are inseparable. Just as with a tree, when the root is treated the branches and leaves are restored. We honor ancient wisdom while crafting every formula to support your modern life.</p>"
+    },
+    {
+      "type": "text",
+      "id": "bottom_btn_label",
+      "label": "Button label (optional)"
+    },
+    {
+      "type": "url",
+      "id": "bottom_btn_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Spacing & height"
+    },
+    {
+      "type": "range",
+      "id": "top_space_desktop",
+      "label": "Top half padding (desktop)",
+      "min": 40,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "top_space_mobile",
+      "label": "Top half padding (mobile)",
+      "min": 20,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "bottom_height_desktop",
+      "label": "Bottom photo min height (desktop)",
+      "min": 300,
+      "max": 1000,
+      "step": 20,
+      "unit": "px",
+      "default": 640
+    },
+    {
+      "type": "range",
+      "id": "bottom_height_mobile",
+      "label": "Bottom photo min height (mobile)",
+      "min": 200,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
+      "default": 480
+    }
+  ],
+  "presets": [
+    {
+      "name": "NAINAI Trail & Nature",
+      "category": "NAINAI"
+    }
+  ]
+}
+{% endschema %}
