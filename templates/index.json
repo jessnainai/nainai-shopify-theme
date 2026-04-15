@@ -20,15 +20,6 @@
         "btn_link": "/collections/all"
       }
     },
-    "nainai_tradition": {
-      "type": "nainai-tradition",
-      "settings": {
-        "statement": "For over 2,000 years, Chinese herbalists have combined botanicals into synergistic formulas to support well-being & longevity.",
-        "illustration": "shopify://shop_images/Lake.png",
-        "body_text": "<p><strong>Nainai</strong> honors this heritage by making ancient wisdom accessible—delivering time-tested herbal combinations to support mood, digestion, immunity, and hormone balance in one simple daily gummy ritual.</p>",
-        "meet_heading": "Meet our gummies"
-      }
-    },
     "nainai_gummies": {
       "type": "nainai-gummies",
       "blocks": {
@@ -904,7 +895,6 @@
   },
   "order": [
     "nainai_hero",
-    "nainai_tradition",
     "nainai_gummies",
     "media_grid_bGXVTf",
     "media_grid_izAtqT",
