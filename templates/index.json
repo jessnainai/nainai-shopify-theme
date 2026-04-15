@@ -35,69 +35,94 @@
         "card_1": {
           "type": "product_card",
           "settings": {
-            "default_image": "PackagingLongTermImmune.png",
+            "product": "",
             "category": "Immunity",
-            "name": "Long-Term Immunity"
+            "name": "Long-Term Immunity",
+            "link": "",
+            "default_image": "PackagingLongTermImmune.png"
           }
         },
         "card_2": {
           "type": "product_card",
           "settings": {
-            "default_image": "PackagingFirstFewSneezes.png",
+            "product": "",
             "category": "Immunity",
-            "name": "First-Few-Sneezes"
+            "name": "First-Few-Sneezes",
+            "link": "",
+            "default_image": "PackagingFirstFewSneezes.png"
           }
         },
         "card_3": {
           "type": "product_card",
           "settings": {
-            "default_image": "PackagingLongTermStress.png",
+            "product": "",
             "category": "Mood",
-            "name": "Long-Term-Stress Support"
+            "name": "Long-Term-Stress Support",
+            "link": "",
+            "default_image": "PackagingLongTermStress.png"
           }
         },
         "card_4": {
           "type": "product_card",
           "settings": {
-            "default_image": "PackagingSteadyNerves.png",
+            "product": "",
             "category": "Mood",
-            "name": "Steady-The-Nerves"
+            "name": "Steady-The-Nerves",
+            "link": "",
+            "default_image": "PackagingSteadyNerves.png"
           }
         },
         "card_5": {
           "type": "product_card",
           "settings": {
-            "default_image": "PackagingEaseMyTimeOfTheMonth.png",
+            "product": "",
             "category": "Hormone Balance",
-            "name": "Ease-My-Time-Of-The-Month"
+            "name": "Ease-My-Time-Of-The-Month",
+            "link": "",
+            "default_image": "PackagingEaseMyTimeOfTheMonth.png"
           }
         },
         "card_6": {
           "type": "product_card",
           "settings": {
-            "default_image": "PackagingPauseMyMeno.png",
+            "product": "",
             "category": "Hormone Balance",
-            "name": "Pause-My-Meno"
+            "name": "Pause-My-Meno",
+            "link": "",
+            "default_image": "PackagingPauseMyMeno.png"
           }
         },
         "card_7": {
           "type": "product_card",
           "settings": {
-            "default_image": "PackagingSteadyEnergy.png",
+            "product": "",
             "category": "Energy & Digestion",
-            "name": "Steady-Energy"
+            "name": "Steady-Energy",
+            "link": "",
+            "default_image": "PackagingSteadyEnergy.png"
           }
         },
         "card_8": {
           "type": "product_card",
           "settings": {
-            "default_image": "PackagingBeforeorAfter.png",
+            "product": "",
             "category": "Energy & Digestion",
-            "name": "Before-or-After Meal"
+            "name": "Before-or-After Meal",
+            "link": "",
+            "default_image": "PackagingBeforeorAfter.png"
           }
         }
       },
-      "block_order": ["card_1", "card_2", "card_3", "card_4", "card_5", "card_6", "card_7", "card_8"],
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4",
+        "card_5",
+        "card_6",
+        "card_7",
+        "card_8"
+      ],
       "settings": {
         "show_cta": true,
         "cta_label": "Explore All Gummies",
@@ -106,38 +131,6 @@
     },
     "media_grid_bGXVTf": {
       "type": "media-grid",
-      "blocks": {
-        "grid_EK8ycA": {
-          "type": "grid",
-          "settings": {
-            "color_scheme": "primary",
-            "column": 6,
-            "row": 3,
-            "column_mobile": "2",
-            "row_mobile": "1",
-            "heading": "Healing Through Generations",
-            "markers_font": "accent-font",
-            "markers_text": "no-markers",
-            "heading_size": "h1",
-            "seo_heading": "h5",
-            "description": "Acupuncture and Traditional Chinese Medicine",
-            "description_size": "text-large",
-            "content_position": "bottom-center",
-            "content_alignment": "center",
-            "content_width": "large",
-            "overlay_opacity": 0,
-            "background_opacity": 0,
-            "media_image": "shopify://shop_images/DTS_LOST_JELLY_LUISE_Photos_ID12342_114614af-a250-46a2-b920-948e8e334e96.jpg",
-            "btn_text": "book now",
-            "btn_link": "shopify://collections",
-            "button_size": "large-button",
-            "button_style": "link"
-          }
-        }
-      },
-      "block_order": [
-        "grid_EK8ycA"
-      ],
       "name": "t:sections.media-grid.presets.name",
       "settings": {
         "section_visibility": "always",
