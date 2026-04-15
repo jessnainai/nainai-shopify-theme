@@ -1,0 +1,270 @@
+/* ==========================================================================
+   NAINAI x OFYSINA — Brand Timeline / Philosophy Section
+   Replace contents of: assets/brand-timeline.css
+   ========================================================================== */
+
+.nainai-timeline {
+  position: relative;
+  width: 100%;
+  background: var(--nt-bg, #F5F0E6);
+  color: var(--nt-text, #3B2A1A);
+  padding-top: var(--nt-top-desktop, 120px);
+  padding-bottom: var(--nt-bottom-desktop, 120px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Background image (parchment / paper texture) sits behind inner content */
+.nainai-timeline__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Inner layout container */
+.nainai-timeline__inner {
+  position: relative;
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 48px;
+}
+
+@media (min-width: 990px) {
+  .nainai-timeline__inner {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+    gap: 72px;
+    align-items: center;
+  }
+}
+
+/* ---------- Text content ---------- */
+
+.nainai-timeline__content {
+  order: 2;
+  max-width: 520px;
+}
+
+@media (min-width: 990px) {
+  .nainai-timeline__content {
+    justify-self: end;
+  }
+}
+
+.nainai-timeline__heading {
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  font-size: clamp(28px, 3vw, 46px);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  margin: 0 0 24px;
+  color: var(--nt-text);
+}
+
+.nainai-timeline__body {
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  font-size: clamp(15px, 1.05vw, 18px);
+  line-height: 1.72;
+  color: var(--nt-text);
+  opacity: 0.92;
+}
+
+.nainai-timeline__body p {
+  margin: 0 0 1em;
+}
+
+.nainai-timeline__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Graph container ---------- */
+
+.nainai-timeline__graph {
+  order: 1;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1600 / 900;
+  color: var(--nt-line, #8B5A3C);
+}
+
+/* Fallback for browsers without aspect-ratio support */
+@supports not (aspect-ratio: 1 / 1) {
+  .nainai-timeline__graph::before {
+    content: '';
+    display: block;
+    padding-top: 56.25%; /* 900/1600 */
+  }
+}
+
+.nainai-timeline__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  display: block;
+}
+
+/* ---------- Path draw animation ---------- */
+
+.nainai-timeline__path {
+  stroke: var(--nt-line, #8B5A3C);
+  stroke-dasharray: var(--nt-path-length, 3000);
+  stroke-dashoffset: var(--nt-path-length, 3000);
+  transition: stroke-dashoffset 2.6s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: stroke-dashoffset;
+}
+
+.nainai-timeline.is-visible .nainai-timeline__path {
+  stroke-dashoffset: 0;
+}
+
+/* ---------- Dots ---------- */
+
+.nainai-timeline__dot {
+  fill: var(--nt-line, #8B5A3C);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0);
+  transition:
+    opacity 0.35s ease,
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nainai-timeline.is-visible .nainai-timeline__dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger dot reveals to roughly match the line drawing */
+.nainai-timeline.is-visible .nainai-timeline__dot[data-index="0"] { transition-delay: 0.10s, 0.10s; }
+.nainai-timeline.is-visible .nainai-timeline__dot[data-index="1"] { transition-delay: 0.55s, 0.55s; }
+.nainai-timeline.is-visible .nainai-timeline__dot[data-index="2"] { transition-delay: 0.95s, 0.95s; }
+.nainai-timeline.is-visible .nainai-timeline__dot[data-index="3"] { transition-delay: 1.40s, 1.40s; }
+.nainai-timeline.is-visible .nainai-timeline__dot[data-index="4"] { transition-delay: 1.85s, 1.85s; }
+.nainai-timeline.is-visible .nainai-timeline__dot[data-index="5"] { transition-delay: 2.30s, 2.30s; }
+
+/* ---------- Labels overlay ---------- */
+
+.nainai-timeline__labels {
+  position: absolute;
+  inset: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+.nainai-timeline__label {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 0;
+  height: 0;
+}
+
+/* The label text is absolutely positioned relative to its zero-size
+   parent so we can anchor it above or below the dot without disturbing
+   layout. */
+.nainai-timeline__label-text {
+  position: absolute;
+  left: 50%;
+  display: block;
+  width: max-content;
+  max-width: 180px;
+  text-align: center;
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  font-size: clamp(11px, 0.85vw, 14px);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  color: var(--nt-text);
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  white-space: normal;
+}
+
+.nainai-timeline__label--above .nainai-timeline__label-text {
+  bottom: 22px;
+  transform: translate(-50%, 8px);
+}
+
+.nainai-timeline__label--below .nainai-timeline__label-text {
+  top: 22px;
+  transform: translate(-50%, -8px);
+}
+
+.nainai-timeline.is-visible .nainai-timeline__label--above .nainai-timeline__label-text,
+.nainai-timeline.is-visible .nainai-timeline__label--below .nainai-timeline__label-text {
+  opacity: 0.92;
+  transform: translate(-50%, 0);
+}
+
+/* Stagger label reveals to track the dots */
+.nainai-timeline.is-visible .nainai-timeline__label[data-index="0"] .nainai-timeline__label-text { transition-delay: 0.20s; }
+.nainai-timeline.is-visible .nainai-timeline__label[data-index="1"] .nainai-timeline__label-text { transition-delay: 0.65s; }
+.nainai-timeline.is-visible .nainai-timeline__label[data-index="2"] .nainai-timeline__label-text { transition-delay: 1.05s; }
+.nainai-timeline.is-visible .nainai-timeline__label[data-index="3"] .nainai-timeline__label-text { transition-delay: 1.50s; }
+.nainai-timeline.is-visible .nainai-timeline__label[data-index="4"] .nainai-timeline__label-text { transition-delay: 1.95s; }
+.nainai-timeline.is-visible .nainai-timeline__label[data-index="5"] .nainai-timeline__label-text { transition-delay: 2.40s; }
+
+/* ---------- Mobile overrides ---------- */
+
+@media (max-width: 989px) {
+  .nainai-timeline {
+    padding-top: var(--nt-top-mobile, 64px);
+    padding-bottom: var(--nt-bottom-mobile, 64px);
+  }
+
+  .nainai-timeline__inner {
+    padding: 0 20px;
+    gap: 40px;
+  }
+
+  .nainai-timeline__content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .nainai-timeline__content {
+    justify-self: center;
+  }
+
+  .nainai-timeline__label-text {
+    font-size: 10px;
+    max-width: 96px;
+    line-height: 1.25;
+  }
+
+  .nainai-timeline__label--above .nainai-timeline__label-text { bottom: 14px; }
+  .nainai-timeline__label--below .nainai-timeline__label-text { top: 14px; }
+
+  .nainai-timeline__dot {
+    r: 7;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .nainai-timeline__path,
+  .nainai-timeline__dot,
+  .nainai-timeline__label-text {
+    transition: none !important;
+    transition-delay: 0s !important;
+  }
+
+  .nainai-timeline__path { stroke-dashoffset: 0 !important; }
+  .nainai-timeline__dot { opacity: 1 !important; transform: scale(1) !important; }
+  .nainai-timeline__label-text { opacity: 0.92 !important; transform: translate(-50%, 0) !important; }
+}
